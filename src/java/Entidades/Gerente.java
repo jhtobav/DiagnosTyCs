@@ -11,9 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,9 +36,9 @@ public class Gerente implements Serializable {
     @NotNull
     @Column(name = "GerenteID")
     private Long gerenteID;
-    @JoinColumn(name = "GerenteID", referencedColumnName = "PersonaID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Persona persona;
+    @JoinColumn(name = "Persona_PersonaID", referencedColumnName = "PersonaID")
+    @ManyToOne(optional = false)
+    private Persona personaPersonaID;
 
     public Gerente() {
     }
@@ -55,12 +55,12 @@ public class Gerente implements Serializable {
         this.gerenteID = gerenteID;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Persona getPersonaPersonaID() {
+        return personaPersonaID;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setPersonaPersonaID(Persona personaPersonaID) {
+        this.personaPersonaID = personaPersonaID;
     }
 
     @Override

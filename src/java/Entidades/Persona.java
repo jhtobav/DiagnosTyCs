@@ -6,7 +6,7 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,11 +14,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,14 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
     @NamedQuery(name = "Persona.findByPersonaID", query = "SELECT p FROM Persona p WHERE p.personaID = :personaID"),
-    @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Persona.findByClave", query = "SELECT p FROM Persona p WHERE p.clave = :clave"),
+    @NamedQuery(name = "Persona.findByContrasena", query = "SELECT p FROM Persona p WHERE p.contrasena = :contrasena"),
     @NamedQuery(name = "Persona.findByEdad", query = "SELECT p FROM Persona p WHERE p.edad = :edad"),
     @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Persona.findByDireccion", query = "SELECT p FROM Persona p WHERE p.direccion = :direccion"),
     @NamedQuery(name = "Persona.findByCorreo", query = "SELECT p FROM Persona p WHERE p.correo = :correo"),
     @NamedQuery(name = "Persona.findByEstadoCuenta", query = "SELECT p FROM Persona p WHERE p.estadoCuenta = :estadoCuenta"),
-    @NamedQuery(name = "Persona.findByRol", query = "SELECT p FROM Persona p WHERE p.rol = :rol")})
+    @NamedQuery(name = "Persona.findByRol", query = "SELECT p FROM Persona p WHERE p.rol = :rol"),
+    @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre")})
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,40 +47,68 @@ public class Persona implements Serializable {
     @NotNull
     @Column(name = "PersonaID")
     private Long personaID;
-    @Size(max = 50)
-    @Column(name = "Nombre")
-    private String nombre;
-    @Size(max = 50)
-    @Column(name = "Clave")
-    private String clave;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "Contrasena")
+    private String contrasena;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Edad")
-    private Integer edad;
+    private int edad;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Telefono")
-    private BigInteger telefono;
-    @Size(max = 50)
+    private long telefono;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "Direccion")
     private String direccion;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "Correo")
     private String correo;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "EstadoCuenta")
-    private Boolean estadoCuenta;
+    private boolean estadoCuenta;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Rol")
-    private Integer rol;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    private Paciente paciente;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    private Administrador administrador;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    private Gerente gerente;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    private Medico medico;
+    private int rol;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "Nombre")
+    private String nombre;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    private Collection<Administrador> administradorCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    private Collection<Gerente> gerenteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    private Collection<Medico> medicoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    private Collection<Paciente> pacienteCollection;
 
     public Persona() {
     }
 
     public Persona(Long personaID) {
         this.personaID = personaID;
+    }
+
+    public Persona(Long personaID, String contrasena, int edad, long telefono, String direccion, String correo, boolean estadoCuenta, int rol, String nombre) {
+        this.personaID = personaID;
+        this.contrasena = contrasena;
+        this.edad = edad;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.estadoCuenta = estadoCuenta;
+        this.rol = rol;
+        this.nombre = nombre;
     }
 
     public Long getPersonaID() {
@@ -90,35 +119,27 @@ public class Persona implements Serializable {
         this.personaID = personaID;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    public Integer getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
-    public BigInteger getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(BigInteger telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -138,52 +159,64 @@ public class Persona implements Serializable {
         this.correo = correo;
     }
 
-    public Boolean getEstadoCuenta() {
+    public boolean getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(Boolean estadoCuenta) {
+    public void setEstadoCuenta(boolean estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public Integer getRol() {
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(Integer rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Administrador getAdministrador() {
-        return administrador;
+    @XmlTransient
+    public Collection<Administrador> getAdministradorCollection() {
+        return administradorCollection;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setAdministradorCollection(Collection<Administrador> administradorCollection) {
+        this.administradorCollection = administradorCollection;
     }
 
-    public Gerente getGerente() {
-        return gerente;
+    @XmlTransient
+    public Collection<Gerente> getGerenteCollection() {
+        return gerenteCollection;
     }
 
-    public void setGerente(Gerente gerente) {
-        this.gerente = gerente;
+    public void setGerenteCollection(Collection<Gerente> gerenteCollection) {
+        this.gerenteCollection = gerenteCollection;
     }
 
-    public Medico getMedico() {
-        return medico;
+    @XmlTransient
+    public Collection<Medico> getMedicoCollection() {
+        return medicoCollection;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setMedicoCollection(Collection<Medico> medicoCollection) {
+        this.medicoCollection = medicoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Paciente> getPacienteCollection() {
+        return pacienteCollection;
+    }
+
+    public void setPacienteCollection(Collection<Paciente> pacienteCollection) {
+        this.pacienteCollection = pacienteCollection;
     }
 
     @Override

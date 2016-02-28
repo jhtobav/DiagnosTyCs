@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>DiagnosTyCs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet"/>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </h:head>
+    
+    <h:body>
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DianosTyCs</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <h:form id="form" class="navbar-form navbar-right">
+            <div class="form-group">
+                <h:outputText id="mensajeError" style="color: #c9302c; display: #{loginBean.visible}" value="Usuario o Contraseña Inválidos       " />
+            </div>
+            <div class="form-group">
+                <h:inputText id="nombreUsuario" p:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
+            </div>
+            <div class="form-group">
+                <h:inputSecret  id="contrasena" p:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
+            </div>
+              <h:commandButton type="submit" id="button" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
+          </h:form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>DiagnosTyCs</h1>
+        <p>Somos una compañia orientada en brindarle el mejor servicio y confiabilidad, en la realización de sus exámenes médicos asegurando siempre la total discreción y la mayor calidad en atención</p>
+        <!--
+        <p><a class="btn btn-primary btn-lg" href="medico.html" role="button">Acceso a Médicos</a>
+        <a class="btn btn-primary btn-lg" href="paciente.html" role="button">Acceso a Pacientes</a>
+        <a class="btn btn-primary btn-lg" href="administrador.html" role="button">Acceso a Administradores</a>
+        <a class="btn btn-primary btn-lg" href="gerente.html" role="button">Acceso a Gerentes</a>
+        </p>
+        -->
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Examenes de laboratorio</h2>
+          <p>Realizamos todo tipo de exámenes de laboratorio, entregando los resultados en tiempo record y brindandole espacios cómodos y privados para que se sienta como en casa durante la toma de los exámenes. </p>
+          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Imágenes diagnósticas</h2>
+          <p>Con los mejores equipos, la última tecnología y el excelente conocimiento de nuestros especialistas podrá obtener las imágenes diagnósticas que necesita de manera rápida y con la mejor calidad posible.</p>
+          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr/>
+
+      <footer>
+        <p>&copy; 2015 DiagnosTyCs, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    </h:body>
+</html>
+

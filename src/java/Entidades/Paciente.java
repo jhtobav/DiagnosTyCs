@@ -6,18 +6,21 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,8 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
     @NamedQuery(name = "Paciente.findByPacienteID", query = "SELECT p FROM Paciente p WHERE p.pacienteID = :pacienteID"),
-    @NamedQuery(name = "Paciente.findByNumTarjeta", query = "SELECT p FROM Paciente p WHERE p.numTarjeta = :numTarjeta"),
-    @NamedQuery(name = "Paciente.findByCita", query = "SELECT p FROM Paciente p WHERE p.cita = :cita")})
+    @NamedQuery(name = "Paciente.findByPersonaID", query = "SELECT p FROM Paciente p WHERE p.pacienteID = :pacienteD")})
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,13 +41,14 @@ public class Paciente implements Serializable {
     @NotNull
     @Column(name = "PacienteID")
     private Long pacienteID;
-    @Column(name = "NumTarjeta")
-    private BigInteger numTarjeta;
-    @Column(name = "Cita")
-    private BigInteger cita;
-    @JoinColumn(name = "PacienteID", referencedColumnName = "PersonaID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Persona persona;
+    @JoinColumn(name = "Persona_PersonaID", referencedColumnName = "PersonaID")
+    @ManyToOne(optional = false)
+    private Persona personaPersonaID;
+    @JoinColumn(name = "Tarjeta_TarjetaID", referencedColumnName = "TarjetaID")
+    @ManyToOne(optional = false)
+    private Tarjeta tarjetaTarjetaID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacientePacienteID")
+    private Collection<Cita> citaCollection;
 
     public Paciente() {
     }
@@ -62,28 +65,29 @@ public class Paciente implements Serializable {
         this.pacienteID = pacienteID;
     }
 
-    public BigInteger getNumTarjeta() {
-        return numTarjeta;
+    public Persona getPersonaPersonaID() {
+        return personaPersonaID;
     }
 
-    public void setNumTarjeta(BigInteger numTarjeta) {
-        this.numTarjeta = numTarjeta;
+    public void setPersonaPersonaID(Persona personaPersonaID) {
+        this.personaPersonaID = personaPersonaID;
     }
 
-    public BigInteger getCita() {
-        return cita;
+    public Tarjeta getTarjetaTarjetaID() {
+        return tarjetaTarjetaID;
     }
 
-    public void setCita(BigInteger cita) {
-        this.cita = cita;
+    public void setTarjetaTarjetaID(Tarjeta tarjetaTarjetaID) {
+        this.tarjetaTarjetaID = tarjetaTarjetaID;
     }
 
-    public Persona getPersona() {
-        return persona;
+    @XmlTransient
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
     }
 
     @Override

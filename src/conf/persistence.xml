@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="DiagnosTyCsPU" transaction-type="JTA">
-    <jta-data-source>java:app/DiagnosTyCs</jta-data-source>
+  <persistence-unit name="DiagnosTyCsPU" transaction-type="RESOURCE_LOCAL">
+    <non-jta-data-source>java:app/DiagnosTyCs</non-jta-data-source>
+    <class>Entidades.Activo</class>
+    <class>Entidades.Administrador</class>
+    <class>Entidades.Alerta</class>
+    <class>Entidades.Cita</class>
+    <class>Entidades.Examen</class>
+    <class>Entidades.ExamenLaboratorio</class>
+    <class>Entidades.Gasto</class>
+    <class>Entidades.Gerente</class>
+    <class>Entidades.ImagenDiagnostica</class>
+    <class>Entidades.Medico</class>
+    <class>Entidades.Paciente</class>
+    <class>Entidades.Persona</class>
+    <class>Entidades.Reactivo</class>
+    <class>Entidades.Tarjeta</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

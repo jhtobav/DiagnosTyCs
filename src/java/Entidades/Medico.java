@@ -6,19 +6,22 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Medico.findByMedicoID", query = "SELECT m FROM Medico m WHERE m.medicoID = :medicoID"),
     @NamedQuery(name = "Medico.findByEspecialidad", query = "SELECT m FROM Medico m WHERE m.especialidad = :especialidad"),
     @NamedQuery(name = "Medico.findByEstado", query = "SELECT m FROM Medico m WHERE m.estado = :estado"),
-    @NamedQuery(name = "Medico.findByCita", query = "SELECT m FROM Medico m WHERE m.cita = :cita"),
     @NamedQuery(name = "Medico.findBySalario", query = "SELECT m FROM Medico m WHERE m.salario = :salario")})
 public class Medico implements Serializable {
 
@@ -42,25 +44,38 @@ public class Medico implements Serializable {
     @NotNull
     @Column(name = "MedicoID")
     private Long medicoID;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "Especialidad")
     private String especialidad;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "Estado")
     private String estado;
-    @Column(name = "Cita")
-    private BigInteger cita;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Salario")
-    private BigInteger salario;
-    @JoinColumn(name = "MedicoID", referencedColumnName = "PersonaID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Persona persona;
+    private long salario;
+    @JoinColumn(name = "Persona_PersonaID", referencedColumnName = "PersonaID")
+    @ManyToOne(optional = false)
+    private Persona personaPersonaID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicoMedicoID")
+    private Collection<Cita> citaCollection;
 
     public Medico() {
     }
 
     public Medico(Long medicoID) {
         this.medicoID = medicoID;
+    }
+
+    public Medico(Long medicoID, String especialidad, String estado, long salario) {
+        this.medicoID = medicoID;
+        this.especialidad = especialidad;
+        this.estado = estado;
+        this.salario = salario;
     }
 
     public Long getMedicoID() {
@@ -87,28 +102,29 @@ public class Medico implements Serializable {
         this.estado = estado;
     }
 
-    public BigInteger getCita() {
-        return cita;
-    }
-
-    public void setCita(BigInteger cita) {
-        this.cita = cita;
-    }
-
-    public BigInteger getSalario() {
+    public long getSalario() {
         return salario;
     }
 
-    public void setSalario(BigInteger salario) {
+    public void setSalario(long salario) {
         this.salario = salario;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Persona getPersonaPersonaID() {
+        return personaPersonaID;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setPersonaPersonaID(Persona personaPersonaID) {
+        this.personaPersonaID = personaPersonaID;
+    }
+
+    @XmlTransient
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
     }
 
     @Override
