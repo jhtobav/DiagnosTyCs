@@ -1,8 +1,10 @@
 package DAO;
 
 
+import DTO.TarjetaDTO;
 import Entidades.Paciente;
 import Entidades.Persona;
+import Entidades.Tarjeta;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,37 +20,25 @@ import javax.persistence.Query;
  *
  * @author jhtob
  */
-public class PacienteDAO {
+public class TarjetaDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
         
-    public Paciente createPaciente(Paciente paciente) {
+    public Tarjeta createTarjeta(Tarjeta tarjeta) {
         
         EntityManager em = emf.createEntityManager();
         
         em.getTransaction().begin();
         try{
-            em.persist(paciente);
+            em.persist(tarjeta);
             em.getTransaction().commit();
         }catch(Exception e){
             em.getTransaction().rollback();
         }finally{
             em.close();
-            return paciente;
+            return tarjeta;
         }
 
-    }
-    
-    public Paciente searchByPersona(Persona persona) {
-        
-        EntityManager em = emf.createEntityManager();
-        
-        Query q = em.createNamedQuery("Paciente.findByPersona");
-        q.setParameter("persona", persona);
-        Paciente paciente = (Paciente) q.getSingleResult();
-        em.close();
-        return paciente;
-        
     }
     
 }

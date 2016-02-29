@@ -6,23 +6,19 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -54,8 +50,6 @@ public class Tarjeta implements Serializable {
     @Column(name = "FechaVencimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaVencimiento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tarjetaTarjetaID")
-    private Collection<Paciente> pacienteCollection;
 
     public Tarjeta() {
     }
@@ -92,15 +86,6 @@ public class Tarjeta implements Serializable {
 
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
-    }
-
-    @XmlTransient
-    public Collection<Paciente> getPacienteCollection() {
-        return pacienteCollection;
-    }
-
-    public void setPacienteCollection(Collection<Paciente> pacienteCollection) {
-        this.pacienteCollection = pacienteCollection;
     }
 
     @Override

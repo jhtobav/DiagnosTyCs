@@ -21,6 +21,23 @@ public class PersonaDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
     
+    public Persona createPersona(Persona persona) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(persona);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return persona;
+        }
+
+    }
+    
     public Persona searchByIdPersona(Long idPersona) {
         EntityManager em = emf.createEntityManager();
         Persona persona = null;

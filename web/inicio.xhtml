@@ -59,29 +59,21 @@
             <div class="form-group">
                 <h:inputSecret  id="contrasena" p:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
             </div>
-              <h:commandButton type="submit" id="button" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
+              <h:commandButton type="submit" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
           </h:form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
+    
     <div class="jumbotron">
       <div class="container">
         <h1>DiagnosTyCs</h1>
         <p>Somos una compañia orientada en brindarle el mejor servicio y confiabilidad, en la realización de sus exámenes médicos asegurando siempre la total discreción y la mayor calidad en atención</p>
-        <!--
-        <p><a class="btn btn-primary btn-lg" href="medico.html" role="button">Acceso a Médicos</a>
-        <a class="btn btn-primary btn-lg" href="paciente.html" role="button">Acceso a Pacientes</a>
-        <a class="btn btn-primary btn-lg" href="administrador.html" role="button">Acceso a Administradores</a>
-        <a class="btn btn-primary btn-lg" href="gerente.html" role="button">Acceso a Gerentes</a>
-        </p>
-        -->
       </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
+      
       <div class="row">
         <div class="col-md-6">
           <h2>Examenes de laboratorio</h2>
@@ -97,11 +89,28 @@
 
       <hr/>
 
+      <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li>
+                  <a href="registrarse.html" target="iframe_a">Registrarse</a>
+              </li>
+          </ul>
+      </div>
+      
       <footer>
         <p>&copy; 2015 DiagnosTyCs, Inc.</p>
       </footer>
-    </div> <!-- /container -->
+    </div> 
 
+    <div class="jumbotron">
+        <div class="container">
+            <div id="navbar" class="collapse navbar-collapse">
+                <h:form class="navbar-form navbar-right">
+                    <h:commandButton type="submit" id="button" class="btn btn-success" value="Registrarse" action="#{registroBean.registro()}"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
