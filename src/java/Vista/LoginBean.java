@@ -131,13 +131,13 @@ public class LoginBean {
         LoginBiz loginBiz = new LoginBiz();
         String mensaje = loginBiz.login(personaLoginDTO);
         
-        if(persona!=null)
+        if(mensaje!="error"){
             nombrePersona = persona.getNombre();
-        
-        if(mensaje!="none")
-            visible="initial";
-
-        return mensaje;
+            return mensaje;
+        }else{
+            visible = "initial";
+            return "inicio.xhtml";
+        }
 
     }
     

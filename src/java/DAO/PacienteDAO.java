@@ -22,12 +22,12 @@ public class PacienteDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
         
-    public Paciente searchByIdPersona(Long idPersona) {
+    public Paciente searchByPersona(Persona persona) {
         
         EntityManager em = emf.createEntityManager();
         
-        Query q = em.createNamedQuery("Paciente.findByPersonaID");
-        q.setParameter("personaID", idPersona);
+        Query q = em.createNamedQuery("Paciente.findByPersona");
+        q.setParameter("persona", persona);
         Paciente paciente = (Paciente) q.getSingleResult();
         em.close();
         return paciente;

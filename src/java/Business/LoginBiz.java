@@ -26,7 +26,7 @@ public class LoginBiz {
         Persona persona = personaDAO.searchByIdPersona(personaLoginDTO.getIdPersona());
 
         LoginBean.setPersona(persona);
-        
+
         if (persona != null) {
             if (persona.getContrasena()
                     .equals(personaLoginDTO.getContrasena())) {
@@ -35,7 +35,7 @@ public class LoginBiz {
                         LoginBean.setMedico(new MedicoDAO().searchByIdMedico(persona.getPersonaID()));
                         return "medico.xhtml";
                     case 2:
-                        LoginBean.setPaciente(new PacienteDAO().searchByIdPersona(persona.getPersonaID()));
+                        LoginBean.setPaciente(new PacienteDAO().searchByPersona(persona));
                         return "paciente.xhtml";
                     case 3:
                         LoginBean.setAdministrador(new AdministradorDAO().searchByIdAdministrador(persona.getPersonaID()));
@@ -46,13 +46,9 @@ public class LoginBiz {
                     default:
                         break;
                 }
-            } else {
-                return "malpassword";
             }
-        } else {
-            return "noexiste";
         }
+
         return "error";
     }
-
 }
