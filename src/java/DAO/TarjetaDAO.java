@@ -1,9 +1,7 @@
 package DAO;
 
 
-import DTO.TarjetaDTO;
 import Entidades.Paciente;
-import Entidades.Persona;
 import Entidades.Tarjeta;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
@@ -39,6 +37,18 @@ public class TarjetaDAO {
             return tarjeta;
         }
 
+    }
+    
+    public Tarjeta searchByIdTarjeta(Long idTarjeta) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        Query q = em.createNamedQuery("Tarjeta.findByTarjetaID");
+        q.setParameter("tarjetaID", idTarjeta);
+        Tarjeta tarjeta = (Tarjeta) q.getSingleResult();
+        em.close();
+        return tarjeta;
+        
     }
     
 }

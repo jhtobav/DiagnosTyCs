@@ -31,6 +31,7 @@ public class PacienteDAO {
             em.persist(paciente);
             em.getTransaction().commit();
         }catch(Exception e){
+            System.out.println(e.getMessage());
             em.getTransaction().rollback();
         }finally{
             em.close();
@@ -39,16 +40,16 @@ public class PacienteDAO {
 
     }
     
-    public Paciente searchByPersona(Persona persona) {
+    public Paciente searchByNumDocumento(Long numDocumento) {
         
         EntityManager em = emf.createEntityManager();
         
-        Query q = em.createNamedQuery("Paciente.findByPersona");
-        q.setParameter("persona", persona);
+        Query q = em.createNamedQuery("Paciente.findByNumDocumento");
+        q.setParameter("numDocumento", numDocumento);
         Paciente paciente = (Paciente) q.getSingleResult();
         em.close();
         return paciente;
         
     }
-    
+   
 }

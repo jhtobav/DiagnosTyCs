@@ -40,16 +40,16 @@ public class Gasto implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "GastoID")
+    @Column(name = "gastoID")
     private Long gastoID;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Fecha")
+    @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoActivoActivoGastoID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoActivoActivogastoID")
     private Collection<Activo> activoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoReactivoReactivoGastoID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoReactivoReactivogastoID")
     private Collection<Reactivo> reactivoCollection;
 
     public Gasto() {

@@ -6,10 +6,8 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,13 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c"),
     @NamedQuery(name = "Cita.findByCitaID", query = "SELECT c FROM Cita c WHERE c.citaID = :citaID"),
-    @NamedQuery(name = "Cita.findByHorario", query = "SELECT c FROM Cita c WHERE c.horario = :horario"),
+    @NamedQuery(name = "Cita.findByHoraInicio", query = "SELECT c FROM Cita c WHERE c.horaInicio = :horaInicio"),
+    @NamedQuery(name = "Cita.findByHoraFin", query = "SELECT c FROM Cita c WHERE c.horaFin = :horaFin"),
     @NamedQuery(name = "Cita.findByValor", query = "SELECT c FROM Cita c WHERE c.valor = :valor")})
 public class Cita implements Serializable {
 
@@ -43,25 +40,34 @@ public class Cita implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "CitaID")
+    @Column(name = "citaID")
     private Long citaID;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Horario")
+    @Column(name = "horaInicio")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horario;
+    private Date horaInicio;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Valor")
+    @Column(name = "horaFin")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date horaFin;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "valor")
     private long valor;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "citaExamenExamenCitaID")
-    private Collection<Examen> examenCollection;
-    @JoinColumn(name = "Medico_MedicoID", referencedColumnName = "MedicoID")
+    @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")
     @ManyToOne(optional = false)
-    private Medico medicoMedicoID;
-    @JoinColumn(name = "Paciente_PacienteID", referencedColumnName = "PacienteID")
+    private Doctor doctordoctorID;
+    @JoinColumn(name = "Examen_examenID", referencedColumnName = "examenID")
     @ManyToOne(optional = false)
-    private Paciente pacientePacienteID;
+    private Examen examenexamenID;
+    @JoinColumn(name = "Medico_medicoID", referencedColumnName = "medicoID")
+    @ManyToOne(optional = false)
+    private Medico medicomedicoID;
+    @JoinColumn(name = "Paciente_pacienteID", referencedColumnName = "pacienteID")
+    @ManyToOne(optional = false)
+    private Paciente pacientepacienteID;
 
     public Cita() {
     }
@@ -70,9 +76,10 @@ public class Cita implements Serializable {
         this.citaID = citaID;
     }
 
-    public Cita(Long citaID, Date horario, long valor) {
+    public Cita(Long citaID, Date horaInicio, Date horaFin, long valor) {
         this.citaID = citaID;
-        this.horario = horario;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
         this.valor = valor;
     }
 
@@ -84,12 +91,20 @@ public class Cita implements Serializable {
         this.citaID = citaID;
     }
 
-    public Date getHorario() {
-        return horario;
+    public Date getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setHorario(Date horario) {
-        this.horario = horario;
+    public void setHoraInicio(Date horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Date getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(Date horaFin) {
+        this.horaFin = horaFin;
     }
 
     public long getValor() {
@@ -100,29 +115,36 @@ public class Cita implements Serializable {
         this.valor = valor;
     }
 
-    @XmlTransient
-    public Collection<Examen> getExamenCollection() {
-        return examenCollection;
+    public Doctor getDoctordoctorID() {
+        return doctordoctorID;
     }
 
-    public void setExamenCollection(Collection<Examen> examenCollection) {
-        this.examenCollection = examenCollection;
+    public void setDoctordoctorID(Doctor doctordoctorID) {
+        this.doctordoctorID = doctordoctorID;
     }
 
-    public Medico getMedicoMedicoID() {
-        return medicoMedicoID;
+    public Examen getExamenexamenID() {
+        return examenexamenID;
     }
 
-    public void setMedicoMedicoID(Medico medicoMedicoID) {
-        this.medicoMedicoID = medicoMedicoID;
+    public void setExamenexamenID(Examen examenexamenID) {
+        this.examenexamenID = examenexamenID;
     }
 
-    public Paciente getPacientePacienteID() {
-        return pacientePacienteID;
+    public Medico getMedicomedicoID() {
+        return medicomedicoID;
     }
 
-    public void setPacientePacienteID(Paciente pacientePacienteID) {
-        this.pacientePacienteID = pacientePacienteID;
+    public void setMedicomedicoID(Medico medicomedicoID) {
+        this.medicomedicoID = medicomedicoID;
+    }
+
+    public Paciente getPacientepacienteID() {
+        return pacientepacienteID;
+    }
+
+    public void setPacientepacienteID(Paciente pacientepacienteID) {
+        this.pacientepacienteID = pacientepacienteID;
     }
 
     @Override

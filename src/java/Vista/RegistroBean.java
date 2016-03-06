@@ -6,7 +6,7 @@
 package Vista;
 
 import Business.RegistroBiz;
-import DTO.PersonaDTO;
+import DTO.PacienteDTO;
 import DTO.TarjetaDTO;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
@@ -20,9 +20,9 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroBean {
        
-    public static Long idPersona;
+    public static Long numDocPaciente;
     String contrasena;
-    String nombrePersona;
+    String nombrePaciente;
     int edad;
     Long telefono;
     String direccion;
@@ -30,12 +30,12 @@ public class RegistroBean {
     Long idTarjeta;
     Date fechaVencimiento;
 
-    public static Long getIdPersona() {
-        return idPersona;
+    public static Long getNumDocPaciente() {
+        return numDocPaciente;
     }
 
-    public static void setIdPersona(Long idPersona) {
-        RegistroBean.idPersona = idPersona;
+    public static void setNumDocPaciente(Long numDocPaciente) {
+        RegistroBean.numDocPaciente = numDocPaciente;
     }
 
     public String getContrasena() {
@@ -46,12 +46,12 @@ public class RegistroBean {
         this.contrasena = contrasena;
     }
 
-    public String getNombrePersona() {
-        return nombrePersona;
+    public String getNombrePaciente() {
+        return nombrePaciente;
     }
 
-    public void setNombrePersona(String nombrePersona) {
-        this.nombrePersona = nombrePersona;
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
     }
 
     public int getEdad() {
@@ -104,9 +104,9 @@ public class RegistroBean {
 
     public String registro(){
                 
-        idPersona = 1023928372L;
+        numDocPaciente = 1023928372L;
         contrasena = "123456";
-        nombrePersona = "Jaime Toba";
+        nombrePaciente = "Jaime Toba";
         edad = 22;
         telefono = 3015023413L;
         direccion = "Cll 22B Sur N 1-07 Este";
@@ -114,22 +114,22 @@ public class RegistroBean {
         idTarjeta = 192665512L;
         fechaVencimiento = new Date();
         
-        PersonaDTO personaDTO = new PersonaDTO();       
-        personaDTO.setIdPersona(idPersona);
-        personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombrePersona);
-        personaDTO.setEdad(edad);
-        personaDTO.setTelefono(telefono);
-        personaDTO.setDireccion(direccion);
-        personaDTO.setCorreo(correo);
+        PacienteDTO pacienteDTO = new PacienteDTO();       
+        pacienteDTO.setNumDocPaciente(numDocPaciente);
+        pacienteDTO.setContrasena(contrasena);
+        pacienteDTO.setNombrePaciente(nombrePaciente);
+        pacienteDTO.setEdad(edad);
+        pacienteDTO.setTelefono(telefono);
+        pacienteDTO.setDireccion(direccion);
+        pacienteDTO.setCorreo(correo);
         
         TarjetaDTO tarjetaDTO = new TarjetaDTO();
-        tarjetaDTO.setNombrePersona(nombrePersona);
+        tarjetaDTO.setNombrePaciente(nombrePaciente);
         tarjetaDTO.setIdTarjeta(idTarjeta);
         tarjetaDTO.setFechaVencimiento(fechaVencimiento);
         
         RegistroBiz registroBiz = new RegistroBiz();
-        String mensaje = registroBiz.registroPaciente(personaDTO, tarjetaDTO);
+        String mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
 
         return mensaje;
         

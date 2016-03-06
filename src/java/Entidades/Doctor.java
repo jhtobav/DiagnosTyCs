@@ -28,22 +28,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author jhtob
  */
 @Entity
-@Table(name = "Medico")
+@Table(name = "Doctor")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Medico.findAll", query = "SELECT m FROM Medico m"),
-    @NamedQuery(name = "Medico.findByMedicoID", query = "SELECT m FROM Medico m WHERE m.medicoID = :medicoID"),
-    @NamedQuery(name = "Medico.findByEspecialidad", query = "SELECT m FROM Medico m WHERE m.especialidad = :especialidad"),
-    @NamedQuery(name = "Medico.findByEstado", query = "SELECT m FROM Medico m WHERE m.estado = :estado"),
-    @NamedQuery(name = "Medico.findBySalario", query = "SELECT m FROM Medico m WHERE m.salario = :salario")})
-public class Medico implements Serializable {
+    @NamedQuery(name = "Doctor.findAll", query = "SELECT d FROM Doctor d"),
+    @NamedQuery(name = "Doctor.findByDoctorID", query = "SELECT d FROM Doctor d WHERE d.doctorID = :doctorID"),
+    @NamedQuery(name = "Doctor.findByEspecialidad", query = "SELECT d FROM Doctor d WHERE d.especialidad = :especialidad"),
+    @NamedQuery(name = "Doctor.findByEstado", query = "SELECT d FROM Doctor d WHERE d.estado = :estado"),
+    @NamedQuery(name = "Doctor.findBySalario", query = "SELECT d FROM Doctor d WHERE d.salario = :salario")})
+public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "medicoID")
-    private Long medicoID;
+    @Column(name = "doctorID")
+    private Long doctorID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -61,29 +61,29 @@ public class Medico implements Serializable {
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @ManyToOne(optional = false)
     private Persona personapersonaID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicomedicoID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctordoctorID")
     private Collection<Cita> citaCollection;
 
-    public Medico() {
+    public Doctor() {
     }
 
-    public Medico(Long medicoID) {
-        this.medicoID = medicoID;
+    public Doctor(Long doctorID) {
+        this.doctorID = doctorID;
     }
 
-    public Medico(Long medicoID, String especialidad, String estado, long salario) {
-        this.medicoID = medicoID;
+    public Doctor(Long doctorID, String especialidad, String estado, long salario) {
+        this.doctorID = doctorID;
         this.especialidad = especialidad;
         this.estado = estado;
         this.salario = salario;
     }
 
-    public Long getMedicoID() {
-        return medicoID;
+    public Long getDoctorID() {
+        return doctorID;
     }
 
-    public void setMedicoID(Long medicoID) {
-        this.medicoID = medicoID;
+    public void setDoctorID(Long doctorID) {
+        this.doctorID = doctorID;
     }
 
     public String getEspecialidad() {
@@ -130,18 +130,18 @@ public class Medico implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (medicoID != null ? medicoID.hashCode() : 0);
+        hash += (doctorID != null ? doctorID.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Medico)) {
+        if (!(object instanceof Doctor)) {
             return false;
         }
-        Medico other = (Medico) object;
-        if ((this.medicoID == null && other.medicoID != null) || (this.medicoID != null && !this.medicoID.equals(other.medicoID))) {
+        Doctor other = (Doctor) object;
+        if ((this.doctorID == null && other.doctorID != null) || (this.doctorID != null && !this.doctorID.equals(other.doctorID))) {
             return false;
         }
         return true;
@@ -149,7 +149,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Medico[ medicoID=" + medicoID + " ]";
+        return "Entidades.Doctor[ doctorID=" + doctorID + " ]";
     }
     
 }

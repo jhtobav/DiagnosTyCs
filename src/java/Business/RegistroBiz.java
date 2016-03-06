@@ -5,13 +5,14 @@
 package Business;
 
 import DAO.PacienteDAO;
-import DAO.PersonaDAO;
 import DAO.TarjetaDAO;
-import DTO.PersonaDTO;
+import DTO.PacienteDTO;
 import DTO.TarjetaDTO;
+import Entidades.Cita;
 import Entidades.Paciente;
-import Entidades.Persona;
 import Entidades.Tarjeta;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,39 +20,33 @@ import Entidades.Tarjeta;
  */
 public class RegistroBiz {
 
-    public String registroPaciente(PersonaDTO personaDTO, TarjetaDTO tarjetaDTO) {
+    public String registroPaciente(PacienteDTO pacienteDTO, TarjetaDTO tarjetaDTO) {
 
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setTarjetaID(tarjetaDTO.getIdTarjeta());
-        tarjeta.setNombreEnTarjeta(tarjetaDTO.getNombrePersona());
+        tarjeta.setNombreEnTarjeta(tarjetaDTO.getNombrePaciente());
         tarjeta.setFechaVencimiento(tarjetaDTO.getFechaVencimiento());
         
-        Persona persona = new Persona();
-        persona.setPersonaID(personaDTO.getIdPersona());
-        persona.setNombre(personaDTO.getNombrePersona());
-        persona.setContrasena(personaDTO.getContrasena());
-        persona.setCorreo(personaDTO.getCorreo());
-        persona.setDireccion(personaDTO.getDireccion());
-        persona.setEdad(personaDTO.getEdad());
-        persona.setEstadoCuenta(true);
-        persona.setRol(2);
-        persona.setTelefono(personaDTO.getTelefono());
-                
         Paciente paciente = new Paciente();
-        paciente.setPersonaPersonaID(persona);
-        paciente.setTarjetaTarjetaID(tarjeta);
+        paciente.setNumDocumento(pacienteDTO.getNumDocPaciente());
+        paciente.setNombre(pacienteDTO.getNombrePaciente());
+        paciente.setContrasena(pacienteDTO.getContrasena());
+        paciente.setCorreo(pacienteDTO.getCorreo());
+        paciente.setDireccion(pacienteDTO.getDireccion());
+        paciente.setTelefono(pacienteDTO.getTelefono());
+        paciente.setEdad(pacienteDTO.getEdad());
+        paciente.setEstadoCuenta(true);
+        paciente.setRol(2);
+        paciente.setTarjetatarjetaID(tarjeta);
+        List<Cita> citas = new ArrayList<>();
+        paciente.setCitaCollection(citas);
               
         TarjetaDAO tarjetaDAO = new TarjetaDAO();
-        PersonaDAO personaDAO = new PersonaDAO();
         PacienteDAO pacienteDAO = new PacienteDAO();
         
         tarjetaDAO.createTarjeta(tarjeta);
-        System.out.println("exito1");
-        personaDAO.createPersona(persona);
-        System.out.println("exito2");
         pacienteDAO.createPaciente(paciente);
-        System.out.println("exito3");
 
-        return "welcome.xhtml";
+        return "inicio.xhtml";
     }
 }

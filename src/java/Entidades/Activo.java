@@ -38,24 +38,24 @@ public class Activo implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ActivoID")
+    @Column(name = "activoID")
     private Long activoID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Valor")
+    @Column(name = "valor")
     private long valor;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "UnidadesExistentes")
-    private int unidadesExistentes;
-    @JoinColumn(name = "GastoActivo_Activo_GastoID", referencedColumnName = "GastoID")
+    @Column(name = "unidadesExistentes")
+    private long unidadesExistentes;
+    @JoinColumn(name = "GastoActivo_Activo_gastoID", referencedColumnName = "gastoID")
     @ManyToOne(optional = false)
-    private Gasto gastoActivoActivoGastoID;
+    private Gasto gastoActivoActivogastoID;
 
     public Activo() {
     }
@@ -64,7 +64,7 @@ public class Activo implements Serializable {
         this.activoID = activoID;
     }
 
-    public Activo(Long activoID, String descripcion, long valor, int unidadesExistentes) {
+    public Activo(Long activoID, String descripcion, long valor, long unidadesExistentes) {
         this.activoID = activoID;
         this.descripcion = descripcion;
         this.valor = valor;
@@ -95,20 +95,20 @@ public class Activo implements Serializable {
         this.valor = valor;
     }
 
-    public int getUnidadesExistentes() {
+    public long getUnidadesExistentes() {
         return unidadesExistentes;
     }
 
-    public void setUnidadesExistentes(int unidadesExistentes) {
+    public void setUnidadesExistentes(long unidadesExistentes) {
         this.unidadesExistentes = unidadesExistentes;
     }
 
-    public Gasto getGastoActivoActivoGastoID() {
-        return gastoActivoActivoGastoID;
+    public Gasto getGastoActivoActivogastoID() {
+        return gastoActivoActivogastoID;
     }
 
-    public void setGastoActivoActivoGastoID(Gasto gastoActivoActivoGastoID) {
-        this.gastoActivoActivoGastoID = gastoActivoActivoGastoID;
+    public void setGastoActivoActivogastoID(Gasto gastoActivoActivogastoID) {
+        this.gastoActivoActivogastoID = gastoActivoActivogastoID;
     }
 
     @Override

@@ -6,18 +6,20 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,35 +31,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Examen.findAll", query = "SELECT e FROM Examen e"),
     @NamedQuery(name = "Examen.findByExamenID", query = "SELECT e FROM Examen e WHERE e.examenID = :examenID"),
-    @NamedQuery(name = "Examen.findByNombre", query = "SELECT e FROM Examen e WHERE e.nombre = :nombre"),
-    @NamedQuery(name = "Examen.findByDescripcion", query = "SELECT e FROM Examen e WHERE e.descripcion = :descripcion")})
+    @NamedQuery(name = "Examen.findByNombre", query = "SELECT e FROM Examen e WHERE e.nombre = :nombre")})
 public class Examen implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ExamenID")
+    @Column(name = "examenID")
     private Long examenID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "Descripcion")
-    private String descripcion;
-    @JoinColumn(name = "CitaExamen_Examen_CitaID", referencedColumnName = "CitaID")
-    @ManyToOne(optional = false)
-    private Cita citaExamenExamenCitaID;
-    @JoinColumn(name = "ExamenLaboratorio_ExamenLaboratorioID", referencedColumnName = "ExamenLaboratorioID")
-    @ManyToOne(optional = false)
-    private ExamenLaboratorio examenLaboratorioExamenLaboratorioID;
-    @JoinColumn(name = "ImagenDiagnostica_ImagenDiagnosticaID", referencedColumnName = "ImagenDiagnosticaID")
-    @ManyToOne(optional = false)
-    private ImagenDiagnostica imagenDiagnosticaImagenDiagnosticaID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "examenexamenID")
+    private Collection<Cita> citaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "examenImagenDiagnosticaImagenDiagnosticaexamenID")
+    private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "examenLaboratorioLaboratorioexamenID")
+    private Collection<Laboratorio> laboratorioCollection;
 
     public Examen() {
     }
@@ -66,10 +59,9 @@ public class Examen implements Serializable {
         this.examenID = examenID;
     }
 
-    public Examen(Long examenID, String nombre, String descripcion) {
+    public Examen(Long examenID, String nombre) {
         this.examenID = examenID;
         this.nombre = nombre;
-        this.descripcion = descripcion;
     }
 
     public Long getExamenID() {
@@ -88,36 +80,31 @@ public class Examen implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    @XmlTransient
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
     }
 
-    public Cita getCitaExamenExamenCitaID() {
-        return citaExamenExamenCitaID;
+    @XmlTransient
+    public Collection<ImagenDiagnostica> getImagenDiagnosticaCollection() {
+        return imagenDiagnosticaCollection;
     }
 
-    public void setCitaExamenExamenCitaID(Cita citaExamenExamenCitaID) {
-        this.citaExamenExamenCitaID = citaExamenExamenCitaID;
+    public void setImagenDiagnosticaCollection(Collection<ImagenDiagnostica> imagenDiagnosticaCollection) {
+        this.imagenDiagnosticaCollection = imagenDiagnosticaCollection;
     }
 
-    public ExamenLaboratorio getExamenLaboratorioExamenLaboratorioID() {
-        return examenLaboratorioExamenLaboratorioID;
+    @XmlTransient
+    public Collection<Laboratorio> getLaboratorioCollection() {
+        return laboratorioCollection;
     }
 
-    public void setExamenLaboratorioExamenLaboratorioID(ExamenLaboratorio examenLaboratorioExamenLaboratorioID) {
-        this.examenLaboratorioExamenLaboratorioID = examenLaboratorioExamenLaboratorioID;
-    }
-
-    public ImagenDiagnostica getImagenDiagnosticaImagenDiagnosticaID() {
-        return imagenDiagnosticaImagenDiagnosticaID;
-    }
-
-    public void setImagenDiagnosticaImagenDiagnosticaID(ImagenDiagnostica imagenDiagnosticaImagenDiagnosticaID) {
-        this.imagenDiagnosticaImagenDiagnosticaID = imagenDiagnosticaImagenDiagnosticaID;
+    public void setLaboratorioCollection(Collection<Laboratorio> laboratorioCollection) {
+        this.laboratorioCollection = laboratorioCollection;
     }
 
     @Override

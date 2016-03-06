@@ -14,18 +14,18 @@ import java.util.Date;
 public class TarjetaDTO implements Serializable {
     
     private Long idTarjeta;
-    private String nombrePersona;
+    private String nombrePaciente;
     private Date fechaVencimiento;
    
     public TarjetaDTO() {
     }
 
-    public String getNombrePersona() {
-        return nombrePersona;
+    public String getNombrePaciente() {
+        return nombrePaciente;
     }
 
-    public void setNombrePersona(String nombrePersona) {
-        this.nombrePersona = nombrePersona;
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
     }
 
     public Long getIdTarjeta() {

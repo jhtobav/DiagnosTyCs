@@ -31,66 +31,66 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
     @NamedQuery(name = "Persona.findByPersonaID", query = "SELECT p FROM Persona p WHERE p.personaID = :personaID"),
-    @NamedQuery(name = "Persona.findByContrasena", query = "SELECT p FROM Persona p WHERE p.contrasena = :contrasena"),
+    @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Persona.findByEdad", query = "SELECT p FROM Persona p WHERE p.edad = :edad"),
     @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Persona.findByDireccion", query = "SELECT p FROM Persona p WHERE p.direccion = :direccion"),
     @NamedQuery(name = "Persona.findByCorreo", query = "SELECT p FROM Persona p WHERE p.correo = :correo"),
+    @NamedQuery(name = "Persona.findByContrasena", query = "SELECT p FROM Persona p WHERE p.contrasena = :contrasena"),
     @NamedQuery(name = "Persona.findByEstadoCuenta", query = "SELECT p FROM Persona p WHERE p.estadoCuenta = :estadoCuenta"),
-    @NamedQuery(name = "Persona.findByRol", query = "SELECT p FROM Persona p WHERE p.rol = :rol"),
-    @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre")})
+    @NamedQuery(name = "Persona.findByRol", query = "SELECT p FROM Persona p WHERE p.rol = :rol")})
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PersonaID")
+    @Column(name = "personaID")
     private Long personaID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Contrasena")
-    private String contrasena;
+    @Column(name = "nombre")
+    private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Edad")
+    @Column(name = "edad")
     private int edad;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Telefono")
+    @Column(name = "telefono")
     private long telefono;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Direccion")
+    @Column(name = "direccion")
     private String direccion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Correo")
+    @Column(name = "correo")
     private String correo;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "EstadoCuenta")
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "contrasena")
+    private String contrasena;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estadoCuenta")
     private boolean estadoCuenta;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Rol")
+    @Column(name = "rol")
     private int rol;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "Nombre")
-    private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
     private Collection<Administrador> administradorCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
     private Collection<Gerente> gerenteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
     private Collection<Medico> medicoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaPersonaID")
-    private Collection<Paciente> pacienteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
+    private Collection<Doctor> doctorCollection;
 
     public Persona() {
     }
@@ -99,16 +99,16 @@ public class Persona implements Serializable {
         this.personaID = personaID;
     }
 
-    public Persona(Long personaID, String contrasena, int edad, long telefono, String direccion, String correo, boolean estadoCuenta, int rol, String nombre) {
+    public Persona(Long personaID, String nombre, int edad, long telefono, String direccion, String correo, String contrasena, boolean estadoCuenta, int rol) {
         this.personaID = personaID;
-        this.contrasena = contrasena;
+        this.nombre = nombre;
         this.edad = edad;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
+        this.contrasena = contrasena;
         this.estadoCuenta = estadoCuenta;
         this.rol = rol;
-        this.nombre = nombre;
     }
 
     public Long getPersonaID() {
@@ -119,12 +119,12 @@ public class Persona implements Serializable {
         this.personaID = personaID;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEdad() {
@@ -159,6 +159,14 @@ public class Persona implements Serializable {
         this.correo = correo;
     }
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
     public boolean getEstadoCuenta() {
         return estadoCuenta;
     }
@@ -173,14 +181,6 @@ public class Persona implements Serializable {
 
     public void setRol(int rol) {
         this.rol = rol;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     @XmlTransient
@@ -211,12 +211,12 @@ public class Persona implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Paciente> getPacienteCollection() {
-        return pacienteCollection;
+    public Collection<Doctor> getDoctorCollection() {
+        return doctorCollection;
     }
 
-    public void setPacienteCollection(Collection<Paciente> pacienteCollection) {
-        this.pacienteCollection = pacienteCollection;
+    public void setDoctorCollection(Collection<Doctor> doctorCollection) {
+        this.doctorCollection = doctorCollection;
     }
 
     @Override

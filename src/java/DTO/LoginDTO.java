@@ -10,13 +10,14 @@ import java.io.Serializable;
  *
  * @author Jaime
  */
-public class PersonaLoginDTO implements Serializable {
+public class LoginDTO implements Serializable {
     
     Long idPersona;
     String contrasena;
     String nombrePersona;
+    String mensaje;
    
-    public PersonaLoginDTO() {
+    public LoginDTO() {
     }
 
     public Long getIdPersona() {
@@ -33,6 +34,22 @@ public class PersonaLoginDTO implements Serializable {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getNombrePersona() {
+        return nombrePersona;
+    }
+
+    public void setNombrePersona(String nombrePersona) {
+        this.nombrePersona = nombrePersona;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
 }

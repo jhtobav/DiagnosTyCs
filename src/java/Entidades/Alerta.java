@@ -40,21 +40,21 @@ public class Alerta implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "AlertaID")
+    @Column(name = "alertaID")
     private Long alertaID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Fecha")
+    @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @JoinColumn(name = "Reactivo_ReactivoID", referencedColumnName = "ReactivoID")
+    @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
     @ManyToOne(optional = false)
-    private Reactivo reactivoReactivoID;
+    private Reactivo reactivoreactivoID;
 
     public Alerta() {
     }
@@ -93,12 +93,12 @@ public class Alerta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Reactivo getReactivoReactivoID() {
-        return reactivoReactivoID;
+    public Reactivo getReactivoreactivoID() {
+        return reactivoreactivoID;
     }
 
-    public void setReactivoReactivoID(Reactivo reactivoReactivoID) {
-        this.reactivoReactivoID = reactivoReactivoID;
+    public void setReactivoreactivoID(Reactivo reactivoreactivoID) {
+        this.reactivoreactivoID = reactivoreactivoID;
     }
 
     @Override

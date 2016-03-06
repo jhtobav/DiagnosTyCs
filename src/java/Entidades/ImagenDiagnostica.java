@@ -6,20 +6,18 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,22 +29,29 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ImagenDiagnostica.findAll", query = "SELECT i FROM ImagenDiagnostica i"),
     @NamedQuery(name = "ImagenDiagnostica.findByImagenDiagnosticaID", query = "SELECT i FROM ImagenDiagnostica i WHERE i.imagenDiagnosticaID = :imagenDiagnosticaID"),
-    @NamedQuery(name = "ImagenDiagnostica.findByRutaArchivoImagen", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaArchivoImagen = :rutaArchivoImagen")})
+    @NamedQuery(name = "ImagenDiagnostica.findByDescripcion", query = "SELECT i FROM ImagenDiagnostica i WHERE i.descripcion = :descripcion"),
+    @NamedQuery(name = "ImagenDiagnostica.findByRutaArchivo", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaArchivo = :rutaArchivo")})
 public class ImagenDiagnostica implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ImagenDiagnosticaID")
+    @Column(name = "imagenDiagnosticaID")
     private Long imagenDiagnosticaID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "RutaArchivoImagen")
-    private String rutaArchivoImagen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "imagenDiagnosticaImagenDiagnosticaID")
-    private Collection<Examen> examenCollection;
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "rutaArchivo")
+    private String rutaArchivo;
+    @JoinColumn(name = "ExamenImagenDiagnostica_ImagenDiagnostica_examenID", referencedColumnName = "examenID")
+    @ManyToOne(optional = false)
+    private Examen examenImagenDiagnosticaImagenDiagnosticaexamenID;
 
     public ImagenDiagnostica() {
     }
@@ -55,9 +60,10 @@ public class ImagenDiagnostica implements Serializable {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
     }
 
-    public ImagenDiagnostica(Long imagenDiagnosticaID, String rutaArchivoImagen) {
+    public ImagenDiagnostica(Long imagenDiagnosticaID, String descripcion, String rutaArchivo) {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
-        this.rutaArchivoImagen = rutaArchivoImagen;
+        this.descripcion = descripcion;
+        this.rutaArchivo = rutaArchivo;
     }
 
     public Long getImagenDiagnosticaID() {
@@ -68,21 +74,28 @@ public class ImagenDiagnostica implements Serializable {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
     }
 
-    public String getRutaArchivoImagen() {
-        return rutaArchivoImagen;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setRutaArchivoImagen(String rutaArchivoImagen) {
-        this.rutaArchivoImagen = rutaArchivoImagen;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    @XmlTransient
-    public Collection<Examen> getExamenCollection() {
-        return examenCollection;
+    public String getRutaArchivo() {
+        return rutaArchivo;
     }
 
-    public void setExamenCollection(Collection<Examen> examenCollection) {
-        this.examenCollection = examenCollection;
+    public void setRutaArchivo(String rutaArchivo) {
+        this.rutaArchivo = rutaArchivo;
+    }
+
+    public Examen getExamenImagenDiagnosticaImagenDiagnosticaexamenID() {
+        return examenImagenDiagnosticaImagenDiagnosticaexamenID;
+    }
+
+    public void setExamenImagenDiagnosticaImagenDiagnosticaexamenID(Examen examenImagenDiagnosticaImagenDiagnosticaexamenID) {
+        this.examenImagenDiagnosticaImagenDiagnosticaexamenID = examenImagenDiagnosticaImagenDiagnosticaexamenID;
     }
 
     @Override

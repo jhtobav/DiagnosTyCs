@@ -34,11 +34,11 @@ public class Gerente implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "GerenteID")
+    @Column(name = "gerenteID")
     private Long gerenteID;
-    @JoinColumn(name = "Persona_PersonaID", referencedColumnName = "PersonaID")
+    @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @ManyToOne(optional = false)
-    private Persona personaPersonaID;
+    private Persona personapersonaID;
 
     public Gerente() {
     }
@@ -55,12 +55,12 @@ public class Gerente implements Serializable {
         this.gerenteID = gerenteID;
     }
 
-    public Persona getPersonaPersonaID() {
-        return personaPersonaID;
+    public Persona getPersonapersonaID() {
+        return personapersonaID;
     }
 
-    public void setPersonaPersonaID(Persona personaPersonaID) {
-        this.personaPersonaID = personaPersonaID;
+    public void setPersonapersonaID(Persona personapersonaID) {
+        this.personapersonaID = personapersonaID;
     }
 
     @Override

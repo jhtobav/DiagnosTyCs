@@ -34,11 +34,11 @@ public class Administrador implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "AdministradorID")
+    @Column(name = "administradorID")
     private Long administradorID;
-    @JoinColumn(name = "Persona_PersonaID", referencedColumnName = "PersonaID")
+    @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @ManyToOne(optional = false)
-    private Persona personaPersonaID;
+    private Persona personapersonaID;
 
     public Administrador() {
     }
@@ -55,12 +55,12 @@ public class Administrador implements Serializable {
         this.administradorID = administradorID;
     }
 
-    public Persona getPersonaPersonaID() {
-        return personaPersonaID;
+    public Persona getPersonapersonaID() {
+        return personapersonaID;
     }
 
-    public void setPersonaPersonaID(Persona personaPersonaID) {
-        this.personaPersonaID = personaPersonaID;
+    public void setPersonapersonaID(Persona personapersonaID) {
+        this.personapersonaID = personapersonaID;
     }
 
     @Override

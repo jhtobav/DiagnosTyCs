@@ -6,9 +6,7 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,52 +14,58 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author jhtob
  */
 @Entity
-@Table(name = "ExamenLaboratorio")
+@Table(name = "Laboratorio")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ExamenLaboratorio.findAll", query = "SELECT e FROM ExamenLaboratorio e"),
-    @NamedQuery(name = "ExamenLaboratorio.findByExamenLaboratorioID", query = "SELECT e FROM ExamenLaboratorio e WHERE e.examenLaboratorioID = :examenLaboratorioID"),
-    @NamedQuery(name = "ExamenLaboratorio.findByResultado", query = "SELECT e FROM ExamenLaboratorio e WHERE e.resultado = :resultado")})
-public class ExamenLaboratorio implements Serializable {
+    @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
+    @NamedQuery(name = "Laboratorio.findByExamenLaboratorioID", query = "SELECT l FROM Laboratorio l WHERE l.examenLaboratorioID = :examenLaboratorioID"),
+    @NamedQuery(name = "Laboratorio.findByDescripcion", query = "SELECT l FROM Laboratorio l WHERE l.descripcion = :descripcion"),
+    @NamedQuery(name = "Laboratorio.findByResultado", query = "SELECT l FROM Laboratorio l WHERE l.resultado = :resultado")})
+public class Laboratorio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ExamenLaboratorioID")
+    @Column(name = "examenLaboratorioID")
     private Long examenLaboratorioID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Resultado")
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "resultado")
     private String resultado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "examenLaboratorioExamenLaboratorioID")
-    private Collection<Examen> examenCollection;
-    @JoinColumn(name = "Reactivo_ReactivoID", referencedColumnName = "ReactivoID")
+    @JoinColumn(name = "ExamenLaboratorio_Laboratorio_examenID", referencedColumnName = "examenID")
     @ManyToOne(optional = false)
-    private Reactivo reactivoReactivoID;
+    private Examen examenLaboratorioLaboratorioexamenID;
+    @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
+    @ManyToOne(optional = false)
+    private Reactivo reactivoreactivoID;
 
-    public ExamenLaboratorio() {
+    public Laboratorio() {
     }
 
-    public ExamenLaboratorio(Long examenLaboratorioID) {
+    public Laboratorio(Long examenLaboratorioID) {
         this.examenLaboratorioID = examenLaboratorioID;
     }
 
-    public ExamenLaboratorio(Long examenLaboratorioID, String resultado) {
+    public Laboratorio(Long examenLaboratorioID, String descripcion, String resultado) {
         this.examenLaboratorioID = examenLaboratorioID;
+        this.descripcion = descripcion;
         this.resultado = resultado;
     }
 
@@ -73,6 +77,14 @@ public class ExamenLaboratorio implements Serializable {
         this.examenLaboratorioID = examenLaboratorioID;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String getResultado() {
         return resultado;
     }
@@ -81,21 +93,20 @@ public class ExamenLaboratorio implements Serializable {
         this.resultado = resultado;
     }
 
-    @XmlTransient
-    public Collection<Examen> getExamenCollection() {
-        return examenCollection;
+    public Examen getExamenLaboratorioLaboratorioexamenID() {
+        return examenLaboratorioLaboratorioexamenID;
     }
 
-    public void setExamenCollection(Collection<Examen> examenCollection) {
-        this.examenCollection = examenCollection;
+    public void setExamenLaboratorioLaboratorioexamenID(Examen examenLaboratorioLaboratorioexamenID) {
+        this.examenLaboratorioLaboratorioexamenID = examenLaboratorioLaboratorioexamenID;
     }
 
-    public Reactivo getReactivoReactivoID() {
-        return reactivoReactivoID;
+    public Reactivo getReactivoreactivoID() {
+        return reactivoreactivoID;
     }
 
-    public void setReactivoReactivoID(Reactivo reactivoReactivoID) {
-        this.reactivoReactivoID = reactivoReactivoID;
+    public void setReactivoreactivoID(Reactivo reactivoreactivoID) {
+        this.reactivoreactivoID = reactivoreactivoID;
     }
 
     @Override
@@ -108,10 +119,10 @@ public class ExamenLaboratorio implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ExamenLaboratorio)) {
+        if (!(object instanceof Laboratorio)) {
             return false;
         }
-        ExamenLaboratorio other = (ExamenLaboratorio) object;
+        Laboratorio other = (Laboratorio) object;
         if ((this.examenLaboratorioID == null && other.examenLaboratorioID != null) || (this.examenLaboratorioID != null && !this.examenLaboratorioID.equals(other.examenLaboratorioID))) {
             return false;
         }
@@ -120,7 +131,7 @@ public class ExamenLaboratorio implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.ExamenLaboratorio[ examenLaboratorioID=" + examenLaboratorioID + " ]";
+        return "Entidades.Laboratorio[ examenLaboratorioID=" + examenLaboratorioID + " ]";
     }
     
 }

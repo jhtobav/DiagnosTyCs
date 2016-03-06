@@ -42,28 +42,28 @@ public class Reactivo implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ReactivoID")
+    @Column(name = "reactivoID")
     private Long reactivoID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Valor")
+    @Column(name = "valor")
     private long valor;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "UnidadesExistentes")
-    private int unidadesExistentes;
-    @JoinColumn(name = "GastoReactivo_Reactivo_GastoID", referencedColumnName = "GastoID")
+    @Column(name = "unidadesExistentes")
+    private long unidadesExistentes;
+    @JoinColumn(name = "GastoReactivo_Reactivo_gastoID", referencedColumnName = "gastoID")
     @ManyToOne(optional = false)
-    private Gasto gastoReactivoReactivoGastoID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoReactivoID")
+    private Gasto gastoReactivoReactivogastoID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
     private Collection<Alerta> alertaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoReactivoID")
-    private Collection<ExamenLaboratorio> examenLaboratorioCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
+    private Collection<Laboratorio> laboratorioCollection;
 
     public Reactivo() {
     }
@@ -72,7 +72,7 @@ public class Reactivo implements Serializable {
         this.reactivoID = reactivoID;
     }
 
-    public Reactivo(Long reactivoID, String nombre, long valor, int unidadesExistentes) {
+    public Reactivo(Long reactivoID, String nombre, long valor, long unidadesExistentes) {
         this.reactivoID = reactivoID;
         this.nombre = nombre;
         this.valor = valor;
@@ -103,20 +103,20 @@ public class Reactivo implements Serializable {
         this.valor = valor;
     }
 
-    public int getUnidadesExistentes() {
+    public long getUnidadesExistentes() {
         return unidadesExistentes;
     }
 
-    public void setUnidadesExistentes(int unidadesExistentes) {
+    public void setUnidadesExistentes(long unidadesExistentes) {
         this.unidadesExistentes = unidadesExistentes;
     }
 
-    public Gasto getGastoReactivoReactivoGastoID() {
-        return gastoReactivoReactivoGastoID;
+    public Gasto getGastoReactivoReactivogastoID() {
+        return gastoReactivoReactivogastoID;
     }
 
-    public void setGastoReactivoReactivoGastoID(Gasto gastoReactivoReactivoGastoID) {
-        this.gastoReactivoReactivoGastoID = gastoReactivoReactivoGastoID;
+    public void setGastoReactivoReactivogastoID(Gasto gastoReactivoReactivogastoID) {
+        this.gastoReactivoReactivogastoID = gastoReactivoReactivogastoID;
     }
 
     @XmlTransient
@@ -129,12 +129,12 @@ public class Reactivo implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ExamenLaboratorio> getExamenLaboratorioCollection() {
-        return examenLaboratorioCollection;
+    public Collection<Laboratorio> getLaboratorioCollection() {
+        return laboratorioCollection;
     }
 
-    public void setExamenLaboratorioCollection(Collection<ExamenLaboratorio> examenLaboratorioCollection) {
-        this.examenLaboratorioCollection = examenLaboratorioCollection;
+    public void setLaboratorioCollection(Collection<Laboratorio> laboratorioCollection) {
+        this.laboratorioCollection = laboratorioCollection;
     }
 
     @Override

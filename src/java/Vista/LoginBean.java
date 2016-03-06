@@ -6,8 +6,9 @@
 package Vista;
 
 import Business.LoginBiz;
-import DTO.PersonaLoginDTO;
+import DTO.LoginDTO;
 import Entidades.Administrador;
+import Entidades.Doctor;
 import Entidades.Gerente;
 import Entidades.Medico;
 import Entidades.Paciente;
@@ -39,6 +40,7 @@ public class LoginBean {
     public static Paciente paciente = null;
     public static Administrador administrador = null;
     public static Gerente gerente = null;
+    public static Doctor doctor = null;
        
     public Long getIdPersona() {
         return idPersona;
@@ -111,6 +113,14 @@ public class LoginBean {
     public static void setGerente(Gerente gerente) {
         LoginBean.gerente = gerente;
     }
+
+    public static Doctor getDoctor() {
+        return doctor;
+    }
+
+    public static void setDoctor(Doctor doctor) {
+        LoginBean.doctor = doctor;
+    }
     
     public static EntityManagerFactory getEmf() {
         return emf;
@@ -124,19 +134,18 @@ public class LoginBean {
         
         visible = "none";
         
-        PersonaLoginDTO personaLoginDTO = new PersonaLoginDTO();       
-        personaLoginDTO.setIdPersona(idPersona);
-        personaLoginDTO.setContrasena(contrasena);
+        LoginDTO loginDTO = new LoginDTO();       
+        loginDTO.setIdPersona(idPersona);
+        loginDTO.setContrasena(contrasena);
         
         LoginBiz loginBiz = new LoginBiz();
-        String mensaje = loginBiz.login(personaLoginDTO);
+        loginDTO = loginBiz.login(loginDTO);
         
-        if(mensaje!="error"){
-            nombrePersona = persona.getNombre();
-            return mensaje;
-        }else{
+        if(loginDTO.getMensaje().equals("error")){
             visible = "initial";
-            return "inicio.xhtml";
+            return "inicio.xhtml";                   
+        }else{
+            return loginDTO.getMensaje();
         }
 
     }

@@ -38,16 +38,16 @@ public class Tarjeta implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "TarjetaID")
+    @Column(name = "tarjetaID")
     private Long tarjetaID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "NombreEnTarjeta")
+    @Column(name = "nombreEnTarjeta")
     private String nombreEnTarjeta;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "FechaVencimiento")
+    @Column(name = "fechaVencimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaVencimiento;
 
