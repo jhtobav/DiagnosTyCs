@@ -5,16 +5,16 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="icon" href="../../favicon.ico"/>
-    <style>
-        body { padding-top: 75px; }
-    </style>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="../../favicon.ico"/>
+        <style>
+            body { padding-top: 75px; }
+        </style>
     <title>DiagnosTyCs</title>
 
     <!-- Bootstrap core CSS -->
@@ -82,8 +82,10 @@
         </nav>
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="">
-            <iframe  name="frame_doctor" width="100%" height="100%" src="medicoBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 
+        <div>
+            <h:form>
+                <iframe  name="frame_doctor" width="100%" height="100%" src="medicoBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 
+            </h:form>
        </div> <!-- /container -->
         
         <div class="container">

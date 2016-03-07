@@ -6,20 +6,16 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -83,14 +79,6 @@ public class Persona implements Serializable {
     @NotNull
     @Column(name = "rol")
     private int rol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Administrador> administradorCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Gerente> gerenteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Medico> medicoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Doctor> doctorCollection;
 
     public Persona() {
     }
@@ -181,42 +169,6 @@ public class Persona implements Serializable {
 
     public void setRol(int rol) {
         this.rol = rol;
-    }
-
-    @XmlTransient
-    public Collection<Administrador> getAdministradorCollection() {
-        return administradorCollection;
-    }
-
-    public void setAdministradorCollection(Collection<Administrador> administradorCollection) {
-        this.administradorCollection = administradorCollection;
-    }
-
-    @XmlTransient
-    public Collection<Gerente> getGerenteCollection() {
-        return gerenteCollection;
-    }
-
-    public void setGerenteCollection(Collection<Gerente> gerenteCollection) {
-        this.gerenteCollection = gerenteCollection;
-    }
-
-    @XmlTransient
-    public Collection<Medico> getMedicoCollection() {
-        return medicoCollection;
-    }
-
-    public void setMedicoCollection(Collection<Medico> medicoCollection) {
-        this.medicoCollection = medicoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Doctor> getDoctorCollection() {
-        return doctorCollection;
-    }
-
-    public void setDoctorCollection(Collection<Doctor> doctorCollection) {
-        this.doctorCollection = doctorCollection;
     }
 
     @Override

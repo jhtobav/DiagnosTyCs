@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -42,15 +42,18 @@ and open the template in the editor.
     <body>
         <div class="jumbotron">
             <div class="container">
+                <h:form>
                 <hr/>
                 <hr/>
                 <hr/>
                 <hr/>
                 <h1>DiagnosTyCs para Medicos</h1>
-                <p>Señor Doctor, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
+                <p>SeÃ±or Medico, esta es la lista de actividades que puede desempeÃ±ar dentro del aplicativo:</p>
+                <h:commandButton class="btn btn-primary" type="submit" value="Registrarse" action="#{registroBean.registro()}"/>
                 <p style="font-size:15px; color: #777" > <a href="resultadosDoctor.html" target="_self">&#187; Ver Listado de citas</a></p>
                 <p style="font-size:15px; color: #777" >&#187; Subir Resultados</p>
                 <p style="font-size:15px; color: #777" >&#187; Realizar una Solicitud de Permiso</p>
+                </h:form>
             </div>
         </div>
     </body>

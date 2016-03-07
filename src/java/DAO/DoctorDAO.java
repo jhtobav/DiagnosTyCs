@@ -19,6 +19,22 @@ public class DoctorDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
     
+    public Doctor createDoctor(Doctor doctor) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(doctor);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return doctor;
+        }
+    }
+    
     public Doctor searchByIdDoctor(Long idDoctor) {
         EntityManager em = emf.createEntityManager();
         Doctor doctor = null;

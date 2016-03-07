@@ -52,18 +52,4 @@ public class PersonaDAO {
       
     }
     
-    public Persona searchByNombre(String nombre) {
-        
-        EntityManager em = emf.createEntityManager();
-        
-        Query q = em.createNamedQuery("Persona.findByNombre");
-        q.setParameter("nombre", "Luis Cardozo");
-        System.out.println("pucha");
-        System.out.println(q.getSingleResult().getClass().getCanonicalName());
-        Persona persona = (Persona) q.getSingleResult();
-        em.close();
-        return persona;
-        
-    }
-    
 }

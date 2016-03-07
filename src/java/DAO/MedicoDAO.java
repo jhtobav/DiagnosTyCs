@@ -2,11 +2,9 @@ package DAO;
 
 
 import Entidades.Medico;
-import Entidades.Persona;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +19,22 @@ import javax.persistence.Query;
 public class MedicoDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
+    
+    public Medico createMedico(Medico medico) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(medico);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return medico;
+        }
+    }
     
     public Medico searchByIdMedico(Long idMedico) {
         EntityManager em = emf.createEntityManager();
