@@ -40,109 +40,110 @@ and open the template in the editor.
         <![endif]-->
     </h:head>
     <h:body style="border-style: none; height: 400px">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                        <div  class="panel panel-default">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    Bienvenido, aquí podra ingresar sus datos para solicitar, pagar y consultar sus citas    
-                                </div>
-                            </div>    
-                            <br/>
-                            <br/>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">ID</span>
-                                    
-                                    <input type="text" class="form-control" placeholder="Cédula de ciudadania" aria-describedby="basic-addon1"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                    <input type="text" class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"></span>
-                                    <input type="text" class="form-control" placeholder="Primer nombre" aria-describedby="basic-addon2"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"></span>
-                                    <input type="text" class="form-control" placeholder="Primer apellido" aria-describedby="basic-addon2"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"></span>
-                                    <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon2"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Nombre de usuario" aria-label=""/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon">#</span>
-                                    <input type="text" class="form-control" placeholder="Celular" aria-label=""/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <input type="text" class="form-control" placeholder="Segundo nombre" aria-describedby="basic-addon2"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2">  </span>
-                                    <input type="text" class="form-control" placeholder="Segundo apellido" aria-describedby="basic-addon2"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"></span>
-                                    <input type="password" class="form-control" placeholder="Repita la contraseña" aria-describedby="basic-addon2"/>
-                                </div>
-                            </div>
-                        </div>
-                    <div  class="panel-body">
+        <h:form>
+        <div class="row">
+            <div class="col-md-3"></div>
+            
+            <div class="col-md-6">
+                <div  class="panel panel-default">
+                    <div>
                         <div class="row">
                             <div class="col-md-1"></div>
-                            Ingrese los datos para el pago
-                            <br/>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1"></span>
-                                    <input type="text" class="form-control" placeholder="Número de cuenta" aria-describedby="basic-addon1"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                    <input type="text" class="form-control" placeholder="Fecha de vencimiento" aria-describedby="basic-addon2"/>
-                                </div>
+                            Bienvenido, aquí podra ingresar sus datos para solicitar, pagar y consultar sus citas    
+                        </div>
+                    </div>    
+                    <br/>
+                    <br/>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">ID</span>
+                            <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroBean.numDocPaciente}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"> @ </span>
+                            <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroBean.correo}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"></span>
+                            <h:inputText class="form-control" p:placeholder="Primer nombre" value="#{registroBean.primerNombre}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"></span>
+                            <h:inputText class="form-control" p:placeholder="Primer apellido" value="#{registroBean.primerApellido}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"></span>
+                            <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroBean.contrasena}"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroBean.direccion}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">#</span>
+                            <h:inputText class="form-control" p:placeholder="Celular" value="#{registroBean.telefono}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"> </span>
+                            <h:inputText class="form-control" p:placeholder="Segundo nombre" value="#{registroBean.segundoNombre}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2">  </span>
+                            <h:inputText class="form-control" p:placeholder="Segundo apellido" value="#{registroBean.segundoApellido}"/>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"></span>
+                            <h:inputText class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                        </div>
+                    </div>
+                </div>
+                <div  class="panel-body">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        Ingrese los datos para el pago
+                        <br/>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"></span>
+                                <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
                             </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Nombre en la tarjeta" aria-label=""/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon">#</span>
-                                    <input type="text" class="form-control" placeholder="CSV" aria-label=""/>
-                                </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2"> @ </span>
+                                <h:inputText class="form-control" p:placeholder="Fecha de vencimiento"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                <h:inputText class="form-control" p:placeholder="Nombre en la tarjeta" />
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon">#</span>
+                                <h:inputText class="form-control" p:placeholder="CSV" value="#{registroBean.idTarjeta}"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="row">
-                <h:form>
-                    <h:commandButton class="btn btn-primary" type="submit" value="Registrarse" action="#{registroBean.registro()}"/>
-                </h:form>
-            </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="row">
+            <h:commandButton onclick="updateIframe()" class="btn btn-primary" type="submit" value="Registrarse" action="#{registroBean.registro()}"/>
+        </div>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
+                    </h:form>
     </h:body>
 </html>

@@ -20,22 +20,27 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroBean {
        
-    public static Long numDocPaciente;
+    Long numDocPaciente;
     String contrasena;
-    String nombrePaciente;
+    String confirmarContrasena;
+    String primerNombre = "";
+    String segundoNombre = "";
+    String primerApellido = "";
+    String segundoApellido = "";
+    String nombrePaciente = "";
     int edad;
     Long telefono;
     String direccion;
     String correo;
     Long idTarjeta;
-    Date fechaVencimiento;
+    Date fechaVencimiento = new Date();
 
-    public static Long getNumDocPaciente() {
+    public Long getNumDocPaciente() {
         return numDocPaciente;
     }
 
-    public static void setNumDocPaciente(Long numDocPaciente) {
-        RegistroBean.numDocPaciente = numDocPaciente;
+    public void setNumDocPaciente(Long numDocPaciente) {
+        this.numDocPaciente = numDocPaciente;
     }
 
     public String getContrasena() {
@@ -44,6 +49,46 @@ public class RegistroBean {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getConfirmarContrasena() {
+        return confirmarContrasena;
+    }
+
+    public void setConfirmarContrasena(String confirmarContrasena) {
+        this.confirmarContrasena = confirmarContrasena;
+    }
+
+    public String getPrimerNombre() {
+        return primerNombre;
+    }
+
+    public void setPrimerNombre(String primerNombre) {
+        this.primerNombre = primerNombre;
+    }
+
+    public String getSegundoNombre() {
+        return segundoNombre;
+    }
+
+    public void setSegundoNombre(String segundoNombre) {
+        this.segundoNombre = segundoNombre;
+    }
+
+    public String getPrimerApellido() {
+        return primerApellido;
+    }
+
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return segundoApellido;
+    }
+
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
     }
 
     public String getNombrePaciente() {
@@ -103,18 +148,13 @@ public class RegistroBean {
     }
 
     public String registro(){
-                
-        numDocPaciente = 1023928372L;
-        contrasena = "123456";
-        nombrePaciente = "Jaime Toba";
-        edad = 22;
-        telefono = 3015023413L;
-        direccion = "Cll 22B Sur N 1-07 Este";
-        correo = "jhtobav@gmail.com";
-        idTarjeta = 192665512L;
-        fechaVencimiento = new Date();
-        
-        PacienteDTO pacienteDTO = new PacienteDTO();       
+
+        PacienteDTO pacienteDTO = new PacienteDTO();
+        TarjetaDTO tarjetaDTO = new TarjetaDTO();
+
+        nombrePaciente = primerNombre + " " + segundoNombre
+                + " " + primerApellido + " " + segundoApellido;
+
         pacienteDTO.setNumDocPaciente(numDocPaciente);
         pacienteDTO.setContrasena(contrasena);
         pacienteDTO.setNombrePaciente(nombrePaciente);
@@ -122,16 +162,16 @@ public class RegistroBean {
         pacienteDTO.setTelefono(telefono);
         pacienteDTO.setDireccion(direccion);
         pacienteDTO.setCorreo(correo);
-        
-        TarjetaDTO tarjetaDTO = new TarjetaDTO();
+
         tarjetaDTO.setNombrePaciente(nombrePaciente);
         tarjetaDTO.setIdTarjeta(idTarjeta);
         tarjetaDTO.setFechaVencimiento(fechaVencimiento);
-        
+
         RegistroBiz registroBiz = new RegistroBiz();
         String mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
-
-        return mensaje;
         
+        return "inicioBody.xhtml";
+
+
     }
 }

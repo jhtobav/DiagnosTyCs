@@ -30,8 +30,13 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
         <script language="javascript" type="text/javascript">
-            function resizeIframe(obj) {
+            function resizeIframe(obj,pag) {
                 obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+            }
+            function updateIframe() {
+                document.getElementById("mensajeError").value = "Usuario creado exitosamente";
+                document.getElementById("mensajeError").style = "color: #c9302c; display: initial";
+                alert("The newImageCount is:");
             }
         </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,7 +62,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <h:form id="form" class="navbar-form navbar-right">
                         <div class="form-group">
-                            <h:outputText id="mensajeError" style="color: #c9302c; display: #{loginBean.visible}" value="Usuario o Contraseña Inválidos       " />
+                            <h:outputText id="mensajeError" style="color: #c9302c; display: #{loginBean.visible}" value="Usuario o Contraseña Inválidos       "/>
                         </div>
                         <div class="form-group">
                             <h:inputText id="nombreUsuario" p:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
@@ -77,7 +82,7 @@
         </nav>
         <div>
             <h:form>
-                <iframe  name="frame_inicio" width="100%" height="100%" src="inicioBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 
+                <iframe id="frame_inicio" name="frame_inicio" width="100%" height="100%" src="inicioBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
             </h:form>
         </div>
         <footer>
