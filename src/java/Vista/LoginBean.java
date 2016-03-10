@@ -14,8 +14,10 @@ import Entidades.Medico;
 import Entidades.Paciente;
 import Entidades.Persona;
 import javax.annotation.PreDestroy;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -34,6 +36,9 @@ public class LoginBean {
     String contrasena;
     String nombrePersona;
     String visible="none";
+    public static String mensajeEmergenteTipo = "SEVERITY_INFO";
+    public static String mensajeEmergenteTitulo = "";
+    public static String mensajeEmergenteContenido = ""; 
     
     public static Persona persona = null;
     public static Medico medico = null;
@@ -130,6 +135,30 @@ public class LoginBean {
         LoginBean.emf = emf;
     }   
 
+    public static String getMensajeEmergenteTipo() {
+        return mensajeEmergenteTipo;
+    }
+
+    public static void setMensajeEmergenteTipo(String mensajeEmergenteTipo) {
+        LoginBean.mensajeEmergenteTipo = mensajeEmergenteTipo;
+    }
+
+    public static String getMensajeEmergenteContenido() {
+        return mensajeEmergenteContenido;
+    }
+
+    public static void setMensajeEmergenteContenido(String mensajeEmergenteContenido) {
+        LoginBean.mensajeEmergenteContenido = mensajeEmergenteContenido;
+    }
+
+    public static String getMensajeEmergenteTitulo() {
+        return mensajeEmergenteTitulo;
+    }
+
+    public static void setMensajeEmergenteTitulo(String mensajeEmergenteTitulo) {
+        LoginBean.mensajeEmergenteTitulo = mensajeEmergenteTitulo;
+    }
+    
     public String login(){
         
         visible = "none";
@@ -141,6 +170,11 @@ public class LoginBean {
         LoginBiz loginBiz = new LoginBiz();
         loginDTO = loginBiz.login(loginDTO);
         
+        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+        LoginBean.setMensajeEmergenteTitulo("Bienvenido");
+        LoginBean.setMensajeEmergenteContenido("Este es su puesto de trabajo " 
+                + loginDTO.getNombrePersona());
+        
         if(loginDTO.getMensaje().equals("error")){
             visible = "initial";
             return "inicio.xhtml";                   
@@ -148,6 +182,36 @@ public class LoginBean {
             return loginDTO.getMensaje();
         }
 
+    }
+    
+    public String logout(){
+        
+        LoginBean.mensajeEmergenteContenido = "Esperamos que vuelva pronto";
+        
+        return "inicio.xhtml";
+    }
+    
+    public void addMessage() {
+        
+        FacesMessage message = new FacesMessage();
+        switch (mensajeEmergenteTipo) {
+            case "SEVERITY_INFO":
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, mensajeEmergenteTitulo, mensajeEmergenteContenido);
+                break;
+            case "SEVERITY_ERROR":
+                message = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensajeEmergenteTitulo, mensajeEmergenteContenido);
+                break;
+            case "SEVERITY_FATAL":
+                message = new FacesMessage(FacesMessage.SEVERITY_FATAL, mensajeEmergenteTitulo, mensajeEmergenteContenido);
+                break;
+            case "SEVERITY_WARN":
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, mensajeEmergenteTitulo, mensajeEmergenteContenido);
+                break;
+            default:
+                break;
+        }
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, message);
     }
     
     @PreDestroy

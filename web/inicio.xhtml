@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<xhtml xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="utf-8"/>
@@ -32,11 +33,7 @@
         <script language="javascript" type="text/javascript">
             function resizeIframe(obj,pag) {
                 obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-            }
-            function updateIframe() {
-                document.getElementById("mensajeError").value = "Usuario creado exitosamente";
-                document.getElementById("mensajeError").style = "color: #c9302c; display: initial";
-                alert("The newImageCount is:");
+                
             }
         </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,8 +43,8 @@
     <![endif]-->
     </h:head>
 
-    <h:body>
-
+    <h:body>       
+        
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -65,10 +62,10 @@
                             <h:outputText id="mensajeError" style="color: #c9302c; display: #{loginBean.visible}" value="Usuario o Contraseña Inválidos       "/>
                         </div>
                         <div class="form-group">
-                            <h:inputText id="nombreUsuario" p:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
+                            <h:inputText id="nombreUsuario" k:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
                         </div>
                         <div class="form-group">
-                            <h:inputSecret  id="contrasena" p:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
+                            <h:inputSecret  id="contrasena" k:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
                         </div>
                         <div class="form-group">
                             <h:commandButton type="submit" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
@@ -85,14 +82,19 @@
                 <iframe id="frame_inicio" name="frame_inicio" width="100%" height="100%" src="inicioBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
             </h:form>
         </div>
-        <footer>
-            <p>&copy; 2015 DiagnosTyCs, Inc.</p>
-        </footer>
+        
+        <div class="container">
+            <hr/>
+            <footer>
+                <p>&#169; 2015 DiagnosTyCs, Inc.</p>
+            </footer>
+        </div> <!-- /container -->
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        
     </h:body>
-</xhtml>
+</html>
 

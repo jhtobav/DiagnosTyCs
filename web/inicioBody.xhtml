@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="utf-8"/>
@@ -38,11 +34,14 @@ and open the template in the editor.
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <f:event type="preRenderView" listener="#{loginBean.addMessage()}" />
+        <p:growl id="message" showDetail="true" autoUpdate="true"/>
     </h:head>
-    <body>    <div class="jumbotron">
+    <body>    
+        <div class="jumbotron">
             <div class="container">
                 <h1>DiagnosTyCs</h1>
-                <p>Somos una compañia orientada en brindarle el mejor servicio y confiabilidad, en la realización de sus exámenes médicos asegurando siempre la total discreción y la mayor calidad en atención</p>
+                <p>Somos una compaÃ±ia orientada en brindarle el mejor servicio y confiabilidad, en la realizaciÃ³n de sus exÃ¡menes mÃ©dicos asegurando siempre la total discreciÃ³n y la mayor calidad en atenciÃ³n</p>
             </div>
         </div>
 
@@ -51,18 +50,17 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-md-6">
                     <h2>Examenes de laboratorio</h2>
-                    <p>Realizamos todo tipo de exámenes de laboratorio, entregando los resultados en tiempo record y brindandole espacios cómodos y privados para que se sienta como en casa durante la toma de los exámenes. </p>
+                    <p>Realizamos todo tipo de exÃ¡menes de laboratorio, entregando los resultados en tiempo record y brindandole espacios cÃ³modos y privados para que se sienta como en casa durante la toma de los exÃ¡menes. </p>
                     <p><a class="btn btn-default" href="#" role="button">Ver detalles</a></p>
                 </div>
                 <div class="col-md-6">
-                    <h2>Imágenes diagnósticas</h2>
-                    <p>Con los mejores equipos, la última tecnología y el excelente conocimiento de nuestros especialistas podrá obtener las imágenes diagnósticas que necesita de manera rápida y con la mejor calidad posible.</p>
+                    <h2>ImÃ¡genes diagnÃ³sticas</h2>
+                    <p>Con los mejores equipos, la Ãºltima tecnologÃºa y el excelente conocimiento de nuestros especialistas podrÃ¡ obtener las imÃ¡genes diagnÃ³sticas que necesita de manera rÃ¡pida y con la mejor calidad posible.</p>
                     <p><a class="btn btn-default" href="#" role="button">Ver detalles</a></p>
                 </div>
             </div>
 
             <hr/>
-
         </div> 
     </body>
 </html>

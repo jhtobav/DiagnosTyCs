@@ -34,6 +34,7 @@ public class RegistroBean {
     String correo;
     Long idTarjeta;
     Date fechaVencimiento = new Date();
+    String mensaje;
 
     public Long getNumDocPaciente() {
         return numDocPaciente;
@@ -147,6 +148,14 @@ public class RegistroBean {
         this.fechaVencimiento = fechaVencimiento;
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     public String registro(){
 
         PacienteDTO pacienteDTO = new PacienteDTO();
@@ -168,10 +177,16 @@ public class RegistroBean {
         tarjetaDTO.setFechaVencimiento(fechaVencimiento);
 
         RegistroBiz registroBiz = new RegistroBiz();
-        String mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
+        mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
+        mensaje = "chao wea donde esto funcione";
+        
+        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+        LoginBean.setMensajeEmergenteTitulo("Usuario Creado Exitosamente");
+        LoginBean.setMensajeEmergenteContenido("Felicidades " + 
+                nombrePaciente + " su usuario se ha creado correctamente");
         
         return "inicioBody.xhtml";
 
-
     }
+     
 }

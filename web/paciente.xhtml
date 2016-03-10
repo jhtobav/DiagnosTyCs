@@ -2,8 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -58,11 +60,11 @@
                     <ul class="nav navbar-nav">
                         <li class="active">
                             <h:outputText id="nombreUsuario" style="color: silver; font-size: xx-large"
-                                value="Bienvenido Administrador #{loginBean.nombrePersona}" />
+                                value="Bienvenido Paciente #{loginBean.nombrePersona}" />
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right">
-                        <a class="btn btn-success" href="inicio.xhtml" role="button">Salir</a>
+                        <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>
                     </form>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
