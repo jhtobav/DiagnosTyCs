@@ -36,7 +36,7 @@ public class LoginBean {
     String contrasena;
     String nombrePersona;
     public static String mensajeEmergenteTipo = "SEVERITY_INFO";
-    public static String mensajeEmergenteTitulo = "";
+    public static String mensajeEmergenteTitulo = "Bienvenido";
     public static String mensajeEmergenteContenido = ""; 
     
     public static Persona persona = null;
