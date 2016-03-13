@@ -35,7 +35,6 @@ public class LoginBean {
     public static Long idPersona;
     String contrasena;
     String nombrePersona;
-    String visible="none";
     public static String mensajeEmergenteTipo = "SEVERITY_INFO";
     public static String mensajeEmergenteTitulo = "";
     public static String mensajeEmergenteContenido = ""; 
@@ -69,14 +68,6 @@ public class LoginBean {
 
     public void setNombrePersona(String nombrePersona) {
         this.nombrePersona = nombrePersona;
-    }
-    
-    public String getVisible() {
-        return visible;
-    }
-    
-    public void setVisible(String visible) {
-        this.visible = visible;
     }
 
     public static Persona getPersona() {
@@ -161,8 +152,6 @@ public class LoginBean {
     
     public String login(){
         
-        visible = "none";
-        
         LoginDTO loginDTO = new LoginDTO();       
         loginDTO.setIdPersona(idPersona);
         loginDTO.setContrasena(contrasena);
@@ -170,15 +159,16 @@ public class LoginBean {
         LoginBiz loginBiz = new LoginBiz();
         loginDTO = loginBiz.login(loginDTO);
         
-        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
-        LoginBean.setMensajeEmergenteTitulo("Bienvenido");
-        LoginBean.setMensajeEmergenteContenido("Este es su puesto de trabajo " 
-                + loginDTO.getNombrePersona());
-        
         if(loginDTO.getMensaje().equals("error")){
-            visible = "initial";
-            return "inicio.xhtml";                   
+            LoginBean.mensajeEmergenteTipo = "SEVERITY_ERROR";
+            LoginBean.mensajeEmergenteContenido = "Inicio de Sesión Fallido";
+            LoginBean.mensajeEmergenteTitulo = "Usuario o contraseña incorrectos.";
+            return "inicio.xhtml";                    
         }else{
+            LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+            LoginBean.setMensajeEmergenteTitulo("Bienvenido");
+            LoginBean.setMensajeEmergenteContenido("DiagnosTyCs para " 
+                + loginDTO.getNombrePersona());
             return loginDTO.getMensaje();
         }
 
@@ -186,13 +176,15 @@ public class LoginBean {
     
     public String logout(){
         
-        LoginBean.mensajeEmergenteContenido = "Esperamos que vuelva pronto";
+        LoginBean.mensajeEmergenteTipo = "SEVERITY_INFO";
+        LoginBean.mensajeEmergenteContenido = "Sesión finalizada";
+        LoginBean.mensajeEmergenteTitulo = "Esperamos que vuelva pronto";
         
         return "inicio.xhtml";
     }
     
     public void addMessage() {
-        
+                
         FacesMessage message = new FacesMessage();
         switch (mensajeEmergenteTipo) {
             case "SEVERITY_INFO":
@@ -212,6 +204,12 @@ public class LoginBean {
         }
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, message);
+    }
+    
+    public String pagarCita (){
+        
+        return "pacienteBody.xhtml";
+        
     }
     
     @PreDestroy

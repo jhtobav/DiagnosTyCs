@@ -23,12 +23,10 @@ public class RegistroBean {
     Long numDocPaciente;
     String contrasena;
     String confirmarContrasena;
-    String primerNombre = "";
-    String segundoNombre = "";
-    String primerApellido = "";
-    String segundoApellido = "";
+    String nombres = "";
+    String apellidos = "";
     String nombrePaciente = "";
-    int edad;
+    Long edad;
     Long telefono;
     String direccion;
     String correo;
@@ -60,36 +58,20 @@ public class RegistroBean {
         this.confirmarContrasena = confirmarContrasena;
     }
 
-    public String getPrimerNombre() {
-        return primerNombre;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setPrimerNombre(String primerNombre) {
-        this.primerNombre = primerNombre;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getSegundoNombre() {
-        return segundoNombre;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
-    }
-
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getNombrePaciente() {
@@ -100,14 +82,14 @@ public class RegistroBean {
         this.nombrePaciente = nombrePaciente;
     }
 
-    public int getEdad() {
+    public Long getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Long edad) {
         this.edad = edad;
     }
-
+    
     public Long getTelefono() {
         return telefono;
     }
@@ -156,18 +138,19 @@ public class RegistroBean {
         this.mensaje = mensaje;
     }
 
+
+    
     public String registro(){
 
         PacienteDTO pacienteDTO = new PacienteDTO();
         TarjetaDTO tarjetaDTO = new TarjetaDTO();
 
-        nombrePaciente = primerNombre + " " + segundoNombre
-                + " " + primerApellido + " " + segundoApellido;
+        nombrePaciente = nombres + " " + apellidos;
 
         pacienteDTO.setNumDocPaciente(numDocPaciente);
         pacienteDTO.setContrasena(contrasena);
         pacienteDTO.setNombrePaciente(nombrePaciente);
-        pacienteDTO.setEdad(edad);
+        pacienteDTO.setEdad(edad.intValue());
         pacienteDTO.setTelefono(telefono);
         pacienteDTO.setDireccion(direccion);
         pacienteDTO.setCorreo(correo);
@@ -178,12 +161,11 @@ public class RegistroBean {
 
         RegistroBiz registroBiz = new RegistroBiz();
         mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
-        mensaje = "chao wea donde esto funcione";
         
         LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
         LoginBean.setMensajeEmergenteTitulo("Usuario Creado Exitosamente");
         LoginBean.setMensajeEmergenteContenido("Felicidades " + 
-                nombrePaciente + " su usuario se ha creado correctamente");
+                nombres + " su usuario se ha creado correctamente");
         
         return "inicioBody.xhtml";
 

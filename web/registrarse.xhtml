@@ -41,9 +41,8 @@ and open the template in the editor.
     </h:head>
     <h:body style="border-style: none; height: 400px">
         <h:form>
-        <div class="row">
+        <div class="row">   
             <div class="col-md-3"></div>
-            
             <div class="col-md-6">
                 <div  class="panel panel-default">
                     <div>
@@ -52,10 +51,8 @@ and open the template in the editor.
                             Bienvenido, aquí podra ingresar sus datos para solicitar, pagar y consultar sus citas    
                         </div>
                     </div>    
-                    <br/>
-                    <br/>
-
                     <div class="col-md-6">
+                        <br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">ID</span>
                             <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroBean.numDocPaciente}"/>
@@ -68,20 +65,21 @@ and open the template in the editor.
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2"></span>
-                            <h:inputText class="form-control" p:placeholder="Primer nombre" value="#{registroBean.primerNombre}"/>
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon2"></span>
-                            <h:inputText class="form-control" p:placeholder="Primer apellido" value="#{registroBean.primerApellido}"/>
+                            <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroBean.nombres}"/>
                         </div>
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2"></span>
                             <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroBean.contrasena}"/>
                         </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"> </span>
+                            <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
+                        </div>
                     </div>
                     <div class="col-md-6">
+                        <br/>
                         <div class="input-group">
                             <span class="input-group-addon"></span>
                             <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroBean.direccion}"/>
@@ -94,45 +92,36 @@ and open the template in the editor.
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2"> </span>
-                            <h:inputText class="form-control" p:placeholder="Segundo nombre" value="#{registroBean.segundoNombre}"/>
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon2">  </span>
-                            <h:inputText class="form-control" p:placeholder="Segundo apellido" value="#{registroBean.segundoApellido}"/>
+                            <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroBean.apellidos}"/>
                         </div>
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2"></span>
-                            <h:inputText class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                            <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                        </div>
+                        <div class="input-group">
+                            <br/>
+                            <br/>
                         </div>
                     </div>
                 </div>
                 <div  class="panel-body">
                     <div class="row">
+                        <br/>
+                        <br/>
                         <div class="col-md-1"></div>
                         Ingrese los datos para el pago
                         <br/>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1"></span>
-                                <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                <h:inputText class="form-control" p:placeholder="Fecha de vencimiento"/>
+                                <span class="input-group-addon"></span>
+                                <h:inputText class="form-control" p:placeholder="Nombre en la tarjeta" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <h:inputText class="form-control" p:placeholder="Nombre en la tarjeta" />
-                            </div>
-                            <br/>
-                            <div class="input-group">
                                 <span class="input-group-addon">#</span>
-                                <h:inputText class="form-control" p:placeholder="CSV" value="#{registroBean.idTarjeta}"/>
+                                <h:inputText class="form-control" p:placeholder="Numero de Tarjeta" value="#{registroBean.idTarjeta}"/>
                             </div>
                         </div>
                     </div>
