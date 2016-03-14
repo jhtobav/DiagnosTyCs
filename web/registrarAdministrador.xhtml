@@ -35,7 +35,7 @@ and open the template in the editor.
                         <div>
                             <div class="row spacedRow">
                                 <div class="col-md-1"></div>
-                                Bienvenido, aquí podra ingresar sus datos para solicitar, pagar y consultar sus citas    
+                                Bienvenido, aquí podra ingresar los datos para crear un nuevo administrador    
                             </div>
                         </div>    
                         <div class="col-md-6">
@@ -92,36 +92,16 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <div  class="panel-body">
-                        <div class="row">
-                            <br/>
-                            <br/>
-                            <div class="col-md-1"></div>
-                            Ingrese los datos para el pago
-                            <br/>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <h:inputText class="form-control" p:placeholder="Nombre en la tarjeta" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">#</span>
-                                    <h:inputText class="form-control" p:placeholder="Numero de Tarjeta" value="#{registroBean.idTarjeta}"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="col-md-3"></div>
-                <div class="row spacedRow">
-                    <h:commandButton  class="btn btn-primary spacedRow" type="submit" 
-                                      value="Registrarse" action="#{registroBean.registro()}"/>
-                    <h:commandButton  class="btn btn-default spacedRow" type="submit" 
-                                      value="Cancelar" action="inicioBody.xhtml"/>
-                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="row spacedRow">
+                <h:commandButton  class="btn btn-primary" type="submit" 
+                                  value="Guardar administrador" action="#{registroBean.registro()}"/>
+                <h:commandButton  class="btn btn-default" type="submit" 
+                                  value="Cancelar" action="inicioBody.xhtml"/>
+            </div>
+            <link href="css/bootstrap.min.css" rel="stylesheet"/>
         </h:form>
     </h:body>
 </html>

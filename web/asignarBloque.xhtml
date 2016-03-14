@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <title>DiagnosTycs</title>
+        <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="js/diagnosTyCs.js" type="text/javascript"></script>
+        <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+    </head>
+    <body onload="builder()">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div  class="panel">
+                    <div class="row spacedRow">
+                        <div class="col-md-6">
+                            <select  title="Tipo de consulta" class="selectpicker" id="tipoConsulta" onchange="loadTable(this.value)">
+                                <option value="Examen de laboratorio">Examen de laboratorio</option>
+                                <option value="Toma de imagenes">Toma de imagenes</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <select title="Procedimiento" class="selectpicker" id="procedimiento">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row"><div class="table-responsive elementoOculto" id="tableField">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Hora</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miercoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="tableDataNoSpace">8:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">8:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">8:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">8:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">9:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">9:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">9:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">9:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">10:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">10:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">10:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">10:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">11:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">11:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">11:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">11:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">13:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">13:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">13:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">13:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">14:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">14:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">14:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">14:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">15:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">15:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">15:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">15:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">16:00</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">16:15</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">16:30</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpace">16:45</td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="button" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">Dia</span>
+                                <input id="diaEntrada" type="text" class="form-control"/>
+                            </div>  
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">CSV</span>
+                                <input type="text" class="form-control" />
+                            </div>  
+                        </div>
+                        <hr/>
+                        <a class="btn btn-primary" href="pacienteBody.xhtml">Pagar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </body>
+    
+</html>
