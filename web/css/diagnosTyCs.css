@@ -19,3 +19,15 @@ and open the template in the editor.
 .tableDataNoSpace{
     padding: 0px !important;
 }
+
+.spacedRow{
+    padding: 15px;
+}
+
+.elementoOculto{
+    display:none
+}
+
+.elementoVisible{
+    display: block;
+}
