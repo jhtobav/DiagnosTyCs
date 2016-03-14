@@ -29,8 +29,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ImagenDiagnostica.findAll", query = "SELECT i FROM ImagenDiagnostica i"),
     @NamedQuery(name = "ImagenDiagnostica.findByImagenDiagnosticaID", query = "SELECT i FROM ImagenDiagnostica i WHERE i.imagenDiagnosticaID = :imagenDiagnosticaID"),
+    @NamedQuery(name = "ImagenDiagnostica.findByNombre", query = "SELECT i FROM ImagenDiagnostica i WHERE i.nombre = :nombre"),
     @NamedQuery(name = "ImagenDiagnostica.findByDescripcion", query = "SELECT i FROM ImagenDiagnostica i WHERE i.descripcion = :descripcion"),
-    @NamedQuery(name = "ImagenDiagnostica.findByRutaArchivo", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaArchivo = :rutaArchivo")})
+    @NamedQuery(name = "ImagenDiagnostica.findByRutaImagen", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaImagen = :rutaImagen"),
+    @NamedQuery(name = "ImagenDiagnostica.findByValor", query = "SELECT i FROM ImagenDiagnostica i WHERE i.valor = :valor")})
 public class ImagenDiagnostica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,16 +44,25 @@ public class ImagenDiagnostica implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
+    @Column(name = "nombre")
+    private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "rutaArchivo")
-    private String rutaArchivo;
-    @JoinColumn(name = "ExamenImagenDiagnostica_ImagenDiagnostica_examenID", referencedColumnName = "examenID")
+    @Column(name = "rutaImagen")
+    private String rutaImagen;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "valor")
+    private long valor;
+    @JoinColumn(name = "CitaImagenDiagnostica_ImagenDiagnostica_citaID", referencedColumnName = "citaID")
     @ManyToOne(optional = false)
-    private Examen examenImagenDiagnosticaImagenDiagnosticaexamenID;
+    private Cita citaImagenDiagnosticaImagenDiagnosticacitaID;
 
     public ImagenDiagnostica() {
     }
@@ -60,10 +71,12 @@ public class ImagenDiagnostica implements Serializable {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
     }
 
-    public ImagenDiagnostica(Long imagenDiagnosticaID, String descripcion, String rutaArchivo) {
+    public ImagenDiagnostica(Long imagenDiagnosticaID, String nombre, String descripcion, String rutaImagen, long valor) {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
+        this.nombre = nombre;
         this.descripcion = descripcion;
-        this.rutaArchivo = rutaArchivo;
+        this.rutaImagen = rutaImagen;
+        this.valor = valor;
     }
 
     public Long getImagenDiagnosticaID() {
@@ -74,6 +87,14 @@ public class ImagenDiagnostica implements Serializable {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -82,20 +103,28 @@ public class ImagenDiagnostica implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getRutaArchivo() {
-        return rutaArchivo;
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
-    public void setRutaArchivo(String rutaArchivo) {
-        this.rutaArchivo = rutaArchivo;
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
-    public Examen getExamenImagenDiagnosticaImagenDiagnosticaexamenID() {
-        return examenImagenDiagnosticaImagenDiagnosticaexamenID;
+    public long getValor() {
+        return valor;
     }
 
-    public void setExamenImagenDiagnosticaImagenDiagnosticaexamenID(Examen examenImagenDiagnosticaImagenDiagnosticaexamenID) {
-        this.examenImagenDiagnosticaImagenDiagnosticaexamenID = examenImagenDiagnosticaImagenDiagnosticaexamenID;
+    public void setValor(long valor) {
+        this.valor = valor;
+    }
+
+    public Cita getCitaImagenDiagnosticaImagenDiagnosticacitaID() {
+        return citaImagenDiagnosticaImagenDiagnosticacitaID;
+    }
+
+    public void setCitaImagenDiagnosticaImagenDiagnosticacitaID(Cita citaImagenDiagnosticaImagenDiagnosticacitaID) {
+        this.citaImagenDiagnosticaImagenDiagnosticacitaID = citaImagenDiagnosticaImagenDiagnosticacitaID;
     }
 
     @Override

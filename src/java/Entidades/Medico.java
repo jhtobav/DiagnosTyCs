@@ -58,6 +58,8 @@ public class Medico implements Serializable {
     @NotNull
     @Column(name = "salario")
     private long salario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicomedicoID")
+    private Collection<Agenda> agendaCollection;
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @ManyToOne(optional = false)
     private Persona personapersonaID;
@@ -108,6 +110,15 @@ public class Medico implements Serializable {
 
     public void setSalario(long salario) {
         this.salario = salario;
+    }
+
+    @XmlTransient
+    public Collection<Agenda> getAgendaCollection() {
+        return agendaCollection;
+    }
+
+    public void setAgendaCollection(Collection<Agenda> agendaCollection) {
+        this.agendaCollection = agendaCollection;
     }
 
     public Persona getPersonapersonaID() {

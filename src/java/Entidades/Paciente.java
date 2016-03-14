@@ -19,7 +19,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -94,7 +93,7 @@ public class Paciente implements Serializable {
     @Column(name = "rol")
     private int rol;
     @JoinColumn(name = "Tarjeta_tarjetaID", referencedColumnName = "tarjetaID")
-    @OneToOne
+    @ManyToOne(optional = false)
     private Tarjeta tarjetatarjetaID;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacientepacienteID")
     private Collection<Cita> citaCollection;

@@ -6,12 +6,7 @@
 package Vista;
 
 import Business.VerCitaPacienteBiz;
-import DAO.AgendaDAO;
 import DTO.CitaDTO;
-import Entidades.Doctor;
-import Entidades.Examen;
-import Entidades.Medico;
-import Entidades.Paciente;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +28,6 @@ public class VerCitaPacienteBean {
     private DataModel<CitaDTO> citaModel;
     
     public static CitaDTO citaSeleccionadaDTO;
-    private String nombreDoctorCita;
     private String nombreMedicoCita;
     private Long idCita;
     private Date fechaCita;
@@ -73,14 +67,6 @@ public class VerCitaPacienteBean {
         VerCitaPacienteBean.citaSeleccionadaDTO = citaSeleccionadaDTO;
     }
 
-    public String getNombreDoctorCita() {
-        return nombreDoctorCita;
-    }
-
-    public void setNombreDoctorCita(String nombreDoctorCita) {
-        this.nombreDoctorCita = nombreDoctorCita;
-    }
-
     public String getNombreMedicoCita() {
         return nombreMedicoCita;
     }
@@ -117,7 +103,6 @@ public class VerCitaPacienteBean {
         
         citaSeleccionadaDTO = citaModel.getRowData();
         idCita = citaSeleccionadaDTO.getCitaID();
-        nombreDoctorCita = citaSeleccionadaDTO.getNombreDoctor();
         nombreMedicoCita = citaSeleccionadaDTO.getNombreMedico();
         fechaCita = citaSeleccionadaDTO.getFecha();
         idCita = citaSeleccionadaDTO.getCitaID();

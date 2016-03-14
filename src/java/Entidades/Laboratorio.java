@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
     @NamedQuery(name = "Laboratorio.findByExamenLaboratorioID", query = "SELECT l FROM Laboratorio l WHERE l.examenLaboratorioID = :examenLaboratorioID"),
+    @NamedQuery(name = "Laboratorio.findByNombre", query = "SELECT l FROM Laboratorio l WHERE l.nombre = :nombre"),
     @NamedQuery(name = "Laboratorio.findByDescripcion", query = "SELECT l FROM Laboratorio l WHERE l.descripcion = :descripcion"),
     @NamedQuery(name = "Laboratorio.findByResultado", query = "SELECT l FROM Laboratorio l WHERE l.resultado = :resultado")})
 public class Laboratorio implements Serializable {
@@ -42,6 +43,11 @@ public class Laboratorio implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
+    @Column(name = "nombre")
+    private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
@@ -49,9 +55,9 @@ public class Laboratorio implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "resultado")
     private String resultado;
-    @JoinColumn(name = "ExamenLaboratorio_Laboratorio_examenID", referencedColumnName = "examenID")
+    @JoinColumn(name = "CitaLaboratorio_Laboratorio_citaID", referencedColumnName = "citaID")
     @ManyToOne(optional = false)
-    private Examen examenLaboratorioLaboratorioexamenID;
+    private Cita citaLaboratorioLaboratoriocitaID;
     @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
     @ManyToOne(optional = false)
     private Reactivo reactivoreactivoID;
@@ -63,8 +69,9 @@ public class Laboratorio implements Serializable {
         this.examenLaboratorioID = examenLaboratorioID;
     }
 
-    public Laboratorio(Long examenLaboratorioID, String descripcion, String resultado) {
+    public Laboratorio(Long examenLaboratorioID, String nombre, String descripcion, String resultado) {
         this.examenLaboratorioID = examenLaboratorioID;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.resultado = resultado;
     }
@@ -75,6 +82,14 @@ public class Laboratorio implements Serializable {
 
     public void setExamenLaboratorioID(Long examenLaboratorioID) {
         this.examenLaboratorioID = examenLaboratorioID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -93,12 +108,12 @@ public class Laboratorio implements Serializable {
         this.resultado = resultado;
     }
 
-    public Examen getExamenLaboratorioLaboratorioexamenID() {
-        return examenLaboratorioLaboratorioexamenID;
+    public Cita getCitaLaboratorioLaboratoriocitaID() {
+        return citaLaboratorioLaboratoriocitaID;
     }
 
-    public void setExamenLaboratorioLaboratorioexamenID(Examen examenLaboratorioLaboratorioexamenID) {
-        this.examenLaboratorioLaboratorioexamenID = examenLaboratorioLaboratorioexamenID;
+    public void setCitaLaboratorioLaboratoriocitaID(Cita citaLaboratorioLaboratoriocitaID) {
+        this.citaLaboratorioLaboratoriocitaID = citaLaboratorioLaboratoriocitaID;
     }
 
     public Reactivo getReactivoreactivoID() {

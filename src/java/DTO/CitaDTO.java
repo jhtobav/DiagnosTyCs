@@ -4,10 +4,6 @@
  */
 package DTO;
 
-import Entidades.Doctor;
-import Entidades.Examen;
-import Entidades.Medico;
-import Entidades.Paciente;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -19,8 +15,7 @@ public class CitaDTO implements Serializable {
     
     private Long citaID;
     private Date fecha;
-    private long valor;
-    private String nombreDoctor;
+    private long valor;   
     private String nombreMedico;
    
     public CitaDTO() {
@@ -48,14 +43,6 @@ public class CitaDTO implements Serializable {
 
     public void setValor(long valor) {
         this.valor = valor;
-    }
-
-    public String getNombreDoctor() {
-        return nombreDoctor;
-    }
-
-    public void setNombreDoctor(String nombreDoctor) {
-        this.nombreDoctor = nombreDoctor;
     }
 
     public String getNombreMedico() {
