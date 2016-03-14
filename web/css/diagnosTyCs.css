@@ -21,7 +21,14 @@ and open the template in the editor.
 }
 
 .spacedRow{
-    padding: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.spacedMargin{
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .elementoOculto{

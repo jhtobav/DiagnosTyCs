@@ -32,91 +32,85 @@ and open the template in the editor.
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div  class="panel panel-default">
-                        <div>
-                            <div class="row spacedRow">
-                                <div class="col-md-1"></div>
-                                Bienvenido, aquí podra ingresar los datos para registrar un nuevo doctor    
+                        <div class="row spacedMargin spacedRow">
+                            Bienvenido, aquí podra ingresar los datos para registrar un nuevo doctor    
+                        </div> 
+                        <div class="row spacedRow">
+                            <div class="col-md-6">
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">ID</span>
+                                    <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroBean.numDocPaciente}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> @ </span>
+                                    <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroBean.correo}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroBean.nombres}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroBean.contrasena}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <h:inputText class="form-control" p:placeholder="Salario" value="#{registroBean.edad}"/>
+                                </div>
                             </div>
-                        </div>    
-                        <div class="col-md-6">
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ID</span>
-                                <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroBean.numDocPaciente}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroBean.correo}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroBean.nombres}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroBean.contrasena}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Salario" value="#{registroBean.edad}"/>
+                            <div class="col-md-6">
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroBean.direccion}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon">#</span>
+                                    <h:inputText class="form-control" p:placeholder="Celular" value="#{registroBean.telefono}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroBean.apellidos}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <h:selectOneMenu class="form-control selectpicker" p:placeholder="Especialidad" value="#{registroBean.edad}">
+                                        <f:selectItem itemDisabled="true" itemLabel="Especialidad"/>
+                                        <f:selectItem itemValue="Especialista de laboratorio" itemLabel="Especialista de laboratorio"/>
+                                        <f:selectItem itemValue="Especialista de imagenes diagnosticas" itemLabel="Especialista de imagenes diagnosticas"/>
+                                    </h:selectOneMenu>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroBean.direccion}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon">#</span>
-                                <h:inputText class="form-control" p:placeholder="Celular" value="#{registroBean.telefono}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroBean.apellidos}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:selectOneMenu class="form-control selectpicker" p:placeholder="Especialidad" value="#{registroBean.edad}">
-                                    <f:selectItem itemDisabled="true" itemLabel="Especialidad"/>
-                                    <f:selectItem itemValue="Especialista de laboratorio" itemLabel="Especialista de laboratorio"/>
-                                    <f:selectItem itemValue="Especialista de imagenes diagnosticas" itemLabel="Especialista de imagenes diagnosticas"/>
-                                </h:selectOneMenu>
-                            </div>
-                            <br/>
-                            <div class="input-group">
-                                <br/>
-                                <br/>
-                            </div>
+                        <div class="row spacedRow">
+                            <h:commandButton  class="btn btn-primary spacedMargin" type="submit" 
+                                              value="Registrarse" action="#{registroBean.registro()}"/>
+                            <h:commandButton  class="btn btn-default spacedMargin" type="submit" 
+                                              value="Cancelar" action="inicioBody.xhtml"/>
                         </div>
+                        <br/>
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="row spacedRow">
-                <h:commandButton  class="btn btn-primary" type="submit" 
-                                  value="Registrarse" action="#{registroBean.registro()}"/>
-                <h:commandButton  class="btn btn-default" type="submit" 
-                                  value="Cancelar" action="inicioBody.xhtml"/>
-            </div>
-            <link href="css/bootstrap.min.css" rel="stylesheet"/>
         </h:form>
     </h:body>
 </html>
