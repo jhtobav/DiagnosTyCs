@@ -53,7 +53,7 @@ public class RegistroBiz {
         tarjetaDAO.createTarjeta(tarjeta);
         pacienteDAO.createPaciente(paciente);
 
-        return "inicio.xhtml";
+        return "inicioBody.xhtml";
     }
     
     public String registroMedico(PersonaDTO personaDTO, MedicoDTO medicoDTO) {

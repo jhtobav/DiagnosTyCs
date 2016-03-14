@@ -12,4 +12,6 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="DiagnosTyCs" object-type="user" pool-name="microsoft_sql_DiagnosTyCsDB_adminPool"/>
     <jdbc-resource enabled="true" jndi-name="java:app/DiagnosTyCs" object-type="user" pool-name="microsoft_sql_DiagnosTyCsDB_adminPool"/>
+    <jdbc-resource enabled="true" jndi-name="DiagnosTyCsDS" object-type="user" pool-name="microsoft_sql_DiagnosTyCsDB_adminPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/DiagnosTyCsDS" object-type="user" pool-name="microsoft_sql_DiagnosTyCsDB_adminPool"/>
 </resources>
