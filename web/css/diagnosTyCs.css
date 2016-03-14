@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : afleonc
 */
 
+body{
+    padding-top: 75px;
+}
+
 .fullButton{
     border: none;
     border-radius: 0px;
