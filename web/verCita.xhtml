@@ -82,7 +82,7 @@ and open the template in the editor.
                 </div>    
                 <br/>
                 <h:dataTable id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{listarCitasBean.citaModel}" var="cita">
+                             value="#{verCitaPacienteBean.citaModel}" var="cita">
                     <h:column>
                         <f:facet name="header">
                             Nombre
@@ -93,13 +93,13 @@ and open the template in the editor.
                         <f:facet name="header">
                             Descripción del Exámen
                         </f:facet>
-                        <h:outputText value="#{cita.doctordoctorID}"/>
+                        <h:outputText value="#{cita.nombreMedico}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Resultado
                         </f:facet>
-                        <h:outputText value="#{cita.examenexamenID}"/>
+                        <h:outputText value="#{cita.valor}"/>
                     </h:column>
                 </h:dataTable>
 
@@ -113,7 +113,8 @@ and open the template in the editor.
                     </div>
                 </div>    
                 <br/>
-                <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" value="#{listarCitasBean.citaModel}" var="cita">
+                <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
+                             value="#{verCitaPacienteBean.citaModel}" var="cita">
                     <h:column>
                         <f:facet name="header">
                             Nombre
@@ -124,13 +125,14 @@ and open the template in the editor.
                         <f:facet name="header">
                             Descripción
                         </f:facet>
-                        <h:outputText value="#{cita.doctordoctorID}"/>
+                        <h:outputText value="#{cita.nombreMedico}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Ver Imagen
                         </f:facet>
-                        <h:commandButton type="submit" class="btn btn-success" value="Ver Imágen" action="verCita.xhtml"/>
+                        <h:commandButton type="submit" class="btn btn-success" value="Ver Imágen" 
+                                         action="verCita.xhtml"/>
                     </h:column>
                 </h:dataTable>
                 

@@ -20,6 +20,22 @@ public class AdministradorDAO {
 
     EntityManagerFactory emf = LoginBean.getEmf();
     
+    public Administrador createAdministrador(Administrador administrador) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(administrador);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return administrador;
+        }
+    }
+    
     public Administrador searchByIdAdministrador(Long idAdministrador) {
         EntityManager em = emf.createEntityManager();
         Administrador administrador = null;

@@ -4,19 +4,25 @@
  */
 package Business;
 
+import DAO.AdministradorDAO;
+import DAO.DoctorDAO;
 import DAO.MedicoDAO;
 import DAO.PacienteDAO;
 import DAO.PersonaDAO;
 import DAO.TarjetaDAO;
+import DTO.DoctorDTO;
 import DTO.MedicoDTO;
 import DTO.PacienteDTO;
 import DTO.PersonaDTO;
 import DTO.TarjetaDTO;
+import Entidades.Agenda;
 import Entidades.Cita;
+import Entidades.Doctor;
 import Entidades.Medico;
 import Entidades.Paciente;
 import Entidades.Persona;
 import Entidades.Tarjeta;
+import static Vista.LoginBean.administrador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,18 +77,74 @@ public class RegistroBiz {
                     
         Medico medico = new Medico();
         medico.setMedicoID(personaDTO.getIdPersona());
-        medico.setEspecialidad(medicoDTO.getEspecialidad());
         medico.setSalario(medicoDTO.getSalario());
         medico.setEstado("activo");
+        medico.setEspecialidad("Especialista Laboratorio");
+        medico.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();
         medico.setCitaCollection(citas);
-        medico.setPersonapersonaID(persona);
+        List<Agenda> agendas = new ArrayList<>();
+        medico.setAgendaCollection(agendas);
         
         PersonaDAO personaDAO = new PersonaDAO();
         MedicoDAO medicoDAO = new MedicoDAO();
         
         personaDAO.createPersona(persona);
         medicoDAO.createMedico(medico);       
+
+        return "inicio.xhtml";
+    }
+    
+    public String registroDoctor(PersonaDTO personaDTO, DoctorDTO doctorDTO) {
+       
+        Persona persona = new Persona();
+        persona.setPersonaID(personaDTO.getIdPersona());
+        persona.setNombre(personaDTO.getNombrePersona());
+        persona.setContrasena(personaDTO.getContrasena());
+        persona.setCorreo(personaDTO.getCorreo());
+        persona.setDireccion(personaDTO.getDireccion());
+        persona.setTelefono(personaDTO.getTelefono());
+        persona.setEdad(personaDTO.getEdad());
+        persona.setEstadoCuenta(true);
+        persona.setRol(1);
+                    
+        Doctor doctor = new Doctor();
+        doctor.setDoctorID(personaDTO.getIdPersona());
+        doctor.setSalario(doctorDTO.getSalario());
+        doctor.setEstado("activo");
+        doctor.setPersonapersonaID(persona);
+        List<Cita> citas = new ArrayList<>();
+        doctor.setCitaCollection(citas);
+        List<Agenda> agendas = new ArrayList<>();
+        doctor.setAgendaCollection(agendas);
+        
+        PersonaDAO personaDAO = new PersonaDAO();
+        DoctorDAO doctorDAO = new DoctorDAO();
+        
+        personaDAO.createPersona(persona);
+        doctorDAO.createDoctor(doctor);
+
+        return "inicio.xhtml";
+    }
+    
+    public String registroAdministrador(PersonaDTO personaDTO) {
+       
+        Persona persona = new Persona();
+        persona.setPersonaID(personaDTO.getIdPersona());
+        persona.setNombre(personaDTO.getNombrePersona());
+        persona.setContrasena(personaDTO.getContrasena());
+        persona.setCorreo(personaDTO.getCorreo());
+        persona.setDireccion(personaDTO.getDireccion());
+        persona.setTelefono(personaDTO.getTelefono());
+        persona.setEdad(personaDTO.getEdad());
+        persona.setEstadoCuenta(true);
+        persona.setRol(1);
+        
+        PersonaDAO personaDAO = new PersonaDAO();
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+        
+        personaDAO.createPersona(persona);
+        administradorDAO.createAdministrador(administrador);
 
         return "inicio.xhtml";
     }

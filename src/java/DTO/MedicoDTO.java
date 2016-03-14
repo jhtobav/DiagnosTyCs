@@ -12,20 +12,11 @@ import java.io.Serializable;
  */
 public class MedicoDTO implements Serializable {
     
-    private String especialidad;
     private Long salario; 
    
     public MedicoDTO() {
     }
-
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
-
+    
     public Long getSalario() {
         return salario;
     }

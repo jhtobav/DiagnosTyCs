@@ -29,6 +29,7 @@ public class MedicoDAO {
             em.persist(medico);
             em.getTransaction().commit();
         }catch(Exception e){
+            System.out.println(e);
             em.getTransaction().rollback();
         }finally{
             em.close();

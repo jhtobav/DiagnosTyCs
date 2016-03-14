@@ -42,54 +42,54 @@ and open the template in the editor.
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">ID</span>
-                                <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroBean.numDocPaciente}"/>
+                                <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroMedicoBean.numDocMedico}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroBean.correo}"/>
+                                <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroMedicoBean.correo}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroBean.nombres}"/>
+                                <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroMedicoBean.nombres}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroBean.contrasena}"/>
+                                <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroMedicoBean.contrasena}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Edad" value="#{registroBean.edad}"/>
+                                <h:inputText class="form-control" p:placeholder="Edad" value="#{registroMedicoBean.edad}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
-                                <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroBean.direccion}"/>
+                                <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroMedicoBean.direccion}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon">#</span>
-                                <h:inputText class="form-control" p:placeholder="Celular" value="#{registroBean.telefono}"/>
+                                <h:inputText class="form-control" p:placeholder="Celular" value="#{registroMedicoBean.telefono}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroBean.apellidos}"/>
+                                <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroMedicoBean.apellidos}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"></span>
-                                <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                                <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroMedicoBean.confirmarContrasena}"/>
                             </div>
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2"> </span>
-                                <h:inputText class="form-control" p:placeholder="Salario" value="#{registroBean.edad}"/>
+                                <h:inputText class="form-control" p:placeholder="Salario" value="#{registroMedicoBean.sueldo}"/>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ and open the template in the editor.
                 <div class="col-md-3"></div>
                 <div class="row spacedRow">
                     <h:commandButton  class="btn btn-primary" type="submit" 
-                                      value="Registrarse" action="#{registroBean.registro()}"/>
+                                      value="Registrarse" action="#{registroMedicoBean.registro()}"/>
                     <h:commandButton  class="btn btn-default" type="submit" 
                                       value="Cancelar" action="inicioBody.xhtml"/>
                 </div>
