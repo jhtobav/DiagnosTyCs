@@ -82,24 +82,24 @@ and open the template in the editor.
                 </div>    
                 <br/>
                 <h:dataTable id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{verCitaPacienteBean.citaModel}" var="cita">
+                             value="#{verCitaPacienteBean.examenesLaboratorioModel}" var="examenLab">
                     <h:column>
                         <f:facet name="header">
                             Nombre
                         </f:facet>
-                        <h:outputText value="#{cita.citaID}"/>
+                        <h:outputText value="#{examenLab.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Descripción del Exámen
                         </f:facet>
-                        <h:outputText value="#{cita.nombreMedico}"/>
+                        <h:outputText value="#{examenLab.descripcion}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Resultado
                         </f:facet>
-                        <h:outputText value="#{cita.valor}"/>
+                        <h:outputText value="#{examenLab.resultado}"/>
                     </h:column>
                 </h:dataTable>
 
@@ -114,18 +114,18 @@ and open the template in the editor.
                 </div>    
                 <br/>
                 <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{verCitaPacienteBean.citaModel}" var="cita">
+                             value="#{verCitaPacienteBean.imagenesDiagnosticasModel}" var="imagenDiag">
                     <h:column>
                         <f:facet name="header">
                             Nombre
                         </f:facet>
-                        <h:outputText value="#{cita.citaID}"/>
+                        <h:outputText value="#{imagenDiag.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Descripción
                         </f:facet>
-                        <h:outputText value="#{cita.nombreMedico}"/>
+                        <h:outputText value="#{imagenDiag.descripcion}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">

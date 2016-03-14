@@ -19,12 +19,12 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroDoctorBean {
        
-    private Long numDocPaciente;
+    private Long numDocDoctor;
     private String contrasena;
     private String confirmarContrasena;
     private String nombres = "";
     private String apellidos = "";
-    private String nombrePaciente = "";
+    private String nombreDoctor = "";
     private Long edad;
     private Long telefono;
     private String direccion;
@@ -32,16 +32,39 @@ public class RegistroDoctorBean {
     private Long sueldo;
     private String especialidad;
     private String mensaje;
+
+    public Long getNumDocDoctor() {
+        return numDocDoctor;
+    }
+
+    public void setNumDocDoctor(Long numDocDoctor) {
+        this.numDocDoctor = numDocDoctor;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public Long getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(Long sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
     
-
-    public Long getNumDocPaciente() {
-        return numDocPaciente;
-    }
-
-    public void setNumDocPaciente(Long numDocPaciente) {
-        this.numDocPaciente = numDocPaciente;
-    }
-
     public String getContrasena() {
         return contrasena;
     }
@@ -72,14 +95,6 @@ public class RegistroDoctorBean {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
     }
 
     public Long getEdad() {
@@ -127,11 +142,11 @@ public class RegistroDoctorBean {
         PersonaDTO personaDTO = new PersonaDTO();
         DoctorDTO doctorDTO = new DoctorDTO();
 
-        nombrePaciente = nombres + " " + apellidos;
+        nombreDoctor = nombres + " " + apellidos;
 
-        personaDTO.setIdPersona(numDocPaciente);
+        personaDTO.setIdPersona(numDocDoctor);
         personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombrePaciente);
+        personaDTO.setNombrePersona(nombreDoctor);
         personaDTO.setEdad(edad.intValue());
         personaDTO.setTelefono(telefono);
         personaDTO.setDireccion(direccion);

@@ -20,8 +20,6 @@ public class VerCitaPacienteBiz {
     
        List<CitaDTO> citasDTO = new ArrayList<>();
        CitaDTO citaDTO;
-       
-       System.out.println(paciente.getPacienteID());
               
        for(Cita c : paciente.getCitaCollection()){
            
@@ -30,6 +28,7 @@ public class VerCitaPacienteBiz {
            citaDTO.setNombreMedico(c.getMedicomedicoID().getPersonapersonaID().getNombre());
            citaDTO.setFecha(c.getFecha());
            citaDTO.setValor(c.getValor());
+           citaDTO.setCita(c);
            citasDTO.add(citaDTO);
            
        }    

@@ -7,6 +7,8 @@ package Vista;
 
 import Business.VerCitaPacienteBiz;
 import DTO.CitaDTO;
+import Entidades.ImagenDiagnostica;
+import Entidades.Laboratorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,10 @@ public class VerCitaPacienteBean {
     
     private List<CitaDTO> citas = new ArrayList<>();
     private DataModel<CitaDTO> citaModel;
+    private List<Laboratorio> examenesLaboratorio = new ArrayList<>();
+    private DataModel<Laboratorio> examenesLaboratorioModel;
+    private List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>();
+    private DataModel<ImagenDiagnostica> imagenesDiagnosticasModel;
     
     public static CitaDTO citaSeleccionadaDTO;
     private String nombreMedicoCita;
@@ -98,6 +104,38 @@ public class VerCitaPacienteBean {
     public void setValorCita(Long valorCita) {
         this.valorCita = valorCita;
     }
+
+    public List<Laboratorio> getExamenesLaboratorio() {
+        return examenesLaboratorio;
+    }
+
+    public void setExamenesLaboratorio(List<Laboratorio> examenesLaboratorio) {
+        this.examenesLaboratorio = examenesLaboratorio;
+    }
+
+    public DataModel<Laboratorio> getExamenesLaboratorioModel() {
+        return examenesLaboratorioModel;
+    }
+
+    public void setExamenesLaboratorioModel(DataModel<Laboratorio> examenesLaboratorioModel) {
+        this.examenesLaboratorioModel = examenesLaboratorioModel;
+    }
+
+    public List<ImagenDiagnostica> getImagenesDiagnosticas() {
+        return imagenesDiagnosticas;
+    }
+
+    public void setImagenesDiagnosticas(List<ImagenDiagnostica> imagenesDiagnosticas) {
+        this.imagenesDiagnosticas = imagenesDiagnosticas;
+    }
+
+    public DataModel<ImagenDiagnostica> getImagenesDiagnosticasModel() {
+        return imagenesDiagnosticasModel;
+    }
+
+    public void setImagenesDiagnosticasModel(DataModel<ImagenDiagnostica> imagenesDiagnosticasModel) {
+        this.imagenesDiagnosticasModel = imagenesDiagnosticasModel;
+    }
     
     public String verCitaSeleccionada(){
         
@@ -108,6 +146,12 @@ public class VerCitaPacienteBean {
         idCita = citaSeleccionadaDTO.getCitaID();
         valorCita = citaSeleccionadaDTO.getValor();
                 
+        examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
+        examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
+        
+        imagenesDiagnosticas = (List<ImagenDiagnostica>) citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection();
+        imagenesDiagnosticasModel = new ListDataModel<>(imagenesDiagnosticas);
+        
         return "verCita.xhtml";
 
     }

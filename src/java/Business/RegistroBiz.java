@@ -15,6 +15,7 @@ import DTO.MedicoDTO;
 import DTO.PacienteDTO;
 import DTO.PersonaDTO;
 import DTO.TarjetaDTO;
+import Entidades.Administrador;
 import Entidades.Agenda;
 import Entidades.Cita;
 import Entidades.Doctor;
@@ -112,6 +113,7 @@ public class RegistroBiz {
         doctor.setDoctorID(personaDTO.getIdPersona());
         doctor.setSalario(doctorDTO.getSalario());
         doctor.setEstado("activo");
+        doctor.setEspecialidad(doctorDTO.getEspecialidad());
         doctor.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();
         doctor.setCitaCollection(citas);
@@ -139,6 +141,10 @@ public class RegistroBiz {
         persona.setEdad(personaDTO.getEdad());
         persona.setEstadoCuenta(true);
         persona.setRol(1);
+        
+        Administrador administrador = new Administrador();
+        administrador.setAdministradorID(personaDTO.getIdPersona());
+        administrador.setPersonapersonaID(persona);
         
         PersonaDAO personaDAO = new PersonaDAO();
         AdministradorDAO administradorDAO = new AdministradorDAO();

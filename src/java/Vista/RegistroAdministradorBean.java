@@ -18,27 +18,34 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroAdministradorBean {
        
-    private Long numDocPaciente;
+    private Long numDocAdministrador;
     private String contrasena;
     private String confirmarContrasena;
     private String nombres = "";
     private String apellidos = "";
-    private String nombrePaciente = "";
+    private String nombreAdministrador = "";
     private Long edad;
     private Long telefono;
     private String direccion;
     private String correo;
     private String mensaje;
+
+    public Long getNumDocAdministrador() {
+        return numDocAdministrador;
+    }
+
+    public void setNumDocAdministrador(Long numDocAdministrador) {
+        this.numDocAdministrador = numDocAdministrador;
+    }
+
+    public String getNombreAdministrador() {
+        return nombreAdministrador;
+    }
+
+    public void setNombreAdministrador(String nombreAdministrador) {
+        this.nombreAdministrador = nombreAdministrador;
+    }
     
-
-    public Long getNumDocPaciente() {
-        return numDocPaciente;
-    }
-
-    public void setNumDocPaciente(Long numDocPaciente) {
-        this.numDocPaciente = numDocPaciente;
-    }
-
     public String getContrasena() {
         return contrasena;
     }
@@ -69,14 +76,6 @@ public class RegistroAdministradorBean {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
     }
 
     public Long getEdad() {
@@ -123,11 +122,11 @@ public class RegistroAdministradorBean {
 
         PersonaDTO personaDTO = new PersonaDTO();
 
-        nombrePaciente = nombres + " " + apellidos;
+        nombreAdministrador = nombres + " " + apellidos;
 
-        personaDTO.setIdPersona(numDocPaciente);
+        personaDTO.setIdPersona(numDocAdministrador);
         personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombrePaciente);
+        personaDTO.setNombrePersona(nombreAdministrador);
         personaDTO.setEdad(edad.intValue());
         personaDTO.setTelefono(telefono);
         personaDTO.setDireccion(direccion);

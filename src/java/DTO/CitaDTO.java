@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import Entidades.Cita;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import java.util.Date;
  */
 public class CitaDTO implements Serializable {
     
+    private Cita cita;
     private Long citaID;
     private Date fecha;
     private long valor;   
@@ -21,6 +23,15 @@ public class CitaDTO implements Serializable {
     public CitaDTO() {
     }
 
+    public Cita getCita() {
+        return cita;
+    }
+
+    public void setCita(Cita cita) {
+        this.cita = cita;
+    }
+
+    
     public Long getCitaID() {
         return citaID;
     }

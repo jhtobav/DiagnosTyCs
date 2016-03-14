@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -64,7 +65,7 @@ public class Doctor implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctordoctorID")
     private Collection<Agenda> agendaCollection;
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Persona personapersonaID;
 
     public Doctor() {
