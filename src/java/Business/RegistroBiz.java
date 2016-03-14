@@ -23,7 +23,6 @@ import Entidades.Medico;
 import Entidades.Paciente;
 import Entidades.Persona;
 import Entidades.Tarjeta;
-import static Vista.LoginBean.administrador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,7 +106,7 @@ public class RegistroBiz {
         persona.setTelefono(personaDTO.getTelefono());
         persona.setEdad(personaDTO.getEdad());
         persona.setEstadoCuenta(true);
-        persona.setRol(1);
+        persona.setRol(5);
                     
         Doctor doctor = new Doctor();
         doctor.setDoctorID(personaDTO.getIdPersona());
@@ -140,7 +139,7 @@ public class RegistroBiz {
         persona.setTelefono(personaDTO.getTelefono());
         persona.setEdad(personaDTO.getEdad());
         persona.setEstadoCuenta(true);
-        persona.setRol(1);
+        persona.setRol(3);
         
         Administrador administrador = new Administrador();
         administrador.setAdministradorID(personaDTO.getIdPersona());

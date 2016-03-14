@@ -140,7 +140,7 @@ public class RegistroAdministradorBean {
         LoginBean.setMensajeEmergenteContenido("Felicidades " + 
                 nombres + " su usuario se ha creado correctamente");
         
-        return "inicioBody.xhtml";
+        return "administradorBody.xhtml";
 
     }
      
