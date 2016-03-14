@@ -19,3 +19,19 @@ and open the template in the editor.
 .tableDataNoSpace{
     padding: 0px !important;
 }
+
+.col1 { 
+    width: 10px !important;
+}
+
+.col2 { 
+    width: 20px !important;
+}
+
+.col3 { 
+    width: 30px !important; 
+}
+
+.col4 { 
+    width: 40px !important;
+}
