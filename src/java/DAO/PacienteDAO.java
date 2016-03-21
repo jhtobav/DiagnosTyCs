@@ -1,11 +1,8 @@
 package DAO;
 
 
-import Entidades.Cita;
 import Entidades.Paciente;
-import Entidades.Persona;
 import Vista.LoginBean;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;

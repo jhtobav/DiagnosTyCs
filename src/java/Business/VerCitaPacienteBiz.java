@@ -29,6 +29,8 @@ public class VerCitaPacienteBiz {
            citaDTO.setFecha(c.getFecha());
            citaDTO.setValor(c.getValor());
            citaDTO.setCita(c);
+           citaDTO.setIdPaciente(c.getPacientepacienteID().getPacienteID());
+           citaDTO.setNombrePaciente(c.getMedicomedicoID().getPersonapersonaID().getNombre());
            citasDTO.add(citaDTO);
            
        }    
