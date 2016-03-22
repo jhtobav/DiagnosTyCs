@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,8 +43,8 @@ public class Reactivo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "reactivoID")
+    @Column(name = "pacienteID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long reactivoID;
     @Basic(optional = false)
     @NotNull

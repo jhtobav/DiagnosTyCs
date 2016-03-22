@@ -30,20 +30,21 @@ public class AgendaDAO {
       
     }
     
-    public void loadAgenda() {
+    public void inicializarAgenda() {
                 
         EntityManager em;
         
         Agenda agenda = new Agenda();
         Doctor doctor = new Doctor();
-        doctor.setDoctorID(102077926L);
+        doctor.setDoctorID(1020779269L);
         Medico medico = new Medico();
-        medico.setMedicoID(1020779L);
+        medico.setMedicoID(1020779267L);
         
         for(int i=1; i<=320; i++){
             
-            em = emf.createEntityManager();      
             System.out.println(i);
+            
+            em = emf.createEntityManager();      
             agenda.setAgendaID(i);
             agenda.setDoctordoctorID(doctor);
             agenda.setMedicomedicoID(medico);

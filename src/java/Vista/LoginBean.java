@@ -206,12 +206,6 @@ public class LoginBean {
         context.addMessage(null, message);
     }
     
-    public String pagarCita (){
-        
-        return "pacienteBody.xhtml";
-        
-    }
-    
     @PreDestroy
     public void destruct()
     {
