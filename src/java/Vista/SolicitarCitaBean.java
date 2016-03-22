@@ -6,6 +6,7 @@
 package Vista;
 
 import Business.SolicitarCitaBiz;
+import DTO.ExamenDTO;
 import Entidades.Agenda;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -21,6 +22,8 @@ import javax.faces.bean.SessionScoped;
 public class SolicitarCitaBean {
         
     private List<Agenda> tablaAgendas;
+    private String examenLaboratorio;
+    private String imagenDiagnostica;
 
     @PostConstruct
     public void init() {
@@ -38,10 +41,26 @@ public class SolicitarCitaBean {
     public void setTablaAgendas(List<Agenda> tablaAgendas) {
         this.tablaAgendas = tablaAgendas;
     }
+
+    public String getExamenLaboratorio() {
+        return examenLaboratorio;
+    }
+
+    public void setExamenLaboratorio(String examenLaboratorio) {
+        this.examenLaboratorio = examenLaboratorio;
+    }
+
+    public String getImagenDiagnostica() {
+        return imagenDiagnostica;
+    }
+
+    public void setImagenDiagnostica(String imagenDiagnostica) {
+        this.imagenDiagnostica = imagenDiagnostica;
+    }
     
     public String obtenerEstado(int indice){
         
-        if(tablaAgendas.get(indice).getDisponible()){
+        if(tablaAgendas.get(indice-1).getDisponible()){
             return "button";
         } else {
             return "hidden";
@@ -49,8 +68,35 @@ public class SolicitarCitaBean {
         
     }
     
-    public String solicitarCita(){
+    public String solicitarCitaImagen(){
                 
+        System.out.println("hola");
+        System.out.println("a " + imagenDiagnostica + " b");
+        
+        SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
+        
+        List<ExamenDTO> imagenes = solicitarCitaBiz.cargarImagenes();
+        
+        for (ExamenDTO examen : imagenes){
+            if(examen.getDescripcion().equals(imagenDiagnostica)){
+                System.out.println("exito");
+                System.out.println("- " + imagenDiagnostica + " -");
+                System.out.println("- " + examen.getDescripcion() + " -");
+            }else{
+                System.out.println("fracaso");
+                System.out.println("- " + imagenDiagnostica + " -");
+                System.out.println("- " + examen.getDescripcion() + " -");                
+            }
+        }
+        
+        return "inicio.xhtml";
+    }
+    
+    public String solicitarCitaLaboratorio(){
+                
+        System.out.println("chiao");
+        System.out.println(examenLaboratorio);
+        
         return "inicio.xhtml";
     }
         

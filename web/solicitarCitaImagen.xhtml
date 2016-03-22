@@ -17,14 +17,15 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
-    <body onload="builder()">
+    <h:body onload="builder()">
+        <h:form>
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div  class="panel">
                     <div class="row spacedRow">
                         <div class="col-md-6">			
-                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="" title="Procedimiento">
+                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{solicitarCitaBean.imagenDiagnostica}" title="Procedimiento">
                                 <f:selectItem itemValue="Angiografía aórtica                                             " itemLabel="Angiografía aórtica                                              " />
                                 <f:selectItem itemValue="Angiografía mesentérica                                         " itemLabel="Angiografía mesentérica                                          " />
                                 <f:selectItem itemValue="Angiografía por catéter                                         " itemLabel="Angiografía por catéter                                          " />
@@ -455,13 +456,13 @@
                         </div>
                         <hr/>
                         <div class="spacedRow">
-                            <a class="btn btn-primary" href="pacienteBody.xhtml">Pagar</a>
+                            <h:commandButton class="btn btn-primary" value="Pagar" action="#{solicitarCitaBean.solicitarCitaImagen()}"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3"></div>
-    </body>
-
+        </h:form>
+    </h:body>
 </html>
