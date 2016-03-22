@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -63,6 +64,9 @@ public class ImagenDiagnostica implements Serializable {
     @JoinColumn(name = "CitaImagenDiagnostica_ImagenDiagnostica_citaID", referencedColumnName = "citaID")
     @ManyToOne(optional = false)
     private Cita citaImagenDiagnosticaImagenDiagnosticacitaID;
+    @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
+    @OneToOne(optional = false)
+    private Reactivo reactivoreactivoID;
 
     public ImagenDiagnostica() {
     }
@@ -125,6 +129,14 @@ public class ImagenDiagnostica implements Serializable {
 
     public void setCitaImagenDiagnosticaImagenDiagnosticacitaID(Cita citaImagenDiagnosticaImagenDiagnosticacitaID) {
         this.citaImagenDiagnosticaImagenDiagnosticacitaID = citaImagenDiagnosticaImagenDiagnosticacitaID;
+    }
+
+    public Reactivo getReactivoreactivoID() {
+        return reactivoreactivoID;
+    }
+
+    public void setReactivoreactivoID(Reactivo reactivoreactivoID) {
+        this.reactivoreactivoID = reactivoreactivoID;
     }
 
     @Override

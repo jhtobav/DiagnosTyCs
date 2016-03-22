@@ -28,6 +28,7 @@ public class ImagenDiagnosticaDAO {
             nuevaImagen.setRutaImagen(imagenDiagnostica.getRutaImagen());
             em.getTransaction().commit();
         } catch (Exception e){
+            System.out.println(e);
             em.getTransaction().rollback();
         } finally {
             em.close();

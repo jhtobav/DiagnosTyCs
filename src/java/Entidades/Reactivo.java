@@ -63,6 +63,8 @@ public class Reactivo implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
     private Collection<Alerta> alertaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
+    private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
     private Collection<Laboratorio> laboratorioCollection;
 
     public Reactivo() {
@@ -126,6 +128,15 @@ public class Reactivo implements Serializable {
 
     public void setAlertaCollection(Collection<Alerta> alertaCollection) {
         this.alertaCollection = alertaCollection;
+    }
+
+    @XmlTransient
+    public Collection<ImagenDiagnostica> getImagenDiagnosticaCollection() {
+        return imagenDiagnosticaCollection;
+    }
+
+    public void setImagenDiagnosticaCollection(Collection<ImagenDiagnostica> imagenDiagnosticaCollection) {
+        this.imagenDiagnosticaCollection = imagenDiagnosticaCollection;
     }
 
     @XmlTransient

@@ -79,7 +79,6 @@ public class RegistroBiz {
         medico.setMedicoID(personaDTO.getIdPersona());
         medico.setSalario(medicoDTO.getSalario());
         medico.setEstado("activo");
-        medico.setEspecialidad("Especialista Laboratorio");
         medico.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();
         medico.setCitaCollection(citas);

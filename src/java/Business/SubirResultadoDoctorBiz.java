@@ -14,6 +14,7 @@ import Entidades.Laboratorio;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.FacesException;
 import javax.imageio.stream.FileImageOutputStream;
@@ -68,7 +69,6 @@ public class SubirResultadoDoctorBiz {
         for(ImagenDiagnostica imagen: imagenesDiagnosticas){
             imagen.setRutaImagen(almacenarArchivoImagen(archivoImagen, imagen.getImagenDiagnosticaID()));
             imagen = imagenDiagnosticaDAO.updateImagenDiagnostica(imagen);
-            
         }
         
         return imagenesDiagnosticas;
@@ -81,7 +81,7 @@ public class SubirResultadoDoctorBiz {
         String rutaImagen;
        
         datos = IOUtils.toByteArray(imagen.getInputstream());        
-        rutaImagen = "F:" + File.separator + "Imagenes" + File.separator + imagenID.toString() + ".png";
+        rutaImagen = "C:" + File.separator + "Imagenes" + File.separator + imagenID.toString() + ".png";
         FileImageOutputStream outputStream = null;
         try {
             outputStream = new FileImageOutputStream

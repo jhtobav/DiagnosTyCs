@@ -13,7 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,7 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Medico.findAll", query = "SELECT m FROM Medico m"),
     @NamedQuery(name = "Medico.findByMedicoID", query = "SELECT m FROM Medico m WHERE m.medicoID = :medicoID"),
-    @NamedQuery(name = "Medico.findByEspecialidad", query = "SELECT m FROM Medico m WHERE m.especialidad = :especialidad"),
     @NamedQuery(name = "Medico.findByEstado", query = "SELECT m FROM Medico m WHERE m.estado = :estado"),
     @NamedQuery(name = "Medico.findBySalario", query = "SELECT m FROM Medico m WHERE m.salario = :salario")})
 public class Medico implements Serializable {
@@ -45,11 +43,6 @@ public class Medico implements Serializable {
     @NotNull
     @Column(name = "medicoID")
     private Long medicoID;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "especialidad")
-    private String especialidad;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -74,9 +67,8 @@ public class Medico implements Serializable {
         this.medicoID = medicoID;
     }
 
-    public Medico(Long medicoID, String especialidad, String estado, long salario) {
+    public Medico(Long medicoID, String estado, long salario) {
         this.medicoID = medicoID;
-        this.especialidad = especialidad;
         this.estado = estado;
         this.salario = salario;
     }
@@ -87,14 +79,6 @@ public class Medico implements Serializable {
 
     public void setMedicoID(Long medicoID) {
         this.medicoID = medicoID;
-    }
-
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
     }
 
     public String getEstado() {
