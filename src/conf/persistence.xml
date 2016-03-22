@@ -4,21 +4,20 @@
     <non-jta-data-source>java:app/DiagnosTyCsDS</non-jta-data-source>
     <class>Entidades.Activo</class>
     <class>Entidades.Administrador</class>
+    <class>Entidades.Agenda</class>
     <class>Entidades.Alerta</class>
     <class>Entidades.Cita</class>
-    <class>Entidades.Examen</class>
-    <class>Entidades.ExamenLaboratorio</class>
+    <class>Entidades.Doctor</class>
     <class>Entidades.Gasto</class>
     <class>Entidades.Gerente</class>
     <class>Entidades.ImagenDiagnostica</class>
+    <class>Entidades.Laboratorio</class>
     <class>Entidades.Medico</class>
     <class>Entidades.Paciente</class>
     <class>Entidades.Persona</class>
     <class>Entidades.Reactivo</class>
     <class>Entidades.Tarjeta</class>
-    <class>Entidades.Doctor</class>
-    <class>Entidades.Laboratorio</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>

@@ -25,31 +25,19 @@
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-fixed-top navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class ="icon-bar"></span>
-                        <span class ="icon-bar"></span>
-                        <span class ="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="welcome.xhtml">  
-                        DiagnosTyCs
-                    </a>
+                    <a class="navbar-brand" href="#">DiagnosTyCs <h:outputText id="nombreUsuario" value="Bienvenido Médico #{loginBean.nombrePersona}" /></a>
+
                 </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <h:outputText id="nombreUsuario" style="color: silver; font-size: xx-large"
-                                          value="Bienvenido Médico #{loginBean.nombrePersona}" />
-                        </li>
-                    </ul>
-                    <h:form class="navbar-form navbar-right">
-                        <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>
-                    </h:form>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
+                <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
                         <li>
                             <a href="resultadosDoctor.html" target="frame_doctor">Lista de citas</a>
@@ -61,9 +49,13 @@
                             <a target="frame_doctor">Realizar una solicitud</a>
                         </li>
                     </ul>
-                </div>
-            </div>
+                    <h:form class="navbar-form navbar-right">
+                        <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>
+                    </h:form>
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.container -->
         </nav>
+
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div>

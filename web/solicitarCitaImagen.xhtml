@@ -1,0 +1,463 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <title>DiagnosTycs</title>
+        <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="js/diagnosTyCs.js" type="text/javascript"></script>
+        <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+    </head>
+    <body onload="builder()">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div  class="panel">
+                    <div class="row spacedRow">
+                        <div class="col-md-6">
+                            <select title="Procedimiento" class="selectpicker" id="procedimiento">
+                                <option value="Angiografía aórtica                                              ">Angiografía aórtica                                              </option>
+                                <option value="Angiografía mesentérica                                          ">Angiografía mesentérica                                          </option>
+                                <option value="Angiografía por catéter                                          ">Angiografía por catéter                                          </option>
+                                <option value="Angiografía pulmonar                                             ">Angiografía pulmonar                                             </option>
+                                <option value="Arteriografía renal                                              ">Arteriografía renal                                              </option>
+                                <option value="Artrografía directa                                              ">Artrografía directa                                              </option>
+                                <option value="Cistografía retrógrada                                           ">Cistografía retrógrada                                           </option>
+                                <option value="Cistouretrograma miccional                                       ">Cistouretrograma miccional                                       </option>
+                                <option value="Colangiografía transhepática percutánea                          ">Colangiografía transhepática percutánea                          </option>
+                                <option value="Densitometría ósea                                               ">Densitometría ósea                                               </option>
+                                <option value="Discograma                                                       ">Discograma                                                       </option>
+                                <option value="Enema opaco                                                      ">Enema opaco                                                      </option>
+                                <option value="Enteroclisis                                                     ">Enteroclisis                                                     </option>
+                                <option value="Linfangiograma                                                   ">Linfangiograma                                                   </option>
+                                <option value="Mielografía                                                      ">Mielografía                                                      </option>
+                                <option value="Pielograma intravenoso (PIV)                                     ">Pielograma intravenoso (PIV)                                     </option>
+                                <option value="Radiografía abdominal                                            ">Radiografía abdominal                                            </option>
+                                <option value="Radiografía de cráneo                                            ">Radiografía de cráneo                                            </option>
+                                <option value="Radiografía de cuello                                            ">Radiografía de cuello                                            </option>
+                                <option value="Radiografía de hueso                                             ">Radiografía de hueso                                             </option>
+                                <option value="Radiografía de la columna lumbosacra                             ">Radiografía de la columna lumbosacra                             </option>
+                                <option value="Radiografía de la columna torácica                               ">Radiografía de la columna torácica                               </option>
+                                <option value="Radiografía de la pelvis                                         ">Radiografía de la pelvis                                         </option>
+                                <option value="Radiografía de las manos                                         ">Radiografía de las manos                                         </option>
+                                <option value="Radiografía de los senos paranasales                             ">Radiografía de los senos paranasales                             </option>
+                                <option value="Radiografía de una articulación                                  ">Radiografía de una articulación                                  </option>
+                                <option value="Radiografía de una extremidad                                    ">Radiografía de una extremidad                                    </option>
+                                <option value="Radiografía del esqueleto                                        ">Radiografía del esqueleto                                        </option>
+                                <option value="Radiografía del tracto gastrointestinal (GI) inferior            ">Radiografía del tracto gastrointestinal (GI) inferior            </option>
+                                <option value="Radiografía dental                                               ">Radiografía dental                                               </option>
+                                <option value="Radiografía torácica                                             ">Radiografía torácica                                             </option>
+                                <option value="Radiografías dentales                                            ">Radiografías dentales                                            </option>
+                                <option value="Radiografías dentales (rayos X)                                  ">Radiografías dentales (rayos X)                                  </option>
+                                <option value="Rayos X del tórax (radiografía de tórax)                         ">Rayos X del tórax (radiografía de tórax)                         </option>
+                                <option value="Rayos X del tracto gastrointestinal (GI) superior (radiografía)  ">Rayos X del tracto gastrointestinal (GI) superior (radiografía)  </option>
+                                <option value="Rayos X óseo (radiografía)                                       ">Rayos X óseo (radiografía)                                       </option>
+                                <option value="Rayos X panorámicos                                              ">Rayos X panorámicos                                              </option>
+                                <option value="Sialograma                                                       ">Sialograma                                                       </option>
+                                <option value="Tránsito esofagogastroduodenal                                   ">Tránsito esofagogastroduodenal                                   </option>
+                                <option value="Tránsito gastrointestinal inferior                               ">Tránsito gastrointestinal inferior                               </option>
+                                <option value="Venografía                                                       ">Venografía                                                       </option>
+                                <option value="Venografía                                                       ">Venografía                                                       </option>
+                                <option value="Venografía renal                                                 ">Venografía renal                                                 </option>
+                                <option value="Angiografía coronaria por TC (ACTC)                              ">Angiografía coronaria por TC (ACTC)                              </option>
+                                <option value="Angiotomografía computarizada                                    ">Angiotomografía computarizada                                    </option>
+                                <option value="Colonografía por TAC                                             ">Colonografía por TAC                                             </option>
+                                <option value="Enterografía por TAC                                             ">Enterografía por TAC                                             </option>
+                                <option value="Exploración de la cabeza por TAC                                 ">Exploración de la cabeza por TAC                                 </option>
+                                <option value="Exploración de la columna vertebral por TAC                      ">Exploración de la columna vertebral por TAC                      </option>
+                                <option value="Exploración de senos (paranasales) por TAC                       ">Exploración de senos (paranasales) por TAC                       </option>
+                                <option value="Exploración del cuerpo por TAC                                   ">Exploración del cuerpo por TAC                                   </option>
+                                <option value="Exploración TAC de tórax                                         ">Exploración TAC de tórax                                         </option>
+                                <option value="Gammagrafía renal                                                ">Gammagrafía renal                                                </option>
+                                <option value="Perfusión por TAC de la cabeza                                   ">Perfusión por TAC de la cabeza                                   </option>
+                                <option value="TAC: Abdomen y pelvis                                            ">TAC: Abdomen y pelvis                                            </option>
+                                <option value="TAC cardíaca para la cuantificación del calcio coronario         ">TAC cardíaca para la cuantificación del calcio coronario         </option>
+                                <option value="TC torácica                                                      ">TC torácica                                                      </option>
+                                <option value="Tomografía computarizada cervical                                ">Tomografía computarizada cervical                                </option>
+                                <option value="Tomografía computarizada de la columna dorsal                    ">Tomografía computarizada de la columna dorsal                    </option>
+                                <option value="Tomografía computarizada de la columna lumbar                    ">Tomografía computarizada de la columna lumbar                    </option>
+                                <option value="Tomografía computarizada de la columna lumbosacra                ">Tomografía computarizada de la columna lumbosacra                </option>
+                                <option value="Tomografía computarizada de la órbita                            ">Tomografía computarizada de la órbita                            </option>
+                                <option value="Tomografía computarizada de la pelvis                            ">Tomografía computarizada de la pelvis                            </option>
+                                <option value="Tomografía computarizada de la pierna                            ">Tomografía computarizada de la pierna                            </option>
+                                <option value="Tomografía computarizada de la rodilla                           ">Tomografía computarizada de la rodilla                           </option>
+                                <option value="Tomografía computarizada de los senos paranasales                ">Tomografía computarizada de los senos paranasales                </option>
+                                <option value="Tomografía computarizada del abdomen                             ">Tomografía computarizada del abdomen                             </option>
+                                <option value="Tomografía computarizada del brazo                               ">Tomografía computarizada del brazo                               </option>
+                                <option value="Tomografía computarizada del corazón                             ">Tomografía computarizada del corazón                             </option>
+                                <option value="Tomografía computarizada del cráneo                              ">Tomografía computarizada del cráneo                              </option>
+                                <option value="Tomografía computarizada del hombro                              ">Tomografía computarizada del hombro                              </option>
+                                <option value="Tomografía computarizada (TC) y exploraciones para cáncer        ">Tomografía computarizada (TC) y exploraciones para cáncer        </option>
+                                <option value="Urografía                                                        ">Urografía                                                        </option>
+                                <option value="Cisternografía con radionúclidos                                 ">Cisternografía con radionúclidos                                 </option>
+                                <option value="Cistografía con radionúclidos                                    ">Cistografía con radionúclidos                                    </option>
+                                <option value="Estudios de medicina nuclear                                     ">Estudios de medicina nuclear                                     </option>
+                                <option value="Exploración por tomografía por emisión de positrones             ">Exploración por tomografía por emisión de positrones             </option>
+                                <option value="Gammagrafía con galio (Ga)                                       ">Gammagrafía con galio (Ga)                                       </option>
+                                <option value="Gammagrafía con MIBG                                             ">Gammagrafía con MIBG                                             </option>
+                                <option value="Gammagrafía de glóbulos blancos                                  ">Gammagrafía de glóbulos blancos                                  </option>
+                                <option value="Gammagrafía de glóbulos rojos                                    ">Gammagrafía de glóbulos rojos                                    </option>
+                                <option value="Gammagrafía de la tiroides                                       ">Gammagrafía de la tiroides                                       </option>
+                                <option value="Gammagrafía de la vesícula biliar con radionúclidos              ">Gammagrafía de la vesícula biliar con radionúclidos              </option>
+                                <option value="Gammagrafía de perfusión renal                                   ">Gammagrafía de perfusión renal                                   </option>
+                                <option value="Gammagrafía del hígado                                           ">Gammagrafía del hígado                                           </option>
+                                <option value="Gammagrafía pulmonar con galio                                   ">Gammagrafía pulmonar con galio                                   </option>
+                                <option value="Gammagrafía renal                                                ">Gammagrafía renal                                                </option>
+                                <option value="Gammagrafía y absorción tiroideas                                ">Gammagrafía y absorción tiroideas                                </option>
+                                <option value="Linfogammagrafía                                                 ">Linfogammagrafía                                                 </option>
+                                <option value="Medicina nuclear cardíaca                                        ">Medicina nuclear cardíaca                                        </option>
+                                <option value="Prueba de esfuerzo nuclear                                       ">Prueba de esfuerzo nuclear                                       </option>
+                                <option value="Tomografía de las mamas por emisión de positrones (TEP)          ">Tomografía de las mamas por emisión de positrones (TEP)          </option>
+                                <option value="Tomografía por emisión de positrones (TEP)                       ">Tomografía por emisión de positrones (TEP)                       </option>
+                                <option value="Tomografía por emisión de positrones (TEP) del corazón           ">Tomografía por emisión de positrones (TEP) del corazón           </option>
+                                <option value="Ventriculografía nuclear                                         ">Ventriculografía nuclear                                         </option>
+                                <option value="Angiografía de resonancia magnética                              ">Angiografía de resonancia magnética                              </option>
+                                <option value="Angiografía por resonancia magnética                             ">Angiografía por resonancia magnética                             </option>
+                                <option value="Biopsia de mama guiada por RMN                                   ">Biopsia de mama guiada por RMN                                   </option>
+                                <option value="Colangiopancreatografía por resonancia magnética (CPRM)          ">Colangiopancreatografía por resonancia magnética (CPRM)          </option>
+                                <option value="Enterografía por RMN                                             ">Enterografía por RMN                                             </option>
+                                <option value="Resonancia magnética cardíaca (RM cardíaca)                      ">Resonancia magnética cardíaca (RM cardíaca)                      </option>
+                                <option value="Resonancia magnética: Cerebro                                    ">Resonancia magnética: Cerebro                                    </option>
+                                <option value="Resonancia magnética cervical                                    ">Resonancia magnética cervical                                    </option>
+                                <option value="Resonancia magnética de la cabeza                                ">Resonancia magnética de la cabeza                                </option>
+                                <option value="Resonancia magnética del abdomen                                 ">Resonancia magnética del abdomen                                 </option>
+                                <option value="Resonancia magnética del corazón                                 ">Resonancia magnética del corazón                                 </option>
+                                <option value="Resonancia magnética nuclear (RMN) durante el embarazo           ">Resonancia magnética nuclear (RMN) durante el embarazo           </option>
+                                <option value="Resonancia magnética y el lumbago                                ">Resonancia magnética y el lumbago                                </option>
+                                <option value="RMN de cabeza                                                    ">RMN de cabeza                                                    </option>
+                                <option value="RMN de columna                                                   ">RMN de columna                                                   </option>
+                                <option value="RMN de cuerpo (tórax, abdomen, pelvis)                           ">RMN de cuerpo (tórax, abdomen, pelvis)                           </option>
+                                <option value="RMN de la próstata                                               ">RMN de la próstata                                               </option>
+                                <option value="RMN de la rodilla                                                ">RMN de la rodilla                                                </option>
+                                <option value="RMN de mama                                                      ">RMN de mama                                                      </option>
+                                <option value="RMN de tórax                                                     ">RMN de tórax                                                     </option>
+                                <option value="RMN del hombro                                                   ">RMN del hombro                                                   </option>
+                                <option value="RMN del sistema musculoesquelético                               ">RMN del sistema musculoesquelético                               </option>
+                                <option value="RMN funcional (RMNf): Cerebro                                    ">RMN funcional (RMNf): Cerebro                                    </option>
+                                <option value="Urografía                                                        ">Urografía                                                        </option>
+                                <option value="Ultrasonografía endoscópica (EUS)                                ">Ultrasonografía endoscópica (EUS)                                </option>
+                                <option value="Ecocardiografía                                                  ">Ecocardiografía                                                  </option>
+                                <option value="Ecocardiografía de esfuerzo                                      ">Ecocardiografía de esfuerzo                                      </option>
+                                <option value="Ecocardiografía transesofágica                                   ">Ecocardiografía transesofágica                                   </option>
+                                <option value="Ecografía abdominal                                              ">Ecografía abdominal                                              </option>
+                                <option value="Ecografía de la tiroides                                         ">Ecografía de la tiroides                                         </option>
+                                <option value="Ecografía Doppler de un brazo o de una pierna                    ">Ecografía Doppler de un brazo o de una pierna                    </option>
+                                <option value="Ecografía dúplex                                                 ">Ecografía dúplex                                                 </option>
+                                <option value="Ecografía ocular y orbitaria                                     ">Ecografía ocular y orbitaria                                     </option>
+                                <option value="Electrocardiograma                                               ">Electrocardiograma                                               </option>
+                                <option value="Imágenes por ultrasonido de la arteria carótida                  ">Imágenes por ultrasonido de la arteria carótida                  </option>
+                                <option value="Ultrasonido abdominal                                            ">Ultrasonido abdominal                                            </option>
+                                <option value="Ultrasonido craneal/ultrasonido de la cabeza                     ">Ultrasonido craneal/ultrasonido de la cabeza                     </option>
+                                <option value="Ultrasonido de cadera                                            ">Ultrasonido de cadera                                            </option>
+                                <option value="Ultrasonido de la tiroides                                       ">Ultrasonido de la tiroides                                       </option>
+                                <option value="Ultrasonido intravascular                                        ">Ultrasonido intravascular                                        </option>
+                                <option value="Ultrasonido musculoesquelético                                   ">Ultrasonido musculoesquelético                                   </option>
+                                <option value="Ultrasonido pélvico                                              ">Ultrasonido pélvico                                              </option>
+                                <option value="Ultrasonido vascular                                             ">Ultrasonido vascular                                             </option>
+                                <option value="Ultrasonido venoso (extremidades)                                ">Ultrasonido venoso (extremidades)                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Hora</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miercoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">8:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(161)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(193)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(225)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(257)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(289)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">8:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(162)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(194)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(226)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(258)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(290)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">8:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(163)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(195)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(227)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(259)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(291)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">8:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(164)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(196)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(228)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(260)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(292)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">9:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(165)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(197)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(229)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(261)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(293)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">9:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(166)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(198)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(230)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(262)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(294)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">9:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(167)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(199)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(231)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(263)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(295)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">9:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(168)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(200)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(232)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(264)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(296)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">10:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(169)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(201)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(233)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(265)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(297)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">10:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(170)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(202)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(234)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(266)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(298)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">10:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(171)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(203)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(235)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(267)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(299)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">10:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(172)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(204)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(236)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(268)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(300)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">11:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(173)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(205)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(237)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(269)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(301)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">11:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(174)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(206)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(238)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(270)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(302)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">11:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(175)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(207)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(239)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(271)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(303)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">11:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(176)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(208)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(240)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(272)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(304)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">13:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(177)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(209)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(241)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(273)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(305)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">13:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(178)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(210)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(242)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(274)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(306)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">13:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(179)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(211)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(243)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(275)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(307)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">13:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(180)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(212)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(244)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(276)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(308)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">14:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(181)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(213)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(245)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(277)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(309)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">14:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(182)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(214)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(246)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(278)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(310)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">14:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(183)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(215)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(247)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(279)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(311)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">14:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(184)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(216)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(248)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(280)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(312)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">15:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(185)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(217)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(249)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(281)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(313)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">15:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(186)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(218)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(250)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(282)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(314)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">15:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(187)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(219)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(251)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(283)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(315)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">15:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(188)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(220)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(252)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(284)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(316)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">16:00</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(189)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(221)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(253)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(285)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(317)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">16:15</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(190)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(222)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(254)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(286)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(318)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">16:30</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(191)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(223)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(255)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(287)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(319)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tableDataNoSpaceTime">16:45</td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(192)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(224)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(256)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(288)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(320)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">Dia</span>
+                                <input id="diaEntrada" type="text" class="form-control"/>
+                            </div>  
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">CSV</span>
+                                <input type="text" class="form-control" />
+                            </div>  
+                        </div>
+                        <hr/>
+                        <div class="spacedRow">
+                            <a class="btn btn-primary" href="pacienteBody.xhtml">Pagar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </body>
+
+</html>

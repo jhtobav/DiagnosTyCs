@@ -5,25 +5,12 @@
  */
 package Vista;
 
-import Business.LoginBiz;
 import Business.SolicitarCitaBiz;
-import DTO.LoginDTO;
-import Entidades.Administrador;
 import Entidades.Agenda;
-import Entidades.Doctor;
-import Entidades.Gerente;
-import Entidades.Medico;
-import Entidades.Paciente;
-import Entidades.Persona;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -50,6 +37,16 @@ public class SolicitarCitaBean {
 
     public void setTablaAgendas(List<Agenda> tablaAgendas) {
         this.tablaAgendas = tablaAgendas;
+    }
+    
+    public String obtenerEstado(int indice){
+        
+        if(tablaAgendas.get(indice).getDisponible()){
+            return "button";
+        } else {
+            return "hidden";
+        }
+        
     }
     
     public String solicitarCita(){
