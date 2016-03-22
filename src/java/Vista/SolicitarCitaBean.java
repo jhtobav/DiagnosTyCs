@@ -8,6 +8,7 @@ package Vista;
 import Business.SolicitarCitaBiz;
 import DTO.ExamenDTO;
 import Entidades.Agenda;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,7 @@ public class SolicitarCitaBean {
     private String examenLaboratorio;
     private String imagenDiagnostica;
     private int numCelda;
+    private Date fecha;
 
     @PostConstruct
     public void init() {
@@ -66,6 +68,14 @@ public class SolicitarCitaBean {
     public void setNumCelda(int numCelda) {
         this.numCelda = numCelda;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
     
     public String obtenerEstado(int indice){
         
@@ -90,7 +100,8 @@ public class SolicitarCitaBean {
                 System.out.println("- " + imagenDiagnostica.trim().trim() + " -");
                 System.out.println("- " + examen.getDescripcion().trim().trim() + " -");
                 
-                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1));
+                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1),fecha);
+                
                 break;
             }
         }

@@ -34,11 +34,12 @@ public class SolicitarCitaBiz {
        
    }
    
-   public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda){
+   public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha){
                     
        CitaDAO citaDAO = new CitaDAO();
        ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
        ReactivoDAO reactivoDAO = new ReactivoDAO();
+       AgendaDAO agendaDAO = new AgendaDAO();
        
        Doctor doctor = agenda.getDoctordoctorID();
        Medico medico = agenda.getMedicomedicoID();
@@ -55,7 +56,7 @@ public class SolicitarCitaBiz {
        cita.setLaboratorioCollection(laboratorios);
        cita.setPacientepacienteID(LoginBean.getPaciente());
        cita.setImagenDiagnosticaCollection(imagenes);
-       cita.setFecha(new Date());
+       cita.setFecha(fecha);
        cita.setValor(0);
        citaDAO.createCita(cita);
        
@@ -71,6 +72,8 @@ public class SolicitarCitaBiz {
        imagenes.add(imagen);
        cita.setImagenDiagnosticaCollection(imagenes);
        citaDAO.updateCita(cita);
+       
+       agendaDAO.updateAgenda(agenda);
        
        return "exito";
        
