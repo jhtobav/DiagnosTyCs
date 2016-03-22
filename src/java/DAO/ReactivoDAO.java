@@ -24,6 +24,20 @@ public class ReactivoDAO {
     
     EntityManagerFactory emf = LoginBean.getEmf();    
     
+    public Reactivo searchByIdReactivo(Long idReactivo) {
+        EntityManager em = emf.createEntityManager();
+        Reactivo reactivo = null;
+        try {
+            reactivo = em.find(Reactivo.class
+                    , idReactivo);
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return reactivo;
+        }
+      
+    }
+    
     public void inicializarReactivos() {
                 
         EntityManager em;

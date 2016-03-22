@@ -24,6 +24,7 @@ public class SolicitarCitaBean {
     private List<Agenda> tablaAgendas;
     private String examenLaboratorio;
     private String imagenDiagnostica;
+    private int numCelda;
 
     @PostConstruct
     public void init() {
@@ -57,6 +58,14 @@ public class SolicitarCitaBean {
     public void setImagenDiagnostica(String imagenDiagnostica) {
         this.imagenDiagnostica = imagenDiagnostica;
     }
+
+    public int getNumCelda() {
+        return numCelda;
+    }
+
+    public void setNumCelda(int numCelda) {
+        this.numCelda = numCelda;
+    }
     
     public String obtenerEstado(int indice){
         
@@ -69,23 +78,20 @@ public class SolicitarCitaBean {
     }
     
     public String solicitarCitaImagen(){
-                
-        System.out.println("hola");
-        System.out.println("a " + imagenDiagnostica + " b");
         
         SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
         
         List<ExamenDTO> imagenes = solicitarCitaBiz.cargarImagenes();
         
         for (ExamenDTO examen : imagenes){
-            if(examen.getDescripcion().equals(imagenDiagnostica)){
+            if(examen.getDescripcion().trim().trim()
+                    .equals(imagenDiagnostica.trim().trim())){
                 System.out.println("exito");
-                System.out.println("- " + imagenDiagnostica + " -");
-                System.out.println("- " + examen.getDescripcion() + " -");
-            }else{
-                System.out.println("fracaso");
-                System.out.println("- " + imagenDiagnostica + " -");
-                System.out.println("- " + examen.getDescripcion() + " -");                
+                System.out.println("- " + imagenDiagnostica.trim().trim() + " -");
+                System.out.println("- " + examen.getDescripcion().trim().trim() + " -");
+                
+                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1));
+                break;
             }
         }
         

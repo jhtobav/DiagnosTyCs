@@ -5,9 +5,19 @@
 package Business;
 
 import DAO.AgendaDAO;
+import DAO.CitaDAO;
+import DAO.ImagenDiagnosticaDAO;
+import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
 import Entidades.Agenda;
+import Entidades.Cita;
+import Entidades.Doctor;
+import Entidades.ImagenDiagnostica;
+import Entidades.Laboratorio;
+import Entidades.Medico;
+import Vista.LoginBean;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +31,48 @@ public class SolicitarCitaBiz {
        AgendaDAO agendaDAO = new AgendaDAO();
        
        return agendaDAO.getListAgenda();
+       
+   }
+   
+   public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda){
+                    
+       CitaDAO citaDAO = new CitaDAO();
+       ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
+       ReactivoDAO reactivoDAO = new ReactivoDAO();
+       
+       Doctor doctor = agenda.getDoctordoctorID();
+       Medico medico = agenda.getMedicomedicoID();
+       
+       List<Doctor> doctores = new ArrayList<>();
+       doctores.add(doctor);
+       
+       List<Laboratorio> laboratorios = new ArrayList<>();
+       List<ImagenDiagnostica> imagenes = new ArrayList<>();
+       
+       Cita cita = new Cita();
+       cita.setDoctorCollection(doctores);
+       cita.setMedicomedicoID(medico);
+       cita.setLaboratorioCollection(laboratorios);
+       cita.setPacientepacienteID(LoginBean.getPaciente());
+       cita.setImagenDiagnosticaCollection(imagenes);
+       cita.setFecha(new Date());
+       cita.setValor(0);
+       citaDAO.createCita(cita);
+       
+       ImagenDiagnostica imagen = new ImagenDiagnostica();
+       imagen.setDescripcion(examenDTO.getDescripcion());
+       imagen.setNombre(examenDTO.getNombre());
+       imagen.setReactivoreactivoID(reactivoDAO.searchByIdReactivo(examenDTO.getIdReactivo()));
+       imagen.setValor(0);
+       imagen.setRutaImagen("");
+       imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
+       imagenDiagnosticaDAO.createImagenDiagnostica(imagen);
+       
+       imagenes.add(imagen);
+       cita.setImagenDiagnosticaCollection(imagenes);
+       citaDAO.updateCita(cita);
+       
+       return "exito";
        
    }
    

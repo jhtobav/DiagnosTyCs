@@ -5,12 +5,11 @@
  */
 package DAO;
 
+import Entidades.Cita;
 import Entidades.Doctor;
 import Vista.LoginBean;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 /**
  *
@@ -20,17 +19,39 @@ public class CitaDAO {
     
     EntityManagerFactory emf = LoginBean.getEmf();
     
-    public Doctor searchByIdDoctor(Long idDoctor) {
+    public Cita createCita(Cita cita) {
+        
         EntityManager em = emf.createEntityManager();
-        Doctor doctor = null;
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(cita);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return cita;
+        }
+
+    }
+    
+    public Cita updateCita(Cita cita){
+        
+        Cita nuevaCita = new Cita();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
         try {
-            doctor = em.find(Doctor.class
-                    , idDoctor);
+            nuevaCita = em.merge(em.find(Cita.class, cita.getCitaID()));
+            nuevaCita.setImagenDiagnosticaCollection(cita.getImagenDiagnosticaCollection());
+            em.getTransaction().commit();
         } catch (Exception e){
+            em.getTransaction().rollback();
         } finally {
             em.close();
-            return doctor;
+            return nuevaCita;
         }
-      
+        
     }
+    
 }

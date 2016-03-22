@@ -5,7 +5,6 @@ import Entidades.Persona;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
