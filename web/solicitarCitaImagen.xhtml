@@ -447,6 +447,7 @@
                                 <span class="input-group-addon">Dia</span>
                                 <input id="diaEntrada" type="text" class="form-control"/>
                                 <h:inputHidden id="idAgenda" value="#{solicitarCitaBean.numCelda}" />
+                                <h:inputHidden id="fechaCita" value="#{solicitarCitaBean.fecha}"/>                            
                             </div>  
                         </div>
                         <div class="col-md-6">
@@ -457,7 +458,7 @@
                         </div>
                         <hr/>
                         <div class="spacedRow">
-                            <h:commandButton class="btn btn-primary" value="Pagar" action="#{solicitarCitaBean.solicitarCitaImagen()}"/>
+                            <h:commandButton class="btn btn-primary" value="Pagar" type="submit" action="#{solicitarCitaBean.solicitarCitaImagen()}"/>
                         </div>
                     </div>
                 </div>

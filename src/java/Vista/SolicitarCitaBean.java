@@ -88,11 +88,13 @@ public class SolicitarCitaBean {
     }
     
     public String solicitarCitaImagen(){
-        
+        System.out.println(fecha);
+        System.out.println(imagenDiagnostica.trim().trim());
         SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
         
         List<ExamenDTO> imagenes = solicitarCitaBiz.cargarImagenes();
-        
+        System.out.println(fecha);
+        System.out.println(imagenDiagnostica.trim().trim());
         for (ExamenDTO examen : imagenes){
             if(examen.getDescripcion().trim().trim()
                     .equals(imagenDiagnostica.trim().trim())){
@@ -110,7 +112,8 @@ public class SolicitarCitaBean {
     }
     
     public String solicitarCitaLaboratorio(){
-                
+                System.out.println(fecha);
+        System.out.println(imagenDiagnostica.trim().trim());
         System.out.println("chiao");
         System.out.println(examenLaboratorio);
         
