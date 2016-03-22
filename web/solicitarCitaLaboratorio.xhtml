@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <title>DiagnosTycs</title>
         <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
@@ -12,423 +16,425 @@
         <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
-    </head>
-    <body onload="builder()">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div  class="panel">
-                    <div class="row spacedRow">
-                        <div class="col-md-6">
-                            <select title="Procedimiento" class="selectpicker" id="procedimiento">
-                                <option value="Cuadro Hematico">Cuadro Hematico</option>
-                                <option value="Frotis de Sangre Periferico">Frotis de Sangre Periferico</option>
-                                <option value="Perfil hipidico">Perfil hipidico</option>
-                                <option value="Perfil hepatico">Perfil hepatico</option>
-                                <option value="Perfil Renal">Perfil Renal</option>
-                                <option value="Coprologico">Coprologico</option>
-                                <option value="Frotis de flujo vaginal">Frotis de flujo vaginal</option>
-                                <option value="Orinas Fisico-Quimico">Orinas Fisico-Quimico</option>
-                                <option value="Orinas Sedimento">Orinas Sedimento</option>
-                                <option value="Reticulocitos">Reticulocitos</option>
-                                <option value="Velocidad de Sedimientación Globular">Velocidad de Sedimientación Globular</option>
-                                <option value="Eocinofilos en moco nasal">Eocinofilos en moco nasal</option>
-                                <option value="Gota Gruesa">Gota Gruesa</option>
-                                <option value="Prueba rapida para malaria">Prueba rapida para malaria</option>
-                                <option value="Prueba rapida para dengue">Prueba rapida para dengue</option>
-                                <option value="Acido urico">Acido urico</option>
-                                <option value="Microalbuminuria">Microalbuminuria</option>
-                                <option value="Hemoglobina glicosilada">Hemoglobina glicosilada</option>
-                                <option value="CPK">CPK</option>
-                                <option value="CPKMB">CPKMB</option>
-                                <option value="Colinesterasa">Colinesterasa</option>
-                                <option value="Sangre oculta en heces">Sangre oculta en heces</option>
-                                <option value="Frotis uretral">Frotis uretral</option>
-                                <option value="Frotis de Leishmania">Frotis de Leishmania</option>
-                                <option value="Urocultivo">Urocultivo</option>
-                                <option value="Hemocultivo">Hemocultivo</option>
-                                <option value="Cultivo para germenes comunes">Cultivo para germenes comunes</option>
-                                <option value="Antibiograma">Antibiograma</option>
-                                <option value="Gram de orina">Gram de orina</option>
-                                <option value="Cultivo de anaerobios">Cultivo de anaerobios</option>
-                                <option value="Coprocultivo">Coprocultivo</option>
-                                <option value="KOH">KOH</option>
-                                <option value="Frotis faringeo">Frotis faringeo</option>
-                                <option value="Cultivo de secreciones">Cultivo de secreciones</option>
-                                <option value="Cultivo de liquido cefaloraquideo">Cultivo de liquido cefaloraquideo</option>
-                                <option value="Serologia">Serologia</option>
-                                <option value="Hemoclasificacion">Hemoclasificacion</option>
-                                <option value="HBSAG">HBSAG</option>
-                                <option value="Prueba rapida VIH">Prueba rapida VIH</option>
-                                <option value="Factor Rematoideo">Factor Rematoideo</option>
-                                <option value="Proteina Creativa">Proteina Creativa</option>
-                                <option value="Antiestreptolisina">Antiestreptolisina</option>
-                                <option value="Prueba de embarazo">Prueba de embarazo</option>
-                                <option value="Prueba rapida Hepatitis C">Prueba rapida Hepatitis C</option>
-                                <option value="Antigenos febriles">Antigenos febriles</option>
-                                <option value="Protrombina Time">Protrombina Time</option>
-                                <option value="Tiempo parcial de tromboplastina">Tiempo parcial de tromboplastina</option>
-                                <option value="Indice PT">Indice PT</option>
-                                <option value="Acido Valproico">Acido Valproico</option>
-                                <option value="Inmunoglobulina IgA">Inmunoglobulina IgA</option>
-                                <option value="Factor reumatoideo de altaprecision">Factor reumatoideo de altaprecision</option>
-                                <option value="Proteina Creativa de alta precision">Proteina Creativa de alta precision</option>
-                                <option value="Hierro total">Hierro total</option>
-                                <option value="Gama glutamil transferasa">Gama glutamil transferasa</option>
-                                <option value="Inmunoglobulina IgG">Inmunoglobulina IgG</option>
-                                <option value="Inmunoglobulina IgM">Inmunoglobulina IgM</option>
-                                <option value="Deshidrogenasa lactica">Deshidrogenasa lactica</option>
-                                <option value="Fosforo">Fosforo</option>
-                                <option value="Magnesio en suero">Magnesio en suero</option>
-                                <option value="TSH">TSH</option>
-                                <option value="Hormona foliculo estimulante">Hormona foliculo estimulante</option>
-                                <option value="Hormona luteinizante basal">Hormona luteinizante basal</option>
-                                <option value="PSA total">PSA total</option>
-                                <option value="Gonadotropina coorionica humana">Gonadotropina coorionica humana</option>
-                                <option value="Toxoplasma IgG">Toxoplasma IgG</option>
-                                <option value="Toxoplasma IgE">Toxoplasma IgE</option>
-                                <option value="Inmunoglobulina IgE">Inmunoglobulina IgE</option>
-                                <option value="Estradiol">Estradiol</option>
-                                <option value="Prolactina">Prolactina</option>
-                                <option value="Prolactina 1H">Prolactina 1H</option>
-                                <option value="Prolactina 2H">Prolactina 2H</option>
-                                <option value="Pool de prolactina">Pool de prolactina</option>
-                                <option value="PSA total cualitativo">PSA total cualitativo</option>
-                                <option value="Insulina">Insulina</option>
-                                <option value="HIV Cuarta generacion">HIV Cuarta generacion</option>
-                                <option value="T3 total">T3 total</option>
-                                <option value="T4 total">T4 total</option>
-                                <option value="Tiroxina libre">Tiroxina libre</option>
-                                <option value="Triyodotronina libre">Triyodotronina libre</option>
-                                <option value="PSA libre">PSA libre</option>
-                                <option value="Anti TPO">Anti TPO</option>
-                                <option value="HIV Combi PT">HIV Combi PT</option>
-                                <option value="Rubeola IgG">Rubeola IgG</option>
-                                <option value="Vitamina D">Vitamina D</option>
-                                <option value="Vitamina B12">Vitamina B12</option>
-                                <option value="Antig especifico de prostata frac libre">Antig especifico de prostata frac libre</option>
-                                <option value="Testosterona libre">Testosterona libre</option>
-                                <option value="Rubeola IgM">Rubeola IgM</option>
-                                <option value="PTH Paratormona">PTH Paratormona</option>
-                                <option value="Progesterona">Progesterona</option>
-                                <option value="Acido folico">Acido folico</option>
-                                <option value="Alfafetoproteinas">Alfafetoproteinas</option>
-                                <option value="Antigeno CA125">Antigeno CA125</option>
-                                <option value="Antigeno carcinoembrionario">Antigeno carcinoembrionario</option>
-                                <option value="Citomegalovirus IgG">Citomegalovirus IgG</option>
-                                <option value="Citomegalovirus IgM">Citomegalovirus IgM</option>
-                                <option value="Hormona de crecimiento">Hormona de crecimiento</option>
-                                <option value="Ferritina">Ferritina</option>
-                                <option value="Cortisol AM">Cortisol AM</option>
-                                <option value="Cortisol PM">Cortisol PM</option>
-                                <option value="Cortisol en orina">Cortisol en orina</option>
-                                <option value="Toxoplasma IgG aviles">Toxoplasma IgG aviles</option>
-                                <option value="Sodio en suero">Sodio en suero</option>
-                                <option value="Sodio en orina">Sodio en orina</option>
-                                <option value="Potasio en suero">Potasio en suero</option>
-                                <option value="Potasio en orina">Potasio en orina</option>
-                                <option value="Cloro en suero">Cloro en suero</option>
-                                <option value="Cloro en orina">Cloro en orina</option>
-                                <option value="Calcio en suero">Calcio en suero</option>
-                                <option value="Calcio en orina">Calcio en orina</option>
-                            </select>
+    </h:head>
+    <h:body onload="builder()">
+        <h:form id="form">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div  class="panel">
+                        <div class="row spacedRow">
+                            <div class="col-md-6"> 
+                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="" title="Procedimiento">
+                                    <f:selectItem itemValue="Cuadro Hematico" itemLabel="Cuadro Hematico" />
+                                    <f:selectItem itemValue="Frotis de Sangre Periferico" itemLabel="Frotis de Sangre Periferico" />
+                                    <f:selectItem itemValue="Perfil hipidico" itemLabel="Perfil hipidico" />
+                                    <f:selectItem itemValue="Perfil hepatico" itemLabel="Perfil hepatico" />
+                                    <f:selectItem itemValue="Perfil Renal" itemLabel="Perfil Renal" />
+                                    <f:selectItem itemValue="Coprologico" itemLabel="Coprologico" />
+                                    <f:selectItem itemValue="Frotis de flujo vaginal" itemLabel="Frotis de flujo vaginal" />
+                                    <f:selectItem itemValue="Orinas Fisico-Quimico" itemLabel="Orinas Fisico-Quimico" />
+                                    <f:selectItem itemValue="Orinas Sedimento" itemLabel="Orinas Sedimento" />
+                                    <f:selectItem itemValue="Reticulocitos" itemLabel="Reticulocitos" />
+                                    <f:selectItem itemValue="Velocidad de Sedimientación Globular" itemLabel="Velocidad de Sedimientación Globular" />
+                                    <f:selectItem itemValue="Eocinofilos en moco nasal" itemLabel="Eocinofilos en moco nasal" />
+                                    <f:selectItem itemValue="Gota Gruesa" itemLabel="Gota Gruesa" />
+                                    <f:selectItem itemValue="Prueba rapida para malaria" itemLabel="Prueba rapida para malaria" />
+                                    <f:selectItem itemValue="Prueba rapida para dengue" itemLabel="Prueba rapida para dengue" />
+                                    <f:selectItem itemValue="Acido urico" itemLabel="Acido urico" />
+                                    <f:selectItem itemValue="Microalbuminuria" itemLabel="Microalbuminuria" />
+                                    <f:selectItem itemValue="Hemoglobina glicosilada" itemLabel="Hemoglobina glicosilada" />
+                                    <f:selectItem itemValue="CPK" itemLabel="CPK" />
+                                    <f:selectItem itemValue="CPKMB" itemLabel="CPKMB" />
+                                    <f:selectItem itemValue="Colinesterasa" itemLabel="Colinesterasa" />
+                                    <f:selectItem itemValue="Sangre oculta en heces" itemLabel="Sangre oculta en heces" />
+                                    <f:selectItem itemValue="Frotis uretral" itemLabel="Frotis uretral" />
+                                    <f:selectItem itemValue="Frotis de Leishmania" itemLabel="Frotis de Leishmania" />
+                                    <f:selectItem itemValue="Urocultivo" itemLabel="Urocultivo" />
+                                    <f:selectItem itemValue="Hemocultivo" itemLabel="Hemocultivo" />
+                                    <f:selectItem itemValue="Cultivo para germenes comunes" itemLabel="Cultivo para germenes comunes" />
+                                    <f:selectItem itemValue="Antibiograma" itemLabel="Antibiograma" />
+                                    <f:selectItem itemValue="Gram de orina" itemLabel="Gram de orina" />
+                                    <f:selectItem itemValue="Cultivo de anaerobios" itemLabel="Cultivo de anaerobios" />
+                                    <f:selectItem itemValue="Coprocultivo" itemLabel="Coprocultivo" />
+                                    <f:selectItem itemValue="KOH" itemLabel="KOH" />
+                                    <f:selectItem itemValue="Frotis faringeo" itemLabel="Frotis faringeo" />
+                                    <f:selectItem itemValue="Cultivo de secreciones" itemLabel="Cultivo de secreciones" />
+                                    <f:selectItem itemValue="Cultivo de liquido cefaloraquideo" itemLabel="Cultivo de liquido cefaloraquideo" />
+                                    <f:selectItem itemValue="Serologia" itemLabel="Serologia" />
+                                    <f:selectItem itemValue="Hemoclasificacion" itemLabel="Hemoclasificacion" />
+                                    <f:selectItem itemValue="HBSAG" itemLabel="HBSAG" />
+                                    <f:selectItem itemValue="Prueba rapida VIH" itemLabel="Prueba rapida VIH" />
+                                    <f:selectItem itemValue="Factor Rematoideo" itemLabel="Factor Rematoideo" />
+                                    <f:selectItem itemValue="Proteina Creativa" itemLabel="Proteina Creativa" />
+                                    <f:selectItem itemValue="Antiestreptolisina" itemLabel="Antiestreptolisina" />
+                                    <f:selectItem itemValue="Prueba de embarazo" itemLabel="Prueba de embarazo" />
+                                    <f:selectItem itemValue="Prueba rapida Hepatitis C" itemLabel="Prueba rapida Hepatitis C" />
+                                    <f:selectItem itemValue="Antigenos febriles" itemLabel="Antigenos febriles" />
+                                    <f:selectItem itemValue="Protrombina Time" itemLabel="Protrombina Time" />
+                                    <f:selectItem itemValue="Tiempo parcial de tromboplastina" itemLabel="Tiempo parcial de tromboplastina" />
+                                    <f:selectItem itemValue="Indice PT" itemLabel="Indice PT" />
+                                    <f:selectItem itemValue="Acido Valproico" itemLabel="Acido Valproico" />
+                                    <f:selectItem itemValue="Inmunoglobulina IgA" itemLabel="Inmunoglobulina IgA" />
+                                    <f:selectItem itemValue="Factor reumatoideo de altaprecision" itemLabel="Factor reumatoideo de altaprecision" />
+                                    <f:selectItem itemValue="Proteina Creativa de alta precision" itemLabel="Proteina Creativa de alta precision" />
+                                    <f:selectItem itemValue="Hierro total" itemLabel="Hierro total" />
+                                    <f:selectItem itemValue="Gama glutamil transferasa" itemLabel="Gama glutamil transferasa" />
+                                    <f:selectItem itemValue="Inmunoglobulina IgG" itemLabel="Inmunoglobulina IgG" />
+                                    <f:selectItem itemValue="Inmunoglobulina IgM" itemLabel="Inmunoglobulina IgM" />
+                                    <f:selectItem itemValue="Deshidrogenasa lactica" itemLabel="Deshidrogenasa lactica" />
+                                    <f:selectItem itemValue="Fosforo" itemLabel="Fosforo" />
+                                    <f:selectItem itemValue="Magnesio en suero" itemLabel="Magnesio en suero" />
+                                    <f:selectItem itemValue="TSH" itemLabel="TSH" />
+                                    <f:selectItem itemValue="Hormona foliculo estimulante" itemLabel="Hormona foliculo estimulante" />
+                                    <f:selectItem itemValue="Hormona luteinizante basal" itemLabel="Hormona luteinizante basal" />
+                                    <f:selectItem itemValue="PSA total" itemLabel="PSA total" />
+                                    <f:selectItem itemValue="Gonadotropina coorionica humana" itemLabel="Gonadotropina coorionica humana" />
+                                    <f:selectItem itemValue="Toxoplasma IgG" itemLabel="Toxoplasma IgG" />
+                                    <f:selectItem itemValue="Toxoplasma IgE" itemLabel="Toxoplasma IgE" />
+                                    <f:selectItem itemValue="Inmunoglobulina IgE" itemLabel="Inmunoglobulina IgE" />
+                                    <f:selectItem itemValue="Estradiol" itemLabel="Estradiol" />
+                                    <f:selectItem itemValue="Prolactina" itemLabel="Prolactina" />
+                                    <f:selectItem itemValue="Prolactina 1H" itemLabel="Prolactina 1H" />
+                                    <f:selectItem itemValue="Prolactina 2H" itemLabel="Prolactina 2H" />
+                                    <f:selectItem itemValue="Pool de prolactina" itemLabel="Pool de prolactina" />
+                                    <f:selectItem itemValue="PSA total cualitativo" itemLabel="PSA total cualitativo" />
+                                    <f:selectItem itemValue="Insulina" itemLabel="Insulina" />
+                                    <f:selectItem itemValue="HIV Cuarta generacion" itemLabel="HIV Cuarta generacion" />
+                                    <f:selectItem itemValue="T3 total" itemLabel="T3 total" />
+                                    <f:selectItem itemValue="T4 total" itemLabel="T4 total" />
+                                    <f:selectItem itemValue="Tiroxina libre" itemLabel="Tiroxina libre" />
+                                    <f:selectItem itemValue="Triyodotronina libre" itemLabel="Triyodotronina libre" />
+                                    <f:selectItem itemValue="PSA libre" itemLabel="PSA libre" />
+                                    <f:selectItem itemValue="Anti TPO" itemLabel="Anti TPO" />
+                                    <f:selectItem itemValue="HIV Combi PT" itemLabel="HIV Combi PT" />
+                                    <f:selectItem itemValue="Rubeola IgG" itemLabel="Rubeola IgG" />
+                                    <f:selectItem itemValue="Vitamina D" itemLabel="Vitamina D" />
+                                    <f:selectItem itemValue="Vitamina B12" itemLabel="Vitamina B12" />
+                                    <f:selectItem itemValue="Antig especifico de prostata frac libre" itemLabel="Antig especifico de prostata frac libre" />
+                                    <f:selectItem itemValue="Testosterona libre" itemLabel="Testosterona libre" />
+                                    <f:selectItem itemValue="Rubeola IgM" itemLabel="Rubeola IgM" />
+                                    <f:selectItem itemValue="PTH Paratormona" itemLabel="PTH Paratormona" />
+                                    <f:selectItem itemValue="Progesterona" itemLabel="Progesterona" />
+                                    <f:selectItem itemValue="Acido folico" itemLabel="Acido folico" />
+                                    <f:selectItem itemValue="Alfafetoproteinas" itemLabel="Alfafetoproteinas" />
+                                    <f:selectItem itemValue="Antigeno CA125" itemLabel="Antigeno CA125" />
+                                    <f:selectItem itemValue="Antigeno carcinoembrionario" itemLabel="Antigeno carcinoembrionario" />
+                                    <f:selectItem itemValue="Citomegalovirus IgG" itemLabel="Citomegalovirus IgG" />
+                                    <f:selectItem itemValue="Citomegalovirus IgM" itemLabel="Citomegalovirus IgM" />
+                                    <f:selectItem itemValue="Hormona de crecimiento" itemLabel="Hormona de crecimiento" />
+                                    <f:selectItem itemValue="Ferritina" itemLabel="Ferritina" />
+                                    <f:selectItem itemValue="Cortisol AM" itemLabel="Cortisol AM" />
+                                    <f:selectItem itemValue="Cortisol PM" itemLabel="Cortisol PM" />
+                                    <f:selectItem itemValue="Cortisol en orina" itemLabel="Cortisol en orina" />
+                                    <f:selectItem itemValue="Toxoplasma IgG aviles" itemLabel="Toxoplasma IgG aviles" />
+                                    <f:selectItem itemValue="Sodio en suero" itemLabel="Sodio en suero" />
+                                    <f:selectItem itemValue="Sodio en orina" itemLabel="Sodio en orina" />
+                                    <f:selectItem itemValue="Potasio en suero" itemLabel="Potasio en suero" />
+                                    <f:selectItem itemValue="Potasio en orina" itemLabel="Potasio en orina" />
+                                    <f:selectItem itemValue="Cloro en suero" itemLabel="Cloro en suero" />
+                                    <f:selectItem itemValue="Cloro en orina" itemLabel="Cloro en orina" />
+                                    <f:selectItem itemValue="Calcio en suero" itemLabel="Calcio en suero" />
+                                    <f:selectItem itemValue="Calcio en orina" itemLabel="Calcio en orina" />
+                                </h:selectOneMenu>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Hora</th>
-                                        <th>Lunes</th>
-                                        <th>Martes</th>
-                                        <th>Miercoles</th>
-                                        <th>Jueves</th>
-                                        <th>Viernes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(1)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(33)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(65)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(97)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(129)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(2)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(34)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(66)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(98)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(130)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(3)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(35)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(67)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(99)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(131)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(4)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(36)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(68)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(100)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(132)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(5)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(37)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(69)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(101)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(133)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(6)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(38)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(70)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(102)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(134)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(7)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(39)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(71)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(103)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(135)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(8)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(40)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(72)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(104)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(136)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(9)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(41)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(73)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(105)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(137)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(10)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(42)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(74)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(106)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(138)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(11)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(43)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(75)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(107)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(139)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(12)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(44)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(76)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(108)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(140)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(13)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(45)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(77)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(109)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(141)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(14)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(46)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(78)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(110)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(142)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(15)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(47)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(79)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(111)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(143)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(16)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(48)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(80)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(112)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(144)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(17)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(49)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(81)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(113)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(145)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(18)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(50)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(82)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(114)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(146)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(19)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(51)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(83)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(115)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(147)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(20)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(52)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(84)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(116)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(148)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(21)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(53)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(85)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(117)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(149)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(22)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(54)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(86)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(118)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(150)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(23)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(55)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(87)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(119)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(151)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(24)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(56)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(88)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(120)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(152)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(25)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(57)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(89)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(121)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(153)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(26)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(58)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(90)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(122)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(154)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(27)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(59)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(91)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(123)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(155)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(28)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(60)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(92)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(124)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(156)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(29)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(61)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(93)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(125)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(157)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(30)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(62)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(94)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(126)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(158)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(31)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(63)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(95)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(127)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(159)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(32)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(64)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(96)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(128)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(160)}" value=" " class="btn btn-success fullButton" onclick="getId(this)"/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Hora</th>
+                                            <th>Lunes</th>
+                                            <th>Martes</th>
+                                            <th>Miercoles</th>
+                                            <th>Jueves</th>
+                                            <th>Viernes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(1)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(33)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(65)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(97)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(129)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(2)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(34)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(66)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(98)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(130)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(3)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(35)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(67)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(99)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(131)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(4)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(36)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(68)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(100)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(132)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(5)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(37)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(69)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(101)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(133)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(6)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(38)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(70)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(102)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(134)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(7)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(39)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(71)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(103)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(135)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(8)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(40)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(72)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(104)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(136)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(9)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(41)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(73)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(105)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(137)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(10)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(42)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(74)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(106)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(138)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(11)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(43)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(75)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(107)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(139)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(12)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(44)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(76)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(108)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(140)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(13)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(45)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(77)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(109)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(141)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(14)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(46)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(78)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(110)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(142)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(15)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(47)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(79)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(111)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(143)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(16)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(48)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(80)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(112)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(144)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(17)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(49)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(81)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(113)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(145)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(18)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(50)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(82)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(114)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(146)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(19)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(51)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(83)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(115)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(147)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(20)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(52)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(84)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(116)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(148)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(21)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(53)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(85)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(117)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(149)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(22)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(54)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(86)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(118)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(150)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(23)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(55)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(87)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(119)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(151)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(24)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(56)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(88)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(120)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(152)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(25)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(57)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(89)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(121)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(153)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(26)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(58)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(90)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(122)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(154)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(27)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(59)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(91)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(123)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(155)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(28)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(60)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(92)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(124)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(156)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(29)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(61)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(93)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(125)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(157)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(30)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(62)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(94)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(126)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(158)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(31)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(63)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(95)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(127)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(159)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(32)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(64)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(96)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(128)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(160)}" value=" " class="btn btn-success fullButton" onclick="getIdLaboratorio(this)"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">Dia</span>
-                                <input id="diaEntrada" type="text" class="form-control"/>
-                            </div>  
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">CSV</span>
-                                <input type="text" class="form-control" />
-                            </div>  
-                        </div>
-                        <hr/>
-                        <div class="spacedRow">
-                            <a class="btn btn-primary" href="pacienteBody.xhtml">Pagar</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Dia</span>
+                                    <h:inputHidden id="idAgenda" value="#{solicitarCitaBean.numCelda}" />
+                                    <input id="diaEntrada" type="text" class="form-control"/>
+                                </div>  
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CSV</span>
+                                    <input type="text" class="form-control" />
+                                </div>  
+                            </div>
+                            <hr/>
+                            <div class="spacedRow">
+                                <h:commandButton class="btn btn-primary" value="Pagar" action="#{solicitarCitaBean.solicitarCitaLaboratorio()}"/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3"></div>
-    </body>
-
+            <div class="col-md-3"></div>
+        </h:form>
+    </h:body>
 </html>

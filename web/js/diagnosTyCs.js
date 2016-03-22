@@ -13,6 +13,28 @@ function builder(){
     $('.selectpicker').selectpicker('refresh');
 }
 
+function getIdLaboratorio(element){
+    console.log(element.parentNode.parentNode.rowIndex);
+    console.log(element.parentNode.cellIndex);
+    console.log(element.parentNode.cellIndex - 1);
+    console.log(element.parentNode.parentNode.rowIndex + ((element.parentNode.cellIndex-1)*32));
+    console.log(document);
+    console.log(document.getElementById("form:idAgenda"));
+    document.getElementById("form:idAgenda").value = element.parentNode.parentNode.rowIndex + ((element.parentNode.cellIndex-1)*32);
+    getId(element);
+}
+
+function getIdImagen(element){
+    console.log(element.parentNode.parentNode.rowIndex);
+    console.log(element.parentNode.cellIndex);
+    console.log(element.parentNode.cellIndex - 1);
+    console.log(element.parentNode.parentNode.rowIndex + ((element.parentNode.cellIndex-1)*32));
+        console.log(document);
+    console.log(document.getElementById("form:idAgenda"));
+    document.getElementById("form:idAgenda").value = element.parentNode.parentNode.rowIndex + ((element.parentNode.cellIndex-1)*32) + 160;
+    getId(element);
+}
+
 function  getId(element) {
     cleanSchedule();
     var diaEntrada = document.getElementById("diaEntrada");
