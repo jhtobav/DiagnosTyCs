@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -59,11 +57,6 @@ public class Reactivo implements Serializable {
     @NotNull
     @Column(name = "unidadesExistentes")
     private long unidadesExistentes;
-    @JoinColumn(name = "GastoReactivo_Reactivo_gastoID", referencedColumnName = "gastoID")
-    @ManyToOne(optional = false)
-    private Gasto gastoReactivoReactivogastoID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
-    private Collection<Alerta> alertaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
     private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
@@ -113,23 +106,6 @@ public class Reactivo implements Serializable {
 
     public void setUnidadesExistentes(long unidadesExistentes) {
         this.unidadesExistentes = unidadesExistentes;
-    }
-
-    public Gasto getGastoReactivoReactivogastoID() {
-        return gastoReactivoReactivogastoID;
-    }
-
-    public void setGastoReactivoReactivogastoID(Gasto gastoReactivoReactivogastoID) {
-        this.gastoReactivoReactivogastoID = gastoReactivoReactivogastoID;
-    }
-
-    @XmlTransient
-    public Collection<Alerta> getAlertaCollection() {
-        return alertaCollection;
-    }
-
-    public void setAlertaCollection(Collection<Alerta> alertaCollection) {
-        this.alertaCollection = alertaCollection;
     }
 
     @XmlTransient

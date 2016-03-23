@@ -6,7 +6,7 @@ package Business;
 
 import DAO.AgendaDAO;
 import DAO.CitaDAO;
-import DAO.ImagenDiagnosticaDAO;
+import DAO.PrecioDAO;
 import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
 import Entidades.Agenda;
@@ -15,6 +15,7 @@ import Entidades.Doctor;
 import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
 import Entidades.Medico;
+import Entidades.Reactivo;
 import Vista.LoginBean;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,9 +38,9 @@ public class SolicitarCitaBiz {
    public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha){
                     
        CitaDAO citaDAO = new CitaDAO();
-       ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
        ReactivoDAO reactivoDAO = new ReactivoDAO();
        AgendaDAO agendaDAO = new AgendaDAO();
+       PrecioDAO precioDAO = new PrecioDAO();
        
        Doctor doctor = agenda.getDoctordoctorID();
        Medico medico = agenda.getMedicomedicoID();
@@ -50,7 +51,7 @@ public class SolicitarCitaBiz {
        List<Laboratorio> laboratorios = new ArrayList<>();
        List<ImagenDiagnostica> imagenes = new ArrayList<>();
        
-       System.out.println("punto 1");
+       Reactivo reactivo = reactivoDAO.searchByIdReactivo(examenDTO.getIdReactivo());
       
        Cita cita = new Cita();
        cita.setDoctorCollection(doctores);
@@ -59,19 +60,14 @@ public class SolicitarCitaBiz {
        cita.setPacientepacienteID(LoginBean.getPaciente());
        cita.setImagenDiagnosticaCollection(imagenes);
        cita.setFecha(fecha);
-       cita.setValor(0l);
+       cita.setValor(precioDAO.searchPrecioExamen(2l));
        cita = citaDAO.createCita(cita);
-       
-       System.out.println(cita.getCitaID());
-       
-       System.out.println("punto 2");
        
        ImagenDiagnostica imagen = new ImagenDiagnostica();
        imagen.setDescripcion(examenDTO.getDescripcion());
        imagen.setNombre(examenDTO.getNombre());
-       imagen.setReactivoreactivoID(reactivoDAO.searchByIdReactivo(examenDTO.getIdReactivo()));
+       imagen.setReactivoreactivoID(reactivo);
        imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
-       imagen.setValor(0l);
        imagen.setRutaImagen("F:/");
        
        imagenes.add(imagen);

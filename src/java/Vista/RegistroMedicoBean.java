@@ -6,7 +6,6 @@
 package Vista;
 
 import Business.RegistroBiz;
-import DTO.MedicoDTO;
 import DTO.PersonaDTO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,7 +29,6 @@ public class RegistroMedicoBean {
     private String direccion;
     private String correo;
     private String mensaje;
-    private Long sueldo;
 
     public Long getNumDocMedico() {
         return numDocMedico;
@@ -46,14 +44,6 @@ public class RegistroMedicoBean {
 
     public void setNombreMedico(String nombreMedico) {
         this.nombreMedico = nombreMedico;
-    }
-
-    public Long getSueldo() {
-        return sueldo;
-    }
-
-    public void setSueldo(Long sueldo) {
-        this.sueldo = sueldo;
     }
     
     public String getContrasena() {
@@ -131,7 +121,6 @@ public class RegistroMedicoBean {
     public String registro(){
 
         PersonaDTO personaDTO = new PersonaDTO();
-        MedicoDTO medicoDTO = new MedicoDTO();
 
         nombreMedico = nombres + " " + apellidos;
 
@@ -142,11 +131,9 @@ public class RegistroMedicoBean {
         personaDTO.setTelefono(telefono);
         personaDTO.setDireccion(direccion);
         personaDTO.setCorreo(correo);
-        
-        medicoDTO.setSalario(sueldo);
 
         RegistroBiz registroBiz = new RegistroBiz();
-        mensaje = registroBiz.registroMedico(personaDTO, medicoDTO);
+        mensaje = registroBiz.registroMedico(personaDTO);
         
         LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
         LoginBean.setMensajeEmergenteTitulo("Medico Creado Exitosamente");

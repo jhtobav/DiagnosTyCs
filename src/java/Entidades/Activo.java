@@ -10,8 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Activo.findAll", query = "SELECT a FROM Activo a"),
     @NamedQuery(name = "Activo.findByActivoID", query = "SELECT a FROM Activo a WHERE a.activoID = :activoID"),
-    @NamedQuery(name = "Activo.findByDescripcion", query = "SELECT a FROM Activo a WHERE a.descripcion = :descripcion"),
+    @NamedQuery(name = "Activo.findByNombre", query = "SELECT a FROM Activo a WHERE a.nombre = :nombre"),
     @NamedQuery(name = "Activo.findByValor", query = "SELECT a FROM Activo a WHERE a.valor = :valor"),
     @NamedQuery(name = "Activo.findByUnidadesExistentes", query = "SELECT a FROM Activo a WHERE a.unidadesExistentes = :unidadesExistentes")})
 public class Activo implements Serializable {
@@ -43,8 +41,8 @@ public class Activo implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "nombre")
+    private String nombre;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valor")
@@ -53,9 +51,6 @@ public class Activo implements Serializable {
     @NotNull
     @Column(name = "unidadesExistentes")
     private long unidadesExistentes;
-    @JoinColumn(name = "GastoActivo_Activo_gastoID", referencedColumnName = "gastoID")
-    @ManyToOne(optional = false)
-    private Gasto gastoActivoActivogastoID;
 
     public Activo() {
     }
@@ -64,9 +59,9 @@ public class Activo implements Serializable {
         this.activoID = activoID;
     }
 
-    public Activo(Long activoID, String descripcion, long valor, long unidadesExistentes) {
+    public Activo(Long activoID, String nombre, long valor, long unidadesExistentes) {
         this.activoID = activoID;
-        this.descripcion = descripcion;
+        this.nombre = nombre;
         this.valor = valor;
         this.unidadesExistentes = unidadesExistentes;
     }
@@ -79,12 +74,12 @@ public class Activo implements Serializable {
         this.activoID = activoID;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public long getValor() {
@@ -101,14 +96,6 @@ public class Activo implements Serializable {
 
     public void setUnidadesExistentes(long unidadesExistentes) {
         this.unidadesExistentes = unidadesExistentes;
-    }
-
-    public Gasto getGastoActivoActivogastoID() {
-        return gastoActivoActivogastoID;
-    }
-
-    public void setGastoActivoActivogastoID(Gasto gastoActivoActivogastoID) {
-        this.gastoActivoActivogastoID = gastoActivoActivogastoID;
     }
 
     @Override

@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,8 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Medico.findAll", query = "SELECT m FROM Medico m"),
     @NamedQuery(name = "Medico.findByMedicoID", query = "SELECT m FROM Medico m WHERE m.medicoID = :medicoID"),
-    @NamedQuery(name = "Medico.findByEstado", query = "SELECT m FROM Medico m WHERE m.estado = :estado"),
-    @NamedQuery(name = "Medico.findBySalario", query = "SELECT m FROM Medico m WHERE m.salario = :salario")})
+    @NamedQuery(name = "Medico.findByEstado", query = "SELECT m FROM Medico m WHERE m.estado = :estado")})
 public class Medico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,10 +48,6 @@ public class Medico implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "estado")
     private String estado;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "salario")
-    private long salario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicomedicoID")
     private Collection<Agenda> agendaCollection;
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
@@ -67,10 +63,9 @@ public class Medico implements Serializable {
         this.medicoID = medicoID;
     }
 
-    public Medico(Long medicoID, String estado, long salario) {
+    public Medico(Long medicoID, String estado) {
         this.medicoID = medicoID;
         this.estado = estado;
-        this.salario = salario;
     }
 
     public Long getMedicoID() {
@@ -87,14 +82,6 @@ public class Medico implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public long getSalario() {
-        return salario;
-    }
-
-    public void setSalario(long salario) {
-        this.salario = salario;
     }
 
     @XmlTransient

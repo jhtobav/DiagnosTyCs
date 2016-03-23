@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ImagenDiagnostica.findByImagenDiagnosticaID", query = "SELECT i FROM ImagenDiagnostica i WHERE i.imagenDiagnosticaID = :imagenDiagnosticaID"),
     @NamedQuery(name = "ImagenDiagnostica.findByNombre", query = "SELECT i FROM ImagenDiagnostica i WHERE i.nombre = :nombre"),
     @NamedQuery(name = "ImagenDiagnostica.findByDescripcion", query = "SELECT i FROM ImagenDiagnostica i WHERE i.descripcion = :descripcion"),
-    @NamedQuery(name = "ImagenDiagnostica.findByRutaImagen", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaImagen = :rutaImagen"),
-    @NamedQuery(name = "ImagenDiagnostica.findByValor", query = "SELECT i FROM ImagenDiagnostica i WHERE i.valor = :valor")})
+    @NamedQuery(name = "ImagenDiagnostica.findByRutaImagen", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaImagen = :rutaImagen")})
 public class ImagenDiagnostica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,12 +58,8 @@ public class ImagenDiagnostica implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "rutaImagen")
     private String rutaImagen;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "valor")
-    private long valor;
     @JoinColumn(name = "CitaImagenDiagnostica_ImagenDiagnostica_citaID", referencedColumnName = "citaID")
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = false)
     private Cita citaImagenDiagnosticaImagenDiagnosticacitaID;
     @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
     @OneToOne(optional = false)
@@ -77,12 +72,11 @@ public class ImagenDiagnostica implements Serializable {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
     }
 
-    public ImagenDiagnostica(Long imagenDiagnosticaID, String nombre, String descripcion, String rutaImagen, long valor) {
+    public ImagenDiagnostica(Long imagenDiagnosticaID, String nombre, String descripcion, String rutaImagen) {
         this.imagenDiagnosticaID = imagenDiagnosticaID;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.rutaImagen = rutaImagen;
-        this.valor = valor;
     }
 
     public Long getImagenDiagnosticaID() {
@@ -115,14 +109,6 @@ public class ImagenDiagnostica implements Serializable {
 
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
-    }
-
-    public long getValor() {
-        return valor;
-    }
-
-    public void setValor(long valor) {
-        this.valor = valor;
     }
 
     public Cita getCitaImagenDiagnosticaImagenDiagnosticacitaID() {

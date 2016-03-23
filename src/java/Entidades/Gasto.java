@@ -6,22 +6,21 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,24 +32,47 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Gasto.findAll", query = "SELECT g FROM Gasto g"),
     @NamedQuery(name = "Gasto.findByGastoID", query = "SELECT g FROM Gasto g WHERE g.gastoID = :gastoID"),
-    @NamedQuery(name = "Gasto.findByFecha", query = "SELECT g FROM Gasto g WHERE g.fecha = :fecha")})
+    @NamedQuery(name = "Gasto.findByFecha", query = "SELECT g FROM Gasto g WHERE g.fecha = :fecha"),
+    @NamedQuery(name = "Gasto.findByDescripcion", query = "SELECT g FROM Gasto g WHERE g.descripcion = :descripcion"),
+    @NamedQuery(name = "Gasto.findByTipo", query = "SELECT g FROM Gasto g WHERE g.tipo = :tipo"),
+    @NamedQuery(name = "Gasto.findByCantidad", query = "SELECT g FROM Gasto g WHERE g.cantidad = :cantidad"),
+    @NamedQuery(name = "Gasto.findByCosto", query = "SELECT g FROM Gasto g WHERE g.costo = :costo"),
+    @NamedQuery(name = "Gasto.findByValorUnidad", query = "SELECT g FROM Gasto g WHERE g.valorUnidad = :valorUnidad")})
 public class Gasto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "gastoID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long gastoID;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoActivoActivogastoID")
-    private Collection<Activo> activoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gastoReactivoReactivogastoID")
-    private Collection<Reactivo> reactivoCollection;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "tipo")
+    private String tipo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cantidad")
+    private int cantidad;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "costo")
+    private long costo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "valorUnidad")
+    private long valorUnidad;
 
     public Gasto() {
     }
@@ -59,9 +81,14 @@ public class Gasto implements Serializable {
         this.gastoID = gastoID;
     }
 
-    public Gasto(Long gastoID, Date fecha) {
+    public Gasto(Long gastoID, Date fecha, String descripcion, String tipo, int cantidad, long costo, long valorUnidad) {
         this.gastoID = gastoID;
         this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+        this.costo = costo;
+        this.valorUnidad = valorUnidad;
     }
 
     public Long getGastoID() {
@@ -80,22 +107,44 @@ public class Gasto implements Serializable {
         this.fecha = fecha;
     }
 
-    @XmlTransient
-    public Collection<Activo> getActivoCollection() {
-        return activoCollection;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setActivoCollection(Collection<Activo> activoCollection) {
-        this.activoCollection = activoCollection;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    @XmlTransient
-    public Collection<Reactivo> getReactivoCollection() {
-        return reactivoCollection;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setReactivoCollection(Collection<Reactivo> reactivoCollection) {
-        this.reactivoCollection = reactivoCollection;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public long getCosto() {
+        return costo;
+    }
+
+    public void setCosto(long costo) {
+        this.costo = costo;
+    }
+
+    public long getValorUnidad() {
+        return valorUnidad;
+    }
+
+    public void setValorUnidad(long valorUnidad) {
+        this.valorUnidad = valorUnidad;
     }
 
     @Override

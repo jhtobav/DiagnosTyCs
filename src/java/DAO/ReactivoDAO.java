@@ -5,8 +5,6 @@
  */
 package DAO;
 
-import Entidades.Alerta;
-import Entidades.Gasto;
 import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
 import Entidades.Reactivo;
@@ -44,22 +42,15 @@ public class ReactivoDAO {
         
         Reactivo reactivo = new Reactivo();
         
-        List<Alerta> alertas = new ArrayList<>();         
         List<Laboratorio> laboratorios = new ArrayList<>();
-        List<ImagenDiagnostica> imagenes = new ArrayList<>();
+        List<ImagenDiagnostica> imagenes = new ArrayList<>();       
         
-        Gasto gasto = new Gasto();
-        gasto.setGastoID(1l);
-        
-        
-        for(int i=2; i<=299; i++){
+        for(int i=1; i<=299; i++){
             
             System.out.println(i);
             
             em = emf.createEntityManager();      
             reactivo.setNombre("Reactivo " + i);
-            reactivo.setAlertaCollection(alertas);
-            reactivo.setGastoReactivoReactivogastoID(gasto);
             reactivo.setImagenDiagnosticaCollection(imagenes);
             reactivo.setLaboratorioCollection(laboratorios);
             reactivo.setUnidadesExistentes(50);

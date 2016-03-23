@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -32,8 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Alerta.findAll", query = "SELECT a FROM Alerta a"),
     @NamedQuery(name = "Alerta.findByAlertaID", query = "SELECT a FROM Alerta a WHERE a.alertaID = :alertaID"),
+    @NamedQuery(name = "Alerta.findByFecha", query = "SELECT a FROM Alerta a WHERE a.fecha = :fecha"),
     @NamedQuery(name = "Alerta.findByDescripcion", query = "SELECT a FROM Alerta a WHERE a.descripcion = :descripcion"),
-    @NamedQuery(name = "Alerta.findByFecha", query = "SELECT a FROM Alerta a WHERE a.fecha = :fecha")})
+    @NamedQuery(name = "Alerta.findByNombreReactivo", query = "SELECT a FROM Alerta a WHERE a.nombreReactivo = :nombreReactivo"),
+    @NamedQuery(name = "Alerta.findByCantidadFaltante", query = "SELECT a FROM Alerta a WHERE a.cantidadFaltante = :cantidadFaltante")})
 public class Alerta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,17 +44,23 @@ public class Alerta implements Serializable {
     private Long alertaID;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "fecha")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
-    @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
-    @ManyToOne(optional = false)
-    private Reactivo reactivoreactivoID;
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "nombreReactivo")
+    private String nombreReactivo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cantidadFaltante")
+    private int cantidadFaltante;
 
     public Alerta() {
     }
@@ -63,10 +69,12 @@ public class Alerta implements Serializable {
         this.alertaID = alertaID;
     }
 
-    public Alerta(Long alertaID, String descripcion, Date fecha) {
+    public Alerta(Long alertaID, Date fecha, String descripcion, String nombreReactivo, int cantidadFaltante) {
         this.alertaID = alertaID;
-        this.descripcion = descripcion;
         this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.nombreReactivo = nombreReactivo;
+        this.cantidadFaltante = cantidadFaltante;
     }
 
     public Long getAlertaID() {
@@ -77,14 +85,6 @@ public class Alerta implements Serializable {
         this.alertaID = alertaID;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public Date getFecha() {
         return fecha;
     }
@@ -93,12 +93,28 @@ public class Alerta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Reactivo getReactivoreactivoID() {
-        return reactivoreactivoID;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setReactivoreactivoID(Reactivo reactivoreactivoID) {
-        this.reactivoreactivoID = reactivoreactivoID;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getNombreReactivo() {
+        return nombreReactivo;
+    }
+
+    public void setNombreReactivo(String nombreReactivo) {
+        this.nombreReactivo = nombreReactivo;
+    }
+
+    public int getCantidadFaltante() {
+        return cantidadFaltante;
+    }
+
+    public void setCantidadFaltante(int cantidadFaltante) {
+        this.cantidadFaltante = cantidadFaltante;
     }
 
     @Override

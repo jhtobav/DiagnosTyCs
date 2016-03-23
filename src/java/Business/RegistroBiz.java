@@ -11,7 +11,6 @@ import DAO.PacienteDAO;
 import DAO.PersonaDAO;
 import DAO.TarjetaDAO;
 import DTO.DoctorDTO;
-import DTO.MedicoDTO;
 import DTO.PacienteDTO;
 import DTO.PersonaDTO;
 import DTO.TarjetaDTO;
@@ -62,7 +61,7 @@ public class RegistroBiz {
         return "inicioBody.xhtml";
     }
     
-    public String registroMedico(PersonaDTO personaDTO, MedicoDTO medicoDTO) {
+    public String registroMedico(PersonaDTO personaDTO) {
        
         Persona persona = new Persona();
         persona.setPersonaID(personaDTO.getIdPersona());
@@ -77,7 +76,6 @@ public class RegistroBiz {
                     
         Medico medico = new Medico();
         medico.setMedicoID(personaDTO.getIdPersona());
-        medico.setSalario(medicoDTO.getSalario());
         medico.setEstado("activo");
         medico.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();

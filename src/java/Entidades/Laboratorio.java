@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -61,7 +62,7 @@ public class Laboratorio implements Serializable {
     @ManyToOne(optional = false)
     private Cita citaLaboratorioLaboratoriocitaID;
     @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Reactivo reactivoreactivoID;
 
     public Laboratorio() {
