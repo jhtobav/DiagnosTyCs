@@ -268,7 +268,7 @@ function  getId(element) {
         fechaCita.setSeconds(0);
         fechaCita.setMilliseconds(0);
     }
-    document.getElementById("form:fechaCita").value = fechaCita;
+    document.getElementById("form:fechaCita").value = fechaCita.toISOString();
 }
 
 function cleanSchedule() {

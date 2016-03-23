@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -39,8 +41,8 @@ public class ImagenDiagnostica implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "imagenDiagnosticaID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long imagenDiagnosticaID;
     @Basic(optional = false)
     @NotNull
@@ -62,7 +64,7 @@ public class ImagenDiagnostica implements Serializable {
     @Column(name = "valor")
     private long valor;
     @JoinColumn(name = "CitaImagenDiagnostica_ImagenDiagnostica_citaID", referencedColumnName = "citaID")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Cita citaImagenDiagnosticaImagenDiagnosticacitaID;
     @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
     @OneToOne(optional = false)

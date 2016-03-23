@@ -8,8 +8,12 @@ package Vista;
 import Business.SolicitarCitaBiz;
 import DTO.ExamenDTO;
 import Entidades.Agenda;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -26,7 +30,7 @@ public class SolicitarCitaBean {
     private String examenLaboratorio;
     private String imagenDiagnostica;
     private int numCelda;
-    private Date fecha;
+    private String fecha;
 
     @PostConstruct
     public void init() {
@@ -69,11 +73,11 @@ public class SolicitarCitaBean {
         this.numCelda = numCelda;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     
@@ -87,22 +91,28 @@ public class SolicitarCitaBean {
         
     }
     
+    public Date parsearFecha(String fecha){
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(SolicitarCitaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new Date();
+    }
+    
     public String solicitarCitaImagen(){
-        System.out.println(fecha);
-        System.out.println(imagenDiagnostica.trim().trim());
+
         SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
         
         List<ExamenDTO> imagenes = solicitarCitaBiz.cargarImagenes();
-        System.out.println(fecha);
-        System.out.println(imagenDiagnostica.trim().trim());
+
         for (ExamenDTO examen : imagenes){
-            if(examen.getDescripcion().trim().trim()
-                    .equals(imagenDiagnostica.trim().trim())){
-                System.out.println("exito");
                 System.out.println("- " + imagenDiagnostica.trim().trim() + " -");
                 System.out.println("- " + examen.getDescripcion().trim().trim() + " -");
-                
-                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1),fecha);
+            if(examen.getDescripcion().trim().trim().trim()
+                    .equals(imagenDiagnostica.trim().trim())){
+                System.out.println("exito");
+                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1),parsearFecha(fecha));
                 
                 break;
             }

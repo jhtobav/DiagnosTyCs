@@ -6,7 +6,6 @@
 package DAO;
 
 import Entidades.Cita;
-import Entidades.Doctor;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -28,6 +27,7 @@ public class CitaDAO {
             em.persist(cita);
             em.getTransaction().commit();
         }catch(Exception e){
+            System.out.println(e);
             em.getTransaction().rollback();
         }finally{
             em.close();

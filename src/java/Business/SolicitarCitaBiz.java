@@ -50,6 +50,8 @@ public class SolicitarCitaBiz {
        List<Laboratorio> laboratorios = new ArrayList<>();
        List<ImagenDiagnostica> imagenes = new ArrayList<>();
        
+       System.out.println("punto 1");
+      
        Cita cita = new Cita();
        cita.setDoctorCollection(doctores);
        cita.setMedicomedicoID(medico);
@@ -57,17 +59,20 @@ public class SolicitarCitaBiz {
        cita.setPacientepacienteID(LoginBean.getPaciente());
        cita.setImagenDiagnosticaCollection(imagenes);
        cita.setFecha(fecha);
-       cita.setValor(0);
-       citaDAO.createCita(cita);
+       cita.setValor(0l);
+       cita = citaDAO.createCita(cita);
+       
+       System.out.println(cita.getCitaID());
+       
+       System.out.println("punto 2");
        
        ImagenDiagnostica imagen = new ImagenDiagnostica();
        imagen.setDescripcion(examenDTO.getDescripcion());
        imagen.setNombre(examenDTO.getNombre());
        imagen.setReactivoreactivoID(reactivoDAO.searchByIdReactivo(examenDTO.getIdReactivo()));
-       imagen.setValor(0);
-       imagen.setRutaImagen("");
        imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
-       imagenDiagnosticaDAO.createImagenDiagnostica(imagen);
+       imagen.setValor(0l);
+       imagen.setRutaImagen("F:/");
        
        imagenes.add(imagen);
        cita.setImagenDiagnosticaCollection(imagenes);

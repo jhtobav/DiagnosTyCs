@@ -43,7 +43,7 @@ public class Reactivo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "pacienteID")
+    @Column(name = "reactivoID")
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long reactivoID;
     @Basic(optional = false)
