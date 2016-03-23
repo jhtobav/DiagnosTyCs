@@ -10,11 +10,13 @@
     <class>Entidades.Doctor</class>
     <class>Entidades.Gasto</class>
     <class>Entidades.Gerente</class>
+    <class>Entidades.HistoricoGastosGananciasCitas</class>
     <class>Entidades.ImagenDiagnostica</class>
     <class>Entidades.Laboratorio</class>
     <class>Entidades.Medico</class>
     <class>Entidades.Paciente</class>
     <class>Entidades.Persona</class>
+    <class>Entidades.Precio</class>
     <class>Entidades.Reactivo</class>
     <class>Entidades.Tarjeta</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
