@@ -142,11 +142,27 @@ public class AsignarAgendaBean {
     
     public String asignarAgendaLaboratorio(){
         
+        AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
+        
+        asignarAgendaBiz.asignarAgendaLaboratorioBiz(idDoctorLunesManana, idDoctorLunesTarde, 
+                idDoctorMartesManana, idDoctorMartesTarde, 
+                idDoctorMiercolesManana, idDoctorMiercolesTarde, 
+                idDoctorJuevesManana, idDoctorJuevesTarde, 
+                idDoctorViernesManana, idDoctorViernesTarde);
+        
         return "inicio.xhtml";
         
     }
     
     public String asignarAgendaImagenDiagnostica(){
+
+        AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
+        
+        asignarAgendaBiz.asignarAgendaLaboratorioBiz(idDoctorLunesManana, idDoctorLunesTarde, 
+                idDoctorMartesManana, idDoctorMartesTarde, 
+                idDoctorMiercolesManana, idDoctorMiercolesTarde, 
+                idDoctorJuevesManana, idDoctorJuevesTarde, 
+                idDoctorViernesManana, idDoctorViernesTarde);
         
         return "inicio.xhtml";
         
