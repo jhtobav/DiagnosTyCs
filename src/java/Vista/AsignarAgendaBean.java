@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import DTO.DoctorDTO;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -16,10 +19,23 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class AsignarAgendaBean {
 
-    /**
-     * Creates a new instance of AsignarAgenda
-     */
+    private List<DoctorDTO> doctores = new ArrayList<>();
+    
     public AsignarAgendaBean() {
+    }
+
+    public List<DoctorDTO> getDoctores() {
+        return doctores;
+    }
+
+    public void setDoctores(List<DoctorDTO> doctores) {
+        this.doctores = doctores;
+    }
+    
+    public String asignarAgenda(){
+        
+        return "inicio.xhtml";
+        
     }
     
 }

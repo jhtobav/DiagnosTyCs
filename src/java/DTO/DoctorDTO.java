@@ -12,10 +12,28 @@ import java.io.Serializable;
  */
 public class DoctorDTO implements Serializable {
     
+    private Long idDoctor;
+    private String nombreDoctor;
     private String especialidad;
     private Long salario; 
    
     public DoctorDTO() {
+    }
+
+    public Long getIdDoctor() {
+        return idDoctor;
+    }
+
+    public void setIdDoctor(Long idDoctor) {
+        this.idDoctor = idDoctor;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
     }
 
     public String getEspecialidad() {
