@@ -51,7 +51,7 @@ public class DoctorDAO {
       
     }
     
-    public List<Doctor> getDoctors(String especialidad){
+    public List<Doctor> getDoctores(String especialidad){
         EntityManager em = emf.createEntityManager();
         Query q;
         List<Doctor> doctores = null;

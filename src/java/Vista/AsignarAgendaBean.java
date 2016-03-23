@@ -5,9 +5,11 @@
  */
 package Vista;
 
+import Business.AsignarAgendaBiz;
 import DTO.DoctorDTO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -19,17 +21,33 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class AsignarAgendaBean {
 
-    private List<DoctorDTO> doctores = new ArrayList<>();
+    private List<DoctorDTO> doctoresLaboratorio = new ArrayList<>();
+    private List<DoctorDTO> doctoresImagen = new ArrayList<>();
     
-    public AsignarAgendaBean() {
+    @PostConstruct
+    public void init() {
+        
+        AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
+        
+        doctoresLaboratorio = asignarAgendaBiz.parseDoctorDoctorDTO("Laboratorio");
+        doctoresImagen = asignarAgendaBiz.parseDoctorDoctorDTO("ImagenesDiagnosticas");
+        
     }
 
-    public List<DoctorDTO> getDoctores() {
-        return doctores;
+    public List<DoctorDTO> getDoctoresLaboratorio() {
+        return doctoresLaboratorio;
     }
 
-    public void setDoctores(List<DoctorDTO> doctores) {
-        this.doctores = doctores;
+    public void setDoctoresLaboratorio(List<DoctorDTO> doctoresLaboratorio) {
+        this.doctoresLaboratorio = doctoresLaboratorio;
+    }
+
+    public List<DoctorDTO> getDoctoresImagen() {
+        return doctoresImagen;
+    }
+
+    public void setDoctoresImagen(List<DoctorDTO> doctoresImagen) {
+        this.doctoresImagen = doctoresImagen;
     }
     
     public String asignarAgenda(){

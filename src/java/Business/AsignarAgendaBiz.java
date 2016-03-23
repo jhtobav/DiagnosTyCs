@@ -16,13 +16,28 @@ import java.util.List;
  * @author Felipe
  */
 public class AsignarAgendaBiz {
-    public List<DoctorDTO> obtenerDoctores(String especialidad){
+    
+    public List<DoctorDTO> parseDoctorDoctorDTO(String especialidad){
         
         DoctorDAO doctorDAO = new DoctorDAO();
-        List<Doctor> doctores = doctorDAO.getDoctors(especialidad);
-        for(Doctor d : doctores){
-        }
+        
+        List<Doctor> doctores = doctorDAO.getDoctores(especialidad);
+        
         List<DoctorDTO> doctoresDTO = new ArrayList<>();
-        return null;
+        DoctorDTO doctorDTO;
+
+        for (Doctor doctor : doctores){
+            
+            doctorDTO = new DoctorDTO();
+            doctorDTO.setIdDoctor(doctor.getDoctorID());
+            doctorDTO.setNombreDoctor(doctor.getPersonapersonaID().getNombre());
+            doctorDTO.setEspecialidad(doctor.getEspecialidad());
+            doctorDTO.setSalario(doctor.getSalario());
+            doctoresDTO.add(doctorDTO);
+            
+        }
+        
+        return doctoresDTO;
     }
+    
 }
