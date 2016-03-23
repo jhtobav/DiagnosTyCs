@@ -7,8 +7,10 @@ package DAO;
 
 import Entidades.Doctor;
 import Vista.LoginBean;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  *
@@ -47,5 +49,20 @@ public class DoctorDAO {
             return doctor;
         }
       
+    }
+    
+    public List<Doctor> getDoctors(String especialidad){
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        List<Doctor> doctores = null;
+        try {
+            q = em.createNamedQuery("Doctor.findByEspecialidad", Doctor.class);
+            q.setParameter("especialidad", especialidad);
+            doctores = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return doctores;
+        }
     }
 }
