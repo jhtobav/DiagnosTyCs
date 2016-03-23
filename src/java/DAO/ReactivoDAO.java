@@ -36,6 +36,24 @@ public class ReactivoDAO {
       
     }
     
+    public Reactivo updateReactivo(Reactivo reactivo){
+        
+        Reactivo nuevoReactivo = new Reactivo();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevoReactivo = em.merge(em.find(Reactivo.class, reactivo.getReactivoID()));
+            nuevoReactivo.setUnidadesExistentes(reactivo.getUnidadesExistentes());
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoReactivo;
+        }
+        
+    }
+    
     public void inicializarReactivos() {
                 
         EntityManager em;

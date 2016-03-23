@@ -29,6 +29,24 @@ public class AgendaDAO {
         return q.getResultList();
       
     }
+
+    public Agenda updateAgenda(Agenda agenda){
+        
+        Agenda nuevaAgenda = new Agenda();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevaAgenda = em.merge(em.find(Agenda.class, agenda.getAgendaID()));
+            nuevaAgenda.setDisponible(agenda.getDisponible());
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevaAgenda;
+        }
+        
+    }
     
     public void inicializarAgenda() {
                 
@@ -65,22 +83,4 @@ public class AgendaDAO {
 
     }
     
-    
-    public Agenda updateAgenda(Agenda agenda){
-        
-        Agenda nuevaAgenda = new Agenda();
-        EntityManager em = emf.createEntityManager();  
-        em.getTransaction().begin();
-        try {
-            nuevaAgenda = em.merge(em.find(Agenda.class, agenda.getAgendaID()));
-            nuevaAgenda.setDisponible(false);
-            em.getTransaction().commit();
-        } catch (Exception e){
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-            return nuevaAgenda;
-        }
-        
-    }
 }

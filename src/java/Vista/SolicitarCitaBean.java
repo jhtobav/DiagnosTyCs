@@ -106,28 +106,46 @@ public class SolicitarCitaBean {
         
         List<ExamenDTO> imagenes = solicitarCitaBiz.cargarImagenes();
 
-        for (ExamenDTO examen : imagenes){
-                System.out.println("- " + imagenDiagnostica.trim().trim() + " -");
-                System.out.println("- " + examen.getDescripcion().trim().trim() + " -");
-            if(examen.getDescripcion().trim().trim().trim()
+        for (ExamenDTO imagen : imagenes){
+
+            System.out.println("- " + imagenDiagnostica.trim().trim() + " -");          
+            System.out.println("- " + imagen.getDescripcion().trim().trim() + " -");
+            
+            if(imagen.getDescripcion().trim().trim().trim()
                     .equals(imagenDiagnostica.trim().trim())){
-                System.out.println("exito");
-                solicitarCitaBiz.solicitarCitaImagen(examen, tablaAgendas.get(numCelda-1),parsearFecha(fecha));
                 
+                System.out.println("exito");
+                solicitarCitaBiz.solicitarCitaImagen(imagen, tablaAgendas.get(numCelda-1),parsearFecha(fecha));                
                 break;
+            
             }
         }
         
-        return "inicio.xhtml";
+        return "pacienteBody.xhtml";
     }
     
     public String solicitarCitaLaboratorio(){
-                System.out.println(fecha);
-        System.out.println(imagenDiagnostica.trim().trim());
-        System.out.println("chiao");
-        System.out.println(examenLaboratorio);
         
-        return "inicio.xhtml";
+        SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
+        
+        List<ExamenDTO> examenes = solicitarCitaBiz.cargarExamenesLaboratorio();
+        
+        for(ExamenDTO examen : examenes){
+            
+            System.out.println("- " + examenLaboratorio + " -");
+            System.out.println("- " + examen.getNombre() + " -");
+            
+            if(examen.getNombre().equals(examenLaboratorio)){
+                
+                System.out.println("exito");
+                solicitarCitaBiz.solicitarCitaExamenLaboratorio(examen, examenes, tablaAgendas.get(numCelda-1),parsearFecha(fecha));                
+                break;
+                
+            }
+            
+        }
+                
+        return "pacienteBody.xhtml";
     }
         
 }

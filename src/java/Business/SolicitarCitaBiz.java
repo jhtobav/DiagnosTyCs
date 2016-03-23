@@ -5,13 +5,17 @@
 package Business;
 
 import DAO.AgendaDAO;
+import DAO.AlertaDAO;
 import DAO.CitaDAO;
+import DAO.HistoricoGastosGananciasCitasDAO;
 import DAO.PrecioDAO;
 import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
 import Entidades.Agenda;
+import Entidades.Alerta;
 import Entidades.Cita;
 import Entidades.Doctor;
+import Entidades.HistoricoGastosGananciasCitas;
 import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
 import Entidades.Medico;
@@ -27,1032 +31,1203 @@ import java.util.List;
  */
 public class SolicitarCitaBiz {
 
-   public List<Agenda> cargarAgenda(){
-              
-       AgendaDAO agendaDAO = new AgendaDAO();
-       
-       return agendaDAO.getListAgenda();
-       
-   }
-   
-   public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha){
-                    
-       CitaDAO citaDAO = new CitaDAO();
-       ReactivoDAO reactivoDAO = new ReactivoDAO();
-       AgendaDAO agendaDAO = new AgendaDAO();
-       PrecioDAO precioDAO = new PrecioDAO();
-       
-       Doctor doctor = agenda.getDoctordoctorID();
-       Medico medico = agenda.getMedicomedicoID();
-       
-       List<Doctor> doctores = new ArrayList<>();
-       doctores.add(doctor);
-       
-       List<Laboratorio> laboratorios = new ArrayList<>();
-       List<ImagenDiagnostica> imagenes = new ArrayList<>();
-       
-       Reactivo reactivo = reactivoDAO.searchByIdReactivo(examenDTO.getIdReactivo());
-      
-       Cita cita = new Cita();
-       cita.setDoctorCollection(doctores);
-       cita.setMedicomedicoID(medico);
-       cita.setLaboratorioCollection(laboratorios);
-       cita.setPacientepacienteID(LoginBean.getPaciente());
-       cita.setImagenDiagnosticaCollection(imagenes);
-       cita.setFecha(fecha);
-       cita.setValor(precioDAO.searchPrecioExamen(2l));
-       cita = citaDAO.createCita(cita);
-       
-       ImagenDiagnostica imagen = new ImagenDiagnostica();
-       imagen.setDescripcion(examenDTO.getDescripcion());
-       imagen.setNombre(examenDTO.getNombre());
-       imagen.setReactivoreactivoID(reactivo);
-       imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
-       imagen.setRutaImagen("F:/");
-       
-       imagenes.add(imagen);
-       cita.setImagenDiagnosticaCollection(imagenes);
-       citaDAO.updateCita(cita);
-       
-       agendaDAO.updateAgenda(agenda);
-       
-       return "exito";
-       
-   }
-   
-   public List<ExamenDTO> cargarExamenesLaboratorio(){
-       
-       List<ExamenDTO> examenes = new ArrayList<>();
-       ExamenDTO examenDTO;
-       
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Globulos Rojos");
-       examenDTO.setIdReactivo(1l);
-       examenes.add(examenDTO);
+    public List<Agenda> cargarAgenda() {
 
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Globulos Blancos");
-       examenDTO.setIdReactivo(2l);
-       examenes.add(examenDTO);
+        AgendaDAO agendaDAO = new AgendaDAO();
 
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Hemoglobina");
-       examenDTO.setIdReactivo(3l);
-       examenes.add(examenDTO);
+        return agendaDAO.getListAgenda();
 
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Hematocrito");
-       examenDTO.setIdReactivo(4l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Volumen Corpuscular medio");
-       examenDTO.setIdReactivo(5l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Hemoglobina Corpuscular media");
-       examenDTO.setIdReactivo(6l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Concentración de Hemoglobina Corpuscular");
-       examenDTO.setIdReactivo(7l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Ancho de Distribución de Globulos Rojos");
-       examenDTO.setIdReactivo(8l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Plaquetas");
-       examenDTO.setIdReactivo(9l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Neutrofilos %");
-       examenDTO.setIdReactivo(10l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Linfocitos % ");
-       examenDTO.setIdReactivo(11l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Monofitos %");
-       examenDTO.setIdReactivo(12l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Eocinofitos %");
-       examenDTO.setIdReactivo(13l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Basofilos");
-       examenDTO.setIdReactivo(14l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cuadro Hematico");
-       examenDTO.setDescripcion("Volumen Plaquetario medio");
-       examenDTO.setIdReactivo(15l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de Sangre Periferico");
-       examenDTO.setDescripcion("Globulos Rojos");
-       examenDTO.setIdReactivo(16l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de Sangre Periferico");
-       examenDTO.setDescripcion("Globulos Blancos");
-       examenDTO.setIdReactivo(17l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de Sangre Periferico");
-       examenDTO.setDescripcion("Plaquetas");
-       examenDTO.setIdReactivo(18l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hipidico");
-       examenDTO.setDescripcion("Colesterol");
-       examenDTO.setIdReactivo(19l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hipidico");
-       examenDTO.setDescripcion("Trigliceridos");
-       examenDTO.setIdReactivo(20l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hipidico");
-       examenDTO.setDescripcion("HDL");
-       examenDTO.setIdReactivo(21l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hipidico");
-       examenDTO.setDescripcion("LDL");
-       examenDTO.setIdReactivo(22l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hipidico");
-       examenDTO.setDescripcion("VLDL");
-       examenDTO.setIdReactivo(23l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("Bilirrubina directa");
-       examenDTO.setIdReactivo(24l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("Bilirrubina total");
-       examenDTO.setIdReactivo(25l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("TGO");
-       examenDTO.setIdReactivo(26l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("TGP");
-       examenDTO.setIdReactivo(27l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("Amilasa");
-       examenDTO.setIdReactivo(28l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil hepatico");
-       examenDTO.setDescripcion("Lipasa");
-       examenDTO.setIdReactivo(29l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil Renal");
-       examenDTO.setDescripcion("BUN");
-       examenDTO.setIdReactivo(30l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil Renal");
-       examenDTO.setDescripcion("Creatinina");
-       examenDTO.setIdReactivo(31l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil Renal");
-       examenDTO.setDescripcion("Proteinuria");
-       examenDTO.setIdReactivo(32l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil Renal");
-       examenDTO.setDescripcion("Creatinina 24H");
-       examenDTO.setIdReactivo(33l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Perfil Renal");
-       examenDTO.setDescripcion("Proteinuria 24H");
-       examenDTO.setIdReactivo(34l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprologico");
-       examenDTO.setDescripcion("PH");
-       examenDTO.setIdReactivo(35l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprologico");
-       examenDTO.setDescripcion("Color");
-       examenDTO.setIdReactivo(36l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprologico");
-       examenDTO.setDescripcion("Consistencia");
-       examenDTO.setIdReactivo(37l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprologico");
-       examenDTO.setDescripcion("Sangre oculta");
-       examenDTO.setIdReactivo(38l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprologico");
-       examenDTO.setDescripcion("Azucares reductores");
-       examenDTO.setIdReactivo(39l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de flujo vaginal");
-       examenDTO.setDescripcion("Fresco");
-       examenDTO.setIdReactivo(40l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de flujo vaginal");
-       examenDTO.setDescripcion("Gram");
-       examenDTO.setIdReactivo(41l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Color");
-       examenDTO.setIdReactivo(42l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Turbidez");
-       examenDTO.setIdReactivo(43l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("PH");
-       examenDTO.setIdReactivo(44l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Densidad");
-       examenDTO.setIdReactivo(45l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Nitritos");
-       examenDTO.setIdReactivo(46l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Proteinas");
-       examenDTO.setIdReactivo(47l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Cuerpos cetonicos");
-       examenDTO.setIdReactivo(48l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Bilirrubinas");
-       examenDTO.setIdReactivo(49l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Urobilinogeno");
-       examenDTO.setIdReactivo(50l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Sangre");
-       examenDTO.setIdReactivo(51l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Leucocitos en orina");
-       examenDTO.setIdReactivo(52l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Fisico-Quimico");
-       examenDTO.setDescripcion("Hematies en orina");
-       examenDTO.setIdReactivo(53l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Leucocitos en sedimento por campo");
-       examenDTO.setIdReactivo(54l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Celulas");
-       examenDTO.setIdReactivo(55l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Bacterias");
-       examenDTO.setIdReactivo(56l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Hematies en sedimento");
-       examenDTO.setIdReactivo(57l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Cilindros");
-       examenDTO.setIdReactivo(58l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Orinas Sedimento");
-       examenDTO.setDescripcion("Cristales");
-       examenDTO.setIdReactivo(59l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Reticulocitos");
-       examenDTO.setDescripcion("Reticulocitos");
-       examenDTO.setIdReactivo(60l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Velocidad de Sedimientación Globular");
-       examenDTO.setDescripcion("Velocidad de Sedimientación Globular");
-       examenDTO.setIdReactivo(61l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Eocinofilos en moco nasal");
-       examenDTO.setDescripcion("Eocinofilos en moco nasal");
-       examenDTO.setIdReactivo(62l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Gota Gruesa");
-       examenDTO.setDescripcion("Gota Gruesa");
-       examenDTO.setIdReactivo(63l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prueba rapida para malaria");
-       examenDTO.setDescripcion("Prueba rapida para malaria");
-       examenDTO.setIdReactivo(64l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prueba rapida para dengue");
-       examenDTO.setDescripcion("Prueba rapida para dengue");
-       examenDTO.setIdReactivo(65l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Acido urico");
-       examenDTO.setDescripcion("Acido urico");
-       examenDTO.setIdReactivo(66l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Microalbuminuria");
-       examenDTO.setDescripcion("Microalbuminuria");
-       examenDTO.setIdReactivo(67l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hemoglobina glicosilada");
-       examenDTO.setDescripcion("Hemoglobina glicosilada");
-       examenDTO.setIdReactivo(68l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("CPK");
-       examenDTO.setDescripcion("CPK");
-       examenDTO.setIdReactivo(69l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("CPKMB");
-       examenDTO.setDescripcion("CPKMB");
-       examenDTO.setIdReactivo(70l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Colinesterasa");
-       examenDTO.setDescripcion("Colinesterasa");
-       examenDTO.setIdReactivo(71l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Sangre oculta en heces");
-       examenDTO.setDescripcion("Sangre oculta en heces");
-       examenDTO.setIdReactivo(72l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis uretral");
-       examenDTO.setDescripcion("Frotis uretral");
-       examenDTO.setIdReactivo(73l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis de Leishmania");
-       examenDTO.setDescripcion("Frotis de Leishmania");
-       examenDTO.setIdReactivo(74l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Urocultivo");
-       examenDTO.setDescripcion("Urocultivo");
-       examenDTO.setIdReactivo(75l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hemocultivo");
-       examenDTO.setDescripcion("Hemocultivo");
-       examenDTO.setIdReactivo(76l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cultivo para germenes comunes");
-       examenDTO.setDescripcion("Cultivo para germenes comunes");
-       examenDTO.setIdReactivo(77l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antibiograma");
-       examenDTO.setDescripcion("Antibiograma");
-       examenDTO.setIdReactivo(78l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Gram de orina");
-       examenDTO.setDescripcion("Gram de orina");
-       examenDTO.setIdReactivo(79l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cultivo de anaerobios");
-       examenDTO.setDescripcion("Cultivo de anaerobios");
-       examenDTO.setIdReactivo(80l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Coprocultivo");
-       examenDTO.setDescripcion("Coprocultivo");
-       examenDTO.setIdReactivo(81l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("KOH");
-       examenDTO.setDescripcion("KOH");
-       examenDTO.setIdReactivo(82l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Frotis faringeo");
-       examenDTO.setDescripcion("Frotis faringeo");
-       examenDTO.setIdReactivo(83l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cultivo de secreciones");
-       examenDTO.setDescripcion("Cultivo de secreciones");
-       examenDTO.setIdReactivo(84l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cultivo de liquido cefaloraquideo");
-       examenDTO.setDescripcion("Cultivo de liquido cefaloraquideo");
-       examenDTO.setIdReactivo(85l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Serologia");
-       examenDTO.setDescripcion("Serologia");
-       examenDTO.setIdReactivo(86l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hemoclasificacion");
-       examenDTO.setDescripcion("Hemoclasificacion");
-       examenDTO.setIdReactivo(87l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("HBSAG");
-       examenDTO.setDescripcion("HBSAG");
-       examenDTO.setIdReactivo(88l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prueba rapida VIH");
-       examenDTO.setDescripcion("Prueba rapida VIH");
-       examenDTO.setIdReactivo(89l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Factor Rematoideo");
-       examenDTO.setDescripcion("Factor Rematoideo");
-       examenDTO.setIdReactivo(90l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Proteina Creativa");
-       examenDTO.setDescripcion("Proteina Creativa");
-       examenDTO.setIdReactivo(91l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antiestreptolisina");
-       examenDTO.setDescripcion("Antiestreptolisina");
-       examenDTO.setIdReactivo(92l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prueba de embarazo");
-       examenDTO.setDescripcion("Prueba de embarazo");
-       examenDTO.setIdReactivo(93l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prueba rapida Hepatitis C");
-       examenDTO.setDescripcion("Prueba rapida Hepatitis C");
-       examenDTO.setIdReactivo(94l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antigenos febriles");
-       examenDTO.setDescripcion("Antigenos febriles");
-       examenDTO.setIdReactivo(95l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Protrombina Time");
-       examenDTO.setDescripcion("Protrombina Time");
-       examenDTO.setIdReactivo(96l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Tiempo parcial de tromboplastina");
-       examenDTO.setDescripcion("Tiempo parcial de tromboplastina");
-       examenDTO.setIdReactivo(97l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Indice PT");
-       examenDTO.setDescripcion("Indice PT");
-       examenDTO.setIdReactivo(98l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Acido Valproico");
-       examenDTO.setDescripcion("Acido Valproico");
-       examenDTO.setIdReactivo(99l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Inmunoglobulina IgA");
-       examenDTO.setDescripcion("Inmunoglobulina IgA");
-       examenDTO.setIdReactivo(100l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Factor reumatoideo de altaprecision");
-       examenDTO.setDescripcion("Factor reumatoideo de altaprecision");
-       examenDTO.setIdReactivo(101l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Proteina Creativa de alta precision");
-       examenDTO.setDescripcion("Proteina Creativa de alta precision");
-       examenDTO.setIdReactivo(102l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hierro total");
-       examenDTO.setDescripcion("Hierro total");
-       examenDTO.setIdReactivo(103l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Gama glutamil transferasa");
-       examenDTO.setDescripcion("Gama glutamil transferasa");
-       examenDTO.setIdReactivo(104l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Inmunoglobulina IgG");
-       examenDTO.setDescripcion("Inmunoglobulina IgG");
-       examenDTO.setIdReactivo(105l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Inmunoglobulina IgM");
-       examenDTO.setDescripcion("Inmunoglobulina IgM");
-       examenDTO.setIdReactivo(106l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Deshidrogenasa lactica");
-       examenDTO.setDescripcion("Deshidrogenasa lactica");
-       examenDTO.setIdReactivo(107l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Fosforo");
-       examenDTO.setDescripcion("Fosforo");
-       examenDTO.setIdReactivo(108l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Magnesio en suero");
-       examenDTO.setDescripcion("Magnesio en suero");
-       examenDTO.setIdReactivo(109l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("TSH");
-       examenDTO.setDescripcion("TSH");
-       examenDTO.setIdReactivo(110l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hormona foliculo estimulante");
-       examenDTO.setDescripcion("Hormona foliculo estimulante");
-       examenDTO.setIdReactivo(111l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hormona luteinizante basal");
-       examenDTO.setDescripcion("Hormona luteinizante basal");
-       examenDTO.setIdReactivo(112l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("PSA total");
-       examenDTO.setDescripcion("PSA total");
-       examenDTO.setIdReactivo(113l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Gonadotropina coorionica humana");
-       examenDTO.setDescripcion("Gonadotropina coorionica humana");
-       examenDTO.setIdReactivo(114l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Toxoplasma IgG");
-       examenDTO.setDescripcion("Toxoplasma IgG");
-       examenDTO.setIdReactivo(115l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Toxoplasma IgE");
-       examenDTO.setDescripcion("Toxoplasma IgE");
-       examenDTO.setIdReactivo(116l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Inmunoglobulina IgE");
-       examenDTO.setDescripcion("Inmunoglobulina IgE");
-       examenDTO.setIdReactivo(117l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Estradiol");
-       examenDTO.setDescripcion("Estradiol");
-       examenDTO.setIdReactivo(118l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prolactina");
-       examenDTO.setDescripcion("Prolactina");
-       examenDTO.setIdReactivo(119l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prolactina 1H");
-       examenDTO.setDescripcion("Prolactina 1H");
-       examenDTO.setIdReactivo(120l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Prolactina 2H");
-       examenDTO.setDescripcion("Prolactina 2H");
-       examenDTO.setIdReactivo(121l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Pool de prolactina");
-       examenDTO.setDescripcion("Pool de prolactina");
-       examenDTO.setIdReactivo(122l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("PSA total cualitativo");
-       examenDTO.setDescripcion("PSA total cualitativo");
-       examenDTO.setIdReactivo(123l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Insulina");
-       examenDTO.setDescripcion("Insulina");
-       examenDTO.setIdReactivo(124l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("HIV Cuarta generacion");
-       examenDTO.setDescripcion("HIV Cuarta generacion");
-       examenDTO.setIdReactivo(125l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("T3 total");
-       examenDTO.setDescripcion("T3 total");
-       examenDTO.setIdReactivo(126l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("T4 total");
-       examenDTO.setDescripcion("T4 total");
-       examenDTO.setIdReactivo(127l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Tiroxina libre");
-       examenDTO.setDescripcion("Tiroxina libre");
-       examenDTO.setIdReactivo(128l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Triyodotronina libre");
-       examenDTO.setDescripcion("Triyodotronina libre");
-       examenDTO.setIdReactivo(129l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("PSA libre");
-       examenDTO.setDescripcion("PSA libre");
-       examenDTO.setIdReactivo(130l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Anti TPO");
-       examenDTO.setDescripcion("Anti TPO");
-       examenDTO.setIdReactivo(131l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("HIV Combi PT");
-       examenDTO.setDescripcion("HIV Combi PT");
-       examenDTO.setIdReactivo(132l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Rubeola IgG");
-       examenDTO.setDescripcion("Rubeola IgG");
-       examenDTO.setIdReactivo(133l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Vitamina D");
-       examenDTO.setDescripcion("Vitamina D");
-       examenDTO.setIdReactivo(134l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Vitamina B12");
-       examenDTO.setDescripcion("Vitamina B12");
-       examenDTO.setIdReactivo(135l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antig especifico de prostata frac libre");
-       examenDTO.setDescripcion("Antig especifico de prostata frac libre");
-       examenDTO.setIdReactivo(136l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Testosterona libre");
-       examenDTO.setDescripcion("Testosterona libre");
-       examenDTO.setIdReactivo(137l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Rubeola IgM");
-       examenDTO.setDescripcion("Rubeola IgM");
-       examenDTO.setIdReactivo(138l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("PTH Paratormona");
-       examenDTO.setDescripcion("PTH Paratormona");
-       examenDTO.setIdReactivo(139l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Progesterona");
-       examenDTO.setDescripcion("Progesterona");
-       examenDTO.setIdReactivo(140l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Acido folico");
-       examenDTO.setDescripcion("Acido folico");
-       examenDTO.setIdReactivo(141l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Alfafetoproteinas");
-       examenDTO.setDescripcion("Alfafetoproteinas");
-       examenDTO.setIdReactivo(142l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antigeno CA125");
-       examenDTO.setDescripcion("Antigeno CA125");
-       examenDTO.setIdReactivo(143l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Antigeno carcinoembrionario");
-       examenDTO.setDescripcion("Antigeno carcinoembrionario");
-       examenDTO.setIdReactivo(144l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Citomegalovirus IgG");
-       examenDTO.setDescripcion("Citomegalovirus IgG");
-       examenDTO.setIdReactivo(145l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Citomegalovirus IgM");
-       examenDTO.setDescripcion("Citomegalovirus IgM");
-       examenDTO.setIdReactivo(146l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Hormona de crecimiento");
-       examenDTO.setDescripcion("Hormona de crecimiento");
-       examenDTO.setIdReactivo(147l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Ferritina");
-       examenDTO.setDescripcion("Ferritina");
-       examenDTO.setIdReactivo(148l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cortisol AM");
-       examenDTO.setDescripcion("Cortisol AM");
-       examenDTO.setIdReactivo(149l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cortisol PM");
-       examenDTO.setDescripcion("Cortisol PM");
-       examenDTO.setIdReactivo(150l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cortisol en orina");
-       examenDTO.setDescripcion("Cortisol en orina");
-       examenDTO.setIdReactivo(151l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Toxoplasma IgG aviles");
-       examenDTO.setDescripcion("Toxoplasma IgG aviles");
-       examenDTO.setIdReactivo(152l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Sodio en suero");
-       examenDTO.setDescripcion("Sodio en suero");
-       examenDTO.setIdReactivo(153l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Sodio en orina");
-       examenDTO.setDescripcion("Sodio en orina");
-       examenDTO.setIdReactivo(154l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Potasio en suero");
-       examenDTO.setDescripcion("Potasio en suero");
-       examenDTO.setIdReactivo(155l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Potasio en orina");
-       examenDTO.setDescripcion("Potasio en orina");
-       examenDTO.setIdReactivo(156l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cloro en suero");
-       examenDTO.setDescripcion("Cloro en suero");
-       examenDTO.setIdReactivo(157l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Cloro en orina");
-       examenDTO.setDescripcion("Cloro en orina");
-       examenDTO.setIdReactivo(158l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Calcio en suero");
-       examenDTO.setDescripcion("Calcio en suero");
-       examenDTO.setIdReactivo(159l);
-       examenes.add(examenDTO);
-
-       examenDTO = new ExamenDTO();
-       examenDTO.setNombre("Calcio en orina");
-       examenDTO.setDescripcion("Calcio en orina");
-       examenDTO.setIdReactivo(160l);
-       examenes.add(examenDTO);
-       
-       return examenes;
-       
-   }
+    }
     
-    public List<ExamenDTO> cargarImagenes(){
-       
-       List<ExamenDTO> examenes = new ArrayList<>();
-       ExamenDTO examenDTO = new ExamenDTO();
+    public String solicitarCitaExamenLaboratorio(ExamenDTO examenDTO, List<ExamenDTO> examenesDTO, Agenda agenda, Date fecha) {
+
+        CitaDAO citaDAO = new CitaDAO();
+        
+        Long precioExamen = buscarPrecioExamen(1l);
+
+        System.out.println("Paso 1 Parte 1");
+        // Crear Cita
+        Cita cita = crearCita(agenda, fecha, precioExamen);
+        cita = citaDAO.createCita(cita);
+        Long valorCita = 0l; 
+        
+        System.out.println("Paso 3 Parte 1");
+        // Asociar Laboratorio con Cita
+        List<Laboratorio> laboratorios = new ArrayList<>();
+        
+        System.out.println("Paso 7 Parte 2");
+        // Crear Historico
+        Long preciosReactivos = 0l;
+        
+        for(ExamenDTO examen: examenesDTO){
+            
+            if(examen.getNombre().equals(examenDTO.getNombre())){
+                
+                Reactivo reactivo = buscarReactivo(examen.getIdReactivo());
+
+                System.out.println("Paso 1");
+                // Crear Cita
+                valorCita = valorCita + precioExamen;
+                
+                System.out.println("Paso 2");
+                // Crear Laboratorio
+                Laboratorio laboratorio = new Laboratorio();
+                laboratorio.setDescripcion(examen.getDescripcion());
+                laboratorio.setNombre(examen.getNombre());
+                laboratorio.setReactivoreactivoID(reactivo);
+                laboratorio.setCitaLaboratorioLaboratoriocitaID(cita);
+                laboratorio.setResultado("R:");
+                
+                System.out.println("Paso 3 Parte 2");
+                // Asociar Laboratorio con Cita
+                laboratorios.add(laboratorio);
+
+                System.out.println("Paso 5");
+                // Actualizar cantidad de reactivos
+                reactivo = actualizarUnidadesReactivo(reactivo);
+
+                System.out.println("Paso 6");
+                // Crear alerta de Reactivo
+                crearAlerta(reactivo.getUnidadesExistentes(), reactivo.getNombre(), laboratorio.getDescripcion());
+                
+                System.out.println("Paso 7 Parte 2");
+                // Crear Historico
+                preciosReactivos = preciosReactivos + reactivo.getValor();
+                
+            }                
+            
+        }
+
+        System.out.println("Paso 3 Parte 3");
+        // Asociar Laboratorio con Cita
+        cita.setLaboratorioCollection(laboratorios);
+        citaDAO.updateLaboratoriosCita(cita);
+        
+        System.out.println("Paso 1 Parte 1");
+        // Crear Cita
+        cita.setValor(valorCita);
+        citaDAO.updateValorCita(cita);
+        
+        System.out.println("Paso 4");
+        // Actualizar disponibilidad de Agenda
+        actualizarDisponibilidadAgenda(agenda);
+        
+        System.out.println("Paso 7 Parte 3");
+        // Crear Historico
+        crearHistoricoGastosGananciasCitas(fecha, examenDTO.getNombre(), "Laboratorio", preciosReactivos, valorCita);
+        
+        return "exito";
+
+    }
+
+    public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha) {
+
+        CitaDAO citaDAO = new CitaDAO();
+
+        Long precioExamen = buscarPrecioExamen(2l);
+        Reactivo reactivo = buscarReactivo(examenDTO.getIdReactivo());
+        
+        System.out.println("Paso 1");
+        // Crear Cita
+        Cita cita = crearCita(agenda, fecha, precioExamen);
+        cita = citaDAO.createCita(cita);
+
+        System.out.println("Paso 2");
+        // Crear Imagen Diagnóstica
+        ImagenDiagnostica imagen = new ImagenDiagnostica();
+        imagen.setDescripcion(examenDTO.getDescripcion());
+        imagen.setNombre(examenDTO.getNombre());
+        imagen.setReactivoreactivoID(reactivo);
+        imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
+        imagen.setRutaImagen("F:/");
+
+        System.out.println("Paso 3");
+        // Asociar Imagen con Cita
+        List<ImagenDiagnostica> imagenes = new ArrayList<>();
+        imagenes.add(imagen);
+        cita.setImagenDiagnosticaCollection(imagenes);
+        citaDAO.updateImagenesCita(cita);
+
+        System.out.println("Paso 4");
+        // Actualizar disponibilidad de Agenda
+        actualizarDisponibilidadAgenda(agenda);
+
+        System.out.println("Paso 5");
+        // Actualizar cantidad de reactivos
+        reactivo = actualizarUnidadesReactivo(reactivo);
+
+        System.out.println("Paso 6");
+        // Crear alerta de Reactivo
+        crearAlerta(reactivo.getUnidadesExistentes(), reactivo.getNombre(), imagen.getDescripcion());
+
+        System.out.println("Paso 7");
+        // Crear Historico
+        crearHistoricoGastosGananciasCitas(fecha, imagen.getDescripcion(), "ImagenesDiagnosticas", reactivo.getValor(), precioExamen);
+
+        return "exito";
+
+    }
+
+    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen) {
+
+        Doctor doctor = agenda.getDoctordoctorID();
+        Medico medico = agenda.getMedicomedicoID();
+
+        List<Laboratorio> laboratorios = new ArrayList<>();
+        List<ImagenDiagnostica> imagenes = new ArrayList<>();
+        List<Doctor> doctores = new ArrayList<>();
+        doctores.add(doctor);
+
+        Cita cita = new Cita();
+        cita.setDoctorCollection(doctores);
+        cita.setMedicomedicoID(medico);
+        cita.setLaboratorioCollection(laboratorios);
+        cita.setPacientepacienteID(LoginBean.getPaciente());
+        cita.setImagenDiagnosticaCollection(imagenes);
+        cita.setFecha(fecha);
+        cita.setValor(precioExamen);
+
+        return cita;
+
+    }
+
+    public void crearAlerta(long unidadesExistentes, String nombreReactivo, String nombreExamen) {
+
+        AlertaDAO alertaDAO = new AlertaDAO();
+
+        Alerta alerta = new Alerta();
+        if (unidadesExistentes < 10l) {
+            alerta.setNombreReactivo(nombreReactivo);
+            alerta.setDescripcion(nombreExamen);
+            alerta.setFecha(new Date());
+            alerta.setCantidadFaltante((int) unidadesExistentes);
+            alertaDAO.createAlerta(alerta);
+        }
+    }
+    
+    public void crearHistoricoGastosGananciasCitas(Date fecha, String nombreImagen, String tipo, Long valorReactivo, Long precioExamen){
+
+        HistoricoGastosGananciasCitasDAO historicoGastosGananciasCitasDAO = new HistoricoGastosGananciasCitasDAO();
+        
+        HistoricoGastosGananciasCitas historicoGastosGananciasCitas = new HistoricoGastosGananciasCitas();
+        historicoGastosGananciasCitas.setFecha(fecha);
+        historicoGastosGananciasCitas.setNombreExamen(nombreImagen);
+        historicoGastosGananciasCitas.setTipo(tipo);
+        historicoGastosGananciasCitas.setPrecioReactivo(valorReactivo);
+        historicoGastosGananciasCitas.setValorExamen(precioExamen);
+        historicoGastosGananciasCitas.setGanancia(precioExamen - valorReactivo);
+        
+        historicoGastosGananciasCitasDAO.createHistorico(historicoGastosGananciasCitas);
+    }
+
+    public void actualizarDisponibilidadAgenda(Agenda agenda) {
+
+        AgendaDAO agendaDAO = new AgendaDAO();
+
+        agenda.setDisponible(false);
+        agendaDAO.updateAgenda(agenda);
+
+    }
+
+    public Long buscarPrecioExamen(Long idExamen) {
+
+        PrecioDAO precioDAO = new PrecioDAO();
+
+        return precioDAO.searchPrecioExamen(idExamen);
+
+    }
+
+    public Reactivo buscarReactivo(Long idReactivo) {
+
+        ReactivoDAO reactivoDAO = new ReactivoDAO();
+
+        return reactivoDAO.searchByIdReactivo(idReactivo);
+
+    }
+    
+    public Reactivo actualizarUnidadesReactivo(Reactivo reactivo){
+
+        ReactivoDAO reactivoDAO = new ReactivoDAO();        
+        
+        reactivo.setUnidadesExistentes(reactivo.getUnidadesExistentes() - 1);
+
+        return reactivoDAO.updateReactivo(reactivo);
+        
+    }
+
+    public List<ExamenDTO> cargarExamenesLaboratorio() {
+
+        List<ExamenDTO> examenes = new ArrayList<>();
+        ExamenDTO examenDTO;
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Globulos Rojos");
+        examenDTO.setIdReactivo(1l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Globulos Blancos");
+        examenDTO.setIdReactivo(2l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Hemoglobina");
+        examenDTO.setIdReactivo(3l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Hematocrito");
+        examenDTO.setIdReactivo(4l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Volumen Corpuscular medio");
+        examenDTO.setIdReactivo(5l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Hemoglobina Corpuscular media");
+        examenDTO.setIdReactivo(6l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Concentración de Hemoglobina Corpuscular");
+        examenDTO.setIdReactivo(7l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Ancho de Distribución de Globulos Rojos");
+        examenDTO.setIdReactivo(8l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Plaquetas");
+        examenDTO.setIdReactivo(9l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Neutrofilos %");
+        examenDTO.setIdReactivo(10l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Linfocitos % ");
+        examenDTO.setIdReactivo(11l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Monofitos %");
+        examenDTO.setIdReactivo(12l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Eocinofitos %");
+        examenDTO.setIdReactivo(13l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Basofilos");
+        examenDTO.setIdReactivo(14l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cuadro Hematico");
+        examenDTO.setDescripcion("Volumen Plaquetario medio");
+        examenDTO.setIdReactivo(15l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de Sangre Periferico");
+        examenDTO.setDescripcion("Globulos Rojos");
+        examenDTO.setIdReactivo(16l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de Sangre Periferico");
+        examenDTO.setDescripcion("Globulos Blancos");
+        examenDTO.setIdReactivo(17l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de Sangre Periferico");
+        examenDTO.setDescripcion("Plaquetas");
+        examenDTO.setIdReactivo(18l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hipidico");
+        examenDTO.setDescripcion("Colesterol");
+        examenDTO.setIdReactivo(19l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hipidico");
+        examenDTO.setDescripcion("Trigliceridos");
+        examenDTO.setIdReactivo(20l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hipidico");
+        examenDTO.setDescripcion("HDL");
+        examenDTO.setIdReactivo(21l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hipidico");
+        examenDTO.setDescripcion("LDL");
+        examenDTO.setIdReactivo(22l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hipidico");
+        examenDTO.setDescripcion("VLDL");
+        examenDTO.setIdReactivo(23l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("Bilirrubina directa");
+        examenDTO.setIdReactivo(24l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("Bilirrubina total");
+        examenDTO.setIdReactivo(25l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("TGO");
+        examenDTO.setIdReactivo(26l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("TGP");
+        examenDTO.setIdReactivo(27l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("Amilasa");
+        examenDTO.setIdReactivo(28l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil hepatico");
+        examenDTO.setDescripcion("Lipasa");
+        examenDTO.setIdReactivo(29l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil Renal");
+        examenDTO.setDescripcion("BUN");
+        examenDTO.setIdReactivo(30l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil Renal");
+        examenDTO.setDescripcion("Creatinina");
+        examenDTO.setIdReactivo(31l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil Renal");
+        examenDTO.setDescripcion("Proteinuria");
+        examenDTO.setIdReactivo(32l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil Renal");
+        examenDTO.setDescripcion("Creatinina 24H");
+        examenDTO.setIdReactivo(33l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Perfil Renal");
+        examenDTO.setDescripcion("Proteinuria 24H");
+        examenDTO.setIdReactivo(34l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprologico");
+        examenDTO.setDescripcion("PH");
+        examenDTO.setIdReactivo(35l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprologico");
+        examenDTO.setDescripcion("Color");
+        examenDTO.setIdReactivo(36l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprologico");
+        examenDTO.setDescripcion("Consistencia");
+        examenDTO.setIdReactivo(37l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprologico");
+        examenDTO.setDescripcion("Sangre oculta");
+        examenDTO.setIdReactivo(38l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprologico");
+        examenDTO.setDescripcion("Azucares reductores");
+        examenDTO.setIdReactivo(39l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de flujo vaginal");
+        examenDTO.setDescripcion("Fresco");
+        examenDTO.setIdReactivo(40l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de flujo vaginal");
+        examenDTO.setDescripcion("Gram");
+        examenDTO.setIdReactivo(41l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Color");
+        examenDTO.setIdReactivo(42l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Turbidez");
+        examenDTO.setIdReactivo(43l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("PH");
+        examenDTO.setIdReactivo(44l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Densidad");
+        examenDTO.setIdReactivo(45l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Nitritos");
+        examenDTO.setIdReactivo(46l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Proteinas");
+        examenDTO.setIdReactivo(47l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Cuerpos cetonicos");
+        examenDTO.setIdReactivo(48l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Bilirrubinas");
+        examenDTO.setIdReactivo(49l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Urobilinogeno");
+        examenDTO.setIdReactivo(50l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Sangre");
+        examenDTO.setIdReactivo(51l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Leucocitos en orina");
+        examenDTO.setIdReactivo(52l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Fisico-Quimico");
+        examenDTO.setDescripcion("Hematies en orina");
+        examenDTO.setIdReactivo(53l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Leucocitos en sedimento por campo");
+        examenDTO.setIdReactivo(54l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Celulas");
+        examenDTO.setIdReactivo(55l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Bacterias");
+        examenDTO.setIdReactivo(56l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Hematies en sedimento");
+        examenDTO.setIdReactivo(57l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Cilindros");
+        examenDTO.setIdReactivo(58l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Orinas Sedimento");
+        examenDTO.setDescripcion("Cristales");
+        examenDTO.setIdReactivo(59l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Reticulocitos");
+        examenDTO.setDescripcion("Reticulocitos");
+        examenDTO.setIdReactivo(60l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Velocidad de Sedimientación Globular");
+        examenDTO.setDescripcion("Velocidad de Sedimientación Globular");
+        examenDTO.setIdReactivo(61l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Eocinofilos en moco nasal");
+        examenDTO.setDescripcion("Eocinofilos en moco nasal");
+        examenDTO.setIdReactivo(62l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Gota Gruesa");
+        examenDTO.setDescripcion("Gota Gruesa");
+        examenDTO.setIdReactivo(63l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prueba rapida para malaria");
+        examenDTO.setDescripcion("Prueba rapida para malaria");
+        examenDTO.setIdReactivo(64l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prueba rapida para dengue");
+        examenDTO.setDescripcion("Prueba rapida para dengue");
+        examenDTO.setIdReactivo(65l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Acido urico");
+        examenDTO.setDescripcion("Acido urico");
+        examenDTO.setIdReactivo(66l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Microalbuminuria");
+        examenDTO.setDescripcion("Microalbuminuria");
+        examenDTO.setIdReactivo(67l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hemoglobina glicosilada");
+        examenDTO.setDescripcion("Hemoglobina glicosilada");
+        examenDTO.setIdReactivo(68l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("CPK");
+        examenDTO.setDescripcion("CPK");
+        examenDTO.setIdReactivo(69l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("CPKMB");
+        examenDTO.setDescripcion("CPKMB");
+        examenDTO.setIdReactivo(70l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Colinesterasa");
+        examenDTO.setDescripcion("Colinesterasa");
+        examenDTO.setIdReactivo(71l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Sangre oculta en heces");
+        examenDTO.setDescripcion("Sangre oculta en heces");
+        examenDTO.setIdReactivo(72l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis uretral");
+        examenDTO.setDescripcion("Frotis uretral");
+        examenDTO.setIdReactivo(73l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis de Leishmania");
+        examenDTO.setDescripcion("Frotis de Leishmania");
+        examenDTO.setIdReactivo(74l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Urocultivo");
+        examenDTO.setDescripcion("Urocultivo");
+        examenDTO.setIdReactivo(75l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hemocultivo");
+        examenDTO.setDescripcion("Hemocultivo");
+        examenDTO.setIdReactivo(76l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cultivo para germenes comunes");
+        examenDTO.setDescripcion("Cultivo para germenes comunes");
+        examenDTO.setIdReactivo(77l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antibiograma");
+        examenDTO.setDescripcion("Antibiograma");
+        examenDTO.setIdReactivo(78l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Gram de orina");
+        examenDTO.setDescripcion("Gram de orina");
+        examenDTO.setIdReactivo(79l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cultivo de anaerobios");
+        examenDTO.setDescripcion("Cultivo de anaerobios");
+        examenDTO.setIdReactivo(80l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Coprocultivo");
+        examenDTO.setDescripcion("Coprocultivo");
+        examenDTO.setIdReactivo(81l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("KOH");
+        examenDTO.setDescripcion("KOH");
+        examenDTO.setIdReactivo(82l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Frotis faringeo");
+        examenDTO.setDescripcion("Frotis faringeo");
+        examenDTO.setIdReactivo(83l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cultivo de secreciones");
+        examenDTO.setDescripcion("Cultivo de secreciones");
+        examenDTO.setIdReactivo(84l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cultivo de liquido cefaloraquideo");
+        examenDTO.setDescripcion("Cultivo de liquido cefaloraquideo");
+        examenDTO.setIdReactivo(85l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Serologia");
+        examenDTO.setDescripcion("Serologia");
+        examenDTO.setIdReactivo(86l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hemoclasificacion");
+        examenDTO.setDescripcion("Hemoclasificacion");
+        examenDTO.setIdReactivo(87l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("HBSAG");
+        examenDTO.setDescripcion("HBSAG");
+        examenDTO.setIdReactivo(88l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prueba rapida VIH");
+        examenDTO.setDescripcion("Prueba rapida VIH");
+        examenDTO.setIdReactivo(89l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Factor Rematoideo");
+        examenDTO.setDescripcion("Factor Rematoideo");
+        examenDTO.setIdReactivo(90l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Proteina Creativa");
+        examenDTO.setDescripcion("Proteina Creativa");
+        examenDTO.setIdReactivo(91l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antiestreptolisina");
+        examenDTO.setDescripcion("Antiestreptolisina");
+        examenDTO.setIdReactivo(92l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prueba de embarazo");
+        examenDTO.setDescripcion("Prueba de embarazo");
+        examenDTO.setIdReactivo(93l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prueba rapida Hepatitis C");
+        examenDTO.setDescripcion("Prueba rapida Hepatitis C");
+        examenDTO.setIdReactivo(94l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antigenos febriles");
+        examenDTO.setDescripcion("Antigenos febriles");
+        examenDTO.setIdReactivo(95l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Protrombina Time");
+        examenDTO.setDescripcion("Protrombina Time");
+        examenDTO.setIdReactivo(96l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Tiempo parcial de tromboplastina");
+        examenDTO.setDescripcion("Tiempo parcial de tromboplastina");
+        examenDTO.setIdReactivo(97l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Indice PT");
+        examenDTO.setDescripcion("Indice PT");
+        examenDTO.setIdReactivo(98l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Acido Valproico");
+        examenDTO.setDescripcion("Acido Valproico");
+        examenDTO.setIdReactivo(99l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Inmunoglobulina IgA");
+        examenDTO.setDescripcion("Inmunoglobulina IgA");
+        examenDTO.setIdReactivo(100l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Factor reumatoideo de altaprecision");
+        examenDTO.setDescripcion("Factor reumatoideo de altaprecision");
+        examenDTO.setIdReactivo(101l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Proteina Creativa de alta precision");
+        examenDTO.setDescripcion("Proteina Creativa de alta precision");
+        examenDTO.setIdReactivo(102l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hierro total");
+        examenDTO.setDescripcion("Hierro total");
+        examenDTO.setIdReactivo(103l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Gama glutamil transferasa");
+        examenDTO.setDescripcion("Gama glutamil transferasa");
+        examenDTO.setIdReactivo(104l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Inmunoglobulina IgG");
+        examenDTO.setDescripcion("Inmunoglobulina IgG");
+        examenDTO.setIdReactivo(105l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Inmunoglobulina IgM");
+        examenDTO.setDescripcion("Inmunoglobulina IgM");
+        examenDTO.setIdReactivo(106l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Deshidrogenasa lactica");
+        examenDTO.setDescripcion("Deshidrogenasa lactica");
+        examenDTO.setIdReactivo(107l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Fosforo");
+        examenDTO.setDescripcion("Fosforo");
+        examenDTO.setIdReactivo(108l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Magnesio en suero");
+        examenDTO.setDescripcion("Magnesio en suero");
+        examenDTO.setIdReactivo(109l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("TSH");
+        examenDTO.setDescripcion("TSH");
+        examenDTO.setIdReactivo(110l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hormona foliculo estimulante");
+        examenDTO.setDescripcion("Hormona foliculo estimulante");
+        examenDTO.setIdReactivo(111l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hormona luteinizante basal");
+        examenDTO.setDescripcion("Hormona luteinizante basal");
+        examenDTO.setIdReactivo(112l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("PSA total");
+        examenDTO.setDescripcion("PSA total");
+        examenDTO.setIdReactivo(113l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Gonadotropina coorionica humana");
+        examenDTO.setDescripcion("Gonadotropina coorionica humana");
+        examenDTO.setIdReactivo(114l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Toxoplasma IgG");
+        examenDTO.setDescripcion("Toxoplasma IgG");
+        examenDTO.setIdReactivo(115l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Toxoplasma IgE");
+        examenDTO.setDescripcion("Toxoplasma IgE");
+        examenDTO.setIdReactivo(116l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Inmunoglobulina IgE");
+        examenDTO.setDescripcion("Inmunoglobulina IgE");
+        examenDTO.setIdReactivo(117l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Estradiol");
+        examenDTO.setDescripcion("Estradiol");
+        examenDTO.setIdReactivo(118l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prolactina");
+        examenDTO.setDescripcion("Prolactina");
+        examenDTO.setIdReactivo(119l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prolactina 1H");
+        examenDTO.setDescripcion("Prolactina 1H");
+        examenDTO.setIdReactivo(120l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Prolactina 2H");
+        examenDTO.setDescripcion("Prolactina 2H");
+        examenDTO.setIdReactivo(121l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Pool de prolactina");
+        examenDTO.setDescripcion("Pool de prolactina");
+        examenDTO.setIdReactivo(122l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("PSA total cualitativo");
+        examenDTO.setDescripcion("PSA total cualitativo");
+        examenDTO.setIdReactivo(123l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Insulina");
+        examenDTO.setDescripcion("Insulina");
+        examenDTO.setIdReactivo(124l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("HIV Cuarta generacion");
+        examenDTO.setDescripcion("HIV Cuarta generacion");
+        examenDTO.setIdReactivo(125l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("T3 total");
+        examenDTO.setDescripcion("T3 total");
+        examenDTO.setIdReactivo(126l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("T4 total");
+        examenDTO.setDescripcion("T4 total");
+        examenDTO.setIdReactivo(127l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Tiroxina libre");
+        examenDTO.setDescripcion("Tiroxina libre");
+        examenDTO.setIdReactivo(128l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Triyodotronina libre");
+        examenDTO.setDescripcion("Triyodotronina libre");
+        examenDTO.setIdReactivo(129l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("PSA libre");
+        examenDTO.setDescripcion("PSA libre");
+        examenDTO.setIdReactivo(130l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Anti TPO");
+        examenDTO.setDescripcion("Anti TPO");
+        examenDTO.setIdReactivo(131l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("HIV Combi PT");
+        examenDTO.setDescripcion("HIV Combi PT");
+        examenDTO.setIdReactivo(132l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Rubeola IgG");
+        examenDTO.setDescripcion("Rubeola IgG");
+        examenDTO.setIdReactivo(133l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Vitamina D");
+        examenDTO.setDescripcion("Vitamina D");
+        examenDTO.setIdReactivo(134l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Vitamina B12");
+        examenDTO.setDescripcion("Vitamina B12");
+        examenDTO.setIdReactivo(135l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antig especifico de prostata frac libre");
+        examenDTO.setDescripcion("Antig especifico de prostata frac libre");
+        examenDTO.setIdReactivo(136l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Testosterona libre");
+        examenDTO.setDescripcion("Testosterona libre");
+        examenDTO.setIdReactivo(137l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Rubeola IgM");
+        examenDTO.setDescripcion("Rubeola IgM");
+        examenDTO.setIdReactivo(138l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("PTH Paratormona");
+        examenDTO.setDescripcion("PTH Paratormona");
+        examenDTO.setIdReactivo(139l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Progesterona");
+        examenDTO.setDescripcion("Progesterona");
+        examenDTO.setIdReactivo(140l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Acido folico");
+        examenDTO.setDescripcion("Acido folico");
+        examenDTO.setIdReactivo(141l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Alfafetoproteinas");
+        examenDTO.setDescripcion("Alfafetoproteinas");
+        examenDTO.setIdReactivo(142l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antigeno CA125");
+        examenDTO.setDescripcion("Antigeno CA125");
+        examenDTO.setIdReactivo(143l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Antigeno carcinoembrionario");
+        examenDTO.setDescripcion("Antigeno carcinoembrionario");
+        examenDTO.setIdReactivo(144l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Citomegalovirus IgG");
+        examenDTO.setDescripcion("Citomegalovirus IgG");
+        examenDTO.setIdReactivo(145l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Citomegalovirus IgM");
+        examenDTO.setDescripcion("Citomegalovirus IgM");
+        examenDTO.setIdReactivo(146l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Hormona de crecimiento");
+        examenDTO.setDescripcion("Hormona de crecimiento");
+        examenDTO.setIdReactivo(147l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Ferritina");
+        examenDTO.setDescripcion("Ferritina");
+        examenDTO.setIdReactivo(148l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cortisol AM");
+        examenDTO.setDescripcion("Cortisol AM");
+        examenDTO.setIdReactivo(149l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cortisol PM");
+        examenDTO.setDescripcion("Cortisol PM");
+        examenDTO.setIdReactivo(150l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cortisol en orina");
+        examenDTO.setDescripcion("Cortisol en orina");
+        examenDTO.setIdReactivo(151l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Toxoplasma IgG aviles");
+        examenDTO.setDescripcion("Toxoplasma IgG aviles");
+        examenDTO.setIdReactivo(152l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Sodio en suero");
+        examenDTO.setDescripcion("Sodio en suero");
+        examenDTO.setIdReactivo(153l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Sodio en orina");
+        examenDTO.setDescripcion("Sodio en orina");
+        examenDTO.setIdReactivo(154l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Potasio en suero");
+        examenDTO.setDescripcion("Potasio en suero");
+        examenDTO.setIdReactivo(155l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Potasio en orina");
+        examenDTO.setDescripcion("Potasio en orina");
+        examenDTO.setIdReactivo(156l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cloro en suero");
+        examenDTO.setDescripcion("Cloro en suero");
+        examenDTO.setIdReactivo(157l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Cloro en orina");
+        examenDTO.setDescripcion("Cloro en orina");
+        examenDTO.setIdReactivo(158l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Calcio en suero");
+        examenDTO.setDescripcion("Calcio en suero");
+        examenDTO.setIdReactivo(159l);
+        examenes.add(examenDTO);
+
+        examenDTO = new ExamenDTO();
+        examenDTO.setNombre("Calcio en orina");
+        examenDTO.setDescripcion("Calcio en orina");
+        examenDTO.setIdReactivo(160l);
+        examenes.add(examenDTO);
+
+        return examenes;
+
+    }
+
+    public List<ExamenDTO> cargarImagenes() {
+
+        List<ExamenDTO> examenes = new ArrayList<>();
+        ExamenDTO examenDTO = new ExamenDTO();
 
         examenDTO = new ExamenDTO();
         examenDTO.setNombre("Rayos X");
@@ -1887,8 +2062,8 @@ public class SolicitarCitaBiz {
         examenDTO.setDescripcion("Ultrasonido venoso (extremidades)");
         examenDTO.setIdReactivo(299l);
         examenes.add(examenDTO);
-       
-       return examenes;
-       
+
+        return examenes;
+
     }
 }
