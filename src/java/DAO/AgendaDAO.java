@@ -52,18 +52,19 @@ public class AgendaDAO {
         
         Agenda nuevaAgenda = new Agenda();
         EntityManager em = emf.createEntityManager();  
-        em.getTransaction().begin();
         try {
             for(Agenda agenda : agendas){
+                em.getTransaction().begin();
                 nuevaAgenda = em.merge(em.find(Agenda.class, agenda.getAgendaID()));
                 nuevaAgenda.setDisponible(agenda.getDisponible());
                 nuevaAgenda.setDoctordoctorID(agenda.getDoctordoctorID());
                 System.out.println("------------ " + agenda.getAgendaID());
                 System.out.println(agenda.getDisponible());
-                System.out.println(agenda.getMedicomedicoID());
+                System.out.println(agenda.getDoctordoctorID());
                 em.getTransaction().commit();
             }
         } catch (Exception e){
+            System.out.println(e);
             em.getTransaction().rollback();
         } finally {
             em.close();

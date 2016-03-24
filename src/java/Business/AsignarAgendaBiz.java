@@ -41,76 +41,80 @@ public class AsignarAgendaBiz {
         }
                 
         // Lunes Manana
-        for(int i=1; i<16; i++){
+        for(int i=0; i<=15; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorLunesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
 
         // Lunes Tarde        
-        for(int i=17; i<32; i++){
+        for(int i=16; i<=31; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorLunesTarde));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Martes Manana
-        for(int i=33; i<48; i++){
+        for(int i=32; i<=47; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMartesManana));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Martes Tarde
-        for (int i=49; i<64; i++) {
+        for (int i=48; i<=63; i++) {
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMartesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Miercoles Manana
-        for (int i=65; i<80; i++) {
+        for (int i=64; i<=79; i++) {
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMiercolesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
 
         // Miercoles Tarde
-        for(int i=81; i<96; i++){
+        for(int i=80; i<=95; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMiercolesTarde));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Jueves Manana
-        for(int i=97; i<112; i++){
+        for(int i=96; i<=111; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorJuevesManana));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Jueves Tarde
-        for(int i=113; i<128; i++){
+        for(int i=112; i<=127; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorJuevesTarde));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Viernes Manana
-        for(int i=129; i<144; i++){
+        for(int i=128; i<=143; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorViernesManana));            
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Viernes Tarde
-        for(int i=145; i<160; i++){
+        for(int i=144; i<=159; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorViernesTarde));            
             agendasPorActualizar.add(agendas.get(i));
         }     
         
+        System.out.println(agendasPorActualizar);
+        
         agendaDAO.updateAsignacionAgenda(agendasPorActualizar);
+        
+        
         
         return "exito";
     }
@@ -128,7 +132,7 @@ public class AsignarAgendaBiz {
         List<Agenda> agendas = agendaDAO.getListAgenda();
         List<Agenda> agendasPorActualizar = new ArrayList<>();
         
-        List<Doctor> doctores = doctorDAO.getDoctores("Laboratorio");
+        List<Doctor> doctores = doctorDAO.getDoctores("ImagenesDiagnosticas");
         
         HashMap listaDoctores = new HashMap();
         
@@ -137,74 +141,76 @@ public class AsignarAgendaBiz {
         }
         
         // Lunes Manana
-        for(int i=161; i<176; i++){
+        for(int i=160; i<=175; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorLunesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
 
         // Lunes Tarde        
-        for(int i=177; i<192; i++){
+        for(int i=176; i<=191; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorLunesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Martes Manana
-        for(int i=193; i<208; i++){
+        for(int i=192; i<=207; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMartesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Martes Tarde
-        for (int i=209; i<224; i++) {
+        for (int i=208; i<=223; i++) {
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMartesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }
 
         // Miercoles Manana
-        for (int i=225; i<240; i++) {
+        for (int i=224; i<=239; i++) {
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMiercolesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
 
         // Miercoles Tarde
-        for(int i=241; i<256; i++){
+        for(int i=240; i<=255; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorMiercolesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Jueves Manana
-        for(int i=257; i<272; i++){
+        for(int i=256; i<=271; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorJuevesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Jueves Tarde
-        for(int i=273; i<288; i++){
+        for(int i=272; i<=287; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorJuevesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Viernes Manana
-        for(int i=289; i<304; i++){
+        for(int i=288; i<=303; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorViernesManana));
             agendasPorActualizar.add(agendas.get(i));
         }
         
         // Viernes Tarde
-        for(int i=305; i<320; i++){
+        for(int i=304; i<=319; i++){
             agendas.get(i).setDisponible(true);
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorViernesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }    
+        
+        System.out.println(agendasPorActualizar);
 
         agendaDAO.updateAsignacionAgenda(agendasPorActualizar);
         
@@ -213,15 +219,18 @@ public class AsignarAgendaBiz {
     
     public List<DoctorDTO> parseDoctorDoctorDTO(String especialidad){
         
+        System.out.println("---------- Paso 1");
         DoctorDAO doctorDAO = new DoctorDAO();
         
         List<Doctor> doctores = doctorDAO.getDoctores(especialidad);
         
+         System.out.println("---------- Paso 2");
         List<DoctorDTO> doctoresDTO = new ArrayList<>();
         DoctorDTO doctorDTO;
 
         for (Doctor doctor : doctores){
             
+            System.out.println("each one");
             doctorDTO = new DoctorDTO();
             doctorDTO.setIdDoctor(doctor.getDoctorID());
             doctorDTO.setNombreDoctor(doctor.getPersonapersonaID().getNombre());

@@ -52,13 +52,19 @@ public class DoctorDAO {
     }
     
     public List<Doctor> getDoctores(String especialidad){
+        
         EntityManager em = emf.createEntityManager();
         Query q;
         List<Doctor> doctores = null;
         try {
+            System.out.println("DAO");
             q = em.createNamedQuery("Doctor.findByEspecialidad", Doctor.class);
-            q.setParameter("especialidad", especialidad);
+            q = q.setParameter("especialidad", especialidad);
+            q = q.setParameter("estado", "Activo");
+            System.out.println(q.toString());
+
             doctores = q.getResultList();
+            System.out.println(doctores.size());
         } catch (Exception e){
         } finally {
             em.close();

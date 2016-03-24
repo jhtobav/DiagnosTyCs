@@ -10,6 +10,7 @@ import DTO.DoctorDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -19,6 +20,7 @@ import javax.enterprise.context.Dependent;
  */
 @Named(value = "asignarAgenda")
 @Dependent
+@Singleton
 public class AsignarAgendaBean {
 
     private List<DoctorDTO> doctoresLaboratorio = new ArrayList<>();
@@ -39,6 +41,7 @@ public class AsignarAgendaBean {
         
         AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
         
+        System.out.println("----Bean");
         doctoresLaboratorio = asignarAgendaBiz.parseDoctorDoctorDTO("Laboratorio");
         doctoresImagen = asignarAgendaBiz.parseDoctorDoctorDTO("ImagenesDiagnosticas");
         
@@ -150,7 +153,7 @@ public class AsignarAgendaBean {
                 idDoctorJuevesManana, idDoctorJuevesTarde, 
                 idDoctorViernesManana, idDoctorViernesTarde);
         
-        return "inicio.xhtml";
+        return "administradorBody.xhtml";
         
     }
     
@@ -158,13 +161,13 @@ public class AsignarAgendaBean {
 
         AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
         
-        asignarAgendaBiz.asignarAgendaLaboratorioBiz(idDoctorLunesManana, idDoctorLunesTarde, 
+        asignarAgendaBiz.asignarAgendaImagenBiz(idDoctorLunesManana, idDoctorLunesTarde, 
                 idDoctorMartesManana, idDoctorMartesTarde, 
                 idDoctorMiercolesManana, idDoctorMiercolesTarde, 
                 idDoctorJuevesManana, idDoctorJuevesTarde, 
                 idDoctorViernesManana, idDoctorViernesTarde);
         
-        return "inicio.xhtml";
+        return "administradorBody.xhtml";
         
     }
     
