@@ -18,10 +18,10 @@ function builder() {
     $('.selectpicker').selectpicker();
     $('.selectpicker').selectpicker('refresh');
     var date = new Date();
-    if(date.getDay()!==0 || date.getDay()!==1){
-        $('.alert').show();
-    } else {
+    if(date.getDay()===0 || date.getDay()===6){
         $('.alert').hide();
+    }else{
+        $('.alert').show();
     }
 }
 

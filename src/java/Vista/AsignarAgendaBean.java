@@ -10,15 +10,16 @@ import DTO.DoctorDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 
 /**
  *
  * @author Felipe
  */
 @Named(value = "asignarAgenda")
+@Dependent
 @Singleton
 public class AsignarAgendaBean {
 
@@ -41,9 +42,10 @@ public class AsignarAgendaBean {
         AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
         
         System.out.println("----Bean");
+        
         doctoresLaboratorio = asignarAgendaBiz.parseDoctorDoctorDTO("Laboratorio");
         doctoresImagen = asignarAgendaBiz.parseDoctorDoctorDTO("ImagenesDiagnosticas");
-        
+        System.out.println("Hasta aqui todo bn todo bonito");
     }
 
     public List<DoctorDTO> getDoctoresLaboratorio() {
