@@ -39,7 +39,8 @@ public class SubirResultadoDoctorBiz {
            citaDTO.setFecha(c.getFecha());
            citaDTO.setValor(c.getValor());
            citaDTO.setCita(c);
-           citaDTO.setIdPaciente(c.getPacientepacienteID().getNumDocumento());
+           citaDTO.setIdPaciente(c.getPacientepacienteID().getPacienteID());
+           citaDTO.setNumDocPaciente(c.getPacientepacienteID().getNumDocumento());
            citaDTO.setNombrePaciente(c.getPacientepacienteID().getNombre());
            citasDTO.add(citaDTO);
            

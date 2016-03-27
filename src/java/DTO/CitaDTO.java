@@ -19,8 +19,10 @@ public class CitaDTO implements Serializable {
     private Date fecha;
     private Long valor;   
     private Long idPaciente;
-    private String nombreMedico;
+    private Long numDocPaciente;
     private String nombrePaciente;
+    private String nombreMedico;
+    private String nombreDoctor;
    
     public CitaDTO() {
     }
@@ -65,6 +67,14 @@ public class CitaDTO implements Serializable {
         this.idPaciente = idPaciente;
     }
 
+    public Long getNumDocPaciente() {
+        return numDocPaciente;
+    }
+
+    public void setNumDocPaciente(Long numDocPaciente) {
+        this.numDocPaciente = numDocPaciente;
+    }
+
     public String getNombreMedico() {
         return nombreMedico;
     }
@@ -79,6 +89,14 @@ public class CitaDTO implements Serializable {
 
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
     }
 
 }

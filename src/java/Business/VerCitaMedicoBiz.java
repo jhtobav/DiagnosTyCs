@@ -7,7 +7,7 @@ package Business;
 import DTO.CitaDTO;
 import Entidades.Cita;
 import Entidades.Doctor;
-import Entidades.Paciente;
+import Entidades.Medico;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +15,14 @@ import java.util.List;
  *
  * @author Jaime
  */
-public class VerCitaPacienteBiz {
+public class VerCitaMedicoBiz {
 
-   public List<CitaDTO> parseCitaCitaDTO(Paciente paciente){
+   public List<CitaDTO> parseCitaCitaDTO(Medico medico){
     
        List<CitaDTO> citasDTO = new ArrayList<>();
        CitaDTO citaDTO;
               
-       for(Cita c : paciente.getCitaCollection()){
+       for(Cita c : medico.getCitaCollection()){
            
            citaDTO = new CitaDTO();
            citaDTO.setCitaID(c.getCitaID());

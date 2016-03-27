@@ -40,15 +40,15 @@
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ID Paciente</span>
+                                <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
                                 <h:outputText class="form-control" value="#{subirResultadoDoctorBean.idPaciente}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Paciente</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.nombrePaciente}"/>
+                                <span class="input-group-addon" id="basic-addon1">Fecha de Cita</span>
+                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
@@ -68,20 +68,21 @@
                              value="#{subirResultadoDoctorBean.imagenesDiagnosticasModel}" var="imagenDiag">
                     <h:column>
                         <f:facet name="header">
-                            Nombre
+                            Nombre de la Imagen
                         </f:facet>
                         <h:outputText value="#{imagenDiag.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Descripción
+                            Descripción de la Imagen
                         </f:facet>
                         <h:outputText value="#{imagenDiag.descripcion}"/>
                     </h:column>
                 </h:dataTable>
             </div>
             <div class="container">
-                <p:fileUpload fileUploadListener="#{subirResultadoDoctorBean.subirResultadoImagen}"  
+                <h:form>
+                    <p:fileUpload fileUploadListener="#{subirResultadoDoctorBean.subirResultadoImagen}"  
                               mode="advanced"                                    
                               sizeLimit="10000000"   
                               allowTypes="/(\.|\/)(TIFF|tiff)$/" 
@@ -89,13 +90,13 @@
                               uploadLabel="Cargar"
                               cancelLabel="Cancelar"
                               />
+                </h:form>
             </div>
             <div class="container">
                 <hr/>
                 <div class="row">
-                    <h:commandButton  class="btn btn-primary" type="submit" 
-                        value="Actualizar Resultados" 
-                        action="#{subirResultadoDoctorBean.subirResultadoImagen}"/>
+                    <h:commandButton  class="btn btn-primary" type="submit"
+                                      value="Ver otras Citas" action="listarCitasDoctor.xhtml"/>
                 </div>
             </div>
             <link href="css/bootstrap.min.css" rel="stylesheet"/>

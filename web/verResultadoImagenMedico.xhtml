@@ -34,21 +34,21 @@
                         <div>
                             <div class="row">
                                 <div class="col-md-1"></div>
-                                Bienvenido, estos son los exámenes de la cita seleccionada:
+                                Bienvenido, estos son los resultados de la cita seleccionada:
                             </div>
                         </div>    
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.idPaciente}"/>
+                                <h:outputText class="form-control" value="#{verCitaMedicoBean.idPaciente}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Fecha de Cita</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.fechaCita}"/>
+                                <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
+                                <h:outputText class="form-control" value="#{verCitaMedicoBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
@@ -60,40 +60,42 @@
                 <div>
                     <div class="row">
                         <div class="col-md-1"></div>
-                        Listado de Exámenes de Laboratorio de la Cita
+                        Listado de Imágenes Diagnósticas de la Cita
                     </div>
                 </div>    
                 <br/>
-                <h:dataTable id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{subirResultadoDoctorBean.examenesLaboratorioModel}" var="examenLab">
+                <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
+                             value="#{verCitaMedicoBean.imagenesDiagnosticasModel}" var="imagenDiag">
                     <h:column>
                         <f:facet name="header">
                             Nombre del Exámen
                         </f:facet>
-                        <h:outputText value="#{examenLab.nombre}"/>
+                        <h:outputText value="#{imagenDiag.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Descripción del Exámen
                         </f:facet>
-                        <h:outputText value="#{examenLab.descripcion}"/>
+                        <h:outputText value="#{imagenDiag.descripcion}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Insertar Resultado
+                            Nombre del Doctor
                         </f:facet>
-                        <h:inputText class="form-control" value="#{examenLab.resultado}"/>
+                        <h:outputText value="#{verCitaMedicoBean.nombreDoctorCita}"/>
                     </h:column>
-                </h:dataTable>
-            </div>
-            <div class="container">
+                    <h:column>
+                        <f:facet name="header">
+                            Ver Imagen
+                        </f:facet>
+                        <h:commandButton type="submit" class="btn btn-success" value="Ver Imágen" 
+                                         action="verCita.xhtml"/>
+                    </h:column>
+                </h:dataTable>                
                 <hr/>
                 <div class="row">
                     <h:commandButton  class="btn btn-primary" type="submit" 
-                                      value="Actualizar Resultados" 
-                                      action="#{subirResultadoDoctorBean.subirResultadoLaboratorio()}"/>
-                    <h:commandButton  class="btn btn-primary" type="submit" 
-                                      value="Ver otras Citas" action="listarCitasDoctor.xhtml"/>
+                                  value="Ver otras Citas" action="listarCitasMedico.xhtml"/>
                 </div>
             </div>
             <link href="css/bootstrap.min.css" rel="stylesheet"/>
