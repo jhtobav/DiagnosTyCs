@@ -62,6 +62,7 @@ public class LoginBiz {
             Paciente paciente = pacienteDAO.searchByNumDocumento(loginDTO.getIdPersona());
             if(paciente != null){
                 loginDTORespuesta.setNombrePersona(paciente.getNombre());
+                loginDTORespuesta.setIdPersona(paciente.getPacienteID());
                 if (paciente.getContrasena().equals(loginDTO.getContrasena())) {
                     LoginBean.setPaciente(paciente);
                     loginDTORespuesta.setMensaje("paciente.xhtml");
