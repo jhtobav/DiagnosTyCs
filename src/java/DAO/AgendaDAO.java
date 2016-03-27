@@ -80,8 +80,6 @@ public class AgendaDAO {
         Agenda agenda = new Agenda();
         Doctor doctor = new Doctor();
         doctor.setDoctorID(1020779269L);
-        Medico medico = new Medico();
-        medico.setMedicoID(1020779267L);
         
         for(int i=1; i<=320; i++){
             
@@ -90,7 +88,6 @@ public class AgendaDAO {
             em = emf.createEntityManager();      
             agenda.setAgendaID(i);
             agenda.setDoctordoctorID(doctor);
-            agenda.setMedicomedicoID(medico);
             agenda.setDisponible(true);
             
             em.getTransaction().begin();

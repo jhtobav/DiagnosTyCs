@@ -43,30 +43,6 @@ public class RegistroPacienteBean {
     
     private String mensaje;
 
-    public String getEps() {
-        return eps;
-    }
-
-    public void setEps(String eps) {
-        this.eps = eps;
-    }
-
-    public Integer getNumeroHijos() {
-        return numeroHijos;
-    }
-
-    public void setNumeroHijos(Integer numeroHijos) {
-        this.numeroHijos = numeroHijos;
-    }
-
-    public String getContactoNombre() {
-        return contactoNombre;
-    }
-
-    public void setContactoNombre(String contactoNombre) {
-        this.contactoNombre = contactoNombre;
-    }
-
     public Long getNumDocPaciente() {
         return numDocPaciente;
     }
@@ -114,7 +90,15 @@ public class RegistroPacienteBean {
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
     }
-    
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public Long getTelefono() {
         return telefono;
     }
@@ -139,12 +123,68 @@ public class RegistroPacienteBean {
         this.correo = correo;
     }
 
+    public String getEps() {
+        return eps;
+    }
+
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    public int getNumeroHijos() {
+        return numeroHijos;
+    }
+
+    public void setNumeroHijos(int numeroHijos) {
+        this.numeroHijos = numeroHijos;
+    }
+
+    public String getContactoNombre() {
+        return contactoNombre;
+    }
+
+    public void setContactoNombre(String contactoNombre) {
+        this.contactoNombre = contactoNombre;
+    }
+
+    public Long getContactoTelefono() {
+        return contactoTelefono;
+    }
+
+    public void setContactoTelefono(Long contactoTelefono) {
+        this.contactoTelefono = contactoTelefono;
+    }
+
     public Long getIdTarjeta() {
         return idTarjeta;
     }
 
     public void setIdTarjeta(Long idTarjeta) {
         this.idTarjeta = idTarjeta;
+    }
+
+    public int getNumeroAno() {
+        return numeroAno;
+    }
+
+    public void setNumeroAno(int numeroAno) {
+        this.numeroAno = numeroAno;
+    }
+
+    public int getNumeroMes() {
+        return numeroMes;
+    }
+
+    public void setNumeroMes(int numeroMes) {
+        this.numeroMes = numeroMes;
+    }
+
+    public int getCsv() {
+        return csv;
+    }
+
+    public void setCsv(int csv) {
+        this.csv = csv;
     }
 
     public String getMensaje() {
@@ -154,7 +194,7 @@ public class RegistroPacienteBean {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
+
     public String registro(){
 
         PacienteDTO pacienteDTO = new PacienteDTO();

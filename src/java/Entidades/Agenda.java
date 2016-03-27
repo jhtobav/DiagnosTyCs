@@ -44,9 +44,6 @@ public class Agenda implements Serializable {
     @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")
     @OneToOne(optional = false)
     private Doctor doctordoctorID;
-    @JoinColumn(name = "Medico_medicoID", referencedColumnName = "medicoID")
-    @OneToOne(optional = false)
-    private Medico medicomedicoID;
 
     public Agenda() {
     }
@@ -82,14 +79,6 @@ public class Agenda implements Serializable {
 
     public void setDoctordoctorID(Doctor doctordoctorID) {
         this.doctordoctorID = doctordoctorID;
-    }
-
-    public Medico getMedicomedicoID() {
-        return medicomedicoID;
-    }
-
-    public void setMedicomedicoID(Medico medicomedicoID) {
-        this.medicomedicoID = medicomedicoID;
     }
 
     @Override
