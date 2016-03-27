@@ -33,6 +33,42 @@ public class RegistroBean {
     Long idTarjeta;
     Date fechaVencimiento = new Date();
     String mensaje;
+    String eps;
+    Integer numeroHijos;
+    String contactoNombre;
+    String contactoTelefono;
+
+    public String getEps() {
+        return eps;
+    }
+
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    public Integer getNumeroHijos() {
+        return numeroHijos;
+    }
+
+    public void setNumeroHijos(Integer numeroHijos) {
+        this.numeroHijos = numeroHijos;
+    }
+
+    public String getContactoNombre() {
+        return contactoNombre;
+    }
+
+    public void setContactoNombre(String contactoNombre) {
+        this.contactoNombre = contactoNombre;
+    }
+
+    public String getContactoTelefono() {
+        return contactoTelefono;
+    }
+
+    public void setContactoTelefono(String contactoTelefono) {
+        this.contactoTelefono = contactoTelefono;
+    }
 
     public Long getNumDocPaciente() {
         return numDocPaciente;

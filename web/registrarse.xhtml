@@ -56,6 +56,11 @@
                                 </div>
                                 <br/>
                                 <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="EPS" value="#{registroBean.eps}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
                                     <div class="input-group date">
                                         <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
@@ -63,6 +68,7 @@
                                     </div>
                                     <h:inputHidden class="form-control" id="fechaNacimiento" value="#{registroBean.edad}"/>
                                 </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -83,6 +89,30 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
                                     <h:inputSecret class="form-control"  ph:placeholder="Repita la contraseña" value="#{registroBean.confirmarContrasena}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="Número de hijos" value="#{registroBean.numeroHijos}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row spacedMargin spacedRow">
+                                Ingrese los datos de quien desea contactemos en caso de emercia 
+                            </div>
+                            <div class="spacedRow">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="Nombre completo" value="#{registroBean.contactoNombre}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">#</span>
+                                        <h:inputText class="form-control" ph:placeholder="Telefono" value="#{registroBean.contactoTelefono}"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
