@@ -66,20 +66,22 @@ public class SubirResultadoDoctorBiz {
         
         ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
         
-        imagenDiagnostica.setRutaImagen(almacenarArchivoImagen(archivoImagen, imagenDiagnostica.getImagenDiagnosticaID()));
+        imagenDiagnostica.setRutaImagen(almacenarArchivoImagen(archivoImagen, imagenDiagnostica.getCitaImagenDiagnosticaImagenDiagnosticacitaID()));
         imagenDiagnostica = imagenDiagnosticaDAO.updateImagenDiagnostica(imagenDiagnostica);
         
         return imagenDiagnostica;
         
     }
    
-    public String almacenarArchivoImagen(UploadedFile imagen, Long imagenID) throws IOException{
+    public String almacenarArchivoImagen(UploadedFile imagen, Cita cita) throws IOException{
        
         byte[] datos;
         String rutaImagen;
        
         datos = IOUtils.toByteArray(imagen.getInputstream());        
-        rutaImagen = "F:" + File.separator + "Imagenes" + File.separator + imagenID.toString() + ".png";
+        rutaImagen = "F:" + File.separator + "Imagenes" + File.separator +
+                cita.getPacientepacienteID() + "_" + cita.getCitaID() + "_" + cita.getFecha()
+                + ".png";
         FileImageOutputStream outputStream = null;
         try {
             outputStream = new FileImageOutputStream

@@ -154,7 +154,7 @@ public class RegistroMedicoBean {
         LoginBean.setMensajeEmergenteContenido("Felicidades "
                 + nombres + " su usuario se ha creado correctamente");
 
-        return "medicoBody.xhtml";
+        return "administradorBody.xhtml";
 
     }
 
