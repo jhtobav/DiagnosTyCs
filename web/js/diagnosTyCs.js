@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function load(){
+function load() {
     $('.date').datepicker({
         language: "es"
     });
 }
 
+function dateToISO8601String(date) {
+    var tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(date - tzoffset)).toISOString();
+    return localISOTime;
+}
 
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
@@ -18,9 +23,9 @@ function builder() {
     $('.selectpicker').selectpicker();
     $('.selectpicker').selectpicker('refresh');
     var date = new Date();
-    if(date.getDay()===0 || date.getDay()===6){
+    if (date.getDay() === 0 || date.getDay() === 6) {
         $('.alert').hide();
-    }else{
+    } else {
         $('.alert').show();
     }
 }
@@ -36,7 +41,7 @@ function getIdImagen(element) {
 }
 
 function  getId(element) {
-    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     var fechaCita = new Date();
     fechaCita.setDate(fechaCita.getDate() + (element.parentNode.cellIndex - fechaCita.getDay()));
     cleanSchedule();
@@ -58,7 +63,7 @@ function  getId(element) {
         diaEntrada.setAttribute("Value", "Viernes ");
     }
     diaEntrada.setAttribute("Value", diaEntrada.getAttribute("Value") + fechaCita.getDate() + " de " + meses[fechaCita.getMonth()]);
-    
+
     if (element.parentNode.parentNode.rowIndex === 1) {
         diaEntrada.setAttribute("Value", diaEntrada.getAttribute("Value") + " 8:00 - 8:15");
         fechaCita.setHours(08);
@@ -283,7 +288,7 @@ function  getId(element) {
         fechaCita.setSeconds(0);
         fechaCita.setMilliseconds(0);
     }
-    document.getElementById("form:fechaCita").value = fechaCita.toISOString();
+    document.getElementById("form:fechaCita").value = dateToISO8601String(fechaCita);
 }
 
 function cleanSchedule() {
@@ -328,6 +333,6 @@ function loadTable(value) {
     $('#procedimiento').selectpicker('refresh');
 }
 
-function setBirthDate(){
-    document.getElementById("form:fechaNacimiento").value = $('.date').datepicker('getDate').toISOString();
+function setBirthDate() {
+    document.getElementById("form:fechaNacimiento").value = dateToISO8601String($('.date').datepicker('getDate'));
 }
