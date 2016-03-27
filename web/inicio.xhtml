@@ -2,7 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -41,10 +40,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <h:form id="form" class="navbar-form navbar-right">
                         <div class="form-group">
-                            <h:inputText id="nombreUsuario" k:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
+                            <h:inputText id="nombreUsuario" ph:placeholder="ID Usuario" class="form-control" value="#{loginBean.idPersona}"/>
                         </div>
                         <div class="form-group">
-                            <h:inputSecret  id="contrasena" k:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
+                            <h:inputSecret  id="contrasena" ph:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
                         </div>
                         <div class="form-group">
                             <h:commandButton type="submit" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
