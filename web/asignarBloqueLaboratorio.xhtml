@@ -26,8 +26,8 @@
     <body onload="builder()">
         <h:form>
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
                 <div  class="panel">
                     <div class="row spacedRow">
                         <div class="table-responsive" id="tableField">
@@ -46,27 +46,27 @@
                                     <tr>
                                         <td class="tableDataNoSpace">8:00</td>
                                         <td class="tableDataNoSpace">                        
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorLunesManana}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorLunesManana}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorMartesManana}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorMartesManana}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">                        
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorMiercolesManana}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorMiercolesManana}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">                        
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorJuevesManana}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorJuevesManana}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">                        
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorViernesManana}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorViernesManana}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
@@ -74,28 +74,28 @@
                                     <tr>
                                         <td class="tableDataNoSpace">13:00</td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorLunesTarde}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorLunesTarde}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorMartesTarde}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorMartesTarde}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorMiercolesTarde}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorMiercolesTarde}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorJuevesTarde}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorJuevesTarde}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
 
                                         </td>
                                         <td class="tableDataNoSpace">
-                                            <h:selectOneMenu value="#{asignarAgenda.idDoctorViernesTarde}">
+                                            <h:selectOneMenu class="selectpicker" value="#{asignarAgenda.idDoctorViernesTarde}">
                                                 <f:selectItems value="#{asignarAgenda.doctoresLaboratorio}" var="doctor" itemValue="#{doctor.idDoctor}" itemLabel="#{doctor.nombreDoctor}"/>
                                             </h:selectOneMenu>
                                         </td>
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
         </h:form>
     </body>
 
