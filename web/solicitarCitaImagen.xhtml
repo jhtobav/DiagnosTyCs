@@ -173,6 +173,11 @@
                                 <f:selectItem itemValue="Ultrasonido venoso (extremidades)                               " itemLabel="Ultrasonido venoso (extremidades)                                " />
                             </h:selectOneMenu>
                         </div>
+                        <div class="col-md-6">
+                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{solicitarCitaBean.medico}" title="Medico">
+                                <f:selectItems value="#{solicitarCitaBean.medicos}" var="medico" itemValue="#{medico.idMedico}" itemLabel="#{medico.nombreMedico}"/>
+                            </h:selectOneMenu>
+                        </div>
                     </div>
                     <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
                             <table class="table table-bordered table-striped">

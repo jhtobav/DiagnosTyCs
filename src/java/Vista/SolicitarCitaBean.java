@@ -7,6 +7,7 @@ package Vista;
 
 import Business.SolicitarCitaBiz;
 import DTO.ExamenDTO;
+import DTO.MedicoDTO;
 import Entidades.Agenda;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,8 @@ public class SolicitarCitaBean {
     private String imagenDiagnostica;
     private int numCelda;
     private String fecha;
+    private List<MedicoDTO> medicos;
+    private String medico;
 
     @PostConstruct
     public void init() {
@@ -41,12 +44,28 @@ public class SolicitarCitaBean {
         
     }
 
+    public String getMedico() {
+        return medico;
+    }
+
+    public void setMedico(String medico) {
+        this.medico = medico;
+    }
+
     public List<Agenda> getTablaAgendas() {
         return tablaAgendas;
     }
 
     public void setTablaAgendas(List<Agenda> tablaAgendas) {
         this.tablaAgendas = tablaAgendas;
+    }
+
+    public List<MedicoDTO> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(List<MedicoDTO> medicos) {
+        this.medicos = medicos;
     }
 
     public String getExamenLaboratorio() {
