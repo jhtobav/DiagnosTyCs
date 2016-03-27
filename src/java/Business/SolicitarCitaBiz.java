@@ -24,6 +24,8 @@ import Entidades.Laboratorio;
 import Entidades.Medico;
 import Entidades.Reactivo;
 import Vista.LoginBean;
+import java.lang.reflect.Array;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,9 +111,12 @@ public class SolicitarCitaBiz {
         
         System.out.println("Paso 6");
         // Crear Cita
-        ImagenDiagnostica imagen = new ImagenDiagnostica();
-        Cita cita = crearCita(agenda, fecha, precioExamen, imagen, idMedico);
+        Cita cita = crearCita(agenda, fecha, precioExamen, idMedico);
         cita.setLaboratorioCollection(laboratorios);
+        
+        for(Laboratorio laboratorio : laboratorios)
+            laboratorio.setCitaLaboratorioLaboratoriocitaID(cita);
+        
         cita.setValor(valorCita);
         citaDAO.createCita(cita);
         
@@ -130,8 +135,7 @@ public class SolicitarCitaBiz {
     public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha, Long idMedico) {
 
         CitaDAO citaDAO = new CitaDAO();
-        ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
-
+        
         Long precioExamen = buscarPrecioExamen(2l);
         Reactivo reactivo = buscarReactivo(examenDTO.getIdReactivo());
         
@@ -143,11 +147,14 @@ public class SolicitarCitaBiz {
         imagen.setNombre(examenDTO.getNombre());
         imagen.setReactivoreactivoID(reactivo);
         imagen.setRutaImagen("F:/");
-        imagenDiagnosticaDAO.createImagen(imagen);
+        List<ImagenDiagnostica> imagenes = new ArrayList<>();
+        imagenes.add(imagen);
         
         System.out.println("Paso 2");
         // Crear Cita
-        Cita cita = crearCita(agenda, fecha, precioExamen, imagen, idMedico);
+        Cita cita = crearCita(agenda, fecha, precioExamen, idMedico);
+        cita.setImagenDiagnosticaCollection(imagenes);
+        imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
         citaDAO.createCita(cita);
 
         System.out.println("Paso 3");
@@ -170,19 +177,21 @@ public class SolicitarCitaBiz {
 
     }
 
-    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen, ImagenDiagnostica imagenDiagnostica, Long idMedico) {
+    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen, Long idMedico) {
 
         Doctor doctor = agenda.getDoctordoctorID();
         Medico medico = new MedicoDAO().searchByIdMedico(idMedico);
+        System.out.println(medico.getMedicoID());
         
         List<Laboratorio> laboratorios = new ArrayList<>();
+        List<ImagenDiagnostica> imagenes = new ArrayList<>();
 
         Cita cita = new Cita();
         cita.setDoctordoctorID(doctor);
         cita.setMedicomedicoID(medico);
-        cita.setLaboratorioCollection(laboratorios);
         cita.setPacientepacienteID(LoginBean.getPaciente());
-        cita.setImagenDiagnosticaimagenDiagnosticaID(imagenDiagnostica);
+        cita.setLaboratorioCollection(laboratorios);
+        cita.setImagenDiagnosticaCollection(imagenes);
         cita.setFecha(fecha);
         cita.setValor(precioExamen);
 

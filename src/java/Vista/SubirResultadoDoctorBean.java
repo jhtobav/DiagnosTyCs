@@ -149,7 +149,8 @@ public class SubirResultadoDoctorBean {
         fechaCita = citaSeleccionadaDTO.getFecha();
 
         if (LoginBean.getDoctor().getEspecialidad().equals("ImagenesDiagnosticas")) {
-            imagenDiagnostica = citaSeleccionadaDTO.getCita().getImagenDiagnosticaimagenDiagnosticaID();
+            List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>(citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection());
+            imagenDiagnostica = imagenesDiagnosticas.get(0);
             return "subirResultadoImagenDoctor.xhtml";
         } else {
             examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();

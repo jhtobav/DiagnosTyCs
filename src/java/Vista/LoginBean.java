@@ -170,6 +170,7 @@ public class LoginBean {
             LoginBean.setMensajeEmergenteTitulo("Bienvenido");
             LoginBean.setMensajeEmergenteContenido("DiagnosTyCs para " 
                 + loginDTO.getNombrePersona());
+            nombrePersona = loginDTO.getNombrePersona();
             return loginDTO.getMensaje();
         }
 

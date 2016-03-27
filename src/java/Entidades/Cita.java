@@ -20,7 +20,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,15 +59,14 @@ public class Cita implements Serializable {
     @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")
     @ManyToOne(optional = false)
     private Doctor doctordoctorID;
-    @JoinColumn(name = "ImagenDiagnostica_imagenDiagnosticaID", referencedColumnName = "imagenDiagnosticaID")
-    @OneToOne(optional = false)
-    private ImagenDiagnostica imagenDiagnosticaimagenDiagnosticaID;
     @JoinColumn(name = "Medico_medicoID", referencedColumnName = "medicoID")
     @ManyToOne(optional = false)
     private Medico medicomedicoID;
     @JoinColumn(name = "Paciente_pacienteID", referencedColumnName = "pacienteID")
     @ManyToOne(optional = false)
     private Paciente pacientepacienteID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "citaImagenDiagnosticaImagenDiagnosticacitaID")
+    private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "citaLaboratorioLaboratoriocitaID")
     private Collection<Laboratorio> laboratorioCollection;
 
@@ -117,14 +115,6 @@ public class Cita implements Serializable {
         this.doctordoctorID = doctordoctorID;
     }
 
-    public ImagenDiagnostica getImagenDiagnosticaimagenDiagnosticaID() {
-        return imagenDiagnosticaimagenDiagnosticaID;
-    }
-
-    public void setImagenDiagnosticaimagenDiagnosticaID(ImagenDiagnostica imagenDiagnosticaimagenDiagnosticaID) {
-        this.imagenDiagnosticaimagenDiagnosticaID = imagenDiagnosticaimagenDiagnosticaID;
-    }
-
     public Medico getMedicomedicoID() {
         return medicomedicoID;
     }
@@ -139,6 +129,15 @@ public class Cita implements Serializable {
 
     public void setPacientepacienteID(Paciente pacientepacienteID) {
         this.pacientepacienteID = pacientepacienteID;
+    }
+
+    @XmlTransient
+    public Collection<ImagenDiagnostica> getImagenDiagnosticaCollection() {
+        return imagenDiagnosticaCollection;
+    }
+
+    public void setImagenDiagnosticaCollection(Collection<ImagenDiagnostica> imagenDiagnosticaCollection) {
+        this.imagenDiagnosticaCollection = imagenDiagnosticaCollection;
     }
 
     @XmlTransient
