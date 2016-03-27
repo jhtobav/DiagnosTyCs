@@ -13,9 +13,16 @@ function load(){
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 }
+
 function builder() {
     $('.selectpicker').selectpicker();
     $('.selectpicker').selectpicker('refresh');
+    var date = new Date();
+    if(date.getDay()!==0 || date.getDay()!==1){
+        $('.alert').show();
+    } else {
+        $('.alert').hide();
+    }
 }
 
 function getIdLaboratorio(element) {
