@@ -34,13 +34,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">DiagnosTyCs <h:outputText id="nombreUsuario" value="Bienvenido Médico #{loginBean.nombrePersona}" /></a>
+                    <a class="navbar-brand" href="medicoBody.xhtml" target="frame_medico">DiagnosTyCs <h:outputText id="nombreUsuario" value="Bienvenido Médico #{loginBean.nombrePersona}" /></a>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="listarCitasMedico.xhtml" target="frame_doctor">Histórico de resultados</a>
+                            <a href="listarCitasMedico.xhtml" target="frame_medico">Histórico de resultados</a>
                         </li>
                     </ul>
                     <h:form class="navbar-form navbar-right">
@@ -54,7 +54,7 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div>
             <h:form>
-                <iframe  name="frame_doctor" width="100%" height="100%" src="medicoBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 
+                <iframe  name="frame_medico" width="100%" height="100%" src="medicoBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 
             </h:form>
         </div> <!-- /container -->
 
