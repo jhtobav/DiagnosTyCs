@@ -65,7 +65,7 @@
                                         <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                     </div>
-                                    <h:inputHidden class="form-control" id="fechaNacimiento" value="#{registroBean.edad}"/>
+                                    <h:inputHidden class="form-control" id="fechaNacimiento" value="#{registroBean.fechaNacimiento}"/>
                                 </div>
 
                             </div>
@@ -125,11 +125,44 @@
                                         <span class="input-group-addon"></span>
                                         <h:inputText class="form-control" ph:placeholder="Nombre en la tarjeta" />
                                     </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"></span>
+                                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{registroBean.numeroMes}" title="Mes">
+                                                    <f:selectItem itemValue="1" itemLabel="1" />
+                                                    <f:selectItem itemValue="2" itemLabel="2" />
+                                                    <f:selectItem itemValue="3" itemLabel="3" />
+                                                    <f:selectItem itemValue="4" itemLabel="4" />
+                                                    <f:selectItem itemValue="5" itemLabel="5" />
+                                                    <f:selectItem itemValue="6" itemLabel="6" />
+                                                    <f:selectItem itemValue="7" itemLabel="7" />
+                                                    <f:selectItem itemValue="8" itemLabel="8" />
+                                                    <f:selectItem itemValue="9" itemLabel="9" />
+                                                    <f:selectItem itemValue="10" itemLabel="10" />
+                                                    <f:selectItem itemValue="11" itemLabel="11" />
+                                                    <f:selectItem itemValue="12" itemLabel="12" />
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>                                
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"></span>
+                                                <h:inputText class="form-control" ph:placeholder="Año" value="#{registroBean.numeroAno}"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <span class="input-group-addon">#</span>
+                                        <span class="input-group-addon"></span>
                                         <h:inputText class="form-control" ph:placeholder="Numero de Tarjeta" value="#{registroBean.idTarjeta}"/>
+                                    </div>
+                                    <br/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="CSV" value="#{registroBean.csv}"/>
                                     </div>
                                 </div>
                             </div>

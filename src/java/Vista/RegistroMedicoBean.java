@@ -7,7 +7,11 @@ package Vista;
 
 import Business.RegistroBiz;
 import DTO.PersonaDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -15,17 +19,17 @@ import javax.faces.bean.SessionScoped;
  *
  * @author jhtob
  */
-@ManagedBean(name="registroMedicoBean")
+@ManagedBean(name = "registroMedicoBean")
 @SessionScoped
 public class RegistroMedicoBean {
-       
+
     private Long numDocMedico;
     private String contrasena;
     private String confirmarContrasena;
     private String nombres = "";
     private String apellidos = "";
     private String nombreMedico = "";
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private Long telefono;
     private String direccion;
     private String correo;
@@ -46,7 +50,7 @@ public class RegistroMedicoBean {
     public void setNombreMedico(String nombreMedico) {
         this.nombreMedico = nombreMedico;
     }
-    
+
     public String getContrasena() {
         return contrasena;
     }
@@ -79,14 +83,14 @@ public class RegistroMedicoBean {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
+
     public Long getTelefono() {
         return telefono;
     }
@@ -118,8 +122,17 @@ public class RegistroMedicoBean {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-    public String registro(){
+
+    public Date parsearFecha(String fecha) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(SolicitarCitaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new Date();
+    }
+
+    public String registro() {
 
         PersonaDTO personaDTO = new PersonaDTO();
 
@@ -128,21 +141,21 @@ public class RegistroMedicoBean {
         personaDTO.setIdPersona(numDocMedico);
         personaDTO.setContrasena(contrasena);
         personaDTO.setNombrePersona(nombreMedico);
-        personaDTO.setFechaNacimiento(fechaNacimiento);
+        personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
         personaDTO.setTelefono(telefono);
         personaDTO.setDireccion(direccion);
         personaDTO.setCorreo(correo);
 
         RegistroBiz registroBiz = new RegistroBiz();
         mensaje = registroBiz.registroMedico(personaDTO);
-        
+
         LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
         LoginBean.setMensajeEmergenteTitulo("Medico Creado Exitosamente");
-        LoginBean.setMensajeEmergenteContenido("Felicidades " + 
-                nombres + " su usuario se ha creado correctamente");
-        
+        LoginBean.setMensajeEmergenteContenido("Felicidades "
+                + nombres + " su usuario se ha creado correctamente");
+
         return "medicoBody.xhtml";
 
     }
-     
+
 }
