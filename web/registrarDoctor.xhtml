@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
@@ -36,58 +37,62 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">ID</span>
-                                    <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroDoctorBean.numDocDoctor}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Cédula de ciudadania" value="#{registroDoctorBean.numDocDoctor}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                    <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroDoctorBean.correo}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Correo electrónico" value="#{registroDoctorBean.correo}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroDoctorBean.nombres}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Nombres" value="#{registroDoctorBean.nombres}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroDoctorBean.contrasena}"/>
+                                    <h:inputSecret class="form-control" ph:placeholder="Contraseña" value="#{registroDoctorBean.contrasena}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:inputText class="form-control" p:placeholder="Edad" value="#{registroDoctorBean.edad}"/>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                    <h:inputHidden class="form-control" id="fechaNacimiento" value="#{registroDoctorBean.edad}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:inputText class="form-control" p:placeholder="Salario" value="#{registroDoctorBean.sueldo}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Salario" value="#{registroDoctorBean.sueldo}"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroDoctorBean.direccion}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Direccion" value="#{registroDoctorBean.direccion}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon">#</span>
-                                    <h:inputText class="form-control" p:placeholder="Celular" value="#{registroDoctorBean.telefono}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Celular" value="#{registroDoctorBean.telefono}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroDoctorBean.apellidos}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Apellidos" value="#{registroDoctorBean.apellidos}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroDoctorBean.confirmarContrasena}"/>
+                                    <h:inputSecret class="form-control" ph:placeholder="Repita la contraseña" value="#{registroDoctorBean.confirmarContrasena}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:selectOneMenu class="form-control selectpicker" p:placeholder="Especialidad" value="#{registroDoctorBean.especialidad}">
+                                    <h:selectOneMenu class="form-control selectpicker" ph:placeholder="Especialidad" value="#{registroDoctorBean.especialidad}">
                                         <f:selectItem itemDisabled="true" itemLabel="Especialidad"/>
                                         <f:selectItem itemValue="Especialista de laboratorio" itemLabel="Especialista de laboratorio"/>
                                         <f:selectItem itemValue="Especialista de imagenes diagnosticas" itemLabel="Especialista de imagenes diagnosticas"/>

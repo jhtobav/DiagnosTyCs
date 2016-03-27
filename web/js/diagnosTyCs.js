@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function load(){
+    $('.date').datepicker({
+        language: "es"
+    });
+}
 
 
 function resizeIframe(obj) {
@@ -294,7 +299,7 @@ function loadTable(value) {
         opt.value = "Muestra de orina";
         opt.text = "Muestra de orina";
         selectProcedimiento.appendChild(opt);
-        resizeIframe(this.parent)
+        resizeIframe(this.parent);
     }
     if (value === "Toma de imagenes") {
         var selectProcedimiento = document.getElementById("procedimiento");
@@ -311,4 +316,8 @@ function loadTable(value) {
     }
 
     $('#procedimiento').selectpicker('refresh');
+}
+
+function setBirthDate(){
+    document.getElementById("form:fechaNacimiento").value = $('.date').datepicker('getDate').toISOString();
 }

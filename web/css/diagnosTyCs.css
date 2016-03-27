@@ -46,3 +46,7 @@ body{
 .elementoVisible{
     display: block;
 }
+
+.input-group .date .form-control{
+    width: 100%;
+}

@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:k="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
@@ -36,48 +37,52 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">ID</span>
-                                    <h:inputText class="form-control" p:placeholder="Cédula de ciudadania" value="#{registroAdministradorBean.numDocAdministrador}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Cédula de ciudadania" value="#{registroAdministradorBean.numDocAdministrador}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> @ </span>
-                                    <h:inputText class="form-control" p:placeholder="Correo electrónico" value="#{registroAdministradorBean.correo}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Correo electrónico" value="#{registroAdministradorBean.correo}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputText class="form-control" p:placeholder="Nombres" value="#{registroAdministradorBean.nombres}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Nombres" value="#{registroAdministradorBean.nombres}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputSecret class="form-control" p:placeholder="Contraseña" value="#{registroAdministradorBean.contrasena}"/>
+                                    <h:inputSecret class="form-control" ph:placeholder="Contraseña" value="#{registroAdministradorBean.contrasena}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:inputText class="form-control" p:placeholder="Edad" value="#{registroAdministradorBean.edad}"/>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                    <h:inputHidden class="form-control" id="fechaNacimiento" value="#{registroAdministradorBean.edad}"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <h:inputText class="form-control" p:placeholder="Direccion" value="#{registroAdministradorBean.direccion}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Direccion" value="#{registroAdministradorBean.direccion}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon">#</span>
-                                    <h:inputText class="form-control" p:placeholder="Celular" value="#{registroAdministradorBean.telefono}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Celular" value="#{registroAdministradorBean.telefono}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
-                                    <h:inputText class="form-control" p:placeholder="Apellidos" value="#{registroAdministradorBean.apellidos}"/>
+                                    <h:inputText class="form-control" ph:placeholder="Apellidos" value="#{registroAdministradorBean.apellidos}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
-                                    <h:inputSecret class="form-control" p:placeholder="Repita la contraseña" value="#{registroAdministradorBean.confirmarContrasena}"/>
+                                    <h:inputSecret class="form-control" ph:placeholder="Repita la contraseña" value="#{registroAdministradorBean.confirmarContrasena}"/>
                                 </div>
                                 <div class="input-group">
                                     <br/>
