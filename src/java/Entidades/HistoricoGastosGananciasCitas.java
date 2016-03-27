@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findAll", query = "SELECT h FROM HistoricoGastosGananciasCitas h"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findById", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.id = :id"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByFecha", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.fecha = :fecha"),
+    @NamedQuery(name = "HistoricoGastosGananciasCitas.findByIntervaloFecha", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.fecha >= :from_date and h.fecha <= :to_date"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByNombreExamen", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.nombreExamen = :nombreExamen"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByTipo", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.tipo = :tipo"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByPrecioReactivo", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.precioReactivo = :precioReactivo"),

@@ -3,8 +3,10 @@ package DAO;
 
 import Entidades.Alerta;
 import Vista.LoginBean;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,6 +36,14 @@ public class AlertaDAO {
             em.close();
             return alerta;
         }
+    }
+    
+    public List<Alerta> getListLastAlerta() {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createNamedQuery("Alerta.findByLastFecha");
+        return q.getResultList();
+      
     }
     
 }
