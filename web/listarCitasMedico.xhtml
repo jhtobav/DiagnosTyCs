@@ -30,12 +30,12 @@
         <div>
             <div class="row">
                 <div class="col-md-1"></div>
-                Listado de Citas del Doctor:
+                Listado de Citas del Medico
             </div>
         </div>  
         <hr/>
         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{subirResultadoDoctorBean.citaModel}" var="cita">
+                     value="#{verCitaMedicoBean.citaModel}" var="cita">
                 <h:column>
                     <f:facet name="header">
                         ID del Paciente
@@ -50,10 +50,10 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Subir Resultado
+                        Ver Resultados
                     </f:facet>
                     <h:commandButton type="submit" class="btn btn-success" 
-                                     value="Subir Resultado" action="#{subirResultadoDoctorBean.verCitaSeleccionada()}"/>
+                                     value="Ver Resultados" action="#{verCitaMedicoBean.verCitaSeleccionada()}"/>
                 </h:column>
         </h:dataTable>
             

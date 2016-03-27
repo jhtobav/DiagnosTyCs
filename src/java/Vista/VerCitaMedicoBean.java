@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Business.VerCitaPacienteBiz;
+import Business.VerCitaMedicoBiz;
 import DTO.CitaDTO;
 import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
@@ -22,9 +22,9 @@ import javax.faces.model.ListDataModel;
  *
  * @author jhtob
  */
-@ManagedBean(name="verCitaPacienteBean")
+@ManagedBean(name="verCitaMedicoBean")
 @SessionScoped
-public class VerCitaPacienteBean {
+public class VerCitaMedicoBean {
     
     private List<CitaDTO> citas = new ArrayList<>();
     private DataModel<CitaDTO> citaModel;
@@ -34,18 +34,17 @@ public class VerCitaPacienteBean {
     private DataModel<ImagenDiagnostica> imagenesDiagnosticasModel;
     
     public static CitaDTO citaSeleccionadaDTO;
-    private String nombreMedicoCita;
     private String nombreDoctorCita;
+    private Long idPaciente;
     private Long idCita;
     private Date fechaCita;
-    private Long valorCita;
 
     @PostConstruct
     public void init() {
         
-        VerCitaPacienteBiz citaPacienteBiz = new VerCitaPacienteBiz();
+        VerCitaMedicoBiz citaMedicoBiz = new VerCitaMedicoBiz();
                 
-        citas = citaPacienteBiz.parseCitaCitaDTO(LoginBean.getPaciente());
+        citas = citaMedicoBiz.parseCitaCitaDTO(LoginBean.getMedico());
         
         citaModel = new ListDataModel<>(citas);
     }
@@ -71,15 +70,7 @@ public class VerCitaPacienteBean {
     }
 
     public static void setCitaSeleccionadaDTO(CitaDTO citaSeleccionadaDTO) {
-        VerCitaPacienteBean.citaSeleccionadaDTO = citaSeleccionadaDTO;
-    }
-
-    public String getNombreMedicoCita() {
-        return nombreMedicoCita;
-    }
-
-    public void setNombreMedicoCita(String nombreMedicoCita) {
-        this.nombreMedicoCita = nombreMedicoCita;
+        VerCitaMedicoBean.citaSeleccionadaDTO = citaSeleccionadaDTO;
     }
 
     public Long getIdCita() {
@@ -96,14 +87,6 @@ public class VerCitaPacienteBean {
 
     public void setFechaCita(Date fechaCita) {
         this.fechaCita = fechaCita;
-    }
-
-    public Long getValorCita() {
-        return valorCita;
-    }
-
-    public void setValorCita(Long valorCita) {
-        this.valorCita = valorCita;
     }
 
     public List<Laboratorio> getExamenesLaboratorio() {
@@ -145,15 +128,22 @@ public class VerCitaPacienteBean {
     public void setNombreDoctorCita(String nombreDoctorCita) {
         this.nombreDoctorCita = nombreDoctorCita;
     }
+
+    public Long getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(Long idPaciente) {
+        this.idPaciente = idPaciente;
+    }
     
     public String verCitaSeleccionada(){
         
         citaSeleccionadaDTO = citaModel.getRowData();
         idCita = citaSeleccionadaDTO.getCitaID();
-        nombreMedicoCita = citaSeleccionadaDTO.getNombreMedico();
         nombreDoctorCita = citaSeleccionadaDTO.getNombreDoctor();
         fechaCita = citaSeleccionadaDTO.getFecha();
-        valorCita = citaSeleccionadaDTO.getValor();
+        idPaciente = citaSeleccionadaDTO.getIdPaciente();
                 
         examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
         examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
@@ -162,12 +152,12 @@ public class VerCitaPacienteBean {
         imagenesDiagnosticasModel = new ListDataModel<>(imagenesDiagnosticas);
         
         if(examenesLaboratorio.size()>0){
-            return "verResultadoLaboratorioPaciente.xhtml";
+            return "verResultadoLaboratorioMedico.xhtml";
         }else if(imagenesDiagnosticas.size()>0){
-            return "verResultadoImagenPaciente.xhtml";
+            return "verResultadoImagenMedico.xhtml";
         }
         
-        return "listarCitasPaciente.xhtml";
+        return "listarCitasMedico.xhtml";
 
     }
     

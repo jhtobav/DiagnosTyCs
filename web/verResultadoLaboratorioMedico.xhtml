@@ -14,6 +14,7 @@
         <meta name="author" content=""/>
         <link rel="icon" href="../../favicon.ico"/>
         <title>DiagnosTyCs</title>
+        <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
         <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
@@ -33,21 +34,21 @@
                         <div>
                             <div class="row">
                                 <div class="col-md-1"></div>
-                                Bienvenido, estos son los exámenes de la cita seleccionada:
+                                Bienvenido, estos son los resultados de la cita seleccionada:
                             </div>
                         </div>    
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.idPaciente}"/>
+                                <h:outputText class="form-control" value="#{verCitaMedicoBean.idPaciente}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Fecha de Cita</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.fechaCita}"/>
+                                <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
+                                <h:outputText class="form-control" value="#{verCitaMedicoBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
@@ -59,43 +60,41 @@
                 <div>
                     <div class="row">
                         <div class="col-md-1"></div>
-                        Listado de Imágenes Diagnósticas de la Cita
+                        Listado de Exámenes de Laboratorio de la Cita
                     </div>
                 </div>    
                 <br/>
-                <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{subirResultadoDoctorBean.imagenesDiagnosticasModel}" var="imagenDiag">
+                <h:dataTable columnClasses="col1" id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
+                             value="#{verCitaMedicoBean.examenesLaboratorioModel}" var="examenLab">
                     <h:column>
                         <f:facet name="header">
-                            Nombre de la Imagen
+                            Nombre del Exámen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.nombre}"/>
+                        <h:outputText value="#{examenLab.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Descripción de la Imagen
+                            Descripción del Exámen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.descripcion}"/>
+                        <h:outputText value="#{examenLab.descripcion}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Nombre del Doctor
+                        </f:facet>
+                        <h:outputText value="#{verCitaMedicoBean.nombreDoctorCita}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Resultado del Exámen
+                        </f:facet>
+                        <h:outputText value="#{examenLab.resultado}"/>
                     </h:column>
                 </h:dataTable>
-            </div>
-            <div class="container">
-                <h:form>
-                    <p:fileUpload fileUploadListener="#{subirResultadoDoctorBean.subirResultadoImagen}"  
-                              mode="advanced"                                    
-                              sizeLimit="10000000"   
-                              allowTypes="/(\.|\/)(TIFF|tiff)$/" 
-                              label="Seleccionar Imagen"
-                              uploadLabel="Cargar"
-                              cancelLabel="Cancelar"
-                              />
-                </h:form>
-            </div>
-            <div class="container">
                 <hr/>
                 <div class="row">
-                    <h:commandButton  class="btn btn-primary" type="submit"
-                                      value="Ver otras Citas" action="listarCitasDoctor.xhtml"/>
+                    <h:commandButton  class="btn btn-primary" type="submit" 
+                                  value="Ver otras Citas" action="listarCitasMedico.xhtml"/>
                 </div>
             </div>
             <link href="css/bootstrap.min.css" rel="stylesheet"/>

@@ -40,15 +40,15 @@
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ID Paciente</span>
+                                <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
                                 <h:outputText class="form-control" value="#{subirResultadoDoctorBean.idPaciente}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Paciente</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.nombrePaciente}"/>
+                                <span class="input-group-addon" id="basic-addon1">Fecha de Cita</span>
+                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
@@ -68,7 +68,7 @@
                              value="#{subirResultadoDoctorBean.examenesLaboratorioModel}" var="examenLab">
                     <h:column>
                         <f:facet name="header">
-                            Nombre
+                            Nombre del Exámen
                         </f:facet>
                         <h:outputText value="#{examenLab.nombre}"/>
                     </h:column>
@@ -80,7 +80,7 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Resultado
+                            Insertar Resultado
                         </f:facet>
                         <h:inputText class="form-control" value="#{examenLab.resultado}"/>
                     </h:column>

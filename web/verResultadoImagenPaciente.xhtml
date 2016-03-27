@@ -34,58 +34,26 @@
                         <div>
                             <div class="row">
                                 <div class="col-md-1"></div>
-                                Bienvenido, esta es la información de la cita seleccionada:
+                                Bienvenido, estos son los resultados de la cita seleccionada:
                             </div>
                         </div>    
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Medico</span>
+                                <span class="input-group-addon" id="basic-addon1">Nombre del Medico</span>
                                 <h:outputText class="form-control" value="#{verCitaPacienteBean.nombreMedicoCita}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br/>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Valor</span>
-                                <h:outputText class="form-control" value="#{verCitaPacienteBean.valorCita}"/>
+                                <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
+                                <h:outputText class="form-control" value="#{verCitaPacienteBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <hr/>
-                <div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        Listado de Exámenes de Laboratorio de la Cita
-                    </div>
-                </div>    
-                <br/>
-                <h:dataTable id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{verCitaPacienteBean.examenesLaboratorioModel}" var="examenLab">
-                    <h:column>
-                        <f:facet name="header">
-                            Nombre
-                        </f:facet>
-                        <h:outputText value="#{examenLab.nombre}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Descripción del Exámen
-                        </f:facet>
-                        <h:outputText value="#{examenLab.descripcion}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Resultado
-                        </f:facet>
-                        <h:outputText value="#{examenLab.resultado}"/>
-                    </h:column>
-                </h:dataTable>
-
             </div>
             <div class="container">
                 <hr/>
@@ -100,15 +68,21 @@
                              value="#{verCitaPacienteBean.imagenesDiagnosticasModel}" var="imagenDiag">
                     <h:column>
                         <f:facet name="header">
-                            Nombre
+                            Nombre del Exámen
                         </f:facet>
                         <h:outputText value="#{imagenDiag.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Descripción
+                            Descripción del Exámen
                         </f:facet>
                         <h:outputText value="#{imagenDiag.descripcion}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Nombre del Doctor
+                        </f:facet>
+                        <h:outputText value="#{verCitaPacienteBean.nombreDoctorCita}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -117,12 +91,11 @@
                         <h:commandButton type="submit" class="btn btn-success" value="Ver Imágen" 
                                          action="verCita.xhtml"/>
                     </h:column>
-                </h:dataTable>
-                
+                </h:dataTable>                
                 <hr/>
                 <div class="row">
                     <h:commandButton  class="btn btn-primary" type="submit" 
-                                  value="Ver otras Citas" action="listarCitas.xhtml"/>
+                                  value="Ver otras Citas" action="listarCitasPaciente.xhtml"/>
                 </div>
             </div>
             <link href="css/bootstrap.min.css" rel="stylesheet"/>

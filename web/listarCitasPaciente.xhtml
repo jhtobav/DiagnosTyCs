@@ -38,28 +38,28 @@
                      value="#{verCitaPacienteBean.citaModel}" var="cita">
                 <h:column>
                     <f:facet name="header">
-                        Medico
+                        Nombre del Médico
                     </f:facet>
                     <h:outputText value="#{cita.nombreMedico}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Fecha
+                        Fecha de la Cita
                     </f:facet>
                     <h:outputText value="#{cita.fecha}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Valor
+                        Valor de la Cita
                     </f:facet>
                     <h:outputText value="#{cita.valor}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Ver Cita
+                        Ver Resultados
                     </f:facet>
                     <h:commandButton type="submit" class="btn btn-success" 
-                                     value="Ver Cita" action="#{verCitaPacienteBean.verCitaSeleccionada()}"/>
+                                     value="Ver Resultados" action="#{verCitaPacienteBean.verCitaSeleccionada()}"/>
                 </h:column>
         </h:dataTable>
             
