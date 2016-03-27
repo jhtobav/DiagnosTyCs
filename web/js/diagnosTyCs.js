@@ -29,6 +29,7 @@ function getIdImagen(element) {
 }
 
 function  getId(element) {
+    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     var fechaCita = new Date();
     fechaCita.setDate(fechaCita.getDate() + (element.parentNode.cellIndex - fechaCita.getDay()));
     cleanSchedule();
@@ -49,6 +50,8 @@ function  getId(element) {
     if (element.parentNode.cellIndex === 5) {
         diaEntrada.setAttribute("Value", "Viernes ");
     }
+    diaEntrada.setAttribute("Value", diaEntrada.getAttribute("Value") + fechaCita.getDate() + " de " + meses[fechaCita.getMonth()]);
+    
     if (element.parentNode.parentNode.rowIndex === 1) {
         diaEntrada.setAttribute("Value", diaEntrada.getAttribute("Value") + " 8:00 - 8:15");
         fechaCita.setHours(08);
