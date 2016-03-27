@@ -33,7 +33,7 @@ public class SolicitarCitaBean {
     private int numCelda;
     private String fecha;
     private List<MedicoDTO> medicos;
-    private String medico;
+    private Long medico;
 
     @PostConstruct
     public void init() {
@@ -41,14 +41,15 @@ public class SolicitarCitaBean {
         SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
         
         tablaAgendas = solicitarCitaBiz.cargarAgenda();
+        medicos = solicitarCitaBiz.parseMedicoMedicoDTO();
         
     }
 
-    public String getMedico() {
+    public Long getMedico() {
         return medico;
     }
 
-    public void setMedico(String medico) {
+    public void setMedico(Long medico) {
         this.medico = medico;
     }
 
@@ -134,7 +135,7 @@ public class SolicitarCitaBean {
                     .equals(imagenDiagnostica.trim().trim())){
                 
                 System.out.println("exito");
-                solicitarCitaBiz.solicitarCitaImagen(imagen, tablaAgendas.get(numCelda-1),parsearFecha(fecha));                
+                solicitarCitaBiz.solicitarCitaImagen(imagen, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);
                 break;
             
             }
@@ -157,7 +158,7 @@ public class SolicitarCitaBean {
             if(examen.getNombre().equals(examenLaboratorio)){
                 
                 System.out.println("exito");
-                solicitarCitaBiz.solicitarCitaExamenLaboratorio(examen, examenes, tablaAgendas.get(numCelda-1),parsearFecha(fecha));                
+                solicitarCitaBiz.solicitarCitaExamenLaboratorio(examen, examenes, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);                
                 break;
                 
             }

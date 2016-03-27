@@ -9,9 +9,11 @@ import DAO.AlertaDAO;
 import DAO.CitaDAO;
 import DAO.HistoricoGastosGananciasCitasDAO;
 import DAO.ImagenDiagnosticaDAO;
+import DAO.MedicoDAO;
 import DAO.PrecioDAO;
 import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
+import DTO.MedicoDTO;
 import Entidades.Agenda;
 import Entidades.Alerta;
 import Entidades.Cita;
@@ -40,7 +42,26 @@ public class SolicitarCitaBiz {
 
     }
     
-    public String solicitarCitaExamenLaboratorio(ExamenDTO examenDTO, List<ExamenDTO> examenesDTO, Agenda agenda, Date fecha) {
+    public List<MedicoDTO> parseMedicoMedicoDTO() {
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+        List<Medico> medicos = medicoDAO.getListMedicos();
+        List<MedicoDTO> medicosDTO = new ArrayList<>();
+        
+        for (Medico medico: medicos){
+            
+            MedicoDTO medicoDTO = new MedicoDTO();
+            medicoDTO.setIdMedico(medico.getMedicoID());
+            medicoDTO.setNombreMedico(medico.getPersonapersonaID().getNombre());
+            medicosDTO.add(medicoDTO);
+                    
+        }
+        
+        return medicosDTO;
+
+    }
+    
+    public String solicitarCitaExamenLaboratorio(ExamenDTO examenDTO, List<ExamenDTO> examenesDTO, Agenda agenda, Date fecha, Long idMedico) {
 
         CitaDAO citaDAO = new CitaDAO();
         
@@ -89,7 +110,7 @@ public class SolicitarCitaBiz {
         System.out.println("Paso 6");
         // Crear Cita
         ImagenDiagnostica imagen = new ImagenDiagnostica();
-        Cita cita = crearCita(agenda, fecha, precioExamen, imagen);
+        Cita cita = crearCita(agenda, fecha, precioExamen, imagen, idMedico);
         cita.setLaboratorioCollection(laboratorios);
         cita.setValor(valorCita);
         citaDAO.createCita(cita);
@@ -106,7 +127,7 @@ public class SolicitarCitaBiz {
 
     }
 
-    public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha) {
+    public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha, Long idMedico) {
 
         CitaDAO citaDAO = new CitaDAO();
         ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
@@ -126,7 +147,7 @@ public class SolicitarCitaBiz {
         
         System.out.println("Paso 2");
         // Crear Cita
-        Cita cita = crearCita(agenda, fecha, precioExamen, imagen);
+        Cita cita = crearCita(agenda, fecha, precioExamen, imagen, idMedico);
         citaDAO.createCita(cita);
 
         System.out.println("Paso 3");
@@ -149,11 +170,11 @@ public class SolicitarCitaBiz {
 
     }
 
-    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen, ImagenDiagnostica imagenDiagnostica) {
+    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen, ImagenDiagnostica imagenDiagnostica, Long idMedico) {
 
         Doctor doctor = agenda.getDoctordoctorID();
-        Medico medico = agenda.getMedicomedicoID();
-
+        Medico medico = new MedicoDAO().searchByIdMedico(idMedico);
+        
         List<Laboratorio> laboratorios = new ArrayList<>();
 
         Cita cita = new Cita();
