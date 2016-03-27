@@ -30,10 +30,9 @@ public class VerCitaMedicoBean {
     private DataModel<CitaDTO> citaModel;
     private List<Laboratorio> examenesLaboratorio = new ArrayList<>();
     private DataModel<Laboratorio> examenesLaboratorioModel;
-    private List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>();
-    private DataModel<ImagenDiagnostica> imagenesDiagnosticasModel;
+    private ImagenDiagnostica imagenDiagnostica;
     
-    public static CitaDTO citaSeleccionadaDTO;
+    public CitaDTO citaSeleccionadaDTO;
     private String nombreDoctorCita;
     private Long idPaciente;
     private Long idCita;
@@ -65,12 +64,12 @@ public class VerCitaMedicoBean {
         this.citaModel = citaModel;
     }
 
-    public static CitaDTO getCitaSeleccionadaDTO() {
+    public CitaDTO getCitaSeleccionadaDTO() {
         return citaSeleccionadaDTO;
     }
 
-    public static void setCitaSeleccionadaDTO(CitaDTO citaSeleccionadaDTO) {
-        VerCitaMedicoBean.citaSeleccionadaDTO = citaSeleccionadaDTO;
+    public void setCitaSeleccionadaDTO(CitaDTO citaSeleccionadaDTO) {
+        this.citaSeleccionadaDTO = citaSeleccionadaDTO;
     }
 
     public Long getIdCita() {
@@ -105,20 +104,12 @@ public class VerCitaMedicoBean {
         this.examenesLaboratorioModel = examenesLaboratorioModel;
     }
 
-    public List<ImagenDiagnostica> getImagenesDiagnosticas() {
-        return imagenesDiagnosticas;
+    public ImagenDiagnostica getImagenDiagnostica() {
+        return imagenDiagnostica;
     }
 
-    public void setImagenesDiagnosticas(List<ImagenDiagnostica> imagenesDiagnosticas) {
-        this.imagenesDiagnosticas = imagenesDiagnosticas;
-    }
-
-    public DataModel<ImagenDiagnostica> getImagenesDiagnosticasModel() {
-        return imagenesDiagnosticasModel;
-    }
-
-    public void setImagenesDiagnosticasModel(DataModel<ImagenDiagnostica> imagenesDiagnosticasModel) {
-        this.imagenesDiagnosticasModel = imagenesDiagnosticasModel;
+    public void setImagenDiagnostica(ImagenDiagnostica imagenDiagnostica) {
+        this.imagenDiagnostica = imagenDiagnostica;
     }
 
     public String getNombreDoctorCita() {
@@ -148,16 +139,13 @@ public class VerCitaMedicoBean {
         examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
         examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
         
-        imagenesDiagnosticas = (List<ImagenDiagnostica>) citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection();
-        imagenesDiagnosticasModel = new ListDataModel<>(imagenesDiagnosticas);
+        imagenDiagnostica = citaSeleccionadaDTO.getCita().getImagenDiagnosticaimagenDiagnosticaID();
         
         if(examenesLaboratorio.size()>0){
             return "verResultadoLaboratorioMedico.xhtml";
-        }else if(imagenesDiagnosticas.size()>0){
+        }else{
             return "verResultadoImagenMedico.xhtml";
         }
-        
-        return "listarCitasMedico.xhtml";
 
     }
     

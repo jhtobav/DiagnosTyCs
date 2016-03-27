@@ -7,6 +7,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,11 +16,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,13 +40,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paciente.findByPacienteID", query = "SELECT p FROM Paciente p WHERE p.pacienteID = :pacienteID"),
     @NamedQuery(name = "Paciente.findByNumDocumento", query = "SELECT p FROM Paciente p WHERE p.numDocumento = :numDocumento"),
     @NamedQuery(name = "Paciente.findByNombre", query = "SELECT p FROM Paciente p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Paciente.findByEdad", query = "SELECT p FROM Paciente p WHERE p.edad = :edad"),
+    @NamedQuery(name = "Paciente.findByFechaNacimiento", query = "SELECT p FROM Paciente p WHERE p.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Paciente.findByTelefono", query = "SELECT p FROM Paciente p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Paciente.findByDireccion", query = "SELECT p FROM Paciente p WHERE p.direccion = :direccion"),
     @NamedQuery(name = "Paciente.findByCorreo", query = "SELECT p FROM Paciente p WHERE p.correo = :correo"),
     @NamedQuery(name = "Paciente.findByContrasena", query = "SELECT p FROM Paciente p WHERE p.contrasena = :contrasena"),
     @NamedQuery(name = "Paciente.findByEstadoCuenta", query = "SELECT p FROM Paciente p WHERE p.estadoCuenta = :estadoCuenta"),
-    @NamedQuery(name = "Paciente.findByRol", query = "SELECT p FROM Paciente p WHERE p.rol = :rol")})
+    @NamedQuery(name = "Paciente.findByEps", query = "SELECT p FROM Paciente p WHERE p.eps = :eps"),
+    @NamedQuery(name = "Paciente.findByNombreContacto", query = "SELECT p FROM Paciente p WHERE p.nombreContacto = :nombreContacto"),
+    @NamedQuery(name = "Paciente.findByTelefonoContacto", query = "SELECT p FROM Paciente p WHERE p.telefonoContacto = :telefonoContacto"),
+    @NamedQuery(name = "Paciente.findByNumHijos", query = "SELECT p FROM Paciente p WHERE p.numHijos = :numHijos")})
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,8 +69,9 @@ public class Paciente implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "edad")
-    private int edad;
+    @Column(name = "fechaNacimiento")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaNacimiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "telefono")
@@ -90,10 +97,24 @@ public class Paciente implements Serializable {
     private boolean estadoCuenta;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "rol")
-    private int rol;
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "eps")
+    private String eps;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "nombreContacto")
+    private String nombreContacto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "telefonoContacto")
+    private long telefonoContacto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numHijos")
+    private int numHijos;
     @JoinColumn(name = "Tarjeta_tarjetaID", referencedColumnName = "tarjetaID")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Tarjeta tarjetatarjetaID;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacientepacienteID")
     private Collection<Cita> citaCollection;
@@ -105,17 +126,20 @@ public class Paciente implements Serializable {
         this.pacienteID = pacienteID;
     }
 
-    public Paciente(Long pacienteID, long numDocumento, String nombre, int edad, long telefono, String direccion, String correo, String contrasena, boolean estadoCuenta, int rol) {
+    public Paciente(Long pacienteID, long numDocumento, String nombre, Date fechaNacimiento, long telefono, String direccion, String correo, String contrasena, boolean estadoCuenta, String eps, String nombreContacto, long telefonoContacto, int numHijos) {
         this.pacienteID = pacienteID;
         this.numDocumento = numDocumento;
         this.nombre = nombre;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
         this.contrasena = contrasena;
         this.estadoCuenta = estadoCuenta;
-        this.rol = rol;
+        this.eps = eps;
+        this.nombreContacto = nombreContacto;
+        this.telefonoContacto = telefonoContacto;
+        this.numHijos = numHijos;
     }
 
     public Long getPacienteID() {
@@ -142,12 +166,12 @@ public class Paciente implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public long getTelefono() {
@@ -190,12 +214,36 @@ public class Paciente implements Serializable {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public int getRol() {
-        return rol;
+    public String getEps() {
+        return eps;
     }
 
-    public void setRol(int rol) {
-        this.rol = rol;
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    public String getNombreContacto() {
+        return nombreContacto;
+    }
+
+    public void setNombreContacto(String nombreContacto) {
+        this.nombreContacto = nombreContacto;
+    }
+
+    public long getTelefonoContacto() {
+        return telefonoContacto;
+    }
+
+    public void setTelefonoContacto(long telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
+    }
+
+    public int getNumHijos() {
+        return numHijos;
+    }
+
+    public void setNumHijos(int numHijos) {
+        this.numHijos = numHijos;
     }
 
     public Tarjeta getTarjetatarjetaID() {

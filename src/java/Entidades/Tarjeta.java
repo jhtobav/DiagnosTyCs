@@ -6,23 +6,16 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,7 +28,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Tarjeta.findAll", query = "SELECT t FROM Tarjeta t"),
     @NamedQuery(name = "Tarjeta.findByTarjetaID", query = "SELECT t FROM Tarjeta t WHERE t.tarjetaID = :tarjetaID"),
     @NamedQuery(name = "Tarjeta.findByNombreEnTarjeta", query = "SELECT t FROM Tarjeta t WHERE t.nombreEnTarjeta = :nombreEnTarjeta"),
-    @NamedQuery(name = "Tarjeta.findByFechaVencimiento", query = "SELECT t FROM Tarjeta t WHERE t.fechaVencimiento = :fechaVencimiento")})
+    @NamedQuery(name = "Tarjeta.findByNumeroMes", query = "SELECT t FROM Tarjeta t WHERE t.numeroMes = :numeroMes"),
+    @NamedQuery(name = "Tarjeta.findByNumeroAno", query = "SELECT t FROM Tarjeta t WHERE t.numeroAno = :numeroAno"),
+    @NamedQuery(name = "Tarjeta.findByCsv", query = "SELECT t FROM Tarjeta t WHERE t.csv = :csv")})
 public class Tarjeta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,11 +46,16 @@ public class Tarjeta implements Serializable {
     private String nombreEnTarjeta;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fechaVencimiento")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaVencimiento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tarjetatarjetaID")
-    private Collection<Paciente> pacienteCollection;
+    @Column(name = "numeroMes")
+    private int numeroMes;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numeroAno")
+    private int numeroAno;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CSV")
+    private int csv;
 
     public Tarjeta() {
     }
@@ -64,10 +64,12 @@ public class Tarjeta implements Serializable {
         this.tarjetaID = tarjetaID;
     }
 
-    public Tarjeta(Long tarjetaID, String nombreEnTarjeta, Date fechaVencimiento) {
+    public Tarjeta(Long tarjetaID, String nombreEnTarjeta, int numeroMes, int numeroAno, int csv) {
         this.tarjetaID = tarjetaID;
         this.nombreEnTarjeta = nombreEnTarjeta;
-        this.fechaVencimiento = fechaVencimiento;
+        this.numeroMes = numeroMes;
+        this.numeroAno = numeroAno;
+        this.csv = csv;
     }
 
     public Long getTarjetaID() {
@@ -86,21 +88,28 @@ public class Tarjeta implements Serializable {
         this.nombreEnTarjeta = nombreEnTarjeta;
     }
 
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
+    public int getNumeroMes() {
+        return numeroMes;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
+    public void setNumeroMes(int numeroMes) {
+        this.numeroMes = numeroMes;
     }
 
-    @XmlTransient
-    public Collection<Paciente> getPacienteCollection() {
-        return pacienteCollection;
+    public int getNumeroAno() {
+        return numeroAno;
     }
 
-    public void setPacienteCollection(Collection<Paciente> pacienteCollection) {
-        this.pacienteCollection = pacienteCollection;
+    public void setNumeroAno(int numeroAno) {
+        this.numeroAno = numeroAno;
+    }
+
+    public int getCsv() {
+        return csv;
+    }
+
+    public void setCsv(int csv) {
+        this.csv = csv;
     }
 
     @Override

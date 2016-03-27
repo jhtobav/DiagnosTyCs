@@ -5,6 +5,7 @@
 package DTO;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ public class PersonaDTO implements Serializable {
     private Long idPersona;
     private String contrasena;
     private String nombrePersona;
-    private int Edad;
+    private Date fechaNacimiento;
     private Long Telefono;
     private String direccion;
     private String correo;
@@ -47,14 +48,14 @@ public class PersonaDTO implements Serializable {
         this.nombrePersona = nombrePersona;
     }
 
-    public int getEdad() {
-        return Edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int Edad) {
-        this.Edad = Edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
-
+    
     public Long getTelefono() {
         return Telefono;
     }

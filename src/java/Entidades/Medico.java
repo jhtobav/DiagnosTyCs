@@ -13,7 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -48,8 +47,6 @@ public class Medico implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "estado")
     private String estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicomedicoID")
-    private Collection<Agenda> agendaCollection;
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @OneToOne(optional = false)
     private Persona personapersonaID;
@@ -82,15 +79,6 @@ public class Medico implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    @XmlTransient
-    public Collection<Agenda> getAgendaCollection() {
-        return agendaCollection;
-    }
-
-    public void setAgendaCollection(Collection<Agenda> agendaCollection) {
-        this.agendaCollection = agendaCollection;
     }
 
     public Persona getPersonapersonaID() {

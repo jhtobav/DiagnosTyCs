@@ -36,7 +36,9 @@ public class RegistroBiz {
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setTarjetaID(tarjetaDTO.getIdTarjeta());
         tarjeta.setNombreEnTarjeta(tarjetaDTO.getNombrePaciente());
-        tarjeta.setFechaVencimiento(tarjetaDTO.getFechaVencimiento());
+        tarjeta.setNumeroAno(tarjetaDTO.getNumeroAno());
+        tarjeta.setNumeroMes(tarjetaDTO.getNumeroMes());
+        tarjeta.setCsv(tarjetaDTO.getCsv());
         
         Paciente paciente = new Paciente();
         paciente.setNumDocumento(pacienteDTO.getNumDocPaciente());
@@ -45,9 +47,12 @@ public class RegistroBiz {
         paciente.setCorreo(pacienteDTO.getCorreo());
         paciente.setDireccion(pacienteDTO.getDireccion());
         paciente.setTelefono(pacienteDTO.getTelefono());
-        paciente.setEdad(pacienteDTO.getEdad());
+        paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
+        paciente.setEps(pacienteDTO.getEps());
+        paciente.setNombreContacto(pacienteDTO.getNombreContacto());
+        paciente.setTelefonoContacto(pacienteDTO.getTelefonoContacto());
+        paciente.setNumHijos(pacienteDTO.getNumHijos());
         paciente.setEstadoCuenta(true);
-        paciente.setRol(2);
         paciente.setTarjetatarjetaID(tarjeta);
         List<Cita> citas = new ArrayList<>();
         paciente.setCitaCollection(citas);
@@ -70,7 +75,7 @@ public class RegistroBiz {
         persona.setCorreo(personaDTO.getCorreo());
         persona.setDireccion(personaDTO.getDireccion());
         persona.setTelefono(personaDTO.getTelefono());
-        persona.setEdad(personaDTO.getEdad());
+        persona.setFechaNacimiento(personaDTO.getFechaNacimiento());
         persona.setEstadoCuenta(true);
         persona.setRol(1);
                     
@@ -80,8 +85,6 @@ public class RegistroBiz {
         medico.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();
         medico.setCitaCollection(citas);
-        List<Agenda> agendas = new ArrayList<>();
-        medico.setAgendaCollection(agendas);
         
         PersonaDAO personaDAO = new PersonaDAO();
         MedicoDAO medicoDAO = new MedicoDAO();
@@ -101,7 +104,7 @@ public class RegistroBiz {
         persona.setCorreo(personaDTO.getCorreo());
         persona.setDireccion(personaDTO.getDireccion());
         persona.setTelefono(personaDTO.getTelefono());
-        persona.setEdad(personaDTO.getEdad());
+        persona.setFechaNacimiento(personaDTO.getFechaNacimiento());
         persona.setEstadoCuenta(true);
         persona.setRol(5);
                     
@@ -113,8 +116,6 @@ public class RegistroBiz {
         doctor.setPersonapersonaID(persona);
         List<Cita> citas = new ArrayList<>();
         doctor.setCitaCollection(citas);
-        List<Agenda> agendas = new ArrayList<>();
-        doctor.setAgendaCollection(agendas);
         
         PersonaDAO personaDAO = new PersonaDAO();
         DoctorDAO doctorDAO = new DoctorDAO();
@@ -134,7 +135,7 @@ public class RegistroBiz {
         persona.setCorreo(personaDTO.getCorreo());
         persona.setDireccion(personaDTO.getDireccion());
         persona.setTelefono(personaDTO.getTelefono());
-        persona.setEdad(personaDTO.getEdad());
+        persona.setFechaNacimiento(personaDTO.getFechaNacimiento());
         persona.setEstadoCuenta(true);
         persona.setRol(3);
         

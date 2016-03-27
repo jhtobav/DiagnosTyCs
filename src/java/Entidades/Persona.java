@@ -7,6 +7,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
     @NamedQuery(name = "Persona.findByPersonaID", query = "SELECT p FROM Persona p WHERE p.personaID = :personaID"),
     @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Persona.findByEdad", query = "SELECT p FROM Persona p WHERE p.edad = :edad"),
+    @NamedQuery(name = "Persona.findByFechaNacimiento", query = "SELECT p FROM Persona p WHERE p.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Persona.findByDireccion", query = "SELECT p FROM Persona p WHERE p.direccion = :direccion"),
     @NamedQuery(name = "Persona.findByCorreo", query = "SELECT p FROM Persona p WHERE p.correo = :correo"),
@@ -54,8 +57,9 @@ public class Persona implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "edad")
-    private int edad;
+    @Column(name = "fechaNacimiento")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaNacimiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "telefono")
@@ -83,14 +87,6 @@ public class Persona implements Serializable {
     @NotNull
     @Column(name = "rol")
     private int rol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Administrador> administradorCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Gerente> gerenteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Medico> medicoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personapersonaID")
-    private Collection<Doctor> doctorCollection;
 
     public Persona() {
     }
@@ -99,10 +95,10 @@ public class Persona implements Serializable {
         this.personaID = personaID;
     }
 
-    public Persona(Long personaID, String nombre, int edad, long telefono, String direccion, String correo, String contrasena, boolean estadoCuenta, int rol) {
+    public Persona(Long personaID, String nombre, Date fechaNacimiento, long telefono, String direccion, String correo, String contrasena, boolean estadoCuenta, int rol) {
         this.personaID = personaID;
         this.nombre = nombre;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
@@ -127,12 +123,12 @@ public class Persona implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public long getTelefono() {
@@ -181,42 +177,6 @@ public class Persona implements Serializable {
 
     public void setRol(int rol) {
         this.rol = rol;
-    }
-
-    @XmlTransient
-    public Collection<Administrador> getAdministradorCollection() {
-        return administradorCollection;
-    }
-
-    public void setAdministradorCollection(Collection<Administrador> administradorCollection) {
-        this.administradorCollection = administradorCollection;
-    }
-
-    @XmlTransient
-    public Collection<Gerente> getGerenteCollection() {
-        return gerenteCollection;
-    }
-
-    public void setGerenteCollection(Collection<Gerente> gerenteCollection) {
-        this.gerenteCollection = gerenteCollection;
-    }
-
-    @XmlTransient
-    public Collection<Medico> getMedicoCollection() {
-        return medicoCollection;
-    }
-
-    public void setMedicoCollection(Collection<Medico> medicoCollection) {
-        this.medicoCollection = medicoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Doctor> getDoctorCollection() {
-        return doctorCollection;
-    }
-
-    public void setDoctorCollection(Collection<Doctor> doctorCollection) {
-        this.doctorCollection = doctorCollection;
     }
 
     @Override

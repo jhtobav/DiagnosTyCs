@@ -11,9 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -42,10 +42,10 @@ public class Agenda implements Serializable {
     @Column(name = "disponible")
     private boolean disponible;
     @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Doctor doctordoctorID;
     @JoinColumn(name = "Medico_medicoID", referencedColumnName = "medicoID")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Medico medicomedicoID;
 
     public Agenda() {

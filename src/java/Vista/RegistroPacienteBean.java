@@ -18,25 +18,30 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name="registroBean")
 @SessionScoped
-public class RegistroBean {
+public class RegistroPacienteBean {
        
-    Long numDocPaciente;
-    String contrasena;
-    String confirmarContrasena;
-    String nombres = "";
-    String apellidos = "";
-    String nombrePaciente = "";
-    Long edad;
-    Long telefono;
-    String direccion;
-    String correo;
-    Long idTarjeta;
-    Date fechaVencimiento = new Date();
-    String mensaje;
-    String eps;
-    Integer numeroHijos;
-    String contactoNombre;
-    String contactoTelefono;
+    private Long numDocPaciente;
+    private String contrasena;
+    private String confirmarContrasena;
+    private String nombres = "";
+    private String apellidos = "";
+    private String nombrePaciente = "";
+    private Date fechaNacimiento;
+    private Long telefono;
+    private String direccion;
+    private String correo;
+    
+    private String eps;
+    private int numeroHijos;
+    private String contactoNombre;
+    private Long contactoTelefono;
+    
+    private Long idTarjeta;
+    private int numeroAno;
+    private int numeroMes;
+    private int csv;
+    
+    private String mensaje;
 
     public String getEps() {
         return eps;
@@ -60,14 +65,6 @@ public class RegistroBean {
 
     public void setContactoNombre(String contactoNombre) {
         this.contactoNombre = contactoNombre;
-    }
-
-    public String getContactoTelefono() {
-        return contactoTelefono;
-    }
-
-    public void setContactoTelefono(String contactoTelefono) {
-        this.contactoTelefono = contactoTelefono;
     }
 
     public Long getNumDocPaciente() {
@@ -117,14 +114,6 @@ public class RegistroBean {
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
     }
-
-    public Long getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Long edad) {
-        this.edad = edad;
-    }
     
     public Long getTelefono() {
         return telefono;
@@ -158,14 +147,6 @@ public class RegistroBean {
         this.idTarjeta = idTarjeta;
     }
 
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
     public String getMensaje() {
         return mensaje;
     }
@@ -173,8 +154,6 @@ public class RegistroBean {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-
-
     
     public String registro(){
 
@@ -186,14 +165,20 @@ public class RegistroBean {
         pacienteDTO.setNumDocPaciente(numDocPaciente);
         pacienteDTO.setContrasena(contrasena);
         pacienteDTO.setNombrePaciente(nombrePaciente);
-        pacienteDTO.setEdad(edad.intValue());
+        pacienteDTO.setFechaNacimiento(fechaNacimiento);
         pacienteDTO.setTelefono(telefono);
         pacienteDTO.setDireccion(direccion);
         pacienteDTO.setCorreo(correo);
+        pacienteDTO.setNombreContacto(contactoNombre);
+        pacienteDTO.setTelefonoContacto(contactoTelefono);
+        pacienteDTO.setEps(eps);
+        pacienteDTO.setNumHijos(numeroHijos);
 
         tarjetaDTO.setNombrePaciente(nombrePaciente);
         tarjetaDTO.setIdTarjeta(idTarjeta);
-        tarjetaDTO.setFechaVencimiento(fechaVencimiento);
+        tarjetaDTO.setNumeroAno(numeroAno);
+        tarjetaDTO.setNumeroMes(numeroMes);
+        tarjetaDTO.setCsv(csv);
 
         RegistroBiz registroBiz = new RegistroBiz();
         mensaje = registroBiz.registroPaciente(pacienteDTO, tarjetaDTO);
