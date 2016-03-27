@@ -25,17 +25,17 @@ import org.primefaces.model.UploadedFile;
  *
  * @author jhtob
  */
-@ManagedBean(name="subirResultadoDoctorBean")
+@ManagedBean(name = "subirResultadoDoctorBean")
 @SessionScoped
 public class SubirResultadoDoctorBean {
-    
+
     private List<CitaDTO> citas = new ArrayList<>();
     private DataModel<CitaDTO> citaModel;
     private List<Laboratorio> examenesLaboratorio = new ArrayList<>();
     private DataModel<Laboratorio> examenesLaboratorioModel;
     private List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>();
     private DataModel<ImagenDiagnostica> imagenesDiagnosticasModel;
-    
+
     public static CitaDTO citaSeleccionadaDTO;
     public static ImagenDiagnostica imagenSeleccionada;
     private Long idPaciente;
@@ -43,14 +43,13 @@ public class SubirResultadoDoctorBean {
     private Long idCita;
     private Date fechaCita;
 
-
     @PostConstruct
     public void init() {
-        
+
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
-                
+
         citas = subirResultadoDoctorBiz.parseCita_CitaDTO(LoginBean.getDoctor());
-        
+
         citaModel = new ListDataModel<>(citas);
     }
 
@@ -149,48 +148,47 @@ public class SubirResultadoDoctorBean {
     public static void setImagenSeleccionada(ImagenDiagnostica imagenSeleccionada) {
         SubirResultadoDoctorBean.imagenSeleccionada = imagenSeleccionada;
     }
-    
-    public String verCitaSeleccionada(){
-                
+
+    public String verCitaSeleccionada() {
+
         citaSeleccionadaDTO = citaModel.getRowData();
         idCita = citaSeleccionadaDTO.getCitaID();
         idPaciente = citaSeleccionadaDTO.getIdPaciente();
         nombrePaciente = citaSeleccionadaDTO.getNombrePaciente();
         fechaCita = citaSeleccionadaDTO.getFecha();
-        
-        if(LoginBean.getDoctor().getEspecialidad().equals("ImagenesDiagnosticas")){
+
+        if (LoginBean.getDoctor().getEspecialidad().equals("ImagenesDiagnosticas")) {
             imagenesDiagnosticas = (List<ImagenDiagnostica>) citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection();
             imagenesDiagnosticasModel = new ListDataModel<>(imagenesDiagnosticas);
             return "subirResultadoImagenDoctor.xhtml";
-        }else{
+        } else {
             examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
             examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
             return "subirResultadoLaboratorioDoctor.xhtml";
         }
-       
 
     }
-    
-    public String subirResultadoLaboratorio(){
-                
+
+    public String subirResultadoLaboratorio() {
+
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
-        
+
         examenesLaboratorio = subirResultadoDoctorBiz.actualizarExamenesLaboratorio(examenesLaboratorio);
-        
+
         return "subirResultadoLaboratorioDoctor.xhtml";
 
     }
-    
+
     public String subirResultadoImagen(FileUploadEvent event) throws IOException {
 
         UploadedFile imagen = event.getFile();
-        
+
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
-        
+
         imagenesDiagnosticas = subirResultadoDoctorBiz.actualizarImagenDiagnostica(imagen, imagenesDiagnosticas);
-        
+
         return "subirResultadoImagenDoctor.xhtml";
 
-}
-    
+    }
+
 }

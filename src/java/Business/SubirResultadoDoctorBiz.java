@@ -80,7 +80,7 @@ public class SubirResultadoDoctorBiz {
         String rutaImagen;
        
         datos = IOUtils.toByteArray(imagen.getInputstream());        
-        rutaImagen = "C:" + File.separator + "Imagenes" + File.separator + imagenID.toString() + ".png";
+        rutaImagen = "F:" + File.separator + "Imagenes" + File.separator + imagenID.toString() + ".png";
         FileImageOutputStream outputStream = null;
         try {
             outputStream = new FileImageOutputStream

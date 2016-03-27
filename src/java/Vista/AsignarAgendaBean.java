@@ -10,16 +10,15 @@ import DTO.DoctorDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 
 /**
  *
  * @author Felipe
  */
 @Named(value = "asignarAgenda")
-@Dependent
 @Singleton
 public class AsignarAgendaBean {
 
