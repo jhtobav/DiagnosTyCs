@@ -6,7 +6,6 @@ package Business;
 
 import DTO.CitaDTO;
 import Entidades.Cita;
-import Entidades.Doctor;
 import Entidades.Medico;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +26,7 @@ public class VerCitaMedicoBiz {
            citaDTO = new CitaDTO();
            citaDTO.setCitaID(c.getCitaID());
            citaDTO.setNombreMedico(c.getMedicomedicoID().getPersonapersonaID().getNombre());
-           List<Doctor> doctores = new ArrayList(c.getDoctorCollection());
-           citaDTO.setNombreDoctor(doctores.get(0).getPersonapersonaID().getNombre());
+           citaDTO.setNombreDoctor(c.getDoctordoctorID().getPersonapersonaID().getNombre());
            citaDTO.setFecha(c.getFecha());
            citaDTO.setValor(c.getValor());
            citaDTO.setCita(c);

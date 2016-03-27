@@ -15,7 +15,9 @@ public class TarjetaDTO implements Serializable {
     
     private Long idTarjeta;
     private String nombrePaciente;
-    private Date fechaVencimiento;
+    private int numeroAno;
+    private int numeroMes;
+    private int csv;
    
     public TarjetaDTO() {
     }
@@ -36,12 +38,28 @@ public class TarjetaDTO implements Serializable {
         this.idTarjeta = idTarjeta;
     }
 
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
+    public int getNumeroAno() {
+        return numeroAno;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
+    public void setNumeroAno(int numeroAno) {
+        this.numeroAno = numeroAno;
+    }
+
+    public int getNumeroMes() {
+        return numeroMes;
+    }
+
+    public void setNumeroMes(int numeroMes) {
+        this.numeroMes = numeroMes;
+    }
+
+    public int getCsv() {
+        return csv;
+    }
+
+    public void setCsv(int csv) {
+        this.csv = csv;
     }
 
 }

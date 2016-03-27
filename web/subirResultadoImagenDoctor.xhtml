@@ -59,23 +59,23 @@
                 <div>
                     <div class="row">
                         <div class="col-md-1"></div>
-                        Listado de Imágenes Diagnósticas de la Cita
+                        Imagen Diagnostica de la Cita
                     </div>
                 </div>    
                 <br/>
                 <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{subirResultadoDoctorBean.imagenesDiagnosticasModel}" var="imagenDiag">
+                             value="#{subirResultadoDoctorBean.imagenDiagnostica}" var="imagen">
                     <h:column>
                         <f:facet name="header">
                             Nombre de la Imagen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.nombre}"/>
+                        <h:outputText value="#{subirResultadoDoctorBean.imagenDiagnostica.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Descripción de la Imagen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.descripcion}"/>
+                        <h:outputText value="#{subirResultadoDoctorBean.imagenDiagnostica.descripcion}"/>
                     </h:column>
                 </h:dataTable>
             </div>

@@ -33,8 +33,7 @@ public class SubirResultadoDoctorBean {
     private DataModel<CitaDTO> citaModel;
     private List<Laboratorio> examenesLaboratorio = new ArrayList<>();
     private DataModel<Laboratorio> examenesLaboratorioModel;
-    private List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>();
-    private DataModel<ImagenDiagnostica> imagenesDiagnosticasModel;
+    private ImagenDiagnostica imagenDiagnostica;
 
     public static CitaDTO citaSeleccionadaDTO;
     public static ImagenDiagnostica imagenSeleccionada;
@@ -125,28 +124,20 @@ public class SubirResultadoDoctorBean {
         this.examenesLaboratorioModel = examenesLaboratorioModel;
     }
 
-    public List<ImagenDiagnostica> getImagenesDiagnosticas() {
-        return imagenesDiagnosticas;
-    }
-
-    public void setImagenesDiagnosticas(List<ImagenDiagnostica> imagenesDiagnosticas) {
-        this.imagenesDiagnosticas = imagenesDiagnosticas;
-    }
-
-    public DataModel<ImagenDiagnostica> getImagenesDiagnosticasModel() {
-        return imagenesDiagnosticasModel;
-    }
-
-    public void setImagenesDiagnosticasModel(DataModel<ImagenDiagnostica> imagenesDiagnosticasModel) {
-        this.imagenesDiagnosticasModel = imagenesDiagnosticasModel;
-    }
-
     public static ImagenDiagnostica getImagenSeleccionada() {
         return imagenSeleccionada;
     }
 
     public static void setImagenSeleccionada(ImagenDiagnostica imagenSeleccionada) {
         SubirResultadoDoctorBean.imagenSeleccionada = imagenSeleccionada;
+    }
+
+    public ImagenDiagnostica getImagenDiagnostica() {
+        return imagenDiagnostica;
+    }
+
+    public void setImagenDiagnostica(ImagenDiagnostica imagenDiagnostica) {
+        this.imagenDiagnostica = imagenDiagnostica;
     }
 
     public String verCitaSeleccionada() {
@@ -158,8 +149,7 @@ public class SubirResultadoDoctorBean {
         fechaCita = citaSeleccionadaDTO.getFecha();
 
         if (LoginBean.getDoctor().getEspecialidad().equals("ImagenesDiagnosticas")) {
-            imagenesDiagnosticas = (List<ImagenDiagnostica>) citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection();
-            imagenesDiagnosticasModel = new ListDataModel<>(imagenesDiagnosticas);
+            imagenDiagnostica = citaSeleccionadaDTO.getCita().getImagenDiagnosticaimagenDiagnosticaID();
             return "subirResultadoImagenDoctor.xhtml";
         } else {
             examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
@@ -181,11 +171,11 @@ public class SubirResultadoDoctorBean {
 
     public String subirResultadoImagen(FileUploadEvent event) throws IOException {
 
-        UploadedFile imagen = event.getFile();
+        UploadedFile archivoImagen = event.getFile();
 
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
 
-        imagenesDiagnosticas = subirResultadoDoctorBiz.actualizarImagenDiagnostica(imagen, imagenesDiagnosticas);
+        imagenDiagnostica = subirResultadoDoctorBiz.actualizarImagenDiagnostica(archivoImagen, imagenDiagnostica);
 
         return "subirResultadoImagenDoctor.xhtml";
 

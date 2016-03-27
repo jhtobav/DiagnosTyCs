@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -58,9 +57,6 @@ public class ImagenDiagnostica implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "rutaImagen")
     private String rutaImagen;
-    @JoinColumn(name = "CitaImagenDiagnostica_ImagenDiagnostica_citaID", referencedColumnName = "citaID")
-    @ManyToOne(optional = false)
-    private Cita citaImagenDiagnosticaImagenDiagnosticacitaID;
     @JoinColumn(name = "Reactivo_reactivoID", referencedColumnName = "reactivoID")
     @OneToOne(optional = false)
     private Reactivo reactivoreactivoID;
@@ -109,14 +105,6 @@ public class ImagenDiagnostica implements Serializable {
 
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
-    }
-
-    public Cita getCitaImagenDiagnosticaImagenDiagnosticacitaID() {
-        return citaImagenDiagnosticaImagenDiagnosticacitaID;
-    }
-
-    public void setCitaImagenDiagnosticaImagenDiagnosticacitaID(Cita citaImagenDiagnosticaImagenDiagnosticacitaID) {
-        this.citaImagenDiagnosticaImagenDiagnosticacitaID = citaImagenDiagnosticaImagenDiagnosticacitaID;
     }
 
     public Reactivo getReactivoreactivoID() {

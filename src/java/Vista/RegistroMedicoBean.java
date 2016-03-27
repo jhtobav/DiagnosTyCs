@@ -7,6 +7,7 @@ package Vista;
 
 import Business.RegistroBiz;
 import DTO.PersonaDTO;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -24,7 +25,7 @@ public class RegistroMedicoBean {
     private String nombres = "";
     private String apellidos = "";
     private String nombreMedico = "";
-    private Long edad;
+    private Date fechaNacimiento;
     private Long telefono;
     private String direccion;
     private String correo;
@@ -78,12 +79,12 @@ public class RegistroMedicoBean {
         this.apellidos = apellidos;
     }
 
-    public Long getEdad() {
-        return edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(Long edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
     
     public Long getTelefono() {
@@ -127,7 +128,7 @@ public class RegistroMedicoBean {
         personaDTO.setIdPersona(numDocMedico);
         personaDTO.setContrasena(contrasena);
         personaDTO.setNombrePersona(nombreMedico);
-        personaDTO.setEdad(edad.intValue());
+        personaDTO.setFechaNacimiento(fechaNacimiento);
         personaDTO.setTelefono(telefono);
         personaDTO.setDireccion(direccion);
         personaDTO.setCorreo(correo);

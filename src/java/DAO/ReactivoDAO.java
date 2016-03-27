@@ -60,17 +60,12 @@ public class ReactivoDAO {
         
         Reactivo reactivo = new Reactivo();
         
-        List<Laboratorio> laboratorios = new ArrayList<>();
-        List<ImagenDiagnostica> imagenes = new ArrayList<>();       
-        
         for(int i=1; i<=299; i++){
             
             System.out.println(i);
             
             em = emf.createEntityManager();      
             reactivo.setNombre("Reactivo " + i);
-            reactivo.setImagenDiagnosticaCollection(imagenes);
-            reactivo.setLaboratorioCollection(laboratorios);
             reactivo.setUnidadesExistentes(50);
             reactivo.setValor(20);
             

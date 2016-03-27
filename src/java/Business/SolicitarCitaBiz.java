@@ -8,6 +8,7 @@ import DAO.AgendaDAO;
 import DAO.AlertaDAO;
 import DAO.CitaDAO;
 import DAO.HistoricoGastosGananciasCitasDAO;
+import DAO.ImagenDiagnosticaDAO;
 import DAO.PrecioDAO;
 import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
@@ -43,21 +44,11 @@ public class SolicitarCitaBiz {
 
         CitaDAO citaDAO = new CitaDAO();
         
+        Long preciosReactivos = 0l;
         Long precioExamen = buscarPrecioExamen(1l);
-
-        System.out.println("Paso 1 Parte 1");
-        // Crear Cita
-        Cita cita = crearCita(agenda, fecha, precioExamen);
-        cita = citaDAO.createCita(cita);
         Long valorCita = 0l; 
         
-        System.out.println("Paso 3 Parte 1");
-        // Asociar Laboratorio con Cita
         List<Laboratorio> laboratorios = new ArrayList<>();
-        
-        System.out.println("Paso 7 Parte 2");
-        // Crear Historico
-        Long preciosReactivos = 0l;
         
         for(ExamenDTO examen: examenesDTO){
             
@@ -65,54 +56,49 @@ public class SolicitarCitaBiz {
                 
                 Reactivo reactivo = buscarReactivo(examen.getIdReactivo());
 
-                System.out.println("Paso 1");
-                // Crear Cita
                 valorCita = valorCita + precioExamen;
                 
-                System.out.println("Paso 2");
+                System.out.println("Paso 1");
                 // Crear Laboratorio
                 Laboratorio laboratorio = new Laboratorio();
                 laboratorio.setDescripcion(examen.getDescripcion());
                 laboratorio.setNombre(examen.getNombre());
                 laboratorio.setReactivoreactivoID(reactivo);
-                laboratorio.setCitaLaboratorioLaboratoriocitaID(cita);
                 laboratorio.setResultado("R:");
                 
-                System.out.println("Paso 3 Parte 2");
+                System.out.println("Paso 2");
                 // Asociar Laboratorio con Cita
                 laboratorios.add(laboratorio);
 
-                System.out.println("Paso 5");
+                System.out.println("Paso 3");
                 // Actualizar cantidad de reactivos
                 reactivo = actualizarUnidadesReactivo(reactivo);
 
-                System.out.println("Paso 6");
+                System.out.println("Paso 4");
                 // Crear alerta de Reactivo
                 crearAlerta(reactivo.getUnidadesExistentes(), reactivo.getNombre(), laboratorio.getDescripcion());
                 
-                System.out.println("Paso 7 Parte 2");
+                System.out.println("Paso 5");
                 // Crear Historico
                 preciosReactivos = preciosReactivos + reactivo.getValor();
                 
             }                
             
         }
-
-        System.out.println("Paso 3 Parte 3");
-        // Asociar Laboratorio con Cita
-        cita.setLaboratorioCollection(laboratorios);
-        citaDAO.updateLaboratoriosCita(cita);
         
-        System.out.println("Paso 1 Parte 1");
+        System.out.println("Paso 6");
         // Crear Cita
+        ImagenDiagnostica imagen = new ImagenDiagnostica();
+        Cita cita = crearCita(agenda, fecha, precioExamen, imagen);
+        cita.setLaboratorioCollection(laboratorios);
         cita.setValor(valorCita);
-        citaDAO.updateValorCita(cita);
+        citaDAO.createCita(cita);
         
-        System.out.println("Paso 4");
+        System.out.println("Paso 7");
         // Actualizar disponibilidad de Agenda
         actualizarDisponibilidadAgenda(agenda);
         
-        System.out.println("Paso 7 Parte 3");
+        System.out.println("Paso 8");
         // Crear Historico
         crearHistoricoGastosGananciasCitas(fecha, examenDTO.getNombre(), "Laboratorio", preciosReactivos, valorCita);
         
@@ -123,44 +109,39 @@ public class SolicitarCitaBiz {
     public String solicitarCitaImagen(ExamenDTO examenDTO, Agenda agenda, Date fecha) {
 
         CitaDAO citaDAO = new CitaDAO();
+        ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
 
         Long precioExamen = buscarPrecioExamen(2l);
         Reactivo reactivo = buscarReactivo(examenDTO.getIdReactivo());
         
-        System.out.println("Paso 1");
-        // Crear Cita
-        Cita cita = crearCita(agenda, fecha, precioExamen);
-        cita = citaDAO.createCita(cita);
 
-        System.out.println("Paso 2");
+        System.out.println("Paso 1");
         // Crear Imagen Diagnóstica
         ImagenDiagnostica imagen = new ImagenDiagnostica();
         imagen.setDescripcion(examenDTO.getDescripcion());
         imagen.setNombre(examenDTO.getNombre());
         imagen.setReactivoreactivoID(reactivo);
-        imagen.setCitaImagenDiagnosticaImagenDiagnosticacitaID(cita);
         imagen.setRutaImagen("F:/");
+        imagenDiagnosticaDAO.createImagen(imagen);
+        
+        System.out.println("Paso 2");
+        // Crear Cita
+        Cita cita = crearCita(agenda, fecha, precioExamen, imagen);
+        citaDAO.createCita(cita);
 
         System.out.println("Paso 3");
-        // Asociar Imagen con Cita
-        List<ImagenDiagnostica> imagenes = new ArrayList<>();
-        imagenes.add(imagen);
-        cita.setImagenDiagnosticaCollection(imagenes);
-        citaDAO.updateImagenesCita(cita);
-
-        System.out.println("Paso 4");
         // Actualizar disponibilidad de Agenda
         actualizarDisponibilidadAgenda(agenda);
 
-        System.out.println("Paso 5");
+        System.out.println("Paso 4");
         // Actualizar cantidad de reactivos
         reactivo = actualizarUnidadesReactivo(reactivo);
 
-        System.out.println("Paso 6");
+        System.out.println("Paso 5");
         // Crear alerta de Reactivo
         crearAlerta(reactivo.getUnidadesExistentes(), reactivo.getNombre(), imagen.getDescripcion());
 
-        System.out.println("Paso 7");
+        System.out.println("Paso 6");
         // Crear Historico
         crearHistoricoGastosGananciasCitas(fecha, imagen.getDescripcion(), "ImagenesDiagnosticas", reactivo.getValor(), precioExamen);
 
@@ -168,22 +149,19 @@ public class SolicitarCitaBiz {
 
     }
 
-    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen) {
+    public Cita crearCita(Agenda agenda, Date fecha, Long precioExamen, ImagenDiagnostica imagenDiagnostica) {
 
         Doctor doctor = agenda.getDoctordoctorID();
         Medico medico = agenda.getMedicomedicoID();
 
         List<Laboratorio> laboratorios = new ArrayList<>();
-        List<ImagenDiagnostica> imagenes = new ArrayList<>();
-        List<Doctor> doctores = new ArrayList<>();
-        doctores.add(doctor);
 
         Cita cita = new Cita();
-        cita.setDoctorCollection(doctores);
+        cita.setDoctordoctorID(doctor);
         cita.setMedicomedicoID(medico);
         cita.setLaboratorioCollection(laboratorios);
         cita.setPacientepacienteID(LoginBean.getPaciente());
-        cita.setImagenDiagnosticaCollection(imagenes);
+        cita.setImagenDiagnosticaimagenDiagnosticaID(imagenDiagnostica);
         cita.setFecha(fecha);
         cita.setValor(precioExamen);
 

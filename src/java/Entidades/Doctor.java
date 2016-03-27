@@ -13,7 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Doctor.findAll", query = "SELECT d FROM Doctor d"),
     @NamedQuery(name = "Doctor.findByDoctorID", query = "SELECT d FROM Doctor d WHERE d.doctorID = :doctorID"),
-    @NamedQuery(name = "Doctor.findByEspecialidad", query = "SELECT d FROM Doctor d WHERE d.especialidad = :especialidad and d.estado= :estado"),
+    @NamedQuery(name = "Doctor.findByEspecialidad", query = "SELECT d FROM Doctor d WHERE d.especialidad = :especialidad"),
     @NamedQuery(name = "Doctor.findByEstado", query = "SELECT d FROM Doctor d WHERE d.estado = :estado"),
     @NamedQuery(name = "Doctor.findBySalario", query = "SELECT d FROM Doctor d WHERE d.salario = :salario")})
 public class Doctor implements Serializable {
@@ -59,13 +58,11 @@ public class Doctor implements Serializable {
     @NotNull
     @Column(name = "salario")
     private long salario;
-    @ManyToMany(mappedBy = "doctorCollection")
-    private Collection<Cita> citaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctordoctorID")
-    private Collection<Agenda> agendaCollection;
     @JoinColumn(name = "Persona_personaID", referencedColumnName = "personaID")
     @OneToOne(optional = false)
     private Persona personapersonaID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctordoctorID")
+    private Collection<Cita> citaCollection;
 
     public Doctor() {
     }
@@ -113,6 +110,14 @@ public class Doctor implements Serializable {
         this.salario = salario;
     }
 
+    public Persona getPersonapersonaID() {
+        return personapersonaID;
+    }
+
+    public void setPersonapersonaID(Persona personapersonaID) {
+        this.personapersonaID = personapersonaID;
+    }
+
     @XmlTransient
     public Collection<Cita> getCitaCollection() {
         return citaCollection;
@@ -120,23 +125,6 @@ public class Doctor implements Serializable {
 
     public void setCitaCollection(Collection<Cita> citaCollection) {
         this.citaCollection = citaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Agenda> getAgendaCollection() {
-        return agendaCollection;
-    }
-
-    public void setAgendaCollection(Collection<Agenda> agendaCollection) {
-        this.agendaCollection = agendaCollection;
-    }
-
-    public Persona getPersonapersonaID() {
-        return personapersonaID;
-    }
-
-    public void setPersonapersonaID(Persona personapersonaID) {
-        this.personapersonaID = personapersonaID;
     }
 
     @Override

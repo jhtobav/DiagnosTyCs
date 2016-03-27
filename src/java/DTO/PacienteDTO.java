@@ -5,6 +5,7 @@
 package DTO;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -15,10 +16,14 @@ public class PacienteDTO implements Serializable {
     private Long numDocPaciente;
     private String contrasena;
     private String nombrePaciente;
-    private int Edad;
-    private Long Telefono;
+    private Long telefono;
     private String direccion;
     private String correo;
+    private Date fechaNacimiento;
+    private String eps;
+    private String nombreContacto;
+    private Long telefonoContacto;
+    private int numHijos;
    
     public PacienteDTO() {
     }
@@ -47,22 +52,6 @@ public class PacienteDTO implements Serializable {
         this.nombrePaciente = nombrePaciente;
     }
 
-    public int getEdad() {
-        return Edad;
-    }
-
-    public void setEdad(int Edad) {
-        this.Edad = Edad;
-    }
-
-    public Long getTelefono() {
-        return Telefono;
-    }
-
-    public void setTelefono(Long Telefono) {
-        this.Telefono = Telefono;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -77,6 +66,54 @@ public class PacienteDTO implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public Long getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getEps() {
+        return eps;
+    }
+
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    public String getNombreContacto() {
+        return nombreContacto;
+    }
+
+    public void setNombreContacto(String nombreContacto) {
+        this.nombreContacto = nombreContacto;
+    }
+
+    public Long getTelefonoContacto() {
+        return telefonoContacto;
+    }
+
+    public void setTelefonoContacto(Long telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
+    }
+
+    public int getNumHijos() {
+        return numHijos;
+    }
+
+    public void setNumHijos(int numHijos) {
+        this.numHijos = numHijos;
     }
 
 }

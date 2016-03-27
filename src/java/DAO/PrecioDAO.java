@@ -1,7 +1,6 @@
 package DAO;
 
 
-import Entidades.Medico;
 import Entidades.Precio;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;

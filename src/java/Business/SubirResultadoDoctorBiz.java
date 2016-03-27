@@ -61,17 +61,15 @@ public class SubirResultadoDoctorBiz {
        return examenesLaboratorio;
     }
    
-    public List<ImagenDiagnostica> actualizarImagenDiagnostica(UploadedFile archivoImagen, 
-            List<ImagenDiagnostica> imagenesDiagnosticas) throws IOException {
+    public ImagenDiagnostica actualizarImagenDiagnostica(UploadedFile archivoImagen, 
+            ImagenDiagnostica imagenDiagnostica) throws IOException {
         
         ImagenDiagnosticaDAO imagenDiagnosticaDAO = new ImagenDiagnosticaDAO();
         
-        for(ImagenDiagnostica imagen: imagenesDiagnosticas){
-            imagen.setRutaImagen(almacenarArchivoImagen(archivoImagen, imagen.getImagenDiagnosticaID()));
-            imagen = imagenDiagnosticaDAO.updateImagenDiagnostica(imagen);
-        }
+        imagenDiagnostica.setRutaImagen(almacenarArchivoImagen(archivoImagen, imagenDiagnostica.getImagenDiagnosticaID()));
+        imagenDiagnostica = imagenDiagnosticaDAO.updateImagenDiagnostica(imagenDiagnostica);
         
-        return imagenesDiagnosticas;
+        return imagenDiagnostica;
         
     }
    

@@ -57,10 +57,6 @@ public class Reactivo implements Serializable {
     @NotNull
     @Column(name = "unidadesExistentes")
     private long unidadesExistentes;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
-    private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reactivoreactivoID")
-    private Collection<Laboratorio> laboratorioCollection;
 
     public Reactivo() {
     }
@@ -106,24 +102,6 @@ public class Reactivo implements Serializable {
 
     public void setUnidadesExistentes(long unidadesExistentes) {
         this.unidadesExistentes = unidadesExistentes;
-    }
-
-    @XmlTransient
-    public Collection<ImagenDiagnostica> getImagenDiagnosticaCollection() {
-        return imagenDiagnosticaCollection;
-    }
-
-    public void setImagenDiagnosticaCollection(Collection<ImagenDiagnostica> imagenDiagnosticaCollection) {
-        this.imagenDiagnosticaCollection = imagenDiagnosticaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Laboratorio> getLaboratorioCollection() {
-        return laboratorioCollection;
-    }
-
-    public void setLaboratorioCollection(Collection<Laboratorio> laboratorioCollection) {
-        this.laboratorioCollection = laboratorioCollection;
     }
 
     @Override

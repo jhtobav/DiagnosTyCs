@@ -16,12 +16,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,19 +57,18 @@ public class Cita implements Serializable {
     @NotNull
     @Column(name = "valor")
     private long valor;
-    @JoinTable(name = "CitaDoctor", joinColumns = {
-        @JoinColumn(name = "Cita_citaID", referencedColumnName = "citaID")}, inverseJoinColumns = {
-        @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")})
-    @ManyToMany
-    private Collection<Doctor> doctorCollection;
+    @JoinColumn(name = "Doctor_doctorID", referencedColumnName = "doctorID")
+    @ManyToOne(optional = false)
+    private Doctor doctordoctorID;
+    @JoinColumn(name = "ImagenDiagnostica_imagenDiagnosticaID", referencedColumnName = "imagenDiagnosticaID")
+    @OneToOne(optional = false)
+    private ImagenDiagnostica imagenDiagnosticaimagenDiagnosticaID;
     @JoinColumn(name = "Medico_medicoID", referencedColumnName = "medicoID")
     @ManyToOne(optional = false)
     private Medico medicomedicoID;
     @JoinColumn(name = "Paciente_pacienteID", referencedColumnName = "pacienteID")
     @ManyToOne(optional = false)
     private Paciente pacientepacienteID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "citaImagenDiagnosticaImagenDiagnosticacitaID")
-    private Collection<ImagenDiagnostica> imagenDiagnosticaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "citaLaboratorioLaboratoriocitaID")
     private Collection<Laboratorio> laboratorioCollection;
 
@@ -111,13 +109,20 @@ public class Cita implements Serializable {
         this.valor = valor;
     }
 
-    @XmlTransient
-    public Collection<Doctor> getDoctorCollection() {
-        return doctorCollection;
+    public Doctor getDoctordoctorID() {
+        return doctordoctorID;
     }
 
-    public void setDoctorCollection(Collection<Doctor> doctorCollection) {
-        this.doctorCollection = doctorCollection;
+    public void setDoctordoctorID(Doctor doctordoctorID) {
+        this.doctordoctorID = doctordoctorID;
+    }
+
+    public ImagenDiagnostica getImagenDiagnosticaimagenDiagnosticaID() {
+        return imagenDiagnosticaimagenDiagnosticaID;
+    }
+
+    public void setImagenDiagnosticaimagenDiagnosticaID(ImagenDiagnostica imagenDiagnosticaimagenDiagnosticaID) {
+        this.imagenDiagnosticaimagenDiagnosticaID = imagenDiagnosticaimagenDiagnosticaID;
     }
 
     public Medico getMedicomedicoID() {
@@ -134,15 +139,6 @@ public class Cita implements Serializable {
 
     public void setPacientepacienteID(Paciente pacientepacienteID) {
         this.pacientepacienteID = pacientepacienteID;
-    }
-
-    @XmlTransient
-    public Collection<ImagenDiagnostica> getImagenDiagnosticaCollection() {
-        return imagenDiagnosticaCollection;
-    }
-
-    public void setImagenDiagnosticaCollection(Collection<ImagenDiagnostica> imagenDiagnosticaCollection) {
-        this.imagenDiagnosticaCollection = imagenDiagnosticaCollection;
     }
 
     @XmlTransient

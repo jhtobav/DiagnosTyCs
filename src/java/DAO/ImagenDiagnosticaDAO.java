@@ -18,6 +18,23 @@ public class ImagenDiagnosticaDAO {
     
     EntityManagerFactory emf = LoginBean.getEmf();
     
+    public ImagenDiagnostica createImagen(ImagenDiagnostica imagenDiagnostica) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(imagenDiagnostica);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return imagenDiagnostica;
+        }
+    }
+    
     public ImagenDiagnostica updateImagenDiagnostica(ImagenDiagnostica imagenDiagnostica){
         
         ImagenDiagnostica nuevaImagen = new ImagenDiagnostica();

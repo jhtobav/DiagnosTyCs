@@ -60,23 +60,23 @@
                 <div>
                     <div class="row">
                         <div class="col-md-1"></div>
-                        Listado de Imágenes Diagnósticas de la Cita
+                        Imagen Diagnostica de la Cita
                     </div>
                 </div>    
                 <br/>
                 <h:dataTable columnClasses="col1" id="tablaImagenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{verCitaMedicoBean.imagenesDiagnosticasModel}" var="imagenDiag">
+                             value="#{verCitaMedicoBean.imagenDiagnostica}" var="imagen">
                     <h:column>
                         <f:facet name="header">
                             Nombre del Exámen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.nombre}"/>
+                        <h:outputText value="#{verCitaMedicoBean.imagenDiagnostica.nombre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Descripción del Exámen
                         </f:facet>
-                        <h:outputText value="#{imagenDiag.descripcion}"/>
+                        <h:outputText value="#{verCitaMedicoBean.imagenDiagnostica.descripcion}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
