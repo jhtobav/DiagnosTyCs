@@ -6,7 +6,6 @@
 package Vista;
 
 import Business.LoginBiz;
-import DAO.ReactivoDAO;
 import DTO.LoginDTO;
 import Entidades.Administrador;
 import Entidades.Doctor;
@@ -33,9 +32,9 @@ public class LoginBean {
     public static EntityManagerFactory emf = Persistence
             .createEntityManagerFactory("DiagnosTyCsPU");
     
-    public static Long idPersona;
-    String contrasena;
-    String nombrePersona;
+    private Long idPersona;
+    private String contrasena;
+    private String nombrePersona;
     public static String mensajeEmergenteTipo = "SEVERITY_INFO";
     public static String mensajeEmergenteTitulo = "Bienvenido";
     public static String mensajeEmergenteContenido = ""; 
@@ -46,7 +45,15 @@ public class LoginBean {
     public static Administrador administrador = null;
     public static Gerente gerente = null;
     public static Doctor doctor = null;
-       
+
+    public static EntityManagerFactory getEmf() {
+        return emf;
+    }
+
+    public static void setEmf(EntityManagerFactory emf) {
+        LoginBean.emf = emf;
+    }
+
     public Long getIdPersona() {
         return idPersona;
     }
@@ -69,6 +76,30 @@ public class LoginBean {
 
     public void setNombrePersona(String nombrePersona) {
         this.nombrePersona = nombrePersona;
+    }
+
+    public static String getMensajeEmergenteTipo() {
+        return mensajeEmergenteTipo;
+    }
+
+    public static void setMensajeEmergenteTipo(String mensajeEmergenteTipo) {
+        LoginBean.mensajeEmergenteTipo = mensajeEmergenteTipo;
+    }
+
+    public static String getMensajeEmergenteTitulo() {
+        return mensajeEmergenteTitulo;
+    }
+
+    public static void setMensajeEmergenteTitulo(String mensajeEmergenteTitulo) {
+        LoginBean.mensajeEmergenteTitulo = mensajeEmergenteTitulo;
+    }
+
+    public static String getMensajeEmergenteContenido() {
+        return mensajeEmergenteContenido;
+    }
+
+    public static void setMensajeEmergenteContenido(String mensajeEmergenteContenido) {
+        LoginBean.mensajeEmergenteContenido = mensajeEmergenteContenido;
     }
 
     public static Persona getPersona() {
@@ -119,37 +150,7 @@ public class LoginBean {
         LoginBean.doctor = doctor;
     }
     
-    public static EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    public static void setEmf(EntityManagerFactory emf) {
-        LoginBean.emf = emf;
-    }   
-
-    public static String getMensajeEmergenteTipo() {
-        return mensajeEmergenteTipo;
-    }
-
-    public static void setMensajeEmergenteTipo(String mensajeEmergenteTipo) {
-        LoginBean.mensajeEmergenteTipo = mensajeEmergenteTipo;
-    }
-
-    public static String getMensajeEmergenteContenido() {
-        return mensajeEmergenteContenido;
-    }
-
-    public static void setMensajeEmergenteContenido(String mensajeEmergenteContenido) {
-        LoginBean.mensajeEmergenteContenido = mensajeEmergenteContenido;
-    }
-
-    public static String getMensajeEmergenteTitulo() {
-        return mensajeEmergenteTitulo;
-    }
-
-    public static void setMensajeEmergenteTitulo(String mensajeEmergenteTitulo) {
-        LoginBean.mensajeEmergenteTitulo = mensajeEmergenteTitulo;
-    }
+    
     
     public String login(){
         
@@ -171,6 +172,7 @@ public class LoginBean {
             LoginBean.setMensajeEmergenteContenido("DiagnosTyCs para " 
                 + loginDTO.getNombrePersona());
             nombrePersona = loginDTO.getNombrePersona();
+            idPersona = loginDTO.getIdPersona();
             return loginDTO.getMensaje();
         }
 
