@@ -78,15 +78,16 @@ public class SubirResultadoDoctorBiz {
     public String almacenarArchivoImagen(UploadedFile imagen, Cita cita) throws IOException{
        
         byte[] datos;
-        String rutaImagen;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         String fecha = format.format(cita.getFecha());
-        
-        String rutaPersistir = File.separator + "Imagenes" + File.separator +
+        String rutaImagen = "F:" + File.separator + "Imagenes" + File.separator +
                 cita.getPacientepacienteID().getPacienteID() + "_" + cita.getCitaID() + "_" + fecha
-                + ".png";      
+                + ".tiff";      
         datos = IOUtils.toByteArray(imagen.getInputstream());        
-        rutaImagen = "F:" + rutaPersistir;
+        
+        String rutaPersistir = "/" + "Imagenes" + "/" +
+                cita.getPacientepacienteID().getPacienteID() + "_" + cita.getCitaID() + "_" + fecha
+                + ".tiff";      
         System.out.println(rutaImagen);
         FileImageOutputStream outputStream = null;
         try {
