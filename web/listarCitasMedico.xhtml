@@ -23,7 +23,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
-    <h:body style="border-style: none; height: 400px">
+    <h:body style="border-style: none; height: 400px" onload="load()">
         <div class="container">
         <h:form>
         <hr/>
@@ -52,7 +52,7 @@
                     <f:facet name="header">
                         Fecha de la Cita
                     </f:facet>
-                    <h:outputText value="#{cita.fecha}"/>
+                    <h:outputText class="outputDateTime" value="#{cita.fecha}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">

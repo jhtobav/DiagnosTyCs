@@ -342,7 +342,6 @@ function setBirthDate() {
 
 function loadFormat() {
     $('.outputDateTime').each(function (index) {
-        console.log(index);
         $(this).html(formatearFecha($(this).html()));
     });
 }

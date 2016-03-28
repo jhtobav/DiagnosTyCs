@@ -22,7 +22,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
-    <h:body style="border-style: none; height: 400px">
+    <h:body style="border-style: none; height: 400px" onload="load()">
         <h:form>
             <div class="row">   
                 <div class="col-md-3"></div>
@@ -47,7 +47,7 @@
                             <br/>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Fecha de Cita</span>
-                                <h:outputText class="form-control" value="#{subirResultadoDoctorBean.fechaCita}"/>
+                                <h:outputText class="form-control outputDateTime" value="#{subirResultadoDoctorBean.fechaCita}"/>
                             </div>
                             <br/>
                         </div>
