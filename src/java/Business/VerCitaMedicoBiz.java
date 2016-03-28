@@ -31,7 +31,7 @@ public class VerCitaMedicoBiz {
            citaDTO.setValor(c.getValor());
            citaDTO.setCita(c);
            citaDTO.setIdPaciente(c.getPacientepacienteID().getPacienteID());
-           citaDTO.setNombrePaciente(c.getMedicomedicoID().getPersonapersonaID().getNombre());
+           citaDTO.setNombrePaciente(c.getPacientepacienteID().getNombre());
            citasDTO.add(citaDTO);
            
        }    

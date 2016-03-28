@@ -31,26 +31,32 @@
                     <br/>
                     <br/>
                     <div  class="panel panel-default">
-                        <div>
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                Bienvenido, estos son los resultados de la cita seleccionada:
-                            </div>
-                        </div>    
-                        <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            Bienvenido, estos son los resultados de la cita seleccionada:
                             <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
-                                <h:outputText class="form-control" value="#{verCitaMedicoBean.idPaciente}"/>
+                            <div class="col-md-6">
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Nombre del Paciente</span>
+                                    <h:outputText class="form-control" value="#{verCitaMedicoBean.nombrePaciente}"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
-                                <h:outputText class="form-control" value="#{verCitaMedicoBean.fechaCita}"/>
+                            <div class="col-md-6">
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">ID del Paciente</span>
+                                    <h:outputText class="form-control" value="#{verCitaMedicoBean.idPaciente}"/>
+                                </div>
                             </div>
-                            <br/>
+                            <div class="col-md-6">
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
+                                    <h:outputText class="form-control" value="#{verCitaMedicoBean.fechaCita}"/>
+                                </div>
+                                <br/>
+                            </div>
                         </div>
                     </div>
                 </div>

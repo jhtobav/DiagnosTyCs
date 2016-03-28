@@ -34,6 +34,7 @@ public class VerCitaMedicoBean {
     
     public CitaDTO citaSeleccionadaDTO;
     private String nombreDoctorCita;
+    private String nombrePaciente;
     private Long idPaciente;
     private Long idCita;
     private Date fechaCita;
@@ -127,12 +128,21 @@ public class VerCitaMedicoBean {
     public void setIdPaciente(Long idPaciente) {
         this.idPaciente = idPaciente;
     }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
     
     public String verCitaSeleccionada(){
         
         citaSeleccionadaDTO = citaModel.getRowData();
         idCita = citaSeleccionadaDTO.getCitaID();
         nombreDoctorCita = citaSeleccionadaDTO.getNombreDoctor();
+        nombrePaciente = citaSeleccionadaDTO.getNombrePaciente();
         fechaCita = citaSeleccionadaDTO.getFecha();
         idPaciente = citaSeleccionadaDTO.getIdPaciente();
                 
