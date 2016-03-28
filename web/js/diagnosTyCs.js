@@ -7,6 +7,7 @@ function load() {
     $('.date').datepicker({
         language: "es"
     });
+    loadFormat();
 }
 
 function dateToISO8601String(date) {
@@ -335,4 +336,18 @@ function loadTable(value) {
 
 function setBirthDate() {
     document.getElementById("form:fechaNacimiento").value = dateToISO8601String($('.date').datepicker('getDate'));
+}
+
+function loadFormat() {
+    $('.outputDateTime').html(formatearFecha($('.outputDateTime').html())); 
+}
+
+function formatearFecha(inputDate){
+    if(inputDate){
+        var meses = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dic");
+        var slicedDate = inputDate.split(' ');
+        var slicedHour = slicedDate[3].split(':');
+        var date = new Date(slicedDate[5], meses.indexOf(slicedDate[1]), slicedDate[2], slicedHour[0], slicedHour[1], slicedHour[2], 0);
+        return date.getDay() + "/" + date.getMonth()+1 + "/" + date.getFullYear() + " " + slicedDate[3];
+    }
 }
