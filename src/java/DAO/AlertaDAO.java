@@ -3,6 +3,7 @@ package DAO;
 
 import Entidades.Alerta;
 import Vista.LoginBean;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,11 +39,20 @@ public class AlertaDAO {
         }
     }
     
-    public List<Alerta> getListLastAlerta() {
+    public List<Alerta> getListLastAlerta(Date fecha) {
       
         EntityManager em = emf.createEntityManager();
-        Query q = em.createNamedQuery("Alerta.findByLastFecha");
-        return q.getResultList();
+        Query q;
+        List<Alerta> alertas = null;
+        try {
+            q = em.createNamedQuery("Alerta.findByLastFecha", Alerta.class);
+            q = q.setParameter("fecha", fecha);
+            alertas = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return alertas;
+        }
       
     }
     

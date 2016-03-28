@@ -7,6 +7,7 @@ package Business;
 
 import DAO.AlertaDAO;
 import Entidades.Alerta;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ import java.util.List;
  */
 public class ListarAlertasBiz {
     
-    public List<Alerta> listarAlertas(){
+    public List<Alerta> listarAlertas(Date fecha){
      
-        List<Alerta> alertas = new AlertaDAO().getListLastAlerta();
+        List<Alerta> alertas = new AlertaDAO().getListLastAlerta(fecha);
         
         return alertas;
     }

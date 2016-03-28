@@ -183,6 +183,9 @@ public class LoginBean {
         LoginBean.mensajeEmergenteTipo = "SEVERITY_INFO";
         LoginBean.mensajeEmergenteContenido = "Sesión finalizada";
         LoginBean.mensajeEmergenteTitulo = "Esperamos que vuelva pronto";
+        nombrePersona = null;
+        contrasena = null;
+        idPersona = null;
         
         return "inicio.xhtml";
     }

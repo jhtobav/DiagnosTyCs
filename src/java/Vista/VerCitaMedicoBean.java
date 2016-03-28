@@ -140,14 +140,14 @@ public class VerCitaMedicoBean {
         examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
         
         List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>(citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection());
-        imagenDiagnostica = imagenesDiagnosticas.get(0);
         
         if(examenesLaboratorio.size()>0){
             return "verResultadoLaboratorioMedico.xhtml";
         }else{
+            imagenDiagnostica = imagenesDiagnosticas.get(0);
             return "verResultadoImagenMedico.xhtml";
         }
 
     }
-    
+
 }
