@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -27,6 +28,15 @@ public class ListarAlertasBean {
     
     private List<Alerta> alertas = new ArrayList<>();
     private String fecha;
+    
+    @PostConstruct
+    public void init() {
+    
+        ListarAlertasBiz listarAlertasBiz = new ListarAlertasBiz();
+                
+        alertas = listarAlertasBiz.listarAlertas();
+        
+    }
 
     public List<Alerta> getAlertas() {
         return alertas;
@@ -57,7 +67,7 @@ public class ListarAlertasBean {
             
         ListarAlertasBiz listarAlertasBiz = new ListarAlertasBiz();
         
-        alertas = listarAlertasBiz.listarAlertas(parsearFecha(fecha));
+        alertas = listarAlertasBiz.listarAlertasDesdeFecha(parsearFecha(fecha));
         
     }
     

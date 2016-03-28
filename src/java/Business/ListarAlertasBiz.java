@@ -16,11 +16,19 @@ import java.util.List;
  */
 public class ListarAlertasBiz {
     
-    public List<Alerta> listarAlertas(Date fecha){
+    public List<Alerta> listarAlertasDesdeFecha(Date fecha){
      
         List<Alerta> alertas = new AlertaDAO().getListLastAlerta(fecha);
         
         return alertas;
+    }
+    
+    public List<Alerta> listarAlertas(){
+        
+        List<Alerta> alertas = new AlertaDAO().getListAlerta();
+        
+        return alertas;
+        
     }
     
 }
