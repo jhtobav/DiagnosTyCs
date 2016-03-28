@@ -45,6 +45,7 @@ public class SubirResultadoDoctorBean {
     @PostConstruct
     public void init() {
 
+        System.out.println("entro");
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
 
         citas = subirResultadoDoctorBiz.parseCita_CitaDTO(LoginBean.getDoctor());
@@ -172,12 +173,14 @@ public class SubirResultadoDoctorBean {
 
     public String subirResultadoImagen(FileUploadEvent event) throws IOException {
 
+        System.out.println("entro");
+        
         UploadedFile archivoImagen = event.getFile();
 
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
 
         imagenDiagnostica = subirResultadoDoctorBiz.actualizarImagenDiagnostica(archivoImagen, imagenDiagnostica);
-
+        
         return "subirResultadoImagenDoctor.xhtml";
 
     }

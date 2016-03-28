@@ -13,6 +13,8 @@ import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.FacesException;
@@ -77,11 +79,15 @@ public class SubirResultadoDoctorBiz {
        
         byte[] datos;
         String rutaImagen;
-       
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        String fecha = format.format(cita.getFecha());
+        
+        String rutaPersistir = File.separator + "Imagenes" + File.separator +
+                cita.getPacientepacienteID().getPacienteID() + "_" + cita.getCitaID() + "_" + fecha
+                + ".png";      
         datos = IOUtils.toByteArray(imagen.getInputstream());        
-        rutaImagen = "F:" + File.separator + "Imagenes" + File.separator +
-                cita.getPacientepacienteID() + "_" + cita.getCitaID() + "_" + cita.getFecha()
-                + ".png";
+        rutaImagen = "F:" + rutaPersistir;
+        System.out.println(rutaImagen);
         FileImageOutputStream outputStream = null;
         try {
             outputStream = new FileImageOutputStream
@@ -96,7 +102,7 @@ public class SubirResultadoDoctorBiz {
             }
         }
         
-        return rutaImagen;
+        return rutaPersistir;
        
    }
    
