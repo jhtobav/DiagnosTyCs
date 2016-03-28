@@ -22,6 +22,7 @@
         <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+        <link href="css/lightbox.min.css" rel="stylesheet"/>
     </h:head>
     <h:body style="border-style: none; height: 400px" onload="load()">
         <h:form>
@@ -94,17 +95,17 @@
                         <f:facet name="header">
                             Ver Imagen
                         </f:facet>
-                        <h:commandButton type="submit" class="btn btn-success" value="Ver Imágen" 
-                                         action="verCita.xhtml"/>
+                        <a href="#{request.contextPath}#{verCitaMedicoBean.imagenDiagnostica.rutaImagen}" data-lightbox="image-1" data-title=""><button class="btn btn-success">Ver Imagen</button></a>
                     </h:column>
                 </h:dataTable>                
                 <hr/>
                 <div class="row">
                     <h:commandButton  class="btn btn-primary" type="submit" 
-                                  value="Ver otras Citas" action="listarCitasMedico.xhtml"/>
+                                      value="Ver otras Citas" action="listarCitasMedico.xhtml"/>
                 </div>
             </div>
             <link href="css/bootstrap.min.css" rel="stylesheet"/>
         </h:form>
+        <script src="js/lightbox.min.js" type="text/javascript"></script>
     </h:body>
 </html>
