@@ -37,15 +37,14 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="listarCitasDoctor.xhtml" target="frame_doctor">Lista de citas</a>
-                        </li>
-                        <li>
-                            <a href="listarCitasDoctor.xhtml" target="frame_doctor">Subir resultado</a>
-                        </li>
-                        <li>
-                            <a target="frame_doctor">Realizar una solicitud</a>
-                        </li>
+                            <li>
+                                <h:form>    
+                                    <h:commandLink value="Subir Resultados" target="frame_doctor" action="#{subirResultadoDoctorBean.init()}"/>
+                                </h:form>
+                            </li>
+                            <li>
+                                <a target="frame_doctor">Realizar una solicitud</a>
+                            </li>
                     </ul>
                     <h:form class="navbar-form navbar-right">
                         #{loginBean.idPersona}

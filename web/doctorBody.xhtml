@@ -24,14 +24,15 @@
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
     <body>
+        <h:form>
         <div class="jumbotron">
             <div class="container">
                 <h1>DiagnosTyCs para Doctores</h1>
                 <p>Señor Doctor, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                <p style="font-size:15px; color: #777" > <a href="listarCitasDoctor.xhtml" target="_self">&#187; Ver Listado de citas</a></p>
-                <p style="font-size:15px; color: #777" > <a href="listarCitasDoctor.xhtml" target="_self">&#187; Subir Resultados</a></p>
+                <p style="font-size:15px; color: #777" > <h:commandLink value="&#187; Subir Resultados" target="_self" action="#{subirResultadoDoctorBean.init()}"/></p>
                 <p style="font-size:15px; color: #777" >&#187; Realizar una Solicitud de Permiso</p>
             </div>
         </div>
+        </h:form>
     </body>
 </html>

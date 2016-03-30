@@ -42,8 +42,7 @@ public class SubirResultadoDoctorBean {
     private Long idCita;
     private Date fechaCita;
 
-    @PostConstruct
-    public void init() {
+    public String init() {
 
         System.out.println("entro");
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
@@ -51,6 +50,8 @@ public class SubirResultadoDoctorBean {
         citas = subirResultadoDoctorBiz.parseCita_CitaDTO(LoginBean.getDoctor());
 
         citaModel = new ListDataModel<>(citas);
+        
+        return "listarCitasDoctor.xhtml";
     }
 
     public List<CitaDTO> getCitas() {
