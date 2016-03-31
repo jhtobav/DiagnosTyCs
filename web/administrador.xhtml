@@ -53,10 +53,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a onclick="initPage('link:registrarDoctorLink')" target="frame_administrador">Administrar Agenda de Doctores de Laboratorio</a> 
+                                    <a onclick="initPage('link:asignarBloqueLaboratorioLink')" target="frame_administrador">Administrar Agenda de Doctores de Laboratorio</a> 
                                 </li>
                                 <li>
-                                    <a onclick="initPage('link:registrarDoctorLink')" target="frame_administrador">Administrar Agenda de Doctores de Imágenes</a> 
+                                    <a onclick="initPage('link:asignarBloqueImagenesLink')" target="frame_administrador">Administrar Agenda de Doctores de Imágenes</a> 
                                 </li>
                             </ul>
                         </li>   
@@ -64,15 +64,15 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actualizar <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Actualizar Inventario de Activos</a> 
+                                    <a onclick="initPage('link:actualizarActivosLink')" target="frame_administrador">Actualizar Inventario de Activos</a> 
                                 </li>
                                 <li>
-                                    <a href="#">Actualizar Inventario de Reactivos</a>
+                                    <a onclick="initPage('link:actualizarReactivosLink')" target="frame_administrador">Actualizar Inventario de Reactivos</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="listarAlertas.xhtml" target="frame_administrador">Analizar alertas</a>
+                            <a onclick="initPage('link:analizarAlertasLink')" target="frame_administrador">Analizar alertas</a>
                         </li>
                     </ul>
                     <h:form class="navbar-form navbar-right">
@@ -86,11 +86,11 @@
             <h:form id="link">    
                 <h:commandLink id="registrarMedicoLink" value="Registrar medicos" target="frame_administrador" action="#{registroMedicoBean.init()}"/>
                 <h:commandLink id="registrarDoctorLink" value="Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" />
-                <h:commandLink id="asignarBloqueLaboratorioLink" value="Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init("Laboratorio")}"/>
-                <h:commandLink id="asignarBloqueImagenesLink" value="Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
-                <h:commandLink id="actualizarActivos" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
-                <h:commandLink id="actualizarReactivos" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
-                <h:commandLink id="asignarBloqueImagenesLink" value="Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/>
+                <h:commandLink id="asignarBloqueLaboratorioLink" value="Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init('Laboratorio')}"/>
+                <h:commandLink id="asignarBloqueImagenesLink" value="Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
+                <h:commandLink id="actualizarActivosLink" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
+                <h:commandLink id="actualizarReactivosLink" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
+                <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/>
             </h:form>
         </div>
         <!-- Main jumbotron for a primary marketing message or call to action -->

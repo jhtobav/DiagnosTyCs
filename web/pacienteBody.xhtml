@@ -24,16 +24,18 @@
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>DiagnosTyCs para Pacientes</h1>
-                <p>Señor Paciente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                <p style="font-size:15px; color: #777" ><a href="solicitarCitaLaboratorio.xhtml" target="_self">&#187; Solicitar Citas Exámenes de Laboratorio</a></p>
-                <p style="font-size:15px; color: #777" ><a href="solicitarCitaImagen.xhtml" target="_self">&#187; Solicitar Citas Imágenes diagnósticas</a></p>
-                <p style="font-size:15px; color: #777" ><a href="listarCitasPaciente.xhtml" target="_self">&#187; Consultar Histórico de Resultados</a></p>
-                <p style="font-size:15px; color: #777" ><a href="registrarse.xhtml" target="_self">&#187; Ver Perfil</a></p>
+        <h:form id="link">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>DiagnosTyCs para Pacientes</h1>
+                    <p>Señor Paciente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="solicitarCitaLaboratorioLink" value="Solicitar Cita Exámen de laboratorio" target="frame_paciente" action="#{solicitarCitaBean.init('Laboratorio')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="solicitarCitaImagenLink" value="Solicitar Cita Imágen diagnostica" target="frame_paciente" action="#{solicitarCitaBean.init('Imagen')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="verResultadosLink" value="Histórico de resultados" target="frame_paciente" action="#{verCitaPacienteBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="verPerfilLink" value="Ver perfil" target="frame_paciente" action="#{registroBean.init()}"/></p>
+                </div>
             </div>
-        </div>
+        </h:form>
     </h:body>
 </html>

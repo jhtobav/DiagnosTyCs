@@ -25,20 +25,22 @@
         <f:event type="preRenderView" listener="#{loginBean.addMessage()}" />
         <p:growl id="message" showDetail="true" autoUpdate="true"/>
     </h:head>
-    
+
     <h:body>
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <h1>DiagnosTyCs para Gerentes</h1>
-                <p>Señor Gerente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                <p style="font-size:15px; color: #777" >&#187; Análisis de Costos</p>
-                <p style="font-size:15px; color: #777" >&#187; Análisis de Ingresos</p>
-                <p style="font-size:15px; color: #777" >&#187; Análisis de Ocupación de Médicos</p>
-                <p style="font-size:15px; color: #777" ><a href="listarAlertas.xhtml" target="_self">&#187; Mostrar alertas</a></p>
-                <p style="font-size:15px; color: #777" >&#187; Consultar Inventario</p>
-                <p style="font-size:15px; color: #777" >&#187; Aprobar Permisos</p>
-                <p style="font-size:15px; color: #777" ><a href="registrarAdministrador.xhtml" target="_self">&#187; Registrar administradores</a></p>
+                <h:form id="link">    
+                    <h1>DiagnosTyCs para Gerentes</h1>
+                    <p>Señor Gerente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
+                    <p style="font-size:15px; color: #777" >&#187; Análisis de Costos</p>
+                    <p style="font-size:15px; color: #777" >&#187; Análisis de Ingresos</p>
+                    <p style="font-size:15px; color: #777" >&#187; Análisis de Ocupación de Médicos</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="analizarAlertasLink" value="» Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" >&#187; Consultar Inventario</p>
+                    <p style="font-size:15px; color: #777" >&#187; Aprobar Permisos</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="registrarAdministradorLink" value="» Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/></p>
+                </h:form>
             </div>
         </div>
     </h:body>

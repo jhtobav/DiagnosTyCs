@@ -29,15 +29,17 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <h1>DiagnosTyCs para Administradores</h1>
-                <p>Señor Administrador, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                <p style="font-size:15px; color: #777" >&#187; Actualizar Inventario de Activos</p>                
-                <p style="font-size:15px; color: #777" >&#187; Actualizar Inventario de Reactivos</p>
-                <p style="font-size:15px; color: #777" ><a href="listarAlertas.xhtml" target="_self">&#187; Analizar alertas</a></p>
-                <p style="font-size:15px; color: #777" ><a href="asignarBloqueLaboratorio.xhtml" target="_self"> &#187; Administrar Agenda de Doctores de Laboratorio</a></p>
-                <p style="font-size:15px; color: #777" ><a href="asignarBloqueImagenes.xhtml" target="_self"> &#187; Administrar Agenda de Doctores de Imágenes</a></p>
-                <p style="font-size:15px; color: #777" ><a href="registrarMedico.xhtml" target="_self">&#187; Registrar Medicos</a></p>
-                <p style="font-size:15px; color: #777" ><a href="registrarDoctor.xhtml" target="_self">&#187; Registrar Doctores</a></p>
+                <h:form id="link"> 
+                    <h1>DiagnosTyCs para Administradores</h1>
+                    <p>Señor Administrador, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="actualizarActivos" value="» Actualizar Inventario de Activos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/></p>                
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="actualizarReactivos" value="» Actualizar Inventario de Reactivos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="analizarImagenesLink" value="» Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="asignarBloqueImagenesLink" value="» Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="asignarBloqueLaboratorioLink" value="» Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init('Laboratorio')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="registrarMedicoLink" value="» Registrar medicos" target="frame_administrador" action="#{registroMedicoBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="registrarDoctorLink" value="» Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" /></p>
+                </h:form>
             </div>
         </div>
     </h:body>

@@ -42,20 +42,28 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solicitar cita <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="solicitarCitaImagen.xhtml" target="frame_paciente">Imágen diagnostica</a>
+                                    <a onclick="initPage('solicitarCitaImagenLink')" target="frame_paciente">Imágen diagnostica</a>
                                 </li>
                                 <li>
-                                    <a href="solicitarCitaLaboratorio.xhtml" target="frame_paciente">Exámen de laboratorio</a>
+                                    <a onclick="initPage('solicitarCitaLaboratorioLink')" target="frame_paciente">Exámen de laboratorio</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="listarCitasPaciente.xhtml" target="frame_paciente">Histórico de resultados</a>
+                            <a onclick="initPage('verResultadosLink')" target="frame_paciente">Histórico de resultados</a>
                         </li>
                         <li>
-                            <a href="registrarse.xhtml" target="frame_paciente">Ver perfil</a>
+                            <a onclick="initPage('verPerfilLink')" target="frame_paciente">Ver perfil</a>
                         </li>
                     </ul>
+                    <div style="display: none ">
+                        <h:form id="link">    
+                            <h:commandLink id="solicitarCitaImagenLink" value="Imágen diagnostica" target="frame_paciente" action="#{solicitarCitaBean.init('Imagen')}"/>
+                            <h:commandLink id="solicitarCitaLaboratorioLink" value="Exámen de laboratorio" target="frame_paciente" action="#{solicitarCitaBean.init('Laboratorio')}"/>
+                            <h:commandLink id="verResultadosLink" value="Histórico de resultados" target="frame_paciente" action="#{verCitaPacienteBean.init()}"/>
+                            <h:commandLink id="verPerfilLink" value="Ver perfil" target="frame_paciente" action="#{registroBean.init()}"/>
+                        </h:form>
+                    </div>
                     <h:form class="navbar-form navbar-right">
                         #{loginBean.idPersona}
                         <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>

@@ -42,17 +42,14 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Análisis <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Análisis de Costos</a>
+                                    <a href="#" target="frame_gerente">Análisis de Costos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Análisis de Ingresos</a>
+                                    <a href="#" target="frame_gerente">Análisis de Ingresos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Análisis de Alertas</a>
+                                    <a onclick="initPage('link:analizarAlertasLink')" target="frame_gerente">Análisis de Alertas</a>
                                 </li>
-                                                        <li>
-                            <a href="listarAlertas.xhtml" target="frame_gerente">Mostrar alertas</a>
-                        </li>
                             </ul>
                         </li>
                         <li>
@@ -63,9 +60,15 @@
                             <a href="#">Aprobar Permisos</a>
                         </li>
                         <li>
-                            <a href="registrarAdministrador.xhtml" target="frame_gerente">Registrar Administrador</a>
+                            <a onclick="initPage('link:registrarAdministradorLink')" target="frame_gerente">Registrar Administrador</a>
                         </li>
                     </ul>
+                    <div style="display: none ">
+                        <h:form id="link">    
+                            <h:commandLink id="registrarAdministradorLink" value="Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/>
+                            <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/>
+                        </h:form>
+                    </div>
                     <h:form class="navbar-form navbar-right">
                         #{loginBean.idPersona}
                         <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>

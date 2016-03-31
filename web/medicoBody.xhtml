@@ -26,10 +26,10 @@
     <body>
         <div class="jumbotron">
             <div class="container">
-                <h:form>
-                <h1>DiagnosTyCs para Medicos</h1>
-                <p>Señor Medico, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                <p style="font-size:15px; color: #777" > <a href="listarCitasMedico.xhtml" target="_self">&#187; Histórico de resultados</a></p>
+                <h:form id="link">
+                    <h1>DiagnosTyCs para Medicos</h1>
+                    <p>Señor Medico, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="registrarAdministradorLink" value="Historico de resultados" target="frame_medico" action="#{verCitaMedicoBean.init()}"/></p>
                 </h:form>
             </div>
         </div>

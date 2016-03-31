@@ -39,9 +39,14 @@
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="listarCitasMedico.xhtml" target="frame_medico">Histórico de resultados</a>
+                            <a onclick="initPage('registrarAdministradorLink')" target="frame_medico">Histórico de resultados</a>
                         </li>
                     </ul>
+                    <div style="display: none ">
+                        <h:form id="link">    
+                            <h:commandLink id="registrarAdministradorLink" value="Historico de resultados" target="frame_medico" action="#{verCitaMedicoBean.init()}"/>>
+                        </h:form>
+                    </div>
                     <h:form class="navbar-form navbar-right">
                         #{loginBean.idPersona}
                         <h:commandButton type="submit" class="btn btn-success" value="Salir" action="#{loginBean.logout()}"/>
