@@ -10,6 +10,7 @@ import DAO.CitaDAO;
 import DAO.HistoricoGastosGananciasCitasDAO;
 import DAO.ImagenDiagnosticaDAO;
 import DAO.MedicoDAO;
+import DAO.PacienteDAO;
 import DAO.PrecioDAO;
 import DAO.ReactivoDAO;
 import DTO.ExamenDTO;
@@ -22,6 +23,7 @@ import Entidades.HistoricoGastosGananciasCitas;
 import Entidades.ImagenDiagnostica;
 import Entidades.Laboratorio;
 import Entidades.Medico;
+import Entidades.Paciente;
 import Entidades.Reactivo;
 import Vista.LoginBean;
 import java.lang.reflect.Array;
@@ -181,7 +183,7 @@ public class SolicitarCitaBiz {
 
         Doctor doctor = agenda.getDoctordoctorID();
         Medico medico = new MedicoDAO().searchByIdMedico(idMedico);
-        System.out.println(medico.getMedicoID());
+        Paciente paciente = new PacienteDAO().searchByIdPaciente(LoginBean.idPersonaLogueada);
         
         List<Laboratorio> laboratorios = new ArrayList<>();
         List<ImagenDiagnostica> imagenes = new ArrayList<>();
@@ -189,7 +191,7 @@ public class SolicitarCitaBiz {
         Cita cita = new Cita();
         cita.setDoctordoctorID(doctor);
         cita.setMedicomedicoID(medico);
-        cita.setPacientepacienteID(LoginBean.getPaciente());
+        cita.setPacientepacienteID(paciente);
         cita.setLaboratorioCollection(laboratorios);
         cita.setImagenDiagnosticaCollection(imagenes);
         cita.setFecha(fecha);

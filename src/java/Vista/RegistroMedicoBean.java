@@ -23,17 +23,35 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroMedicoBean {
 
-    private Long numDocMedico;
-    private String contrasena;
-    private String confirmarContrasena;
-    private String nombres = "";
-    private String apellidos = "";
-    private String nombreMedico = "";
-    private String fechaNacimiento;
-    private Long telefono;
-    private String direccion;
-    private String correo;
-    private String mensaje;
+    private Long numDocMedico = null;
+    private String contrasena = null;
+    private String confirmarContrasena = null;
+    private String nombres = null;
+    private String apellidos = null;
+    private String nombreMedico = null;
+    private String fechaNacimiento = null;
+    private Long telefono = null;
+    private String direccion = null;
+    private String correo = null;
+    
+    private String mensaje = null;
+    
+    public String init(){
+    
+        numDocMedico = null;
+        contrasena = null;
+        confirmarContrasena = null;
+        nombres = null;
+        apellidos = null;
+        nombreMedico = null;
+        fechaNacimiento = null;
+        telefono = null;
+        direccion = null;
+        correo = null;
+    
+        return "registrarMedico.xhtml";
+    
+    }
 
     public Long getNumDocMedico() {
         return numDocMedico;

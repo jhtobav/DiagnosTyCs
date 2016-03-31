@@ -9,7 +9,6 @@ import Business.AsignarAgendaBiz;
 import DTO.DoctorDTO;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -36,16 +35,19 @@ public class AsignarAgendaBean {
     private Long idDoctorViernesManana;
     private Long idDoctorViernesTarde;
     
-    @PostConstruct
-    public void init() {
+    public String init(String tipoExamen) {
         
-        AsignarAgendaBiz asignarAgendaBiz = new AsignarAgendaBiz();
+        doctoresLaboratorio = new ArrayList<>();
+        doctoresImagen = new ArrayList<>();
         
-        System.out.println("----Bean");
+        if(tipoExamen.equals("Laboratorio")){
+            doctoresLaboratorio = new AsignarAgendaBiz().parseDoctorDoctorDTO("Laboratorio");
+            return "asignarBloqueLaboratorio.xhtml";
+        } else {
+            doctoresImagen = new AsignarAgendaBiz().parseDoctorDoctorDTO("ImagenesDiagnosticas");
+            return "asignarBloqueImagenes.xhtml";
+        }
         
-        doctoresLaboratorio = asignarAgendaBiz.parseDoctorDoctorDTO("Laboratorio");
-        doctoresImagen = asignarAgendaBiz.parseDoctorDoctorDTO("ImagenesDiagnosticas");
-        System.out.println("Hasta aqui todo bn todo bonito");
     }
 
     public List<DoctorDTO> getDoctoresLaboratorio() {

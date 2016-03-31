@@ -24,28 +24,54 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroPacienteBean {
 
-    private Long numDocPaciente;
-    private String contrasena;
-    private String confirmarContrasena;
-    private String nombres = "";
-    private String apellidos = "";
-    private String nombrePaciente = "";
-    private String fechaNacimiento;
-    private Long telefono;
-    private String direccion;
-    private String correo;
+    private Long numDocPaciente = null;
+    private String contrasena = null;
+    private String confirmarContrasena = null;
+    private String nombres = null;
+    private String apellidos = null;
+    private String nombrePaciente = null;
+    private String fechaNacimiento = null;
+    private Long telefono = null;
+    private String direccion = null;
+    private String correo = null;
 
-    private String eps;
-    private Integer numeroHijos;
-    private String contactoNombre;
-    private Long contactoTelefono;
+    private String eps = null;
+    private Integer numeroHijos = null;
+    private String contactoNombre = null;
+    private Long contactoTelefono = null;
 
-    private Long idTarjeta;
-    private Integer numeroAno;
-    private Integer numeroMes;
-    private Integer csv;
+    private Long idTarjeta = null;
+    private Integer numeroAno = null;
+    private Integer numeroMes = null;
+    private Integer csv = null;
 
     private String mensaje;
+    
+    public String init(){
+        
+        numDocPaciente = null;
+        contrasena = null;
+        confirmarContrasena = null;
+        nombres = null;
+        apellidos = null;
+        nombrePaciente = null;
+        fechaNacimiento = null;
+        telefono = null;
+        direccion = null;
+        correo = null;
+    
+        eps = null;
+        numeroHijos = null;
+        contactoNombre = null;
+        contactoTelefono = null;
+    
+        idTarjeta = null;
+        numeroAno = null;
+        numeroMes = null;
+        csv = null;
+        
+        return "registrarse.xhtml";
+    }
 
     public String getFechaNacimiento() {
         return fechaNacimiento;

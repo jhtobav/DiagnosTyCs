@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -17,7 +16,6 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class RealizarSolicitudBean {
 
-    @PostConstruct
     public void init() {}
     /**
      * Creates a new instance of RealizarSolicitudBean

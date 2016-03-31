@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -44,10 +43,9 @@ public class SubirResultadoDoctorBean {
 
     public String init() {
 
-        System.out.println("entro");
         SubirResultadoDoctorBiz subirResultadoDoctorBiz = new SubirResultadoDoctorBiz();
 
-        citas = subirResultadoDoctorBiz.parseCita_CitaDTO(LoginBean.getDoctor());
+        citas = subirResultadoDoctorBiz.parseCita_CitaDTO(LoginBean.idPersonaLogueada);
 
         citaModel = new ListDataModel<>(citas);
         
@@ -150,7 +148,7 @@ public class SubirResultadoDoctorBean {
         nombrePaciente = citaSeleccionadaDTO.getNombrePaciente();
         fechaCita = citaSeleccionadaDTO.getFecha();
 
-        if (LoginBean.getDoctor().getEspecialidad().equals("ImagenesDiagnosticas")) {
+        if (citaSeleccionadaDTO.getCita().getDoctordoctorID().getEspecialidad().equals("ImagenesDiagnosticas")) {
             List<ImagenDiagnostica> imagenesDiagnosticas = new ArrayList<>(citaSeleccionadaDTO.getCita().getImagenDiagnosticaCollection());
             imagenDiagnostica = imagenesDiagnosticas.get(0);
             return "subirResultadoImagenDoctor.xhtml";

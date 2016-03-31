@@ -4,6 +4,7 @@
  */
 package Business;
 
+import DAO.DoctorDAO;
 import DAO.ExamenLaboratorioDAO;
 import DAO.ImagenDiagnosticaDAO;
 import DTO.CitaDTO;
@@ -14,7 +15,6 @@ import Entidades.Laboratorio;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.FacesException;
@@ -28,10 +28,13 @@ import org.primefaces.model.UploadedFile;
  */
 public class SubirResultadoDoctorBiz {
 
-   public List<CitaDTO> parseCita_CitaDTO(Doctor doctor){
+   public List<CitaDTO> parseCita_CitaDTO(Long idDoctor){
     
        List<CitaDTO> citasDTO = new ArrayList<>();
        CitaDTO citaDTO;
+       
+       DoctorDAO doctorDAO = new DoctorDAO();
+       Doctor doctor = doctorDAO.searchByIdDoctor(idDoctor);
               
        for(Cita c : doctor.getCitaCollection()){
            

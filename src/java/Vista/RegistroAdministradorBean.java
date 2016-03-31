@@ -23,17 +23,35 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroAdministradorBean {
 
-    private Long numDocAdministrador;
-    private String contrasena;
-    private String confirmarContrasena;
-    private String nombres = "";
-    private String apellidos = "";
-    private String nombreAdministrador = "";
-    private String fechaNacimiento;
-    private Long telefono;
-    private String direccion;
-    private String correo;
-    private String mensaje;
+    private Long numDocAdministrador = null;
+    private String contrasena = null;
+    private String confirmarContrasena = null;
+    private String nombres = null;
+    private String apellidos = null;
+    private String nombreAdministrador = null;
+    private String fechaNacimiento = null;
+    private Long telefono = null;
+    private String direccion = null;
+    private String correo = null;
+    
+    private String mensaje = null;
+    
+    public String init(){
+        
+        numDocAdministrador = null;
+        contrasena = null;
+        confirmarContrasena = null;
+        nombres = null;
+        apellidos = null;
+        nombreAdministrador = null;
+        fechaNacimiento = null;
+        telefono = null;
+        direccion = null;
+        correo = null;
+        
+        return "registrarAdministrador.xhtml";
+        
+    }
 
     public Long getNumDocAdministrador() {
         return numDocAdministrador;

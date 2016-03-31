@@ -39,14 +39,18 @@ public class VerCitaPacienteBean {
     private Date fechaCita;
     private Long valorCita;
 
-    @PostConstruct
-    public void init() {
+    public String init() {
         
-        VerCitaPacienteBiz citaPacienteBiz = new VerCitaPacienteBiz();
+        System.out.println("entro");
+        
+        citas = new ArrayList<>();
                 
-        citas = citaPacienteBiz.parseCitaCitaDTO(LoginBean.getPaciente());
+        citas = new VerCitaPacienteBiz().parseCitaCitaDTO(LoginBean.idPersonaLogueada);
         
         citaModel = new ListDataModel<>(citas);
+        
+        return "listarCitasPaciente.xhtml";
+        
     }
 
     public List<CitaDTO> getCitas() {

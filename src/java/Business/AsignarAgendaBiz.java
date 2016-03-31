@@ -110,11 +110,7 @@ public class AsignarAgendaBiz {
             agendasPorActualizar.add(agendas.get(i));
         }     
         
-        System.out.println(agendasPorActualizar);
-        
-        agendaDAO.updateAsignacionAgenda(agendasPorActualizar);
-        
-        
+        agendaDAO.updateAsignacionAgenda(agendasPorActualizar);     
         
         return "exito";
     }
@@ -209,8 +205,6 @@ public class AsignarAgendaBiz {
             agendas.get(i).setDoctordoctorID((Doctor) listaDoctores.get(idDoctorViernesTarde));
             agendasPorActualizar.add(agendas.get(i));
         }    
-        
-        System.out.println(agendasPorActualizar);
 
         agendaDAO.updateAsignacionAgenda(agendasPorActualizar);
         
@@ -219,18 +213,13 @@ public class AsignarAgendaBiz {
     
     public List<DoctorDTO> parseDoctorDoctorDTO(String especialidad){
         
-        System.out.println("---------- Paso 1");
-        DoctorDAO doctorDAO = new DoctorDAO();
+        List<Doctor> doctores = new DoctorDAO().getDoctores(especialidad);
         
-        List<Doctor> doctores = doctorDAO.getDoctores(especialidad);
-        
-         System.out.println("---------- Paso 2");
         List<DoctorDTO> doctoresDTO = new ArrayList<>();
         DoctorDTO doctorDTO;
 
         for (Doctor doctor : doctores){
             
-            System.out.println("each one");
             doctorDTO = new DoctorDTO();
             doctorDTO.setIdDoctor(doctor.getDoctorID());
             doctorDTO.setNombreDoctor(doctor.getPersonapersonaID().getNombre());

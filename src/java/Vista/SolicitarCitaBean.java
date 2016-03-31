@@ -11,11 +11,11 @@ import DTO.MedicoDTO;
 import Entidades.Agenda;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -27,21 +27,32 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class SolicitarCitaBean {
         
-    private List<Agenda> tablaAgendas;
+    private List<Agenda> tablaAgendas = new ArrayList<>();
+    private List<MedicoDTO> medicos = new ArrayList<>();
+    
     private String examenLaboratorio;
     private String imagenDiagnostica;
     private int numCelda;
     private String fecha;
-    private List<MedicoDTO> medicos;
     private Long medico;
 
-    @PostConstruct
-    public void init() {
+    public String init(String tipoExamen) {
+        
+        tablaAgendas = new ArrayList<>();
+        medicos = new ArrayList<>();
+        
+        fecha = null;
         
         SolicitarCitaBiz solicitarCitaBiz = new SolicitarCitaBiz();
         
         tablaAgendas = solicitarCitaBiz.cargarAgenda();
         medicos = solicitarCitaBiz.parseMedicoMedicoDTO();
+        
+        if (tipoExamen.equals("Laboratorio")) {
+            return "solicitarCitaLaboratorio.xhtml";
+        } else {
+            return "solicitarCitaImagen.xhtml";
+        }
         
     }
 

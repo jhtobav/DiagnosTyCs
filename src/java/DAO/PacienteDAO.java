@@ -39,6 +39,22 @@ public class PacienteDAO {
 
     }
     
+    public Paciente searchByIdPaciente(Long idPaciente) {
+        EntityManager em = emf.createEntityManager();
+        Paciente paciente = null;
+        try {
+            paciente = em.find(Paciente.class
+                    , idPaciente);
+            System.out.println("llegue");
+            System.out.println(paciente.getCitaCollection().size());
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return paciente;
+        }
+      
+    }
+    
     public Paciente searchByNumDocumento(Long numDocumento) {
         
         EntityManager em = emf.createEntityManager();

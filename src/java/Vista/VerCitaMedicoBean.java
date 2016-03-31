@@ -12,7 +12,6 @@ import Entidades.Laboratorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -32,21 +31,23 @@ public class VerCitaMedicoBean {
     private DataModel<Laboratorio> examenesLaboratorioModel;
     private ImagenDiagnostica imagenDiagnostica;
     
-    public CitaDTO citaSeleccionadaDTO;
+    private CitaDTO citaSeleccionadaDTO;
     private String nombreDoctorCita;
     private String nombrePaciente;
     private Long idPaciente;
     private Long idCita;
     private Date fechaCita;
 
-    @PostConstruct
-    public void init() {
+    public String init() {
         
-        VerCitaMedicoBiz citaMedicoBiz = new VerCitaMedicoBiz();
+        citas = new ArrayList<>();
                 
-        citas = citaMedicoBiz.parseCitaCitaDTO(LoginBean.getMedico());
+        citas = new VerCitaMedicoBiz().parseCitaCitaDTO(LoginBean.idPersonaLogueada);
         
         citaModel = new ListDataModel<>(citas);
+        
+        return "listarCitasMedico.xhtml";
+        
     }
 
     public List<CitaDTO> getCitas() {

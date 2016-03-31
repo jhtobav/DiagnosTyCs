@@ -4,18 +4,11 @@
  */
 package Business;
 
-import DAO.AdministradorDAO;
-import DAO.AgendaDAO;
-import DAO.DoctorDAO;
-import DAO.GerenteDAO;
-import DAO.MedicoDAO;
 import DAO.PacienteDAO;
 import DAO.PersonaDAO;
-import DAO.ReactivoDAO;
 import DTO.LoginDTO;
 import Entidades.Paciente;
 import Entidades.Persona;
-import Vista.LoginBean;
 
 /**
  *
@@ -31,26 +24,22 @@ public class LoginBiz {
 
         Persona persona = personaDAO.searchByIdPersona(loginDTO.getIdPersona());
 
-        LoginBean.setPersona(persona);
         if (persona != null) {
             loginDTORespuesta.setNombrePersona(persona.getNombre());
+            loginDTORespuesta.setIdPersona(persona.getPersonaID());
             if (persona.getContrasena()
                     .equals(loginDTO.getContrasena())) {
                 switch (persona.getRol()) {
                     case 1:
-                        LoginBean.setMedico(new MedicoDAO().searchByIdMedico(persona.getPersonaID()));
                         loginDTORespuesta.setMensaje("medico.xhtml");
                         return(loginDTORespuesta);
                     case 3:
-                        LoginBean.setAdministrador(new AdministradorDAO().searchByIdAdministrador(persona.getPersonaID()));
                         loginDTORespuesta.setMensaje("administrador.xhtml");
                         return(loginDTORespuesta);
                     case 4:
-                        LoginBean.setGerente(new GerenteDAO().searchByIdGerente(persona.getPersonaID()));
                         loginDTORespuesta.setMensaje("gerente.xhtml");
                         return(loginDTORespuesta);
                     case 5:
-                        LoginBean.setDoctor(new DoctorDAO().searchByIdDoctor(persona.getPersonaID()));
                         loginDTORespuesta.setMensaje("doctor.xhtml");                        
                         return(loginDTORespuesta);
                     default:
@@ -64,7 +53,6 @@ public class LoginBiz {
                 loginDTORespuesta.setNombrePersona(paciente.getNombre());
                 loginDTORespuesta.setIdPersona(paciente.getPacienteID());
                 if (paciente.getContrasena().equals(loginDTO.getContrasena())) {
-                    LoginBean.setPaciente(paciente);
                     loginDTORespuesta.setMensaje("paciente.xhtml");
                     return(loginDTORespuesta);
                 }

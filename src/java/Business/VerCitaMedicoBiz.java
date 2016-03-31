@@ -4,6 +4,7 @@
  */
 package Business;
 
+import DAO.MedicoDAO;
 import DTO.CitaDTO;
 import Entidades.Cita;
 import Entidades.Medico;
@@ -16,10 +17,12 @@ import java.util.List;
  */
 public class VerCitaMedicoBiz {
 
-   public List<CitaDTO> parseCitaCitaDTO(Medico medico){
+   public List<CitaDTO> parseCitaCitaDTO(Long idMedico){
     
        List<CitaDTO> citasDTO = new ArrayList<>();
        CitaDTO citaDTO;
+       
+       Medico medico = new MedicoDAO().searchByIdMedico(idMedico);
               
        for(Cita c : medico.getCitaCollection()){
            
