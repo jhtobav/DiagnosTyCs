@@ -38,10 +38,10 @@
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a onclick="document.getElementById('form:subirResultadosLink').click()" target="frame_doctor">Subir resultados</a>
+                            <a onclick="initPage('link:subirResultadosLink')" target="frame_doctor">Subir resultados</a>
                         </li>
                         <li>
-                            <a target="frame_doctor">Realizar una solicitud</a>
+                            <a onclick="initPage('link:realizarSolicitudLink')" target="frame_doctor">Realizar una solicitud</a>
                         </li>
                     </ul>
                     <h:form class="navbar-form navbar-right">
@@ -50,8 +50,9 @@
                     </h:form>
                 </div><!-- /.nav-collapse -->
                 <div style="display: none ">
-                    <h:form id="form">    
+                    <h:form id="link">    
                         <h:commandLink id="subirResultadosLink" value="Subir Resultados" target="frame_doctor" action="#{subirResultadoDoctorBean.init()}"/>
+                        <h:commandLink id="realizarSolicitudLink" value="Realizar una solicitud" target="frame_doctor" action="#{realizarSolicitudBean.init()}" />
                     </h:form>
                 </div>
             </div><!-- /.container -->

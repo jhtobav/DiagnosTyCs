@@ -42,10 +42,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registrar <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="registrarMedico.xhtml" target="frame_administrador">Registrar medicos</a>
+                                    <a onclick="initPage('link:registrarMedicoLink')" target="frame_administrador">Registrar medicos</a>
                                 </li>
                                 <li>
-                                    <a href="registrarDoctor.xhtml" target="frame_administrador">Registrar doctores</a>
+                                    <a onclick="initPage('link:registrarDoctorLink')" target="frame_administrador">Registrar doctores</a>
                                 </li>
                             </ul>
                         </li>
@@ -53,10 +53,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="asignarBloqueLaboratorio.xhtml" target="frame_administrador">Administrar Agenda de Doctores de Laboratorio</a> 
+                                    <a onclick="initPage('link:registrarDoctorLink')" target="frame_administrador">Administrar Agenda de Doctores de Laboratorio</a> 
                                 </li>
                                 <li>
-                                    <a href="asignarBloqueImagenes.xhtml" target="frame_administrador">Administrar Agenda de Doctores de Imágenes</a> 
+                                    <a onclick="initPage('link:registrarDoctorLink')" target="frame_administrador">Administrar Agenda de Doctores de Imágenes</a> 
                                 </li>
                             </ul>
                         </li>   
@@ -82,7 +82,17 @@
                 </div><!-- /.nav-collapse -->
             </div><!-- /.container -->
         </nav>
-
+        <div style="display: none ">
+            <h:form id="link">    
+                <h:commandLink id="registrarMedicoLink" value="Registrar medicos" target="frame_administrador" action="#{registroMedicoBean.init()}"/>
+                <h:commandLink id="registrarDoctorLink" value="Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" />
+                <h:commandLink id="asignarBloqueLaboratorioLink" value="Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init("Laboratorio")}"/>
+                <h:commandLink id="asignarBloqueImagenesLink" value="Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
+                <h:commandLink id="actualizarActivos" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
+                <h:commandLink id="actualizarReactivos" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{asignarAgenda.init("Imagen")}"/>
+                <h:commandLink id="asignarBloqueImagenesLink" value="Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/>
+            </h:form>
+        </div>
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="">
             <iframe  name="frame_administrador" width="100%" height="100%" src="administradorBody.xhtml" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> 

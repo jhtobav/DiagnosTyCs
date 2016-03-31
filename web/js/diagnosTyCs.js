@@ -354,3 +354,7 @@ function formatearFecha(fecha) {
         return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + slicedDate[3];
     }
 }
+
+function initPage(idLink){
+    document.getElementById(idLink).click();
+}
