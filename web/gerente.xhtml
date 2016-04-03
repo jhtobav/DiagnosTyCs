@@ -50,12 +50,19 @@
                                 <li>
                                     <a onclick="initPage('link:analizarAlertasLink')" target="frame_gerente">Análisis de Alertas</a>
                                 </li>
+                            </ul> 
+                       </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Consultar inventario <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a nclick="initPage('link:consultarActivosLink')" target="frame_gerente">Activos</a>
+                                </li>
+                                <li>
+                                    <a nclick="initPage('link:consultarReactivosLink')" target="frame_gerente">Reactivos</a>
+                                </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#">Consultar Inventario</a>
-                        </li>
-
                         <li>
                             <a href="#">Aprobar Permisos</a>
                         </li>
@@ -67,6 +74,8 @@
                         <h:form id="link">    
                             <h:commandLink id="registrarAdministradorLink" value="Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/>
                             <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/>
+                            <h:commandLink id="consultarActivosLink" value="Consultar activos" target="frame_gerente" action="#{listarActivoBean.init()}"/>
+                            <h:commandLink id="consultarReactivosLink" value="Consultar reactivos" target="frame_gerente" action="#{listarReactivoBean.init()}"/>
                         </h:form>
                     </div>
                     <h:form class="navbar-form navbar-right">

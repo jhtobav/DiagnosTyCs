@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="../../favicon.ico"/>
+        <title>DiagnosTyCs</title>
+        <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="js/diagnosTyCs.js" type="text/javascript"></script>
+        <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+    </h:head>
+    <h:body style="border-style: none; height: 400px" onload="load()">
+        <h:form id="form">
+            <div class="row spacedRow">   
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div  class="panel panel-default">
+                        <div class="row spacedMargin spacedRow">
+                            Bienvenido, aquí podra ingresar sus datos para modificar su información y su medio de pago. 
+                        </div>
+                        <div class="row spacedRow">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">ID</span>
+                                    <h:outputText class="form-control" ph:placeholder="Cédula de ciudadania" value="#{modificarPacienteBean.numDocPaciente}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> @ </span>
+                                    <h:inputText class="form-control" ph:placeholder="Correo electrónico" value="#{modificarPacienteBean.correo}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputText class="form-control" ph:placeholder="Nombres" value="#{modificarPacienteBean.nombres}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputSecret class="form-control" ph:placeholder="Contraseña" value="#{modificarPacienteBean.contrasena}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="EPS" value="#{modificarPacienteBean.eps}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                    <h:inputHidden class="form-control" id="fechaNacimiento" value="#{modificarPacienteBean.fechaNacimiento}"/>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="Direccion" value="#{modificarPacienteBean.direccion}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon">#</span>
+                                    <h:inputText class="form-control" ph:placeholder="Celular" value="#{modificarPacienteBean.telefono}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"> </span>
+                                    <h:inputText class="form-control" ph:placeholder="Apellidos" value="#{modificarPacienteBean.apellidos}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"></span>
+                                    <h:inputSecret class="form-control"  ph:placeholder="Repita la contraseña" value="#{modificarPacienteBean.confirmarContrasena}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="Número de hijos" value="#{modificarPacienteBean.numeroHijos}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row spacedMargin spacedRow">
+                                Ingrese los datos de quien desea contactemos en caso de emercia 
+                            </div>
+                            <div class="spacedRow">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="Nombre completo" value="#{modificarPacienteBean.contactoNombre}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">#</span>
+                                        <h:inputText class="form-control" ph:placeholder="Telefono" value="#{modificarPacienteBean.contactoTelefono}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row spacedMargin spacedRow">
+                                Ingrese los datos para el pago  
+                            </div>
+                            <div class="spacedRow">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="Nombre en la tarjeta" />
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"></span>
+                                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{modificarPacienteBean.numeroMes}" title="Mes">
+                                                    <f:selectItem itemValue="1" itemLabel="1" />
+                                                    <f:selectItem itemValue="2" itemLabel="2" />
+                                                    <f:selectItem itemValue="3" itemLabel="3" />
+                                                    <f:selectItem itemValue="4" itemLabel="4" />
+                                                    <f:selectItem itemValue="5" itemLabel="5" />
+                                                    <f:selectItem itemValue="6" itemLabel="6" />
+                                                    <f:selectItem itemValue="7" itemLabel="7" />
+                                                    <f:selectItem itemValue="8" itemLabel="8" />
+                                                    <f:selectItem itemValue="9" itemLabel="9" />
+                                                    <f:selectItem itemValue="10" itemLabel="10" />
+                                                    <f:selectItem itemValue="11" itemLabel="11" />
+                                                    <f:selectItem itemValue="12" itemLabel="12" />
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>                                
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"></span>
+                                                <h:inputText class="form-control" ph:placeholder="Año" value="#{modificarPacienteBean.numeroAno}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="Numero de Tarjeta" value="#{modificarPacienteBean.idTarjeta}"/>
+                                    </div>
+                                    <br/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <h:inputText class="form-control" ph:placeholder="CSV" value="#{modificarPacienteBean.csv}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row spacedRow">
+                            <h:commandButton  class="btn btn-primary spacedMargin" type="submit" 
+                                              value="Modificar" action="#{modificarPacienteBean.modificacion()}"/>
+                            <h:commandButton  class="btn btn-default spacedMargin" type="submit" 
+                                              value="Cancelar" action="pacienteBody.xhtml"/>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </h:form>
+    </h:body>
+</html>

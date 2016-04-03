@@ -35,9 +35,9 @@
                     <p>Señor Gerente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
                     <p style="font-size:15px; color: #777" >&#187; Análisis de Costos</p>
                     <p style="font-size:15px; color: #777" >&#187; Análisis de Ingresos</p>
-                    <p style="font-size:15px; color: #777" >&#187; Análisis de Ocupación de Médicos</p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarAlertasLink" value="» Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/></p>
-                    <p style="font-size:15px; color: #777" >&#187; Consultar Inventario</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="consultarActivosLink" value="» Consultar activos" target="frame_gerente" action="#{listarActivoBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="consultarReactivosLink" value="» Consultar reactivos" target="frame_gerente" action="#{listarReactivoBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" >&#187; Aprobar Permisos</p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="registrarAdministradorLink" value="» Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/></p>
                 </h:form>

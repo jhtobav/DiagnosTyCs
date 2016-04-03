@@ -88,8 +88,8 @@
                 <h:commandLink id="registrarDoctorLink" value="Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" />
                 <h:commandLink id="asignarBloqueLaboratorioLink" value="Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init('Laboratorio')}"/>
                 <h:commandLink id="asignarBloqueImagenesLink" value="Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
-                <h:commandLink id="actualizarActivosLink" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
-                <h:commandLink id="actualizarReactivosLink" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
+                <h:commandLink id="actualizarActivosLink" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{comprarActivoBean.init()}"/>
+                <h:commandLink id="actualizarReactivosLink" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{comprarReactivoBean.init()}"/>
                 <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/>
             </h:form>
         </div>
