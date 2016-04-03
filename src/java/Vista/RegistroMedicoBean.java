@@ -151,28 +151,36 @@ public class RegistroMedicoBean {
     }
 
     public String registro() {
+        
+        if (contrasena.equals(confirmarContrasena)) {
 
-        PersonaDTO personaDTO = new PersonaDTO();
+            PersonaDTO personaDTO = new PersonaDTO();
 
-        nombreMedico = nombres + " " + apellidos;
+            nombreMedico = nombres + " " + apellidos;
 
-        personaDTO.setIdPersona(numDocMedico);
-        personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombreMedico);
-        personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
-        personaDTO.setTelefono(telefono);
-        personaDTO.setDireccion(direccion);
-        personaDTO.setCorreo(correo);
+            personaDTO.setIdPersona(numDocMedico);
+            personaDTO.setContrasena(contrasena);
+            personaDTO.setNombrePersona(nombreMedico);
+            personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
+            personaDTO.setTelefono(telefono);
+            personaDTO.setDireccion(direccion);
+            personaDTO.setCorreo(correo);
 
-        RegistroBiz registroBiz = new RegistroBiz();
-        mensaje = registroBiz.registroMedico(personaDTO);
+            RegistroBiz registroBiz = new RegistroBiz();
+            mensaje = registroBiz.registroMedico(personaDTO);
 
-        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
-        LoginBean.setMensajeEmergenteTitulo("Medico Creado Exitosamente");
-        LoginBean.setMensajeEmergenteContenido("Felicidades "
-                + nombres + " su usuario se ha creado correctamente");
+            LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+            LoginBean.setMensajeEmergenteTitulo("Medico Creado Exitosamente");
+            LoginBean.setMensajeEmergenteContenido("Felicidades "
+                    + nombres + " su usuario se ha creado correctamente");
 
-        return "administradorBody.xhtml";
+            return "administradorBody.xhtml";
+        
+        } else {
+            
+            return "administradorBody.xhtml";
+            
+        }
 
     }
 

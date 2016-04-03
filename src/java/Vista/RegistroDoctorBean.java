@@ -171,32 +171,40 @@ public class RegistroDoctorBean {
     }
 
     public String registro() {
+        
+        if (contrasena.equals(confirmarContrasena)){
 
-        PersonaDTO personaDTO = new PersonaDTO();
-        DoctorDTO doctorDTO = new DoctorDTO();
+            PersonaDTO personaDTO = new PersonaDTO();
+            DoctorDTO doctorDTO = new DoctorDTO();
 
-        nombreDoctor = nombres + " " + apellidos;
+            nombreDoctor = nombres + " " + apellidos;
 
-        personaDTO.setIdPersona(numDocDoctor);
-        personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombreDoctor);
-        personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
-        personaDTO.setTelefono(telefono);
-        personaDTO.setDireccion(direccion);
-        personaDTO.setCorreo(correo);
+            personaDTO.setIdPersona(numDocDoctor);
+            personaDTO.setContrasena(contrasena);
+            personaDTO.setNombrePersona(nombreDoctor);
+            personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
+            personaDTO.setTelefono(telefono);
+            personaDTO.setDireccion(direccion);
+            personaDTO.setCorreo(correo);
 
-        doctorDTO.setSalario(sueldo);
-        doctorDTO.setEspecialidad(especialidad);
+            doctorDTO.setSalario(sueldo);
+            doctorDTO.setEspecialidad(especialidad);
 
-        RegistroBiz registroBiz = new RegistroBiz();
-        mensaje = registroBiz.registroDoctor(personaDTO, doctorDTO);
+            RegistroBiz registroBiz = new RegistroBiz();
+            mensaje = registroBiz.registroDoctor(personaDTO, doctorDTO);
 
-        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
-        LoginBean.setMensajeEmergenteTitulo("Doctor Creado Exitosamente");
-        LoginBean.setMensajeEmergenteContenido("Felicidades "
-                + nombres + " su usuario se ha creado correctamente");
+            LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+            LoginBean.setMensajeEmergenteTitulo("Doctor Creado Exitosamente");
+            LoginBean.setMensajeEmergenteContenido("Felicidades "
+                    + nombres + " su usuario se ha creado correctamente");
 
-        return "administradorBody.xhtml";
+            return "administradorBody.xhtml";
+        
+        } else {
+            
+            return "administradorBody.xhtml";    
+            
+        }
 
     }
 

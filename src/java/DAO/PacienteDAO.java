@@ -1,10 +1,11 @@
 package DAO;
 
 
+import Entidades.Cita;
 import Entidades.Paciente;
-import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /*
@@ -19,7 +20,8 @@ import javax.persistence.Query;
  */
 public class PacienteDAO {
 
-    EntityManagerFactory emf = LoginBean.getEmf();
+    EntityManagerFactory emf = Persistence
+            .createEntityManagerFactory("DiagnosTyCsPU");
         
     public Paciente createPaciente(Paciente paciente) {
         
@@ -39,14 +41,60 @@ public class PacienteDAO {
 
     }
     
+    public Paciente updatePacientePerfil(Paciente paciente){
+        
+        Paciente nuevoPaciente = new Paciente();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevoPaciente = em.merge(em.find(Paciente.class, paciente.getPacienteID()));
+            
+            nuevoPaciente.setNumDocumento(paciente.getNumDocumento());
+            nuevoPaciente.setNombre(paciente.getNombre());
+            nuevoPaciente.setContrasena(paciente.getContrasena());
+            nuevoPaciente.setCorreo(paciente.getCorreo());
+            nuevoPaciente.setDireccion(paciente.getDireccion());
+            nuevoPaciente.setTelefono(paciente.getTelefono());
+            nuevoPaciente.setFechaNacimiento(paciente.getFechaNacimiento());
+            nuevoPaciente.setEps(paciente.getEps());
+            nuevoPaciente.setNombreContacto(paciente.getNombreContacto());
+            nuevoPaciente.setTelefonoContacto(paciente.getTelefonoContacto());
+            nuevoPaciente.setNumHijos(paciente.getNumHijos());
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoPaciente;
+        }
+        
+    }
+    
+    public Paciente updatePacienteCitas(Long pacienteID, Cita cita) {
+
+        Paciente nuevoPaciente = new Paciente();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            nuevoPaciente = em.merge(em.find(Paciente.class, pacienteID));
+            nuevoPaciente.getCitaCollection().add(cita);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoPaciente;
+        }
+
+    }
+    
     public Paciente searchByIdPaciente(Long idPaciente) {
         EntityManager em = emf.createEntityManager();
         Paciente paciente = null;
         try {
             paciente = em.find(Paciente.class
                     , idPaciente);
-            System.out.println("llegue");
-            System.out.println(paciente.getCitaCollection().size());
         } catch (Exception e){
         } finally {
             em.close();
@@ -66,5 +114,6 @@ public class PacienteDAO {
         return paciente;
         
     }
-   
+    
 }
+

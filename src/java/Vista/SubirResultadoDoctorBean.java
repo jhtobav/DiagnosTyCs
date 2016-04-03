@@ -31,7 +31,6 @@ public class SubirResultadoDoctorBean {
     private List<CitaDTO> citas = new ArrayList<>();
     private DataModel<CitaDTO> citaModel;
     private List<Laboratorio> examenesLaboratorio = new ArrayList<>();
-    private DataModel<Laboratorio> examenesLaboratorioModel;
     private ImagenDiagnostica imagenDiagnostica;
 
     public static CitaDTO citaSeleccionadaDTO;
@@ -116,14 +115,6 @@ public class SubirResultadoDoctorBean {
         this.examenesLaboratorio = examenesLaboratorio;
     }
 
-    public DataModel<Laboratorio> getExamenesLaboratorioModel() {
-        return examenesLaboratorioModel;
-    }
-
-    public void setExamenesLaboratorioModel(DataModel<Laboratorio> examenesLaboratorioModel) {
-        this.examenesLaboratorioModel = examenesLaboratorioModel;
-    }
-
     public static ImagenDiagnostica getImagenSeleccionada() {
         return imagenSeleccionada;
     }
@@ -154,7 +145,6 @@ public class SubirResultadoDoctorBean {
             return "subirResultadoImagenDoctor.xhtml";
         } else {
             examenesLaboratorio = (List<Laboratorio>) citaSeleccionadaDTO.getCita().getLaboratorioCollection();
-            examenesLaboratorioModel = new ListDataModel<>(examenesLaboratorio);
             return "subirResultadoLaboratorioDoctor.xhtml";
         }
 
@@ -166,13 +156,11 @@ public class SubirResultadoDoctorBean {
 
         examenesLaboratorio = subirResultadoDoctorBiz.actualizarExamenesLaboratorio(examenesLaboratorio);
 
-        return "subirResultadoLaboratorioDoctor.xhtml";
+        return "doctorBody.xhtml";
 
     }
 
     public String subirResultadoImagen(FileUploadEvent event) throws IOException {
-
-        System.out.println("entro");
         
         UploadedFile archivoImagen = event.getFile();
 
@@ -180,7 +168,7 @@ public class SubirResultadoDoctorBean {
 
         imagenDiagnostica = subirResultadoDoctorBiz.actualizarImagenDiagnostica(archivoImagen, imagenDiagnostica);
         
-        return "subirResultadoImagenDoctor.xhtml";
+        return "doctorBody.xhtml";
 
     }
 

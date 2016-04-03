@@ -15,7 +15,6 @@ import DTO.PacienteDTO;
 import DTO.PersonaDTO;
 import DTO.TarjetaDTO;
 import Entidades.Administrador;
-import Entidades.Agenda;
 import Entidades.Cita;
 import Entidades.Doctor;
 import Entidades.Medico;
@@ -149,6 +148,6 @@ public class RegistroBiz {
         personaDAO.createPersona(persona);
         administradorDAO.createAdministrador(administrador);
 
-        return "inicio.xhtml";
+        return "exito";
     }
 }

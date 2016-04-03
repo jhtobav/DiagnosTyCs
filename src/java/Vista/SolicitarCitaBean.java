@@ -35,6 +35,7 @@ public class SolicitarCitaBean {
     private int numCelda;
     private String fecha;
     private Long medico;
+    private Integer csv;
 
     public String init(String tipoExamen) {
         
@@ -111,6 +112,14 @@ public class SolicitarCitaBean {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public Integer getCsv() {
+        return csv;
+    }
+
+    public void setCsv(Integer csv) {
+        this.csv = csv;
+    }
     
     public String obtenerEstado(int indice){
         
@@ -146,7 +155,7 @@ public class SolicitarCitaBean {
                     .equals(imagenDiagnostica.trim().trim())){
                 
                 System.out.println("exito");
-                solicitarCitaBiz.solicitarCitaImagen(imagen, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);
+                solicitarCitaBiz.solicitarCitaImagen(csv, imagen, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);
                 break;
             
             }
@@ -169,7 +178,7 @@ public class SolicitarCitaBean {
             if(examen.getNombre().equals(examenLaboratorio)){
                 
                 System.out.println("exito");
-                solicitarCitaBiz.solicitarCitaExamenLaboratorio(examen, examenes, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);                
+                solicitarCitaBiz.solicitarCitaExamenLaboratorio(csv, examen, examenes, tablaAgendas.get(numCelda-1), parsearFecha(fecha), medico);                
                 break;
                 
             }

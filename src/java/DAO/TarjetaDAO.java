@@ -1,7 +1,6 @@
 package DAO;
 
 
-import Entidades.Paciente;
 import Entidades.Tarjeta;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
@@ -37,6 +36,29 @@ public class TarjetaDAO {
             return tarjeta;
         }
 
+    }
+    
+    public Tarjeta updateTarjeta(Tarjeta tarjeta){
+        
+        Tarjeta nuevaTarjeta = new Tarjeta();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevaTarjeta = em.merge(em.find(Tarjeta.class, tarjeta));
+            
+            nuevaTarjeta.setNombreEnTarjeta(tarjeta.getNombreEnTarjeta());
+            nuevaTarjeta.setNumeroAno(tarjeta.getNumeroAno());
+            nuevaTarjeta.setNumeroMes(tarjeta.getNumeroMes());
+            nuevaTarjeta.setCsv(tarjeta.getCsv());
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevaTarjeta;
+        }
+        
     }
     
     public Tarjeta searchByIdTarjeta(Long idTarjeta) {

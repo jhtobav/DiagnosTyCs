@@ -7,7 +7,6 @@ package DAO;
 
 import Entidades.Agenda;
 import Entidades.Doctor;
-import Entidades.Medico;
 import Vista.LoginBean;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,13 +21,6 @@ public class AgendaDAO {
     
     EntityManagerFactory emf = LoginBean.getEmf();
     
-    public List<Agenda> getListAgenda() {
-      
-        EntityManager em = emf.createEntityManager();
-        Query q = em.createNamedQuery("Agenda.findAll");
-        return q.getResultList();
-      
-    }
 
     public Agenda updateAgenda(Agenda agenda){
         
@@ -71,6 +63,23 @@ public class AgendaDAO {
             return nuevaAgenda;
         }
         
+    }
+    
+    public List<Agenda> getListAgenda() {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        
+        List<Agenda> agendas = null;
+        
+        try {
+            q = em.createNamedQuery("Agenda.findAll", Agenda.class);
+            agendas = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return agendas;
+        }
     }
     
     public void inicializarAgenda() {

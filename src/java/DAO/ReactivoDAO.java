@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import Entidades.ImagenDiagnostica;
-import Entidades.Laboratorio;
+import DTO.ReactivoDTO;
 import Entidades.Reactivo;
 import Vista.LoginBean;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  *
@@ -21,21 +20,7 @@ import javax.persistence.EntityManagerFactory;
 public class ReactivoDAO {
     
     EntityManagerFactory emf = LoginBean.getEmf();    
-    
-    public Reactivo searchByIdReactivo(Long idReactivo) {
-        EntityManager em = emf.createEntityManager();
-        Reactivo reactivo = null;
-        try {
-            reactivo = em.find(Reactivo.class
-                    , idReactivo);
-        } catch (Exception e){
-        } finally {
-            em.close();
-            return reactivo;
-        }
-      
-    }
-    
+        
     public Reactivo updateReactivo(Reactivo reactivo){
         
         Reactivo nuevoReactivo = new Reactivo();
@@ -52,6 +37,57 @@ public class ReactivoDAO {
             return nuevoReactivo;
         }
         
+    }
+    
+    public Reactivo updateReactivoUnidades(ReactivoDTO reactivoDTO){
+        
+        Reactivo nuevoReactivo = new Reactivo();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevoReactivo = em.merge(em.find(Reactivo.class, reactivoDTO.getId()));
+            nuevoReactivo.setUnidadesExistentes(nuevoReactivo.getUnidadesExistentes() 
+                    + reactivoDTO.getUnidadesNuevas());
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoReactivo;
+        }
+        
+    }
+
+    public List<Reactivo> getListReactivo() {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        
+        List<Reactivo> reactivos = null;
+        
+        try {
+            q = em.createNamedQuery("Reactivo.findAll", Reactivo.class);
+            reactivos = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return reactivos;
+        }
+      
+    }
+    
+    public Reactivo searchByIdReactivo(Long idReactivo) {
+        EntityManager em = emf.createEntityManager();
+        Reactivo reactivo = null;
+        try {
+            reactivo = em.find(Reactivo.class
+                    , idReactivo);
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return reactivo;
+        }
+      
     }
     
     public void inicializarReactivos() {

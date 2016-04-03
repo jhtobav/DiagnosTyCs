@@ -6,9 +6,12 @@
 package DAO;
 
 import Entidades.Cita;
+import Entidades.Paciente;
 import Vista.LoginBean;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,6 +37,24 @@ public class CitaDAO {
             return cita;
         }
 
+    }
+    
+    public List<Cita> getListCitas() {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        List<Cita> citas = null;
+        try {
+            q = em.createNamedQuery("Cita.findAll", Cita.class);
+            citas = q.getResultList();
+            System.out.println(citas.size());
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+            return citas;
+        }
+      
     }
     
 }

@@ -35,10 +35,10 @@
         </div>  
         <hr/>
         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{comprarReactivoBean.listarReactivos}" var="reactivo">
+                     value="#{comprarReactivoBean.listaReactivos}" var="reactivo">
                 <h:column>
                     <f:facet name="header">
-                        Nombre del reactivo
+                        Nombre del Reactivo
                     </f:facet>
                     <h:outputText value="#{reactivo.nombre}"/>
                 </h:column>
@@ -46,24 +46,24 @@
                     <f:facet name="header">
                         Costo
                     </f:facet>
-                    <h:outputText class="outputDateTime" value="#{reactivo.valor}"/>
+                    <h:outputText value="#{reactivo.valor}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         Unidades existentes
                     </f:facet>
-                    <h:outputText class="outputDateTime" value="#{reactivo.unidadesActuales}"/>
+                    <h:outputText value="#{reactivo.unidadesExistentes}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         Unidades nuevas
                     </f:facet>
-                    <h:inputText class="outputDateTime" value="#{reactivo.unidadesNuevas}"/>
+                    <h:inputText class="form-control" value="#{reactivo.unidadesNuevas}"/>
                 </h:column>
         </h:dataTable>
         
+        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar reactivos" action="#{comprarReactivoBean.comprarReactivo()}"/>
         <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="administradorBody.xhtml"/>
-        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Comprar reactivos" action="#{comprarReactivoBean.actualizarReactivos()}"/>
         
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
 

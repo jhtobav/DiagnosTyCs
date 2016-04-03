@@ -60,7 +60,9 @@ public class AlertaDAO {
       
         EntityManager em = emf.createEntityManager();
         Query q;
+        
         List<Alerta> alertas = null;
+        
         try {
             q = em.createNamedQuery("Alerta.findAll", Alerta.class);
             alertas = q.getResultList();

@@ -5,9 +5,10 @@
  */
 package Vista;
 
-import Business.RegistroBiz;
+import Business.ModificarPerfilBiz;
 import DTO.PacienteDTO;
 import DTO.TarjetaDTO;
+import Entidades.Paciente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,15 +21,13 @@ import javax.faces.bean.SessionScoped;
  *
  * @author jhtob
  */
-@ManagedBean(name = "registroBean")
+@ManagedBean(name="modificarPacienteBean")
 @SessionScoped
-public class RegistroPacienteBean {
-
+public class ModificarPacienteBean {
+    
     private Long numDocPaciente = null;
     private String contrasena = null;
     private String confirmarContrasena = null;
-    private String nombres = null;
-    private String apellidos = null;
     private String nombrePaciente = null;
     private String fechaNacimiento = null;
     private Long telefono = null;
@@ -45,38 +44,30 @@ public class RegistroPacienteBean {
     private Integer numeroMes = null;
     private Integer csv = null;
     
-    public String init(){
+    public String init() {
         
-        numDocPaciente = null;
-        contrasena = null;
-        confirmarContrasena = null;
-        nombres = null;
-        apellidos = null;
-        nombrePaciente = null;
+        Paciente paciente = new ModificarPerfilBiz().cargarPaciente(LoginBean.idPersonaLogueada);
+        
+        numDocPaciente = paciente.getNumDocumento();
+        contrasena = paciente.getContrasena();
+        nombrePaciente = paciente.getNombre();
         fechaNacimiento = null;
-        telefono = null;
-        direccion = null;
-        correo = null;
-    
-        eps = null;
-        numeroHijos = null;
-        contactoNombre = null;
-        contactoTelefono = null;
-    
-        idTarjeta = null;
-        numeroAno = null;
-        numeroMes = null;
-        csv = null;
+        telefono = paciente.getTelefono();
+        direccion = paciente.getDireccion();
+        correo = paciente.getCorreo();
+
+        eps = paciente.getEps();
+        numeroHijos = paciente.getNumHijos();
+        contactoNombre = paciente.getNombreContacto();
+        contactoTelefono = paciente.getTelefonoContacto();
         
-        return "registrarse.xhtml";
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+        idTarjeta = paciente.getTarjetatarjetaID().getTarjetaID();
+        numeroAno = paciente.getTarjetatarjetaID().getNumeroAno();
+        numeroMes = paciente.getTarjetatarjetaID().getNumeroMes();
+        csv = paciente.getTarjetatarjetaID().getCsv();
+        
+        return "modificarPaciente.xhtml";
+        
     }
 
     public Long getNumDocPaciente() {
@@ -102,29 +93,21 @@ public class RegistroPacienteBean {
     public void setConfirmarContrasena(String confirmarContrasena) {
         this.confirmarContrasena = confirmarContrasena;
     }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
+    
     public String getNombrePaciente() {
         return nombrePaciente;
     }
 
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Long getTelefono() {
@@ -159,6 +142,14 @@ public class RegistroPacienteBean {
         this.eps = eps;
     }
 
+    public Integer getNumeroHijos() {
+        return numeroHijos;
+    }
+
+    public void setNumeroHijos(Integer numeroHijos) {
+        this.numeroHijos = numeroHijos;
+    }
+
     public String getContactoNombre() {
         return contactoNombre;
     }
@@ -181,14 +172,6 @@ public class RegistroPacienteBean {
 
     public void setIdTarjeta(Long idTarjeta) {
         this.idTarjeta = idTarjeta;
-    }
-
-    public Integer getNumeroHijos() {
-        return numeroHijos;
-    }
-
-    public void setNumeroHijos(Integer numeroHijos) {
-        this.numeroHijos = numeroHijos;
     }
 
     public Integer getNumeroAno() {
@@ -214,7 +197,7 @@ public class RegistroPacienteBean {
     public void setCsv(Integer csv) {
         this.csv = csv;
     }
-
+    
     public Date parsearFecha(String fecha) {
         try {
             return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
@@ -223,57 +206,34 @@ public class RegistroPacienteBean {
         }
         return new Date();
     }
+    
+    public String modificacion() {
 
-    public String registro() {
+        PacienteDTO pacienteDTO = new PacienteDTO();
+        TarjetaDTO tarjetaDTO = new TarjetaDTO();
 
-        if (contrasena.equals(confirmarContrasena)){
-        
-            PacienteDTO pacienteDTO = new PacienteDTO();
-            TarjetaDTO tarjetaDTO = new TarjetaDTO();
+        pacienteDTO.setNumDocPaciente(numDocPaciente);
+        pacienteDTO.setContrasena(contrasena);
+        pacienteDTO.setNombrePaciente(nombrePaciente);
+        pacienteDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
+        pacienteDTO.setTelefono(telefono);
+        pacienteDTO.setDireccion(direccion);
+        pacienteDTO.setCorreo(correo);
+        pacienteDTO.setNombreContacto(contactoNombre);
+        pacienteDTO.setTelefonoContacto(contactoTelefono);
+        pacienteDTO.setEps(eps);
+        pacienteDTO.setNumHijos(numeroHijos);
 
-            nombrePaciente = nombres + " " + apellidos;
+        tarjetaDTO.setNombrePaciente(nombrePaciente);
+        tarjetaDTO.setIdTarjeta(idTarjeta);
+        tarjetaDTO.setNumeroAno(numeroAno);
+        tarjetaDTO.setNumeroMes(numeroMes);
+        tarjetaDTO.setCsv(csv);
 
-            pacienteDTO.setNumDocPaciente(numDocPaciente);
-            pacienteDTO.setContrasena(contrasena);
-            pacienteDTO.setNombrePaciente(nombrePaciente);
-            pacienteDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
-            pacienteDTO.setTelefono(telefono);
-            pacienteDTO.setDireccion(direccion);
-            pacienteDTO.setCorreo(correo);
-            pacienteDTO.setNombreContacto(contactoNombre);
-            pacienteDTO.setTelefonoContacto(contactoTelefono);
-            pacienteDTO.setEps(eps);
-            pacienteDTO.setNumHijos(numeroHijos);
+        new ModificarPerfilBiz().modificarPaciente(pacienteDTO, tarjetaDTO);
 
-            tarjetaDTO.setNombrePaciente(nombrePaciente);
-            tarjetaDTO.setIdTarjeta(idTarjeta);
-            tarjetaDTO.setNumeroAno(numeroAno);
-            tarjetaDTO.setNumeroMes(numeroMes);
-            tarjetaDTO.setCsv(csv);
-
-            new RegistroBiz().registroPaciente(pacienteDTO, tarjetaDTO);
-
-            LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
-            LoginBean.setMensajeEmergenteTitulo("Usuario Creado Exitosamente");
-            LoginBean.setMensajeEmergenteContenido("Felicidades "
-                    + nombres + " su usuario se ha creado correctamente");
-
-            return "inicioBody.xhtml";
-        
-        } else {
-            
-            return "inicioBody.xhtml";
-            
-        }
+        return "pacienteBody.xhtml";
 
     }
     
-    public void progess(){
-    
-        for(int i=0; i<100000; i++){
-            System.out.println(i);
-        }
-        
-    }
-
 }

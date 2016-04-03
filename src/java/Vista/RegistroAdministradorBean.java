@@ -151,28 +151,36 @@ public class RegistroAdministradorBean {
     }
 
     public String registro() {
+        
+        if (contrasena.equals(confirmarContrasena)){
 
-        PersonaDTO personaDTO = new PersonaDTO();
+            PersonaDTO personaDTO = new PersonaDTO();
 
-        nombreAdministrador = nombres + " " + apellidos;
+            nombreAdministrador = nombres + " " + apellidos;
 
-        personaDTO.setIdPersona(numDocAdministrador);
-        personaDTO.setContrasena(contrasena);
-        personaDTO.setNombrePersona(nombreAdministrador);
-        personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
-        personaDTO.setTelefono(telefono);
-        personaDTO.setDireccion(direccion);
-        personaDTO.setCorreo(correo);
+            personaDTO.setIdPersona(numDocAdministrador);
+            personaDTO.setContrasena(contrasena);
+            personaDTO.setNombrePersona(nombreAdministrador);
+            personaDTO.setFechaNacimiento(parsearFecha(fechaNacimiento));
+            personaDTO.setTelefono(telefono);
+            personaDTO.setDireccion(direccion);
+            personaDTO.setCorreo(correo);
 
-        RegistroBiz registroBiz = new RegistroBiz();
-        mensaje = registroBiz.registroAdministrador(personaDTO);
+            RegistroBiz registroBiz = new RegistroBiz();
+            mensaje = registroBiz.registroAdministrador(personaDTO);
 
-        LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
-        LoginBean.setMensajeEmergenteTitulo("Administrador Creado Exitosamente");
-        LoginBean.setMensajeEmergenteContenido("Felicidades "
-                + nombres + " su usuario se ha creado correctamente");
+            LoginBean.setMensajeEmergenteTipo("SEVERITY_INFO");
+            LoginBean.setMensajeEmergenteTitulo("Administrador Creado Exitosamente");
+            LoginBean.setMensajeEmergenteContenido("Felicidades "
+                    + nombres + " su usuario se ha creado correctamente");
 
-        return "administradorBody.xhtml";
+            return "administradorBody.xhtml";
+        
+        } else {
+        
+            return "administradorBody.xhtml";
+            
+        }
 
     }
 
