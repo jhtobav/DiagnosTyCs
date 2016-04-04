@@ -38,7 +38,7 @@ public class ModificarPacienteBean {
     private Integer numeroHijos = null;
     private String contactoNombre = null;
     private Long contactoTelefono = null;
-
+    private String fechaNacimientoOut = null;
     private Long idTarjeta = null;
     private Integer numeroAno = null;
     private Integer numeroMes = null;
@@ -52,7 +52,8 @@ public class ModificarPacienteBean {
         numDocPaciente = paciente.getNumDocumento();
         contrasena = paciente.getContrasena();
         nombrePaciente = paciente.getNombre();
-        fechaNacimiento = paciente.getFechaNacimiento().toGMTString();
+        fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(paciente.getFechaNacimiento());
+        fechaNacimientoOut = new SimpleDateFormat("MM/dd/yyyy").format(paciente.getFechaNacimiento());
         telefono = paciente.getTelefono();
         direccion = paciente.getDireccion();
         correo = paciente.getCorreo();
@@ -70,6 +71,14 @@ public class ModificarPacienteBean {
         
         return "modificarPaciente.xhtml";
         
+    }
+
+    public String getFechaNacimientoOut() {
+        return fechaNacimientoOut;
+    }
+
+    public void setFechaNacimientoOut(String fechaNacimientoOut) {
+        this.fechaNacimientoOut = fechaNacimientoOut;
     }
 
     public Long getNumDocPaciente() {

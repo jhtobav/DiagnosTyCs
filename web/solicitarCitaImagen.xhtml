@@ -25,456 +25,457 @@
     </h:head>
     <h:body onload="builder()">
         <h:form id="form">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div  class="panel">
-                    <div class="row spacedRow">
-                        <div class="col-md-6">			
-                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{solicitarCitaBean.imagenDiagnostica}" title="Procedimiento">
-                                <f:selectItem itemValue="Angiografía aórtica                                             " itemLabel="Angiografía aórtica                                              " />
-                                <f:selectItem itemValue="Angiografía mesentérica                                         " itemLabel="Angiografía mesentérica                                          " />
-                                <f:selectItem itemValue="Angiografía por catéter                                         " itemLabel="Angiografía por catéter                                          " />
-                                <f:selectItem itemValue="Angiografía pulmonar                                            " itemLabel="Angiografía pulmonar                                             " />
-                                <f:selectItem itemValue="Arteriografía renal                                             " itemLabel="Arteriografía renal                                              " />
-                                <f:selectItem itemValue="Artrografía directa                                             " itemLabel="Artrografía directa                                              " />
-                                <f:selectItem itemValue="Cistografía retrógrada                                          " itemLabel="Cistografía retrógrada                                           " />
-                                <f:selectItem itemValue="Cistouretrograma miccional                                      " itemLabel="Cistouretrograma miccional                                       " />
-                                <f:selectItem itemValue="Colangiografía transhepática percutánea                         " itemLabel="Colangiografía transhepática percutánea                          " />
-                                <f:selectItem itemValue="Densitometría ósea                                              " itemLabel="Densitometría ósea                                               " />
-                                <f:selectItem itemValue="Discograma                                                      " itemLabel="Discograma                                                       " />
-                                <f:selectItem itemValue="Enema opaco                                                     " itemLabel="Enema opaco                                                      " />
-                                <f:selectItem itemValue="Enteroclisis                                                    " itemLabel="Enteroclisis                                                     " />
-                                <f:selectItem itemValue="Linfangiograma                                                  " itemLabel="Linfangiograma                                                   " />
-                                <f:selectItem itemValue="Mielografía                                                     " itemLabel="Mielografía                                                      " />
-                                <f:selectItem itemValue="Pielograma intravenoso (PIV)                                    " itemLabel="Pielograma intravenoso (PIV)                                     " />
-                                <f:selectItem itemValue="Radiografía abdominal                                           " itemLabel="Radiografía abdominal                                            " />
-                                <f:selectItem itemValue="Radiografía de cráneo                                           " itemLabel="Radiografía de cráneo                                            " />
-                                <f:selectItem itemValue="Radiografía de cuello                                           " itemLabel="Radiografía de cuello                                            " />
-                                <f:selectItem itemValue="Radiografía de hueso                                            " itemLabel="Radiografía de hueso                                             " />
-                                <f:selectItem itemValue="Radiografía de la columna lumbosacra                            " itemLabel="Radiografía de la columna lumbosacra                             " />
-                                <f:selectItem itemValue="Radiografía de la columna torácica                              " itemLabel="Radiografía de la columna torácica                               " />
-                                <f:selectItem itemValue="Radiografía de la pelvis                                        " itemLabel="Radiografía de la pelvis                                         " />
-                                <f:selectItem itemValue="Radiografía de las manos                                        " itemLabel="Radiografía de las manos                                         " />
-                                <f:selectItem itemValue="Radiografía de los senos paranasales                            " itemLabel="Radiografía de los senos paranasales                             " />
-                                <f:selectItem itemValue="Radiografía de una articulación                                 " itemLabel="Radiografía de una articulación                                  " />
-                                <f:selectItem itemValue="Radiografía de una extremidad                                   " itemLabel="Radiografía de una extremidad                                    " />
-                                <f:selectItem itemValue="Radiografía del esqueleto                                       " itemLabel="Radiografía del esqueleto                                        " />
-                                <f:selectItem itemValue="Radiografía del tracto gastrointestinal (GI) inferior           " itemLabel="Radiografía del tracto gastrointestinal (GI) inferior            " />
-                                <f:selectItem itemValue="Radiografía dental                                              " itemLabel="Radiografía dental                                               " />
-                                <f:selectItem itemValue="Radiografía torácica                                            " itemLabel="Radiografía torácica                                             " />
-                                <f:selectItem itemValue="Radiografías dentales                                           " itemLabel="Radiografías dentales                                            " />
-                                <f:selectItem itemValue="Radiografías dentales (rayos X)                                 " itemLabel="Radiografías dentales (rayos X)                                  " />
-                                <f:selectItem itemValue="Rayos X del tórax (radiografía de tórax)                        " itemLabel="Rayos X del tórax (radiografía de tórax)                         " />
-                                <f:selectItem itemValue="Rayos X del tracto gastrointestinal (GI) superior (radiografía) " itemLabel="Rayos X del tracto gastrointestinal (GI) superior (radiografía)  " />
-                                <f:selectItem itemValue="Rayos X óseo (radiografía)                                      " itemLabel="Rayos X óseo (radiografía)                                       " />
-                                <f:selectItem itemValue="Rayos X panorámicos                                             " itemLabel="Rayos X panorámicos                                              " />
-                                <f:selectItem itemValue="Sialograma                                                      " itemLabel="Sialograma                                                       " />
-                                <f:selectItem itemValue="Tránsito esofagogastroduodenal                                  " itemLabel="Tránsito esofagogastroduodenal                                   " />
-                                <f:selectItem itemValue="Tránsito gastrointestinal inferior                              " itemLabel="Tránsito gastrointestinal inferior                               " />
-                                <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
-                                <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
-                                <f:selectItem itemValue="Venografía renal                                                " itemLabel="Venografía renal                                                 " />
-                                <f:selectItem itemValue="Angiografía coronaria por TC (ACTC)                             " itemLabel="Angiografía coronaria por TC (ACTC)                              " />
-                                <f:selectItem itemValue="Angiotomografía computarizada                                   " itemLabel="Angiotomografía computarizada                                    " />
-                                <f:selectItem itemValue="Colonografía por TAC                                            " itemLabel="Colonografía por TAC                                             " />
-                                <f:selectItem itemValue="Enterografía por TAC                                            " itemLabel="Enterografía por TAC                                             " />
-                                <f:selectItem itemValue="Exploración de la cabeza por TAC                                " itemLabel="Exploración de la cabeza por TAC                                 " />
-                                <f:selectItem itemValue="Exploración de la columna vertebral por TAC                     " itemLabel="Exploración de la columna vertebral por TAC                      " />
-                                <f:selectItem itemValue="Exploración de senos (paranasales) por TAC                      " itemLabel="Exploración de senos (paranasales) por TAC                       " />
-                                <f:selectItem itemValue="Exploración del cuerpo por TAC                                  " itemLabel="Exploración del cuerpo por TAC                                   " />
-                                <f:selectItem itemValue="Exploración TAC de tórax                                        " itemLabel="Exploración TAC de tórax                                         " />
-                                <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
-                                <f:selectItem itemValue="Perfusión por TAC de la cabeza                                  " itemLabel="Perfusión por TAC de la cabeza                                   " />
-                                <f:selectItem itemValue="TAC: Abdomen y pelvis                                           " itemLabel="TAC: Abdomen y pelvis                                            " />
-                                <f:selectItem itemValue="TAC cardíaca para la cuantificación del calcio coronario        " itemLabel="TAC cardíaca para la cuantificación del calcio coronario         " />
-                                <f:selectItem itemValue="TC torácica                                                     " itemLabel="TC torácica                                                      " />
-                                <f:selectItem itemValue="Tomografía computarizada cervical                               " itemLabel="Tomografía computarizada cervical                                " />
-                                <f:selectItem itemValue="Tomografía computarizada de la columna dorsal                   " itemLabel="Tomografía computarizada de la columna dorsal                    " />
-                                <f:selectItem itemValue="Tomografía computarizada de la columna lumbar                   " itemLabel="Tomografía computarizada de la columna lumbar                    " />
-                                <f:selectItem itemValue="Tomografía computarizada de la columna lumbosacra               " itemLabel="Tomografía computarizada de la columna lumbosacra                " />
-                                <f:selectItem itemValue="Tomografía computarizada de la órbita                           " itemLabel="Tomografía computarizada de la órbita                            " />
-                                <f:selectItem itemValue="Tomografía computarizada de la pelvis                           " itemLabel="Tomografía computarizada de la pelvis                            " />
-                                <f:selectItem itemValue="Tomografía computarizada de la pierna                           " itemLabel="Tomografía computarizada de la pierna                            " />
-                                <f:selectItem itemValue="Tomografía computarizada de la rodilla                          " itemLabel="Tomografía computarizada de la rodilla                           " />
-                                <f:selectItem itemValue="Tomografía computarizada de los senos paranasales               " itemLabel="Tomografía computarizada de los senos paranasales                " />
-                                <f:selectItem itemValue="Tomografía computarizada del abdomen                            " itemLabel="Tomografía computarizada del abdomen                             " />
-                                <f:selectItem itemValue="Tomografía computarizada del brazo                              " itemLabel="Tomografía computarizada del brazo                               " />
-                                <f:selectItem itemValue="Tomografía computarizada del corazón                            " itemLabel="Tomografía computarizada del corazón                             " />
-                                <f:selectItem itemValue="Tomografía computarizada del cráneo                             " itemLabel="Tomografía computarizada del cráneo                              " />
-                                <f:selectItem itemValue="Tomografía computarizada del hombro                             " itemLabel="Tomografía computarizada del hombro                              " />
-                                <f:selectItem itemValue="Tomografía computarizada (TC) y exploraciones para cáncer       " itemLabel="Tomografía computarizada (TC) y exploraciones para cáncer        " />
-                                <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
-                                <f:selectItem itemValue="Cisternografía con radionúclidos                                " itemLabel="Cisternografía con radionúclidos                                 " />
-                                <f:selectItem itemValue="Cistografía con radionúclidos                                   " itemLabel="Cistografía con radionúclidos                                    " />
-                                <f:selectItem itemValue="Estudios de medicina nuclear                                    " itemLabel="Estudios de medicina nuclear                                     " />
-                                <f:selectItem itemValue="Exploración por tomografía por emisión de positrones            " itemLabel="Exploración por tomografía por emisión de positrones             " />
-                                <f:selectItem itemValue="Gammagrafía con galio (Ga)                                      " itemLabel="Gammagrafía con galio (Ga)                                       " />
-                                <f:selectItem itemValue="Gammagrafía con MIBG                                            " itemLabel="Gammagrafía con MIBG                                             " />
-                                <f:selectItem itemValue="Gammagrafía de glóbulos blancos                                 " itemLabel="Gammagrafía de glóbulos blancos                                  " />
-                                <f:selectItem itemValue="Gammagrafía de glóbulos rojos                                   " itemLabel="Gammagrafía de glóbulos rojos                                    " />
-                                <f:selectItem itemValue="Gammagrafía de la tiroides                                      " itemLabel="Gammagrafía de la tiroides                                       " />
-                                <f:selectItem itemValue="Gammagrafía de la vesícula biliar con radionúclidos             " itemLabel="Gammagrafía de la vesícula biliar con radionúclidos              " />
-                                <f:selectItem itemValue="Gammagrafía de perfusión renal                                  " itemLabel="Gammagrafía de perfusión renal                                   " />
-                                <f:selectItem itemValue="Gammagrafía del hígado                                          " itemLabel="Gammagrafía del hígado                                           " />
-                                <f:selectItem itemValue="Gammagrafía pulmonar con galio                                  " itemLabel="Gammagrafía pulmonar con galio                                   " />
-                                <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
-                                <f:selectItem itemValue="Gammagrafía y absorción tiroideas                               " itemLabel="Gammagrafía y absorción tiroideas                                " />
-                                <f:selectItem itemValue="Linfogammagrafía                                                " itemLabel="Linfogammagrafía                                                 " />
-                                <f:selectItem itemValue="Medicina nuclear cardíaca                                       " itemLabel="Medicina nuclear cardíaca                                        " />
-                                <f:selectItem itemValue="Prueba de esfuerzo nuclear                                      " itemLabel="Prueba de esfuerzo nuclear                                       " />
-                                <f:selectItem itemValue="Tomografía de las mamas por emisión de positrones (TEP)         " itemLabel="Tomografía de las mamas por emisión de positrones (TEP)          " />
-                                <f:selectItem itemValue="Tomografía por emisión de positrones (TEP)                      " itemLabel="Tomografía por emisión de positrones (TEP)                       " />
-                                <f:selectItem itemValue="Tomografía por emisión de positrones (TEP) del corazón          " itemLabel="Tomografía por emisión de positrones (TEP) del corazón           " />
-                                <f:selectItem itemValue="Ventriculografía nuclear                                        " itemLabel="Ventriculografía nuclear                                         " />
-                                <f:selectItem itemValue="Angiografía de resonancia magnética                             " itemLabel="Angiografía de resonancia magnética                              " />
-                                <f:selectItem itemValue="Angiografía por resonancia magnética                            " itemLabel="Angiografía por resonancia magnética                             " />
-                                <f:selectItem itemValue="Biopsia de mama guiada por RMN                                  " itemLabel="Biopsia de mama guiada por RMN                                   " />
-                                <f:selectItem itemValue="Colangiopancreatografía por resonancia magnética (CPRM)         " itemLabel="Colangiopancreatografía por resonancia magnética (CPRM)          " />
-                                <f:selectItem itemValue="Enterografía por RMN                                            " itemLabel="Enterografía por RMN                                             " />
-                                <f:selectItem itemValue="Resonancia magnética cardíaca (RM cardíaca)                     " itemLabel="Resonancia magnética cardíaca (RM cardíaca)                      " />
-                                <f:selectItem itemValue="Resonancia magnética: Cerebro                                   " itemLabel="Resonancia magnética: Cerebro                                    " />
-                                <f:selectItem itemValue="Resonancia magnética cervical                                   " itemLabel="Resonancia magnética cervical                                    " />
-                                <f:selectItem itemValue="Resonancia magnética de la cabeza                               " itemLabel="Resonancia magnética de la cabeza                                " />
-                                <f:selectItem itemValue="Resonancia magnética del abdomen                                " itemLabel="Resonancia magnética del abdomen                                 " />
-                                <f:selectItem itemValue="Resonancia magnética del corazón                                " itemLabel="Resonancia magnética del corazón                                 " />
-                                <f:selectItem itemValue="Resonancia magnética nuclear (RMN) durante el embarazo          " itemLabel="Resonancia magnética nuclear (RMN) durante el embarazo           " />
-                                <f:selectItem itemValue="Resonancia magnética y el lumbago                               " itemLabel="Resonancia magnética y el lumbago                                " />
-                                <f:selectItem itemValue="RMN de cabeza                                                   " itemLabel="RMN de cabeza                                                    " />
-                                <f:selectItem itemValue="RMN de columna                                                  " itemLabel="RMN de columna                                                   " />
-                                <f:selectItem itemValue="RMN de cuerpo (tórax, abdomen, pelvis)                          " itemLabel="RMN de cuerpo (tórax, abdomen, pelvis)                           " />
-                                <f:selectItem itemValue="RMN de la próstata                                              " itemLabel="RMN de la próstata                                               " />
-                                <f:selectItem itemValue="RMN de la rodilla                                               " itemLabel="RMN de la rodilla                                                " />
-                                <f:selectItem itemValue="RMN de mama                                                     " itemLabel="RMN de mama                                                      " />
-                                <f:selectItem itemValue="RMN de tórax                                                    " itemLabel="RMN de tórax                                                     " />
-                                <f:selectItem itemValue="RMN del hombro                                                  " itemLabel="RMN del hombro                                                   " />
-                                <f:selectItem itemValue="RMN del sistema musculoesquelético                              " itemLabel="RMN del sistema musculoesquelético                               " />
-                                <f:selectItem itemValue="RMN funcional (RMNf): Cerebro                                   " itemLabel="RMN funcional (RMNf): Cerebro                                    " />
-                                <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
-                                <f:selectItem itemValue="Ultrasonografía endoscópica (EUS)                               " itemLabel="Ultrasonografía endoscópica (EUS)                                " />
-                                <f:selectItem itemValue="Ecocardiografía                                                 " itemLabel="Ecocardiografía                                                  " />
-                                <f:selectItem itemValue="Ecocardiografía de esfuerzo                                     " itemLabel="Ecocardiografía de esfuerzo                                      " />
-                                <f:selectItem itemValue="Ecocardiografía transesofágica                                  " itemLabel="Ecocardiografía transesofágica                                   " />
-                                <f:selectItem itemValue="Ecografía abdominal                                             " itemLabel="Ecografía abdominal                                              " />
-                                <f:selectItem itemValue="Ecografía de la tiroides                                        " itemLabel="Ecografía de la tiroides                                         " />
-                                <f:selectItem itemValue="Ecografía Doppler de un brazo o de una pierna                   " itemLabel="Ecografía Doppler de un brazo o de una pierna                    " />
-                                <f:selectItem itemValue="Ecografía dúplex                                                " itemLabel="Ecografía dúplex                                                 " />
-                                <f:selectItem itemValue="Ecografía ocular y orbitaria                                    " itemLabel="Ecografía ocular y orbitaria                                     " />
-                                <f:selectItem itemValue="Electrocardiograma                                              " itemLabel="Electrocardiograma                                               " />
-                                <f:selectItem itemValue="Imágenes por ultrasonido de la arteria carótida                 " itemLabel="Imágenes por ultrasonido de la arteria carótida                  " />
-                                <f:selectItem itemValue="Ultrasonido abdominal                                           " itemLabel="Ultrasonido abdominal                                            " />
-                                <f:selectItem itemValue="Ultrasonido craneal/ultrasonido de la cabeza                    " itemLabel="Ultrasonido craneal/ultrasonido de la cabeza                     " />
-                                <f:selectItem itemValue="Ultrasonido de cadera                                           " itemLabel="Ultrasonido de cadera                                            " />
-                                <f:selectItem itemValue="Ultrasonido de la tiroides                                      " itemLabel="Ultrasonido de la tiroides                                       " />
-                                <f:selectItem itemValue="Ultrasonido intravascular                                       " itemLabel="Ultrasonido intravascular                                        " />
-                                <f:selectItem itemValue="Ultrasonido musculoesquelético                                  " itemLabel="Ultrasonido musculoesquelético                                   " />
-                                <f:selectItem itemValue="Ultrasonido pélvico                                             " itemLabel="Ultrasonido pélvico                                              " />
-                                <f:selectItem itemValue="Ultrasonido vascular                                            " itemLabel="Ultrasonido vascular                                             " />
-                                <f:selectItem itemValue="Ultrasonido venoso (extremidades)                               " itemLabel="Ultrasonido venoso (extremidades)                                " />
-                            </h:selectOneMenu>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div  class="panel">
+                        <div class="row spacedRow">
+                            <div class="col-md-6">			
+                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{solicitarCitaBean.imagenDiagnostica}" title="Procedimiento">
+                                    <f:selectItem itemValue="Angiografía aórtica                                             " itemLabel="Angiografía aórtica                                              " />
+                                    <f:selectItem itemValue="Angiografía mesentérica                                         " itemLabel="Angiografía mesentérica                                          " />
+                                    <f:selectItem itemValue="Angiografía por catéter                                         " itemLabel="Angiografía por catéter                                          " />
+                                    <f:selectItem itemValue="Angiografía pulmonar                                            " itemLabel="Angiografía pulmonar                                             " />
+                                    <f:selectItem itemValue="Arteriografía renal                                             " itemLabel="Arteriografía renal                                              " />
+                                    <f:selectItem itemValue="Artrografía directa                                             " itemLabel="Artrografía directa                                              " />
+                                    <f:selectItem itemValue="Cistografía retrógrada                                          " itemLabel="Cistografía retrógrada                                           " />
+                                    <f:selectItem itemValue="Cistouretrograma miccional                                      " itemLabel="Cistouretrograma miccional                                       " />
+                                    <f:selectItem itemValue="Colangiografía transhepática percutánea                         " itemLabel="Colangiografía transhepática percutánea                          " />
+                                    <f:selectItem itemValue="Densitometría ósea                                              " itemLabel="Densitometría ósea                                               " />
+                                    <f:selectItem itemValue="Discograma                                                      " itemLabel="Discograma                                                       " />
+                                    <f:selectItem itemValue="Enema opaco                                                     " itemLabel="Enema opaco                                                      " />
+                                    <f:selectItem itemValue="Enteroclisis                                                    " itemLabel="Enteroclisis                                                     " />
+                                    <f:selectItem itemValue="Linfangiograma                                                  " itemLabel="Linfangiograma                                                   " />
+                                    <f:selectItem itemValue="Mielografía                                                     " itemLabel="Mielografía                                                      " />
+                                    <f:selectItem itemValue="Pielograma intravenoso (PIV)                                    " itemLabel="Pielograma intravenoso (PIV)                                     " />
+                                    <f:selectItem itemValue="Radiografía abdominal                                           " itemLabel="Radiografía abdominal                                            " />
+                                    <f:selectItem itemValue="Radiografía de cráneo                                           " itemLabel="Radiografía de cráneo                                            " />
+                                    <f:selectItem itemValue="Radiografía de cuello                                           " itemLabel="Radiografía de cuello                                            " />
+                                    <f:selectItem itemValue="Radiografía de hueso                                            " itemLabel="Radiografía de hueso                                             " />
+                                    <f:selectItem itemValue="Radiografía de la columna lumbosacra                            " itemLabel="Radiografía de la columna lumbosacra                             " />
+                                    <f:selectItem itemValue="Radiografía de la columna torácica                              " itemLabel="Radiografía de la columna torácica                               " />
+                                    <f:selectItem itemValue="Radiografía de la pelvis                                        " itemLabel="Radiografía de la pelvis                                         " />
+                                    <f:selectItem itemValue="Radiografía de las manos                                        " itemLabel="Radiografía de las manos                                         " />
+                                    <f:selectItem itemValue="Radiografía de los senos paranasales                            " itemLabel="Radiografía de los senos paranasales                             " />
+                                    <f:selectItem itemValue="Radiografía de una articulación                                 " itemLabel="Radiografía de una articulación                                  " />
+                                    <f:selectItem itemValue="Radiografía de una extremidad                                   " itemLabel="Radiografía de una extremidad                                    " />
+                                    <f:selectItem itemValue="Radiografía del esqueleto                                       " itemLabel="Radiografía del esqueleto                                        " />
+                                    <f:selectItem itemValue="Radiografía del tracto gastrointestinal (GI) inferior           " itemLabel="Radiografía del tracto gastrointestinal (GI) inferior            " />
+                                    <f:selectItem itemValue="Radiografía dental                                              " itemLabel="Radiografía dental                                               " />
+                                    <f:selectItem itemValue="Radiografía torácica                                            " itemLabel="Radiografía torácica                                             " />
+                                    <f:selectItem itemValue="Radiografías dentales                                           " itemLabel="Radiografías dentales                                            " />
+                                    <f:selectItem itemValue="Radiografías dentales (rayos X)                                 " itemLabel="Radiografías dentales (rayos X)                                  " />
+                                    <f:selectItem itemValue="Rayos X del tórax (radiografía de tórax)                        " itemLabel="Rayos X del tórax (radiografía de tórax)                         " />
+                                    <f:selectItem itemValue="Rayos X del tracto gastrointestinal (GI) superior (radiografía) " itemLabel="Rayos X del tracto gastrointestinal (GI) superior (radiografía)  " />
+                                    <f:selectItem itemValue="Rayos X óseo (radiografía)                                      " itemLabel="Rayos X óseo (radiografía)                                       " />
+                                    <f:selectItem itemValue="Rayos X panorámicos                                             " itemLabel="Rayos X panorámicos                                              " />
+                                    <f:selectItem itemValue="Sialograma                                                      " itemLabel="Sialograma                                                       " />
+                                    <f:selectItem itemValue="Tránsito esofagogastroduodenal                                  " itemLabel="Tránsito esofagogastroduodenal                                   " />
+                                    <f:selectItem itemValue="Tránsito gastrointestinal inferior                              " itemLabel="Tránsito gastrointestinal inferior                               " />
+                                    <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
+                                    <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
+                                    <f:selectItem itemValue="Venografía renal                                                " itemLabel="Venografía renal                                                 " />
+                                    <f:selectItem itemValue="Angiografía coronaria por TC (ACTC)                             " itemLabel="Angiografía coronaria por TC (ACTC)                              " />
+                                    <f:selectItem itemValue="Angiotomografía computarizada                                   " itemLabel="Angiotomografía computarizada                                    " />
+                                    <f:selectItem itemValue="Colonografía por TAC                                            " itemLabel="Colonografía por TAC                                             " />
+                                    <f:selectItem itemValue="Enterografía por TAC                                            " itemLabel="Enterografía por TAC                                             " />
+                                    <f:selectItem itemValue="Exploración de la cabeza por TAC                                " itemLabel="Exploración de la cabeza por TAC                                 " />
+                                    <f:selectItem itemValue="Exploración de la columna vertebral por TAC                     " itemLabel="Exploración de la columna vertebral por TAC                      " />
+                                    <f:selectItem itemValue="Exploración de senos (paranasales) por TAC                      " itemLabel="Exploración de senos (paranasales) por TAC                       " />
+                                    <f:selectItem itemValue="Exploración del cuerpo por TAC                                  " itemLabel="Exploración del cuerpo por TAC                                   " />
+                                    <f:selectItem itemValue="Exploración TAC de tórax                                        " itemLabel="Exploración TAC de tórax                                         " />
+                                    <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
+                                    <f:selectItem itemValue="Perfusión por TAC de la cabeza                                  " itemLabel="Perfusión por TAC de la cabeza                                   " />
+                                    <f:selectItem itemValue="TAC: Abdomen y pelvis                                           " itemLabel="TAC: Abdomen y pelvis                                            " />
+                                    <f:selectItem itemValue="TAC cardíaca para la cuantificación del calcio coronario        " itemLabel="TAC cardíaca para la cuantificación del calcio coronario         " />
+                                    <f:selectItem itemValue="TC torácica                                                     " itemLabel="TC torácica                                                      " />
+                                    <f:selectItem itemValue="Tomografía computarizada cervical                               " itemLabel="Tomografía computarizada cervical                                " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la columna dorsal                   " itemLabel="Tomografía computarizada de la columna dorsal                    " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la columna lumbar                   " itemLabel="Tomografía computarizada de la columna lumbar                    " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la columna lumbosacra               " itemLabel="Tomografía computarizada de la columna lumbosacra                " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la órbita                           " itemLabel="Tomografía computarizada de la órbita                            " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la pelvis                           " itemLabel="Tomografía computarizada de la pelvis                            " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la pierna                           " itemLabel="Tomografía computarizada de la pierna                            " />
+                                    <f:selectItem itemValue="Tomografía computarizada de la rodilla                          " itemLabel="Tomografía computarizada de la rodilla                           " />
+                                    <f:selectItem itemValue="Tomografía computarizada de los senos paranasales               " itemLabel="Tomografía computarizada de los senos paranasales                " />
+                                    <f:selectItem itemValue="Tomografía computarizada del abdomen                            " itemLabel="Tomografía computarizada del abdomen                             " />
+                                    <f:selectItem itemValue="Tomografía computarizada del brazo                              " itemLabel="Tomografía computarizada del brazo                               " />
+                                    <f:selectItem itemValue="Tomografía computarizada del corazón                            " itemLabel="Tomografía computarizada del corazón                             " />
+                                    <f:selectItem itemValue="Tomografía computarizada del cráneo                             " itemLabel="Tomografía computarizada del cráneo                              " />
+                                    <f:selectItem itemValue="Tomografía computarizada del hombro                             " itemLabel="Tomografía computarizada del hombro                              " />
+                                    <f:selectItem itemValue="Tomografía computarizada (TC) y exploraciones para cáncer       " itemLabel="Tomografía computarizada (TC) y exploraciones para cáncer        " />
+                                    <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
+                                    <f:selectItem itemValue="Cisternografía con radionúclidos                                " itemLabel="Cisternografía con radionúclidos                                 " />
+                                    <f:selectItem itemValue="Cistografía con radionúclidos                                   " itemLabel="Cistografía con radionúclidos                                    " />
+                                    <f:selectItem itemValue="Estudios de medicina nuclear                                    " itemLabel="Estudios de medicina nuclear                                     " />
+                                    <f:selectItem itemValue="Exploración por tomografía por emisión de positrones            " itemLabel="Exploración por tomografía por emisión de positrones             " />
+                                    <f:selectItem itemValue="Gammagrafía con galio (Ga)                                      " itemLabel="Gammagrafía con galio (Ga)                                       " />
+                                    <f:selectItem itemValue="Gammagrafía con MIBG                                            " itemLabel="Gammagrafía con MIBG                                             " />
+                                    <f:selectItem itemValue="Gammagrafía de glóbulos blancos                                 " itemLabel="Gammagrafía de glóbulos blancos                                  " />
+                                    <f:selectItem itemValue="Gammagrafía de glóbulos rojos                                   " itemLabel="Gammagrafía de glóbulos rojos                                    " />
+                                    <f:selectItem itemValue="Gammagrafía de la tiroides                                      " itemLabel="Gammagrafía de la tiroides                                       " />
+                                    <f:selectItem itemValue="Gammagrafía de la vesícula biliar con radionúclidos             " itemLabel="Gammagrafía de la vesícula biliar con radionúclidos              " />
+                                    <f:selectItem itemValue="Gammagrafía de perfusión renal                                  " itemLabel="Gammagrafía de perfusión renal                                   " />
+                                    <f:selectItem itemValue="Gammagrafía del hígado                                          " itemLabel="Gammagrafía del hígado                                           " />
+                                    <f:selectItem itemValue="Gammagrafía pulmonar con galio                                  " itemLabel="Gammagrafía pulmonar con galio                                   " />
+                                    <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
+                                    <f:selectItem itemValue="Gammagrafía y absorción tiroideas                               " itemLabel="Gammagrafía y absorción tiroideas                                " />
+                                    <f:selectItem itemValue="Linfogammagrafía                                                " itemLabel="Linfogammagrafía                                                 " />
+                                    <f:selectItem itemValue="Medicina nuclear cardíaca                                       " itemLabel="Medicina nuclear cardíaca                                        " />
+                                    <f:selectItem itemValue="Prueba de esfuerzo nuclear                                      " itemLabel="Prueba de esfuerzo nuclear                                       " />
+                                    <f:selectItem itemValue="Tomografía de las mamas por emisión de positrones (TEP)         " itemLabel="Tomografía de las mamas por emisión de positrones (TEP)          " />
+                                    <f:selectItem itemValue="Tomografía por emisión de positrones (TEP)                      " itemLabel="Tomografía por emisión de positrones (TEP)                       " />
+                                    <f:selectItem itemValue="Tomografía por emisión de positrones (TEP) del corazón          " itemLabel="Tomografía por emisión de positrones (TEP) del corazón           " />
+                                    <f:selectItem itemValue="Ventriculografía nuclear                                        " itemLabel="Ventriculografía nuclear                                         " />
+                                    <f:selectItem itemValue="Angiografía de resonancia magnética                             " itemLabel="Angiografía de resonancia magnética                              " />
+                                    <f:selectItem itemValue="Angiografía por resonancia magnética                            " itemLabel="Angiografía por resonancia magnética                             " />
+                                    <f:selectItem itemValue="Biopsia de mama guiada por RMN                                  " itemLabel="Biopsia de mama guiada por RMN                                   " />
+                                    <f:selectItem itemValue="Colangiopancreatografía por resonancia magnética (CPRM)         " itemLabel="Colangiopancreatografía por resonancia magnética (CPRM)          " />
+                                    <f:selectItem itemValue="Enterografía por RMN                                            " itemLabel="Enterografía por RMN                                             " />
+                                    <f:selectItem itemValue="Resonancia magnética cardíaca (RM cardíaca)                     " itemLabel="Resonancia magnética cardíaca (RM cardíaca)                      " />
+                                    <f:selectItem itemValue="Resonancia magnética: Cerebro                                   " itemLabel="Resonancia magnética: Cerebro                                    " />
+                                    <f:selectItem itemValue="Resonancia magnética cervical                                   " itemLabel="Resonancia magnética cervical                                    " />
+                                    <f:selectItem itemValue="Resonancia magnética de la cabeza                               " itemLabel="Resonancia magnética de la cabeza                                " />
+                                    <f:selectItem itemValue="Resonancia magnética del abdomen                                " itemLabel="Resonancia magnética del abdomen                                 " />
+                                    <f:selectItem itemValue="Resonancia magnética del corazón                                " itemLabel="Resonancia magnética del corazón                                 " />
+                                    <f:selectItem itemValue="Resonancia magnética nuclear (RMN) durante el embarazo          " itemLabel="Resonancia magnética nuclear (RMN) durante el embarazo           " />
+                                    <f:selectItem itemValue="Resonancia magnética y el lumbago                               " itemLabel="Resonancia magnética y el lumbago                                " />
+                                    <f:selectItem itemValue="RMN de cabeza                                                   " itemLabel="RMN de cabeza                                                    " />
+                                    <f:selectItem itemValue="RMN de columna                                                  " itemLabel="RMN de columna                                                   " />
+                                    <f:selectItem itemValue="RMN de cuerpo (tórax, abdomen, pelvis)                          " itemLabel="RMN de cuerpo (tórax, abdomen, pelvis)                           " />
+                                    <f:selectItem itemValue="RMN de la próstata                                              " itemLabel="RMN de la próstata                                               " />
+                                    <f:selectItem itemValue="RMN de la rodilla                                               " itemLabel="RMN de la rodilla                                                " />
+                                    <f:selectItem itemValue="RMN de mama                                                     " itemLabel="RMN de mama                                                      " />
+                                    <f:selectItem itemValue="RMN de tórax                                                    " itemLabel="RMN de tórax                                                     " />
+                                    <f:selectItem itemValue="RMN del hombro                                                  " itemLabel="RMN del hombro                                                   " />
+                                    <f:selectItem itemValue="RMN del sistema musculoesquelético                              " itemLabel="RMN del sistema musculoesquelético                               " />
+                                    <f:selectItem itemValue="RMN funcional (RMNf): Cerebro                                   " itemLabel="RMN funcional (RMNf): Cerebro                                    " />
+                                    <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
+                                    <f:selectItem itemValue="Ultrasonografía endoscópica (EUS)                               " itemLabel="Ultrasonografía endoscópica (EUS)                                " />
+                                    <f:selectItem itemValue="Ecocardiografía                                                 " itemLabel="Ecocardiografía                                                  " />
+                                    <f:selectItem itemValue="Ecocardiografía de esfuerzo                                     " itemLabel="Ecocardiografía de esfuerzo                                      " />
+                                    <f:selectItem itemValue="Ecocardiografía transesofágica                                  " itemLabel="Ecocardiografía transesofágica                                   " />
+                                    <f:selectItem itemValue="Ecografía abdominal                                             " itemLabel="Ecografía abdominal                                              " />
+                                    <f:selectItem itemValue="Ecografía de la tiroides                                        " itemLabel="Ecografía de la tiroides                                         " />
+                                    <f:selectItem itemValue="Ecografía Doppler de un brazo o de una pierna                   " itemLabel="Ecografía Doppler de un brazo o de una pierna                    " />
+                                    <f:selectItem itemValue="Ecografía dúplex                                                " itemLabel="Ecografía dúplex                                                 " />
+                                    <f:selectItem itemValue="Ecografía ocular y orbitaria                                    " itemLabel="Ecografía ocular y orbitaria                                     " />
+                                    <f:selectItem itemValue="Electrocardiograma                                              " itemLabel="Electrocardiograma                                               " />
+                                    <f:selectItem itemValue="Imágenes por ultrasonido de la arteria carótida                 " itemLabel="Imágenes por ultrasonido de la arteria carótida                  " />
+                                    <f:selectItem itemValue="Ultrasonido abdominal                                           " itemLabel="Ultrasonido abdominal                                            " />
+                                    <f:selectItem itemValue="Ultrasonido craneal/ultrasonido de la cabeza                    " itemLabel="Ultrasonido craneal/ultrasonido de la cabeza                     " />
+                                    <f:selectItem itemValue="Ultrasonido de cadera                                           " itemLabel="Ultrasonido de cadera                                            " />
+                                    <f:selectItem itemValue="Ultrasonido de la tiroides                                      " itemLabel="Ultrasonido de la tiroides                                       " />
+                                    <f:selectItem itemValue="Ultrasonido intravascular                                       " itemLabel="Ultrasonido intravascular                                        " />
+                                    <f:selectItem itemValue="Ultrasonido musculoesquelético                                  " itemLabel="Ultrasonido musculoesquelético                                   " />
+                                    <f:selectItem itemValue="Ultrasonido pélvico                                             " itemLabel="Ultrasonido pélvico                                              " />
+                                    <f:selectItem itemValue="Ultrasonido vascular                                            " itemLabel="Ultrasonido vascular                                             " />
+                                    <f:selectItem itemValue="Ultrasonido venoso (extremidades)                               " itemLabel="Ultrasonido venoso (extremidades)                                " />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="col-md-6">
+                                <h:selectOneMenu class="selectpicker" id="medicos" value="#{solicitarCitaBean.medico}" title="Medico">
+                                    <f:selectItems value="#{solicitarCitaBean.medicos}" var="medico" itemValue="#{medico.idMedico}" itemLabel="#{medico.nombreMedico}"/>
+                                </h:selectOneMenu>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h:selectOneMenu class="selectpicker" id="medicos" value="#{solicitarCitaBean.medico}" title="Medico">
-                                <f:selectItems value="#{solicitarCitaBean.medicos}" var="medico" itemValue="#{medico.idMedico}" itemLabel="#{medico.nombreMedico}"/>
-                            </h:selectOneMenu>
+                        <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Hora</th>
+                                            <th>Lunes</th>
+                                            <th>Martes</th>
+                                            <th>Miercoles</th>
+                                            <th>Jueves</th>
+                                            <th>Viernes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(161)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(193)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(225)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(257)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(289)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(162)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(194)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(226)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(258)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(290)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(163)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(195)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(227)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(259)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(291)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">8:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(164)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(196)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(228)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(260)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(292)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(165)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(197)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(229)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(261)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(293)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(166)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(198)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(230)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(262)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(294)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(167)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(199)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(231)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(263)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(295)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">9:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(168)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(200)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(232)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(264)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(296)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(169)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(201)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(233)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(265)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(297)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(170)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(202)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(234)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(266)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(298)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(171)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(203)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(235)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(267)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(299)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">10:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(172)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(204)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(236)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(268)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(300)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(173)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(205)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(237)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(269)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(301)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(174)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(206)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(238)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(270)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(302)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(175)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(207)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(239)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(271)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(303)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">11:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(176)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(208)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(240)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(272)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(304)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(177)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(209)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(241)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(273)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(305)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(178)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(210)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(242)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(274)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(306)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(179)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(211)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(243)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(275)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(307)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">13:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(180)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(212)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(244)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(276)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(308)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(181)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(213)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(245)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(277)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(309)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(182)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(214)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(246)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(278)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(310)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(183)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(215)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(247)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(279)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(311)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">14:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(184)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(216)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(248)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(280)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(312)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(185)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(217)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(249)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(281)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(313)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(186)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(218)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(250)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(282)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(314)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(187)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(219)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(251)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(283)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(315)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">15:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(188)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(220)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(252)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(284)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(316)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:00</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(189)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(221)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(253)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(285)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(317)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:15</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(190)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(222)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(254)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(286)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(318)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:30</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(191)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(223)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(255)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(287)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(319)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableDataNoSpaceTime">16:45</td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(192)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(224)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(256)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(288)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                            <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(320)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row spacedRow"><div class="table-responsive elementoVisible" id="tableField">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Hora</th>
-                                        <th>Lunes</th>
-                                        <th>Martes</th>
-                                        <th>Miercoles</th>
-                                        <th>Jueves</th>
-                                        <th>Viernes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(161)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(193)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(225)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(257)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(289)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(162)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(194)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(226)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(258)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(290)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(163)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(195)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(227)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(259)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(291)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">8:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(164)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(196)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(228)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(260)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(292)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(165)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(197)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(229)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(261)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(293)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(166)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(198)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(230)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(262)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(294)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(167)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(199)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(231)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(263)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(295)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">9:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(168)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(200)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(232)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(264)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(296)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(169)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(201)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(233)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(265)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(297)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(170)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(202)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(234)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(266)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(298)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(171)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(203)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(235)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(267)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(299)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">10:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(172)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(204)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(236)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(268)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(300)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(173)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(205)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(237)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(269)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(301)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(174)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(206)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(238)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(270)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(302)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(175)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(207)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(239)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(271)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(303)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">11:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(176)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(208)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(240)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(272)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(304)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(177)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(209)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(241)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(273)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(305)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(178)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(210)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(242)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(274)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(306)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(179)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(211)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(243)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(275)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(307)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">13:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(180)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(212)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(244)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(276)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(308)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(181)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(213)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(245)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(277)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(309)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(182)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(214)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(246)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(278)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(310)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(183)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(215)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(247)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(279)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(311)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">14:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(184)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(216)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(248)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(280)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(312)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(185)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(217)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(249)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(281)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(313)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(186)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(218)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(250)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(282)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(314)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(187)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(219)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(251)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(283)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(315)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">15:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(188)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(220)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(252)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(284)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(316)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:00</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(189)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(221)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(253)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(285)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(317)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:15</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(190)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(222)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(254)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(286)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(318)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:30</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(191)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(223)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(255)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(287)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(319)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tableDataNoSpaceTime">16:45</td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(192)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(224)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(256)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(288)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                        <td class="tableDataNoSpace"><input type="#{solicitarCitaBean.obtenerEstado(320)}" value=" " class="btn btn-success fullButton" onclick="getIdImagen(this)"/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">Dia</span>
-                                <input id="diaEntrada" type="text" class="form-control"/>
-                                <h:inputHidden id="idAgenda" value="#{solicitarCitaBean.numCelda}" />
-                                <h:inputHidden id="fechaCita" value="#{solicitarCitaBean.fecha}"/>                            
-                            </div>  
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">CSV</span>
-                                <h:inputText id="CSV" value="#{solicitarCitaBean.csv}"></h:inputText>
-                        </div>
-                        <hr/>
-                        <div class="spacedRow">
-                            <h:commandButton class="btn btn-primary" value="Pagar" type="submit" action="#{solicitarCitaBean.solicitarCitaImagen()}"/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Dia</span>
+                                    <input id="diaEntrada" type="text" class="form-control"/>
+                                    <h:inputHidden id="idAgenda" value="#{solicitarCitaBean.numCelda}" />
+                                    <h:inputHidden id="fechaCita" value="#{solicitarCitaBean.fecha}"/>                            
+                                </div>  
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CSV</span>
+                                    <h:inputText id="CSV" value="#{solicitarCitaBean.csv}"></h:inputText>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="spacedRow">
+                                <h:commandButton class="btn btn-primary" value="Pagar" type="submit" action="#{solicitarCitaBean.solicitarCitaImagen()}"/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
         </h:form>
     </h:body>
 </html>

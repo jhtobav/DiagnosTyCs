@@ -55,14 +55,9 @@
                                 </div>
                                 <br/>
                                 <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <h:inputText class="form-control" ph:placeholder="EPS" value="#{modificarPacienteBean.eps}"/>
-                                </div>
-                                <br/>
-                                <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"> </span>
                                     <div class="input-group date">
-                                        <input type="text" class="form-control" placeholder="Fecha de nacimiento" onchange="setBirthDate()"/>
+                                        <input type="text" class="form-control" id="selectorFecha" placeholder="Fecha de nacimiento" value="#{modificarPacienteBean.fechaNacimientoOut}" onchange="setBirthDate()"/>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                     </div>
                                     <h:inputHidden class="form-control" id="fechaNacimiento" value="#{modificarPacienteBean.fechaNacimiento}"/>
@@ -81,13 +76,18 @@
                                 </div>
                                 <br/>
                                 <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <h:inputText class="form-control" ph:placeholder="Número de hijos" value="#{modificarPacienteBean.numeroHijos}"/>
+                                </div>
+                                <br/>
+                                <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"></span>
                                     <h:inputSecret class="form-control"  ph:placeholder="Repita la contraseña" value="#{modificarPacienteBean.confirmarContrasena}"/>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <h:inputText class="form-control" ph:placeholder="Número de hijos" value="#{modificarPacienteBean.numeroHijos}"/>
+                                    <h:inputText class="form-control" ph:placeholder="EPS" value="#{modificarPacienteBean.eps}"/>
                                 </div>
                             </div>
                         </div>
@@ -118,33 +118,20 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <h:inputText class="form-control" ph:placeholder="Nombre en la tarjeta" />
+                                        <h:outputText class="form-control" ph:placeholder="Nombre en la tarjeta" value="#{modificarPacienteBean.nombreTarjeta}" />
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon"></span>
-                                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{modificarPacienteBean.numeroMes}" title="Mes">
-                                                    <f:selectItem itemValue="1" itemLabel="1" />
-                                                    <f:selectItem itemValue="2" itemLabel="2" />
-                                                    <f:selectItem itemValue="3" itemLabel="3" />
-                                                    <f:selectItem itemValue="4" itemLabel="4" />
-                                                    <f:selectItem itemValue="5" itemLabel="5" />
-                                                    <f:selectItem itemValue="6" itemLabel="6" />
-                                                    <f:selectItem itemValue="7" itemLabel="7" />
-                                                    <f:selectItem itemValue="8" itemLabel="8" />
-                                                    <f:selectItem itemValue="9" itemLabel="9" />
-                                                    <f:selectItem itemValue="10" itemLabel="10" />
-                                                    <f:selectItem itemValue="11" itemLabel="11" />
-                                                    <f:selectItem itemValue="12" itemLabel="12" />
-                                                </h:selectOneMenu>
+                                                <h:outputText class="form-control" ph:placeholder="Mes" value="#{modificarPacienteBean.numeroMes}"/>
                                             </div>
                                         </div>                                
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon"></span>
-                                                <h:inputText class="form-control" ph:placeholder="Año" value="#{modificarPacienteBean.numeroAno}"/>
+                                                <h:outputText class="form-control" ph:placeholder="Año" value="#{modificarPacienteBean.numeroAno}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -152,12 +139,12 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <h:inputText class="form-control" ph:placeholder="Numero de Tarjeta" value="#{modificarPacienteBean.idTarjeta}"/>
+                                        <h:outputText class="form-control" ph:placeholder="Numero de Tarjeta" value="#{modificarPacienteBean.idTarjeta}"/>
                                     </div>
                                     <br/>
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <h:inputText class="form-control" ph:placeholder="CSV" value="#{modificarPacienteBean.csv}"/>
+                                        <h:outputText class="form-control" ph:placeholder="CSV" value="#{modificarPacienteBean.csv}"/>
                                     </div>
                                 </div>
                             </div>
