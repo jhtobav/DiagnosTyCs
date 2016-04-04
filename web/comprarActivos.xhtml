@@ -30,15 +30,15 @@
         <div>
             <div class="row">
                 <div class="col-md-1"></div>
-                Listado de Reactivos
+                Listado de Activos
             </div>
         </div>  
         <hr/>
         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{listarActivoBean.listarActivos}" var="activo">
+                     value="#{modificarActivoBean.listaActivos}" var="activo">
                 <h:column>
                     <f:facet name="header">
-                        Nombre del reactivo
+                        Nombre del Activo
                     </f:facet>
                     <h:outputText value="#{activo.nombre}"/>
                 </h:column>
@@ -46,18 +46,25 @@
                     <f:facet name="header">
                         Costo
                     </f:facet>
-                    <h:outputText class="outputDateTime" value="#{activo.valor}"/>
+                    <h:outputText value="#{activo.valor}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         Unidades existentes
                     </f:facet>
-                    <h:outputText class="outputDateTime" value="#{activo.unidadesActuales}"/>
+                    <h:outputText value="#{activo.unidadesExistentes}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Unidades nuevas
+                    </f:facet>
+                    <h:inputText class="form-control" value="#{activo.unidadesNuevas}"/>
                 </h:column>
         </h:dataTable>
         
-        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Terminar" action="gerenteBody.xhtml"/>
-
+        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar activos" action="#{modificarActivoBean.comprarActivo()}"/>
+        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="administradorBody.xhtml"/>
+        
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
         </h:form>

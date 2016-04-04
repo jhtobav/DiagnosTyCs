@@ -53,13 +53,13 @@
                             </ul> 
                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Consultar inventario <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Modificar inventario <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a nclick="initPage('link:consultarActivosLink')" target="frame_gerente">Activos</a>
+                                    <a nclick="initPage('link:modificarActivosLink')" target="frame_gerente">Activos</a>
                                 </li>
                                 <li>
-                                    <a nclick="initPage('link:consultarReactivosLink')" target="frame_gerente">Reactivos</a>
+                                    <a nclick="initPage('link:modificarReactivosLink')" target="frame_gerente">Reactivos</a>
                                 </li>
                             </ul>
                         </li>
@@ -74,8 +74,8 @@
                         <h:form id="link">    
                             <h:commandLink id="registrarAdministradorLink" value="Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/>
                             <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/>
-                            <h:commandLink id="consultarActivosLink" value="Consultar activos" target="frame_gerente" action="#{listarActivoBean.init()}"/>
-                            <h:commandLink id="consultarReactivosLink" value="Consultar reactivos" target="frame_gerente" action="#{listarReactivoBean.init()}"/>
+                            <h:commandLink id="consultarActivosLink" value="Modificar activos" target="frame_gerente" action="#{modificarActivoBean.init("Cantidad")}"/>
+                            <h:commandLink id="consultarReactivosLink" value="Modificar reactivos" target="frame_gerente" action="#{modificarReactivoBean.init("Cantidad")}"/>
                         </h:form>
                     </div>
                     <h:form class="navbar-form navbar-right">

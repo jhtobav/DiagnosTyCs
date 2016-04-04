@@ -22,13 +22,17 @@ public class ModificarActivoBean {
     
     private List<ActivoDTO> listaActivos = new ArrayList<>();
     
-    public String init() {
+    public String init(String tipoModificacion) {
     
         listaActivos = new ArrayList<>();
                 
         listaActivos = new ComprarActivoBiz().parseActivoActivoDTO();
         
-        return "actualizarActivos.xhtml";
+        if ("Cantidad".equals(tipoModificacion)) {
+            return "comprarActivos.xhtml";
+        } else {
+            return "cambiarPrecioActivos.xhtml";
+        }
         
     }
 
@@ -44,7 +48,7 @@ public class ModificarActivoBean {
         
         new ComprarActivoBiz().comprarActivo(listaActivos);
         
-        return "administradorBody.xhtml";
+        return "gerenteBody.xhtml";
         
     }
     

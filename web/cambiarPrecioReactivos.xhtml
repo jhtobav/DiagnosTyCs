@@ -35,7 +35,7 @@
         </div>  
         <hr/>
         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{comprarReactivoBean.listaReactivos}" var="reactivo">
+                     value="#{modificarReactivoBean.listaReactivos}" var="reactivo">
                 <h:column>
                     <f:facet name="header">
                         Nombre del Reactivo
@@ -46,7 +46,7 @@
                     <f:facet name="header">
                         Costo
                     </f:facet>
-                    <h:outputText value="#{reactivo.valor}"/>
+                    <h:inputText value="#{reactivo.valor}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -54,15 +54,9 @@
                     </f:facet>
                     <h:outputText value="#{reactivo.unidadesExistentes}"/>
                 </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Unidades nuevas
-                    </f:facet>
-                    <h:inputText class="form-control" value="#{reactivo.unidadesNuevas}"/>
-                </h:column>
         </h:dataTable>
         
-        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar reactivos" action="#{comprarReactivoBean.comprarReactivo()}"/>
+        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Cambiar costo reactivos" action="#{modificarReactivoBean.modificarCosto()}"/>
         <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="administradorBody.xhtml"/>
         
         <link href="css/bootstrap.min.css" rel="stylesheet"/>

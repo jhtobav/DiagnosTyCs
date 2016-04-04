@@ -22,13 +22,16 @@ public class ModificarReactivoBean {
     
     private List<ReactivoDTO> listaReactivos = new ArrayList<>();
     
-    public String init() {
-    
+    public String init(String tipoModificacion) {
+        
         listaReactivos = new ArrayList<>();
                 
         listaReactivos = new ComprarReactivoBiz().parseReactivoReactivoDTO();
-        
-        return "actualizarReactivos.xhtml";
+        if("Cantidad".equals(tipoModificacion)){
+            return "comprarReactivos.xhtml";
+        } else {
+            return "cambiarPrecioReactivos.xhtml";
+        }
         
     }
 
@@ -44,7 +47,7 @@ public class ModificarReactivoBean {
         
         new ComprarReactivoBiz().comprarReactivo(listaReactivos);
         
-        return "administradorBody.xhtml";
+        return "gerenteBody.xhtml";
         
     }
     
