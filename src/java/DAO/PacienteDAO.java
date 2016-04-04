@@ -1,8 +1,10 @@
 package DAO;
 
 
+import DTO.PacienteDTO;
 import Entidades.Cita;
 import Entidades.Paciente;
+import Vista.LoginBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -41,25 +43,25 @@ public class PacienteDAO {
 
     }
     
-    public Paciente updatePacientePerfil(Paciente paciente){
+    public Paciente updatePacientePerfil(PacienteDTO pacienteDTO){
         
         Paciente nuevoPaciente = new Paciente();
         EntityManager em = emf.createEntityManager();  
         em.getTransaction().begin();
         try {
-            nuevoPaciente = em.merge(em.find(Paciente.class, paciente.getPacienteID()));
+            nuevoPaciente = em.merge(em.find(Paciente.class, LoginBean.idPersonaLogueada));
             
-            nuevoPaciente.setNumDocumento(paciente.getNumDocumento());
-            nuevoPaciente.setNombre(paciente.getNombre());
-            nuevoPaciente.setContrasena(paciente.getContrasena());
-            nuevoPaciente.setCorreo(paciente.getCorreo());
-            nuevoPaciente.setDireccion(paciente.getDireccion());
-            nuevoPaciente.setTelefono(paciente.getTelefono());
-            nuevoPaciente.setFechaNacimiento(paciente.getFechaNacimiento());
-            nuevoPaciente.setEps(paciente.getEps());
-            nuevoPaciente.setNombreContacto(paciente.getNombreContacto());
-            nuevoPaciente.setTelefonoContacto(paciente.getTelefonoContacto());
-            nuevoPaciente.setNumHijos(paciente.getNumHijos());
+            nuevoPaciente.setNumDocumento(pacienteDTO.getNumDocPaciente());
+            nuevoPaciente.setNombre(pacienteDTO.getNombrePaciente());
+            nuevoPaciente.setContrasena(pacienteDTO.getContrasena());
+            nuevoPaciente.setCorreo(pacienteDTO.getCorreo());
+            nuevoPaciente.setDireccion(pacienteDTO.getDireccion());
+            nuevoPaciente.setTelefono(pacienteDTO.getTelefono());
+            nuevoPaciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
+            nuevoPaciente.setEps(pacienteDTO.getEps());
+            nuevoPaciente.setNombreContacto(pacienteDTO.getNombreContacto());
+            nuevoPaciente.setTelefonoContacto(pacienteDTO.getTelefonoContacto());
+            nuevoPaciente.setNumHijos(pacienteDTO.getNumHijos());
             
             em.getTransaction().commit();
         } catch (Exception e){

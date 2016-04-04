@@ -43,6 +43,7 @@ public class RegistroPacienteBean {
     private Long idTarjeta = null;
     private Integer numeroAno = null;
     private Integer numeroMes = null;
+    private String nombreTarjeta = null;
     private Integer csv = null;
     
     public String init(){
@@ -215,6 +216,14 @@ public class RegistroPacienteBean {
         this.csv = csv;
     }
 
+    public String getNombreTarjeta() {
+        return nombreTarjeta;
+    }
+
+    public void setNombreTarjeta(String nombreTarjeta) {
+        this.nombreTarjeta = nombreTarjeta;
+    }
+
     public Date parsearFecha(String fecha) {
         try {
             return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
@@ -245,10 +254,10 @@ public class RegistroPacienteBean {
             pacienteDTO.setEps(eps);
             pacienteDTO.setNumHijos(numeroHijos);
 
-            tarjetaDTO.setNombrePaciente(nombrePaciente);
             tarjetaDTO.setIdTarjeta(idTarjeta);
             tarjetaDTO.setNumeroAno(numeroAno);
             tarjetaDTO.setNumeroMes(numeroMes);
+            tarjetaDTO.setNombrePaciente(nombreTarjeta);
             tarjetaDTO.setCsv(csv);
 
             new RegistroBiz().registroPaciente(pacienteDTO, tarjetaDTO);

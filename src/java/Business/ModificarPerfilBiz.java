@@ -10,7 +10,6 @@ import DAO.TarjetaDAO;
 import DTO.PacienteDTO;
 import DTO.TarjetaDTO;
 import Entidades.Paciente;
-import Entidades.Tarjeta;
 
 /**
  *
@@ -25,29 +24,9 @@ public class ModificarPerfilBiz {
     }
     
     public String modificarPaciente(PacienteDTO pacienteDTO, TarjetaDTO tarjetaDTO){
-
-        Paciente paciente = new Paciente();
-        paciente.setNumDocumento(pacienteDTO.getNumDocPaciente());
-        paciente.setNombre(pacienteDTO.getNombrePaciente());
-        paciente.setContrasena(pacienteDTO.getContrasena());
-        paciente.setCorreo(pacienteDTO.getCorreo());
-        paciente.setDireccion(pacienteDTO.getDireccion());
-        paciente.setTelefono(pacienteDTO.getTelefono());
-        paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
-        paciente.setEps(pacienteDTO.getEps());
-        paciente.setNombreContacto(pacienteDTO.getNombreContacto());
-        paciente.setTelefonoContacto(pacienteDTO.getTelefonoContacto());
-        paciente.setNumHijos(pacienteDTO.getNumHijos());
         
-        Tarjeta tarjeta = new Tarjeta();
-        tarjeta.setTarjetaID(tarjetaDTO.getIdTarjeta());
-        tarjeta.setNombreEnTarjeta(tarjetaDTO.getNombrePaciente());
-        tarjeta.setNumeroAno(tarjetaDTO.getNumeroAno());
-        tarjeta.setNumeroMes(tarjetaDTO.getNumeroMes());
-        tarjeta.setCsv(tarjetaDTO.getCsv());
-
-        new PacienteDAO().updatePacientePerfil(paciente);
-        new TarjetaDAO().updateTarjeta(tarjeta);
+        new PacienteDAO().updatePacientePerfil(pacienteDTO);
+        new TarjetaDAO().updateTarjeta(tarjetaDTO);
 
         return "exito";
         

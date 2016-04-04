@@ -42,6 +42,7 @@ public class ModificarPacienteBean {
     private Long idTarjeta = null;
     private Integer numeroAno = null;
     private Integer numeroMes = null;
+    private String nombreTarjeta = null;
     private Integer csv = null;
     
     public String init() {
@@ -51,7 +52,7 @@ public class ModificarPacienteBean {
         numDocPaciente = paciente.getNumDocumento();
         contrasena = paciente.getContrasena();
         nombrePaciente = paciente.getNombre();
-        fechaNacimiento = null;
+        fechaNacimiento = paciente.getFechaNacimiento().toGMTString();
         telefono = paciente.getTelefono();
         direccion = paciente.getDireccion();
         correo = paciente.getCorreo();
@@ -64,6 +65,7 @@ public class ModificarPacienteBean {
         idTarjeta = paciente.getTarjetatarjetaID().getTarjetaID();
         numeroAno = paciente.getTarjetatarjetaID().getNumeroAno();
         numeroMes = paciente.getTarjetatarjetaID().getNumeroMes();
+        nombreTarjeta = paciente.getTarjetatarjetaID().getNombreEnTarjeta();
         csv = paciente.getTarjetatarjetaID().getCsv();
         
         return "modificarPaciente.xhtml";
@@ -197,6 +199,14 @@ public class ModificarPacienteBean {
     public void setCsv(Integer csv) {
         this.csv = csv;
     }
+
+    public String getNombreTarjeta() {
+        return nombreTarjeta;
+    }
+
+    public void setNombreTarjeta(String nombreTarjeta) {
+        this.nombreTarjeta = nombreTarjeta;
+    }
     
     public Date parsearFecha(String fecha) {
         try {
@@ -224,10 +234,10 @@ public class ModificarPacienteBean {
         pacienteDTO.setEps(eps);
         pacienteDTO.setNumHijos(numeroHijos);
 
-        tarjetaDTO.setNombrePaciente(nombrePaciente);
         tarjetaDTO.setIdTarjeta(idTarjeta);
         tarjetaDTO.setNumeroAno(numeroAno);
         tarjetaDTO.setNumeroMes(numeroMes);
+        tarjetaDTO.setNombrePaciente(nombreTarjeta);
         tarjetaDTO.setCsv(csv);
 
         new ModificarPerfilBiz().modificarPaciente(pacienteDTO, tarjetaDTO);

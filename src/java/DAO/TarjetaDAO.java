@@ -1,6 +1,7 @@
 package DAO;
 
 
+import DTO.TarjetaDTO;
 import Entidades.Tarjeta;
 import Vista.LoginBean;
 import javax.persistence.EntityManager;
@@ -38,18 +39,18 @@ public class TarjetaDAO {
 
     }
     
-    public Tarjeta updateTarjeta(Tarjeta tarjeta){
+    public Tarjeta updateTarjeta(TarjetaDTO tarjetaDTO){
         
         Tarjeta nuevaTarjeta = new Tarjeta();
         EntityManager em = emf.createEntityManager();  
         em.getTransaction().begin();
         try {
-            nuevaTarjeta = em.merge(em.find(Tarjeta.class, tarjeta));
+            nuevaTarjeta = em.merge(em.find(Tarjeta.class, tarjetaDTO.getIdTarjeta()));
             
-            nuevaTarjeta.setNombreEnTarjeta(tarjeta.getNombreEnTarjeta());
-            nuevaTarjeta.setNumeroAno(tarjeta.getNumeroAno());
-            nuevaTarjeta.setNumeroMes(tarjeta.getNumeroMes());
-            nuevaTarjeta.setCsv(tarjeta.getCsv());
+            nuevaTarjeta.setNombreEnTarjeta(tarjetaDTO.getNombrePaciente());
+            nuevaTarjeta.setNumeroAno(tarjetaDTO.getNumeroAno());
+            nuevaTarjeta.setNumeroMes(tarjetaDTO.getNumeroMes());
+            nuevaTarjeta.setCsv(tarjetaDTO.getCsv());
             
             em.getTransaction().commit();
         } catch (Exception e){
