@@ -16,9 +16,9 @@ import javax.faces.bean.SessionScoped;
  *
  * @author jhtob
  */
-@ManagedBean(name="comprarReactivoBean")
+@ManagedBean(name="modificarReactivoBean")
 @SessionScoped
-public class ComprarReactivoBean {
+public class ModificarReactivoBean {
     
     private List<ReactivoDTO> listaReactivos = new ArrayList<>();
     
@@ -46,6 +46,12 @@ public class ComprarReactivoBean {
         
         return "administradorBody.xhtml";
         
+    }
+    
+    public String modificarCosto() {
+
+        return "administradorBody.xhtml";
+
     }
     
     
