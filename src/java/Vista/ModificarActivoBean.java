@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Business.ComprarActivoBiz;
+import Business.ModificarActivoBiz;
 import DTO.ActivoDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ModificarActivoBean {
     
         listaActivos = new ArrayList<>();
                 
-        listaActivos = new ComprarActivoBiz().parseActivoActivoDTO();
+        listaActivos = new ModificarActivoBiz().parseActivoActivoDTO();
         
         if ("Cantidad".equals(tipoModificacion)) {
             return "comprarActivos.xhtml";
@@ -46,13 +46,15 @@ public class ModificarActivoBean {
     
     public String comprarActivo(){
         
-        new ComprarActivoBiz().comprarActivo(listaActivos);
+        new ModificarActivoBiz().comprarActivo(listaActivos);
         
         return "gerenteBody.xhtml";
         
     }
     
     public String modificarCosto(){
+        
+        new ModificarActivoBiz().modificarCostoActivo(listaActivos);
         
         return "administradorBody.xhtml";
         

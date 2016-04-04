@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Felipe
  */
-public class ComprarActivoBiz {
+public class ModificarActivoBiz {
     
     public List<ActivoDTO> parseActivoActivoDTO(){
 
@@ -69,6 +69,20 @@ public class ComprarActivoBiz {
         
         return "exito";
         
+    }
+    
+    public String modificarCostoActivo(List<ActivoDTO> activosDTO) {
+
+        ActivoDAO activoDAO = new ActivoDAO();
+
+        for (ActivoDTO activoDTO : activosDTO) {
+
+                activoDAO.updateActivoCosto(activoDTO);
+
+        }
+
+        return "exito";
+
     }
     
 }

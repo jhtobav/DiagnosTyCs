@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Felipe
  */
-public class ComprarReactivoBiz {
+public class ModirficarReactivoBiz {
     
     public List<ReactivoDTO> parseReactivoReactivoDTO(){
 
@@ -64,6 +64,20 @@ public class ComprarReactivoBiz {
                 gastoDAO.createGasto(gasto);
             
             }
+            
+        }
+        
+        return "exito";
+        
+    }
+    
+    public String modificarCostoReactivo(List<ReactivoDTO> reactivosDTO){
+        
+        ReactivoDAO reactivoDAO = new ReactivoDAO();
+        
+        for(ReactivoDTO reactivoDTO : reactivosDTO){
+            
+                reactivoDAO.updateReactivoCosto(reactivoDTO);
             
         }
         

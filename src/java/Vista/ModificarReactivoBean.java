@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Business.ComprarReactivoBiz;
+import Business.ModirficarReactivoBiz;
 import DTO.ReactivoDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ModificarReactivoBean {
         
         listaReactivos = new ArrayList<>();
                 
-        listaReactivos = new ComprarReactivoBiz().parseReactivoReactivoDTO();
+        listaReactivos = new ModirficarReactivoBiz().parseReactivoReactivoDTO();
         if("Cantidad".equals(tipoModificacion)){
             return "comprarReactivos.xhtml";
         } else {
@@ -45,13 +45,15 @@ public class ModificarReactivoBean {
     
     public String comprarReactivo(){
         
-        new ComprarReactivoBiz().comprarReactivo(listaReactivos);
+        new ModirficarReactivoBiz().comprarReactivo(listaReactivos);
         
         return "gerenteBody.xhtml";
         
     }
     
     public String modificarCosto() {
+        
+        new ModirficarReactivoBiz().modificarCostoReactivo(listaReactivos);
 
         return "administradorBody.xhtml";
 

@@ -42,6 +42,24 @@ public class ActivoDAO {
         
     }
     
+    public Activo updateActivoCosto(ActivoDTO activoDTO){
+        
+        Activo nuevoActivo = new Activo();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevoActivo = em.merge(em.find(Activo.class, activoDTO.getId()));
+            nuevoActivo.setValor(activoDTO.getValor());
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoActivo;
+        }
+        
+    }
+    
     public List<Activo> getListActivo() {
 
         EntityManager em = emf.createEntityManager();

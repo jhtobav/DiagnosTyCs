@@ -57,6 +57,24 @@ public class ReactivoDAO {
         }
         
     }
+    
+    public Reactivo updateReactivoCosto(ReactivoDTO reactivoDTO){
+        
+        Reactivo nuevoReactivo = new Reactivo();
+        EntityManager em = emf.createEntityManager();  
+        em.getTransaction().begin();
+        try {
+            nuevoReactivo = em.merge(em.find(Reactivo.class, reactivoDTO.getId()));
+            nuevoReactivo.setValor(reactivoDTO.getValor());
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoReactivo;
+        }
+        
+    }
 
     public List<Reactivo> getListReactivo() {
       
