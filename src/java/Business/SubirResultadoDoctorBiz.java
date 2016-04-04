@@ -83,7 +83,7 @@ public class SubirResultadoDoctorBiz {
         byte[] datos;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         String fecha = format.format(cita.getFecha());
-        String rutaImagen = "C:" + File.separator + "Imagenes" + File.separator +
+        String rutaImagen = "F:" + File.separator + "Imagenes" + File.separator +
                 cita.getPacientepacienteID().getPacienteID() + "_" + cita.getCitaID() + "_" + fecha
                 + ".tiff";      
         datos = IOUtils.toByteArray(imagen.getInputstream());        
