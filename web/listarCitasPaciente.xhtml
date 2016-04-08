@@ -25,47 +25,50 @@
     </h:head>
     <h:body style="border-style: none; height: 400px" onload="load()">
         <div class="container">
-        <h:form>
-        <hr/>
-        <div>
-            <div class="row">
-                <div class="col-md-1"></div>
-                Listado de Citas del Paciente:
-            </div>
-        </div>  
-        <hr/>
-        <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-bordered table-hover" 
-                     value="#{verCitaPacienteBean.citaModel}" var="cita">
-                <h:column>
-                    <f:facet name="header">
-                        Nombre del Médico
-                    </f:facet>
-                    <h:outputText value="#{cita.nombreMedico}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Fecha de la Cita
-                    </f:facet>
-                    <h:outputText class="outputDateTime" value="#{cita.fecha}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Valor de la Cita
-                    </f:facet>
-                    <h:outputText value="#{cita.valor}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Ver Resultados
-                    </f:facet>
-                    <h:commandButton type="submit" class="btn btn-success" 
-                                     value="Ver Resultados" action="#{verCitaPacienteBean.verCitaSeleccionada()}"/>
-                </h:column>
-        </h:dataTable>
-            
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+            <br/>
+            <h:form>
+                <div class="panel panel-default">
+                    <div class="row spacedRow">
+                        <div class="spacedMargin">
+                            Historico de resultados
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="spacedMargin">
+                    <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
+                                 value="#{verCitaPacienteBean.citaModel}" var="cita">
+                        <h:column>
+                            <f:facet name="header">
+                                Nombre del Médico
+                            </f:facet>
+                            <h:outputText value="#{cita.nombreMedico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Fecha de la Cita
+                            </f:facet>
+                            <h:outputText class="outputDateTime" value="#{cita.fecha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Valor de la Cita
+                            </f:facet>
+                            <h:outputText value="#{cita.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Ver Resultados
+                            </f:facet>
+                            <h:commandButton type="submit" class="btn btn-success" 
+                                             value="Ver Resultados" action="#{verCitaPacienteBean.verCitaSeleccionada()}"/>
+                        </h:column>
+                    </h:dataTable>
+                    </div>
+                </div>
 
-        </h:form>
+                <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+            </h:form>
         </div>
     </h:body>
 </html>

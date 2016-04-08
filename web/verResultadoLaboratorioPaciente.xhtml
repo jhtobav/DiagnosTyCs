@@ -25,79 +25,72 @@
     </h:head>
     <h:body style="border-style: none; height: 400px" onload="load()">
         <h:form>
-            <div class="row">   
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <br/>
-                    <br/>
-                    <div  class="panel panel-default">
-                        <div>
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                Bienvenido, estos son los resultados de la cita seleccionada:
-                            </div>
-                        </div>    
-                        <div class="col-md-6">
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Nombre del Medico</span>
-                                <h:outputText class="form-control" value="#{verCitaPacienteBean.nombreMedicoCita}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
-                                <h:outputText class="form-control outputDateTime" value="#{verCitaPacienteBean.fechaCita}"/>
-                            </div>
-                            <br/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <hr/>
-                <div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        Listado de Exámenes de Laboratorio de la Cita
-                    </div>
-                </div>    
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <br/>
-                <h:dataTable columnClasses="col1" id="tablaExamenes" styleClass="table table-striped table-bordered table-hover" 
-                             value="#{verCitaPacienteBean.examenesLaboratorioModel}" var="examenLab">
-                    <h:column>
-                        <f:facet name="header">
-                            Nombre del Exámen
-                        </f:facet>
-                        <h:outputText value="#{examenLab.nombre}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Descripción del Exámen
-                        </f:facet>
-                        <h:outputText value="#{examenLab.descripcion}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Nombre del Doctor
-                        </f:facet>
-                        <h:outputText value="#{verCitaPacienteBean.nombreDoctorCita}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Resultado del Exámen
-                        </f:facet>
-                        <h:outputText value="#{examenLab.resultado}"/>
-                    </h:column>
-                </h:dataTable>
-                <hr/>
-                <div class="row">
-                    <h:commandButton  class="btn btn-primary" type="submit" 
-                                  value="Ver otras Citas" action="listarCitasPaciente.xhtml"/>
+                <div class="panel panel-default">                        
+                    <div  class="row spacedRow">
+                        <div class="spacedMargin">
+                            Bienvenido, estos son los resultados de la cita seleccionada:
+                        </div>  
+                        <div  class="row spacedRow">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Nombre del Medico</span>
+                                    <h:outputText class="form-control" value="#{verCitaPacienteBean.nombreMedicoCita}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Fecha de la Cita</span>
+                                    <h:outputText class="form-control outputDateTime" value="#{verCitaPacienteBean.fechaCita}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="spacedMargin">
+                            Listado de Exámenes de Laboratorio de la Cita
+                        </div> 
+                        <br/>
+                        <div class="spacedMargin">
+                            <h:dataTable columnClasses="col1" id="tablaExamenes" styleClass="table table-striped table-hover" 
+                                         value="#{verCitaPacienteBean.examenesLaboratorioModel}" var="examenLab">
+                                <h:column>
+                                    <f:facet name="header">
+                                        Nombre del Exámen
+                                    </f:facet>
+                                    <h:outputText value="#{examenLab.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Descripción del Exámen
+                                    </f:facet>
+                                    <h:outputText value="#{examenLab.descripcion}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Nombre del Doctor
+                                    </f:facet>
+                                    <h:outputText value="#{verCitaPacienteBean.nombreDoctorCita}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Resultado del Exámen
+                                    </f:facet>
+                                    <h:outputText value="#{examenLab.resultado}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <div class="spacedMargin">
+                            <h:commandButton  class="btn btn-primary" type="submit" 
+                                              value="Ver otras Citas" action="listarCitasPaciente.xhtml"/>
+                        </div>
+                        <br/>
+                    </div>
                 </div>
             </div>
-            <link href="css/bootstrap.min.css" rel="stylesheet"/>
+            <div class="col-md-2"></div>
         </h:form>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
     </h:body>
 </html>
