@@ -51,7 +51,7 @@ public class GastoDAO {
         List<Gasto> gastos = null;
         
         try {
-            q = em.createNamedQuery("Gasto.findByTipo", Gasto.class);
+            q = em.createNamedQuery("Gasto.findByTipoAndFecha", Gasto.class);
             q.setParameter("tipo", tipoGasto);
             q.setParameter("fecha", fecha);
             gastos = q.getResultList();

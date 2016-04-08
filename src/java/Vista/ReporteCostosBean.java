@@ -72,7 +72,7 @@ public class ReporteCostosBean {
     }
     
     public void listarCostos(){
-        
+                
         listaCostos = new ReportesBiz().reporteCostos(tipoCosto, parsearFecha(fecha));
         
     }
