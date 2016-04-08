@@ -4,6 +4,7 @@ package DAO;
 import Entidades.Cita;
 import Entidades.Gasto;
 import Entidades.Paciente;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,7 +43,7 @@ public class GastoDAO {
 
     }
     
-    public List<Gasto> getListGastoByTipo(String tipoGasto) {
+    public List<Gasto> getListGastoByTipoAndFecha(String tipoGasto, Date fecha) {
       
         EntityManager em = emf.createEntityManager();
         Query q;
@@ -52,6 +53,25 @@ public class GastoDAO {
         try {
             q = em.createNamedQuery("Gasto.findByTipo", Gasto.class);
             q.setParameter("tipo", tipoGasto);
+            q.setParameter("fecha", fecha);
+            gastos = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return gastos;
+        }
+    }
+    
+    public List<Gasto> getListGastoByFecha(Date fecha) {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        
+        List<Gasto> gastos = null;
+        
+        try {
+            q = em.createNamedQuery("Gasto.findByFecha", Gasto.class);
+            q.setParameter("fecha", fecha);
             gastos = q.getResultList();
         } catch (Exception e){
         } finally {

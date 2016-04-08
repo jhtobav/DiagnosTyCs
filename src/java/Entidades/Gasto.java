@@ -32,9 +32,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Gasto.findAll", query = "SELECT g FROM Gasto g"),
     @NamedQuery(name = "Gasto.findByGastoID", query = "SELECT g FROM Gasto g WHERE g.gastoID = :gastoID"),
-    @NamedQuery(name = "Gasto.findByFecha", query = "SELECT g FROM Gasto g WHERE g.fecha = :fecha"),
+    @NamedQuery(name = "Gasto.findByFecha", query = "SELECT g FROM Gasto g WHERE g.fecha >= :fecha"),
     @NamedQuery(name = "Gasto.findByDescripcion", query = "SELECT g FROM Gasto g WHERE g.descripcion = :descripcion"),
     @NamedQuery(name = "Gasto.findByTipo", query = "SELECT g FROM Gasto g WHERE g.tipo = :tipo"),
+    @NamedQuery(name = "Gasto.findByTipoAndFecha", query = "SELECT g FROM Gasto g WHERE g.tipo = :tipo AND g.fecha >= :fecha"),
     @NamedQuery(name = "Gasto.findByCantidad", query = "SELECT g FROM Gasto g WHERE g.cantidad = :cantidad"),
     @NamedQuery(name = "Gasto.findByCosto", query = "SELECT g FROM Gasto g WHERE g.costo = :costo"),
     @NamedQuery(name = "Gasto.findByValorUnidad", query = "SELECT g FROM Gasto g WHERE g.valorUnidad = :valorUnidad")})

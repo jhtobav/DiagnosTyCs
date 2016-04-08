@@ -7,7 +7,12 @@ package Vista;
 
 import Business.ReportesBiz;
 import Entidades.Gasto;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -57,9 +62,18 @@ public class ReporteCostosBean {
         this.tipoCosto = tipoCosto;
     }
     
+    public Date parsearFecha(String fecha) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(SolicitarCitaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new Date();
+    }
+    
     public void listarCostos(){
         
-        listaCostos = new ReportesBiz().reporteCostos(tipoCosto);
+        listaCostos = new ReportesBiz().reporteCostos(tipoCosto, parsearFecha(fecha));
         
     }
     

@@ -7,6 +7,7 @@ package Business;
 
 import DAO.GastoDAO;
 import Entidades.Gasto;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,9 +16,17 @@ import java.util.List;
  */
 public class ReportesBiz {
     
-    public List<Gasto> reporteCostos(String tipoCosto){
+    public List<Gasto> reporteCostos(String tipoCosto, Date fecha){
         
-        return new GastoDAO().getListGastoByTipo(tipoCosto);
+        if(tipoCosto.equals("Todos")){
+            
+            return new GastoDAO().getListGastoByFecha(fecha);
+            
+        } else {
+
+            return new GastoDAO().getListGastoByTipoAndFecha(tipoCosto, fecha);
+            
+        }
         
     }
     
