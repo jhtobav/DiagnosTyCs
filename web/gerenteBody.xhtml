@@ -33,7 +33,7 @@
                 <h:form id="link">    
                     <h1>DiagnosTyCs para Gerentes</h1>
                     <p>Señor Gerente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
-                    <p style="font-size:15px; color: #777" >» Análisis de Costos</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="analizarCostosLink" value="» Análisis de Costos" target="frame_gerente" action="#{reporteCostosBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" >» Análisis de Ingresos</p>
                     <p style="font-size:15px; color: #777" >» Análisis de Exámenes</p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarAlertasLink" value="» Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/></p>

@@ -42,7 +42,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Análisis <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#" target="frame_gerente">Análisis de Costos</a>
+                                    <a onclick="initPage('link:analizarCostosLink')" target="frame_gerente">Análisis de Costos</a>
                                 </li>
                                 <li>
                                     <a href="#" target="frame_gerente">Análisis de Ingresos</a>
@@ -74,6 +74,7 @@
                         <h:form id="link">    
                             <h:commandLink id="registrarAdministradorLink" value="Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/>
                             <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/>
+                            <h:commandLink id="analizarCostosLink" value="Analizar costos" target="frame_gerente" action="#{reporteCostosBean.init()}"/>
                             <h:commandLink id="modificarActivosLink" value="Modificar activos" target="frame_gerente" action="#{modificarActivoBean.init('Cantidad')}"/>
                             <h:commandLink id="modificarReactivosLink" value="Modificar reactivos" target="frame_gerente" action="#{modificarReactivoBean.init('Cantidad')}"/>
                         </h:form>
