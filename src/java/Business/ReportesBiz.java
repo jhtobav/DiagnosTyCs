@@ -5,8 +5,13 @@
  */
 package Business;
 
+import DAO.ExamenLaboratorioDAO;
 import DAO.GastoDAO;
+import DTO.ExamenDTO;
+import DTO.ReporteExamenDTO;
 import Entidades.Gasto;
+import Entidades.Laboratorio;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +32,28 @@ public class ReportesBiz {
             return new GastoDAO().getListGastoByTipoAndFecha(tipoCosto, fecha);
             
         }
+        
+    }
+    
+    public List<ReporteExamenDTO> reporteExamenes(Date fecha){
+        
+        List<ExamenDTO> nombresExamenes = new SolicitarCitaBiz().cargarExamenesLaboratorio();
+
+        List<ReporteExamenDTO> examenesReporte = new ArrayList<>();
+        ReporteExamenDTO reporteExamenDTO;
+        
+        for(ExamenDTO examenDTO : nombresExamenes){            
+                                    
+            reporteExamenDTO = new ReporteExamenDTO();
+            reporteExamenDTO.setNombreExamen(examenDTO.getNombre());
+            reporteExamenDTO.setDescripcionExamen(examenDTO.getDescripcion());
+            reporteExamenDTO = new ExamenLaboratorioDAO().searchByFechaAndDescripcion(fecha, 
+                    reporteExamenDTO);
+            examenesReporte.add(reporteExamenDTO);
+            
+        }
+        
+        return examenesReporte;
         
     }
     

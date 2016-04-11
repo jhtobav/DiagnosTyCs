@@ -47,7 +47,7 @@
                             <h:inputSecret  id="contrasena" ph:placeholder="Contraseña" class="form-control" value="#{loginBean.contrasena}"/>
                         </div>
                         <div class="form-group">
-                            <h:commandButton type="submit" class="btn btn-success" value="Iniciar Sesion" action="#{loginBean.login()}"/>
+                            <h:commandButton type="submit" class="btn btn-success" value="Iniciar Sesion" action="#{reporteExamenesBean.init()}"/>
                         </div>
                         <div class="form-group">
                             <h:commandButton type="submit" onclick="this.form.target = 'frame_inicio'" class="btn btn-primary"  value="Registrarse" action="#{registroBean.init()}"/>
