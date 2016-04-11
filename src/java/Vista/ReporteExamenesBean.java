@@ -61,7 +61,7 @@ public class ReporteExamenesBean {
         return new Date();
     }
     
-    public void listarCostos(){
+    public void listarExamenes(){
                 
         listaExamenes = new ReportesBiz().reporteExamenes(parsearFecha(fecha));
         

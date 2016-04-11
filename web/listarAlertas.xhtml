@@ -28,13 +28,11 @@
             <h:form id="form">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
+                    <br/>
                     <div  class="panel panel-default">
-
                         <div class="row spacedMargin spacedRow">
-
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"> </span>
                                     <div class="input-group date">
                                         <input type="text" class="form-control" placeholder="Alertas desde" onchange="setBirthDate()"/>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
@@ -47,7 +45,7 @@
                                                   value="Filtrar fecha" action="#{listarAlertaBean.listarAlertas()}"/>
                             </div>
                         </div>
-                        <div class="row spacedMargin spacedRow">
+                        <div class="row spacedMargin">
                             <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
                                          value="#{listarAlertaBean.alertas}" var="alerta">
                                 <h:column>

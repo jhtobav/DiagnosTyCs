@@ -32,21 +32,21 @@
                 <div class="panel panel-default">
                     <div class="row spacedRow">
                         <div class="spacedMargin">
-                            Listado de costos
+                            Listado de examenes
                         </div>
                     </div>
                     <div class="row spacedRow">
                         <div class="col-md-4">
                             <div class="input-group">
                                 <div class="input-group date">
-                                    <input type="text" class="form-control" placeholder="Filtrar costos desde" onchange="setBirthDate()"/>
+                                    <input type="text" class="form-control" placeholder="Filtrar examenes desde" onchange="setBirthDate()"/>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                 </div>
-                                <h:inputHidden class="form-control" id="fechaNacimiento" value="#{reporteCostosBean.fecha}"/>
+                                <h:inputHidden class="form-control" id="fechaNacimiento" value="#{reporteExamenesBean.fecha}"/>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{reporteCostosBean.tipoCosto}" title="Tipo">
+                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="" title="Tipo">
                                 <f:selectItem itemValue="Todos" itemLabel="Todos"/>
                                 <f:selectItem itemValue="Compra de Activo" itemLabel="Compra de Activo"/>
                                 <f:selectItem itemValue="Compra de Reactivo" itemLabel="Compra de Reactivo"/>
@@ -54,47 +54,35 @@
                             </h:selectOneMenu>
                         </div>
                         <div class="col-md-4">
-                            <h:commandButton  class="btn btn-success" type="submit" value="Listar costos" action="#{reporteCostosBean.listarCostos()}"/>
+                            <h:commandButton  class="btn btn-success" type="submit" value="Listar costos" action="#{reporteExamenesBean.listarCostos()}"/>
                         </div>
                     </div>
                     <div class="spacedMargin">
                         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                                     value="#{reporteCostosBean.listaCostos}" var="costo">
+                                     value="#{reporteExamenesBean.listaExamenes}" var="examen">
                             <h:column>
                                 <f:facet name="header">
-                                    Tipo
+                                    Nombre
                                 </f:facet>
-                                <h:outputText value="#{costo.tipo}"/>
+                                <h:outputText value="#{examen.nombreExamen}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     Descripcion
                                 </f:facet>
-                                <h:outputText value="#{costo.descripcion}"/>
+                                <h:outputText value="#{examen.descripcionExamen}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Valor unitario
+                                    Cantidad de examenes
                                 </f:facet>
-                                <h:outputText value="#{costo.valorUnidad}"/>
+                                <h:outputText value="#{examen.numExamenes}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Cantidad
+                                    Resultado Promedio
                                 </f:facet>
-                                <h:outputText value="#{costo.cantidad}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    Costo total
-                                </f:facet>
-                                <h:outputText value="#{costo.costo}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    Fecha de gasto
-                                </f:facet>
-                                <h:outputText class="outputDateTime" value="#{costo.fecha}"/>
+                                <h:outputText value="#{examen.promedioExamen}"/>
                             </h:column>
                         </h:dataTable>
                     </div>
