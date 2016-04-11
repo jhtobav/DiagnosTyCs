@@ -6,6 +6,7 @@
 package DAO;
 
 import Entidades.Doctor;
+import Entidades.Gasto;
 import Vista.LoginBean;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -51,24 +52,37 @@ public class DoctorDAO {
       
     }
     
-    public List<Doctor> getDoctores(String especialidad){
+    public List<Doctor> getDoctoresByEspecialidad(String especialidad){
         
         EntityManager em = emf.createEntityManager();
         Query q;
         List<Doctor> doctores = null;
         try {
-            System.out.println("DAO");
             q = em.createNamedQuery("Doctor.findByEspecialidad", Doctor.class);
             q = q.setParameter("especialidad", especialidad);
             q = q.setParameter("estado", "Activo");
-            System.out.println(q.toString());
-
             doctores = q.getResultList();
-            System.out.println(doctores.size());
         } catch (Exception e){
         } finally {
             em.close();
             return doctores;
         }
     }
+    
+    
+    public List<Doctor> getDoctores(){
+        
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        List<Doctor> doctores = null;
+        try {
+            q = em.createNamedQuery("Doctor.findAll", Doctor.class);
+            doctores = q.getResultList();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return doctores;
+        }
+    }
+    
 }

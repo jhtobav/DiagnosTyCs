@@ -20,6 +20,27 @@ import java.util.List;
  */
 public class AsignarAgendaBiz {
     
+    public List<DoctorDTO> parseDoctorDoctorDTO(String especialidad){
+        
+        List<Doctor> doctores = new DoctorDAO().getDoctoresByEspecialidad(especialidad);
+        
+        List<DoctorDTO> doctoresDTO = new ArrayList<>();
+        DoctorDTO doctorDTO;
+
+        for (Doctor doctor : doctores){
+            
+            doctorDTO = new DoctorDTO();
+            doctorDTO.setIdDoctor(doctor.getDoctorID());
+            doctorDTO.setNombreDoctor(doctor.getPersonapersonaID().getNombre());
+            doctorDTO.setEspecialidad(doctor.getEspecialidad());
+            doctorDTO.setSalario(doctor.getSalario());
+            doctoresDTO.add(doctorDTO);
+            
+        }
+        
+        return doctoresDTO;
+    }
+    
     public String asignarAgendaLaboratorioBiz(Long idDoctorLunesManana, Long idDoctorLunesTarde,
                                     Long idDoctorMartesManana, Long idDoctorMartesTarde,
                                     Long idDoctorMiercolesManana, Long idDoctorMiercolesTarde,
@@ -32,7 +53,7 @@ public class AsignarAgendaBiz {
         List<Agenda> agendas = agendaDAO.getListAgenda();
         List<Agenda> agendasPorActualizar = new ArrayList<>();
         
-        List<Doctor> doctores = doctorDAO.getDoctores("Laboratorio");
+        List<Doctor> doctores = doctorDAO.getDoctoresByEspecialidad("Laboratorio");
         
         HashMap listaDoctores = new HashMap();
         
@@ -128,7 +149,7 @@ public class AsignarAgendaBiz {
         List<Agenda> agendas = agendaDAO.getListAgenda();
         List<Agenda> agendasPorActualizar = new ArrayList<>();
         
-        List<Doctor> doctores = doctorDAO.getDoctores("ImagenesDiagnosticas");
+        List<Doctor> doctores = doctorDAO.getDoctoresByEspecialidad("ImagenesDiagnosticas");
         
         HashMap listaDoctores = new HashMap();
         
@@ -209,27 +230,6 @@ public class AsignarAgendaBiz {
         agendaDAO.updateAsignacionAgenda(agendasPorActualizar);
         
         return "exito";
-    }
-    
-    public List<DoctorDTO> parseDoctorDoctorDTO(String especialidad){
-        
-        List<Doctor> doctores = new DoctorDAO().getDoctores(especialidad);
-        
-        List<DoctorDTO> doctoresDTO = new ArrayList<>();
-        DoctorDTO doctorDTO;
-
-        for (Doctor doctor : doctores){
-            
-            doctorDTO = new DoctorDTO();
-            doctorDTO.setIdDoctor(doctor.getDoctorID());
-            doctorDTO.setNombreDoctor(doctor.getPersonapersonaID().getNombre());
-            doctorDTO.setEspecialidad(doctor.getEspecialidad());
-            doctorDTO.setSalario(doctor.getSalario());
-            doctoresDTO.add(doctorDTO);
-            
-        }
-        
-        return doctoresDTO;
     }
     
 }
