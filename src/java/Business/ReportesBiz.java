@@ -7,9 +7,11 @@ package Business;
 
 import DAO.ExamenLaboratorioDAO;
 import DAO.GastoDAO;
+import DAO.HistoricoGastosGananciasCitasDAO;
 import DAO.ImagenDiagnosticaDAO;
 import DTO.ExamenDTO;
 import DTO.ReporteExamenDTO;
+import DTO.ReporteGananciasDTO;
 import DTO.ReporteImagenDTO;
 import Entidades.Gasto;
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class ReportesBiz {
         ReporteExamenDTO reporteExamenDTO;
         
         for(ExamenDTO examenDTO : nombresExamenes){            
-                                    
+            
             reporteExamenDTO = new ReporteExamenDTO();
             reporteExamenDTO.setNombreExamen(examenDTO.getNombre());
             reporteExamenDTO.setDescripcionExamen(examenDTO.getDescripcion());
@@ -78,6 +80,18 @@ public class ReportesBiz {
         
         return imagenesReporte;
         
+    }
+    
+    public ReporteGananciasDTO reporteGanancias(Date fecha){
+     
+        ReporteGananciasDTO reporteGananciasDTO = new ReporteGananciasDTO();
+        
+        HistoricoGastosGananciasCitasDAO historicoGastosGananciasCitasDAO = new HistoricoGastosGananciasCitasDAO();
+        
+        reporteGananciasDTO = historicoGastosGananciasCitasDAO.searchByFechaAndTipoLaboratorio(fecha, reporteGananciasDTO);
+        reporteGananciasDTO = historicoGastosGananciasCitasDAO.searchByFechaAndTipoImagenes(fecha, reporteGananciasDTO);
+        
+        return reporteGananciasDTO;
     }
     
 }

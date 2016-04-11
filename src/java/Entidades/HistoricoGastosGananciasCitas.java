@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByTipo", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.tipo = :tipo"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByPrecioReactivo", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.precioReactivo = :precioReactivo"),
     @NamedQuery(name = "HistoricoGastosGananciasCitas.findByValorExamen", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.valorExamen = :valorExamen"),
-    @NamedQuery(name = "HistoricoGastosGananciasCitas.findByGanancia", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.ganancia = :ganancia")})
+    @NamedQuery(name = "HistoricoGastosGananciasCitas.findByGanancia", query = "SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.ganancia = :ganancia"),
+    @NamedQuery(name = "HistoricoGastosGananciasCitas.findByTipoAndGanancias", query = "SELECT COUNT(h), SUM(h.precioReactivo), SUM(h.valorExamen), SUM(h.ganancia) FROM HistoricoGastosGananciasCitas h WHERE h IN(SELECT h FROM HistoricoGastosGananciasCitas h WHERE h.fecha >= :fecha AND h.tipo = :tipo)")})
+   
 public class HistoricoGastosGananciasCitas implements Serializable {
 
     private static final long serialVersionUID = 1L;
