@@ -7,8 +7,10 @@ package Business;
 
 import DAO.ExamenLaboratorioDAO;
 import DAO.GastoDAO;
+import DAO.ImagenDiagnosticaDAO;
 import DTO.ExamenDTO;
 import DTO.ReporteExamenDTO;
+import DTO.ReporteImagenDTO;
 import Entidades.Gasto;
 import Entidades.Laboratorio;
 import java.util.ArrayList;
@@ -54,6 +56,28 @@ public class ReportesBiz {
         }
         
         return examenesReporte;
+        
+    }
+    
+    public List<ReporteImagenDTO> reporteImagenes(Date fecha){
+        
+        List<ExamenDTO> nombresImagenes = new SolicitarCitaBiz().cargarImagenes();
+
+        List<ReporteImagenDTO> imagenesReporte = new ArrayList<>();
+        ReporteImagenDTO reporteImagenDTO;
+        
+        for(ExamenDTO examenDTO : nombresImagenes){            
+                                    
+            reporteImagenDTO = new ReporteImagenDTO();
+            reporteImagenDTO.setNombreImagen(examenDTO.getNombre());
+            reporteImagenDTO.setDescripcionImagen(examenDTO.getDescripcion());
+            reporteImagenDTO = new ImagenDiagnosticaDAO().searchByFechaAndDescripcion(fecha, 
+                    reporteImagenDTO);
+            imagenesReporte.add(reporteImagenDTO);
+            
+        }
+        
+        return imagenesReporte;
         
     }
     

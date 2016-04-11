@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ImagenDiagnostica.findByImagenDiagnosticaID", query = "SELECT i FROM ImagenDiagnostica i WHERE i.imagenDiagnosticaID = :imagenDiagnosticaID"),
     @NamedQuery(name = "ImagenDiagnostica.findByNombre", query = "SELECT i FROM ImagenDiagnostica i WHERE i.nombre = :nombre"),
     @NamedQuery(name = "ImagenDiagnostica.findByDescripcion", query = "SELECT i FROM ImagenDiagnostica i WHERE i.descripcion = :descripcion"),
+    @NamedQuery(name = "ImagenDiagnostica.findByDescripcionAndCount", query = "SELECT COUNT(i) FROM ImagenDiagnostica i WHERE i IN(SELECT i FROM ImagenDiagnostica i WHERE i.citaImagenDiagnosticaImagenDiagnosticacitaID.fecha >= :fecha AND i.nombre = :nombreImagen AND i.descripcion = :descripcionImagen)"),
     @NamedQuery(name = "ImagenDiagnostica.findByRutaImagen", query = "SELECT i FROM ImagenDiagnostica i WHERE i.rutaImagen = :rutaImagen")})
 public class ImagenDiagnostica implements Serializable {
 

@@ -13,7 +13,8 @@ import java.io.Serializable;
 public class ReporteImagenDTO implements Serializable {
     
     private String nombreImagen;
-    private Long numImagen;
+    private String descripcionImagen;
+    private Long numImagenes;
 
     public String getNombreImagen() {
         return nombreImagen;
@@ -23,14 +24,20 @@ public class ReporteImagenDTO implements Serializable {
         this.nombreImagen = nombreImagen;
     }
 
-    public Long getNumImagen() {
-        return numImagen;
+    public Long getNumImagenes() {
+        return numImagenes;
     }
 
-    public void setNumImagen(Long numImagen) {
-        this.numImagen = numImagen;
+    public void setNumImagenes(Long numImagenes) {
+        this.numImagenes = numImagenes;
     }
 
-    
+    public String getDescripcionImagen() {
+        return descripcionImagen;
+    }
+
+    public void setDescripcionImagen(String descripcionImagen) {
+        this.descripcionImagen = descripcionImagen;
+    }
     
 }

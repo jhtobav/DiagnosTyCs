@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
     @NamedQuery(name = "Laboratorio.findByExamenLaboratorioID", query = "SELECT l FROM Laboratorio l WHERE l.examenLaboratorioID = :examenLaboratorioID"),
     @NamedQuery(name = "Laboratorio.findByNombre", query = "SELECT l FROM Laboratorio l WHERE l.nombre = :nombre"),
-    @NamedQuery(name = "Laboratorio.findAVGandCount", query = "SELECT AVG(FUNCTION('dbo.ConvertirStringFloat',l.resultado)), COUNT(l) FROM Laboratorio l WHERE l IN(SELECT l FROM Laboratorio l WHERE l.citaLaboratorioLaboratoriocitaID.fecha <= :fecha AND l.nombre = :nombreExamen AND l.descripcion = :descripcionExamen AND l.resultado != 'R:')"),
+    @NamedQuery(name = "Laboratorio.findByDescripcionAndAVGAndCount", query = "SELECT AVG(FUNCTION('dbo.ConvertirStringFloat',l.resultado)), COUNT(l) FROM Laboratorio l WHERE l IN(SELECT l FROM Laboratorio l WHERE l.citaLaboratorioLaboratoriocitaID.fecha >= :fecha AND l.nombre = :nombreExamen AND l.descripcion = :descripcionExamen AND l.resultado != 'R:')"),
     @NamedQuery(name = "Laboratorio.findByDescripcion", query = "SELECT l FROM Laboratorio l WHERE l.descripcion = :descripcion"),
     @NamedQuery(name = "Laboratorio.findByResultado", query = "SELECT l FROM Laboratorio l WHERE l.resultado = :resultado")})
 public class Laboratorio implements Serializable {

@@ -47,7 +47,7 @@ public class ExamenLaboratorioDAO {
         List<Object[]> objetos;
         
         try {
-            q = em.createNamedQuery("Laboratorio.findAVGandCount");
+            q = em.createNamedQuery("Laboratorio.findByDescripcionAndAVGAndCount");
             q.setParameter("fecha", fecha);
             q.setParameter("nombreExamen", reporteExamenDTO.getNombreExamen());
             q.setParameter("descripcionExamen", reporteExamenDTO.getDescripcionExamen());
