@@ -32,57 +32,43 @@
                 <div class="panel panel-default">
                     <div class="row spacedRow">
                         <div class="spacedMargin">
-                            Listado de examenes
+                            Listado de imágenes de laboratorio
                         </div>
                     </div>
                     <div class="row spacedRow">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <div class="input-group date">
-                                    <input type="text" class="form-control" placeholder="Filtrar examenes desde" onchange="setBirthDate()"/>
+                                    <input type="text" class="form-control" placeholder="Filtrar imágenes desde" onchange="setBirthDate()"/>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                 </div>
-                                <h:inputHidden class="form-control" id="fechaNacimiento" value="#{reporteExamenesBean.fecha}"/>
+                                <h:inputHidden class="form-control" id="fechaNacimiento" value="#{reporteImagenesBean.fecha}"/>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <h:selectOneMenu class="selectpicker" id="procedimiento" value="" title="Tipo">
-                                <f:selectItem itemValue="Todos" itemLabel="Todos"/>
-                                <f:selectItem itemValue="Compra de Activo" itemLabel="Compra de Activo"/>
-                                <f:selectItem itemValue="Compra de Reactivo" itemLabel="Compra de Reactivo"/>
-                                <f:selectItem itemValue="Pago de Nomina" itemLabel="Pago de Nomina"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="col-md-4">
-                            <h:commandButton  class="btn btn-success" type="submit" value="Listar costos" action="#{reporteExamenesBean.listarCostos()}"/>
+                        <div class="col-md-6">
+                            <h:commandButton  class="btn btn-primary" type="submit" value="Listar imágenes diagnósticas" action="#{reporteImagenesBean.listarImagenes()}"/>
                         </div>
                     </div>
                     <div class="spacedMargin">
                         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                                     value="#{reporteExamenesBean.listaExamenes}" var="examen">
+                                     value="#{reporteImagenesBean.listaImagenes}" var="imagen">
                             <h:column>
                                 <f:facet name="header">
                                     Nombre
                                 </f:facet>
-                                <h:outputText value="#{examen.nombreExamen}"/>
+                                <h:outputText value="#{imagen.nombreImagen}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     Descripcion
                                 </f:facet>
-                                <h:outputText value="#{examen.descripcionExamen}"/>
+                                <h:outputText value="#{imagen.descripcionImagen}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Cantidad de examenes
+                                    Cantidad
                                 </f:facet>
-                                <h:outputText value="#{examen.numExamenes}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    Resultado Promedio
-                                </f:facet>
-                                <h:outputText value="#{examen.promedioExamen}"/>
+                                <h:outputText value="#{imagen.numImagenes}"/>
                             </h:column>
                         </h:dataTable>
                     </div>

@@ -12,7 +12,6 @@ import DTO.ExamenDTO;
 import DTO.ReporteExamenDTO;
 import DTO.ReporteImagenDTO;
 import Entidades.Gasto;
-import Entidades.Laboratorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
