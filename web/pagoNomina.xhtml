@@ -32,49 +32,59 @@
                 <div class="panel panel-default">
                     <div class="row spacedRow">
                         <div class="spacedMargin">
-                            Listado de imágenes de laboratorio
-                        </div>
-                    </div>
-                    <div class="row spacedRow">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <div class="input-group date">
-                                    <input type="text" class="form-control" placeholder="Filtrar imágenes desde" onchange="setBirthDate()"/>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                </div>
-                                <h:inputHidden class="form-control" id="fechaNacimiento" value="#{reporteImagenesBean.fecha}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h:commandButton  class="btn btn-primary" type="submit" value="Listar imágenes diagnósticas" action="#{reporteImagenesBean.listarImagenes()}"/>
+                            Pago de nómina
                         </div>
                     </div>
                     <div class="spacedMargin">
                         <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                                     value="#{reporteImagenesBean.listaImagenes}" var="imagen">
+                                     value="#{pagoNominaBean.listaDoctores}" var="doctor">
                             <h:column>
                                 <f:facet name="header">
-                                    Nombre
+                                    Documento
                                 </f:facet>
-                                <h:outputText value="#{imagen.nombreImagen}"/>
+                                <h:outputText value="#{doctor.idDoctor}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Descripcion
+                                    Nombre doctor
                                 </f:facet>
-                                <h:outputText value="#{imagen.descripcionImagen}"/>
+                                <h:outputText value="#{doctor.nombreDoctor}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Cantidad
+                                    Especialidad
                                 </f:facet>
-                                <h:outputText value="#{imagen.numImagenes}"/>
+                                <h:outputText value="#{doctor.especialidad}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Salario
+                                </f:facet>
+                                <h:outputText value="#{doctor.salario}"/>
                             </h:column>
                         </h:dataTable>
                     </div>
-                    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+                    <div class="row spacedRow">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">Costo total</span>
+                                <h:outputText class="form-control" ph:placeholder="Costo" value="#{pagoNominaBean.costoNomina}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">Promedio</span>
+                                <h:outputText class="form-control" ph:placeholder="Promedio" value="#{pagoNominaBean.salarioPromedio}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h:commandButton  class="btn btn-primary" type="submit" value="Pagar nomina" action="#{pagoNominaBean.pagarNomina()}"/>
+                        </div>
+                    </div>
+                    <br/>
                 </div>
             </h:form>
+            <link href="css/bootstrap.min.css" rel="stylesheet"/>
         </div>
     </h:body>
 </html>

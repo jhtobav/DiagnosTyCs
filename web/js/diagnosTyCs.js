@@ -5,7 +5,8 @@
  */
 function load() {
     $('.date').datepicker({
-        language: "es"
+        language: "es",
+        format: "dd/mm/yyyy"
     });
     setTimeout(loadFormat(),1000);
     

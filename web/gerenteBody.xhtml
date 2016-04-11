@@ -34,13 +34,14 @@
                     <h1>DiagnosTyCs para Gerentes</h1>
                     <p>Señor Gerente, esta es la lista de actividades que puede desempeñar dentro del aplicativo:</p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarCostosLink" value="» Análisis de Costos" target="frame_gerente" action="#{reporteCostosBean.init()}"/></p>
-                    <p style="font-size:15px; color: #777" >» Análisis de Ingresos</p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarAlertasLink" value="» Analizar exámenes de laboratorio" target="frame_gerente" action="#{reporteExamenesBean.init()}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="analizarIngresosLink" value="» Analizar ingresos" target="frame_gerente" action="#{reporteGananciasBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarImagenesLink" value="» Analizar imágenes diagnósticas" target="frame_gerente" action="#{reporteImagenesBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarExamenesLink" value="» Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="consultarActivosLink" value="» Modificar inventario de activos" target="frame_gerente" action="#{modificarActivoBean.init('Cantidad')}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="consultarReactivosLink" value="» Modificar inventario de reactivos" target="frame_gerente" action="#{modificarReactivoBean.init('Cantidad')}"/></p>
                     <p style="font-size:15px; color: #777" >» Aprobar Permisos</p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="pagarNominaLink" value="» Pagar nomina" target="frame_gerente" action="#{pagoNominaBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="registrarAdministradorLink" value="» Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/></p>
                 </h:form>
             </div>

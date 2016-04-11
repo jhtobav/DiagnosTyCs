@@ -23,51 +23,54 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
-    <h:body style="border-style: none; height: 400px" onload="load()">
-        <div class="container">
+    <h:body onload="load()">
         <h:form>
-        <hr/>
-        <div>
-            <div class="row">
-                <div class="col-md-1"></div>
-                Listado de Activos
-            </div>
-        </div>  
-        <hr/>
-        <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{modificarActivoBean.listaActivos}" var="activo">
-                <h:column>
-                    <f:facet name="header">
-                        Nombre del Activo
-                    </f:facet>
-                    <h:outputText value="#{activo.nombre}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Costo
-                    </f:facet>
-                    <h:outputText value="#{activo.valor}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Unidades existentes
-                    </f:facet>
-                    <h:outputText value="#{activo.unidadesExistentes}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Unidades nuevas
-                    </f:facet>
-                    <h:inputText class="form-control" value="#{activo.unidadesNuevas}"/>
-                </h:column>
-        </h:dataTable>
-        
-        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar activos" action="#{modificarActivoBean.comprarActivo()}"/>
-        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="gerenteBody.xhtml"/>
-        
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br/>
+                <div class="panel panel-default">
+                    <div class="row spacedRow">
+                        <div class="spacedMargin">
+                            Comprar activos
+                        </div>
+                        <br/>
+                        <div class="spacedMargin">
+                            <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
+                                         value="#{modificarActivoBean.listaActivos}" var="activo">
+                                <h:column>
+                                    <f:facet name="header">
+                                        Nombre del Activo
+                                    </f:facet>
+                                    <h:outputText value="#{activo.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Costo
+                                    </f:facet>
+                                    <h:outputText value="#{activo.valor}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Unidades existentes
+                                    </f:facet>
+                                    <h:outputText value="#{activo.unidadesExistentes}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Unidades nuevas
+                                    </f:facet>
+                                    <h:inputText class="form-control" value="#{activo.unidadesNuevas}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="gerenteBody.xhtml"/>
+                        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar activos" action="#{modificarActivoBean.comprarActivo()}"/>
+                    </div>
+                    <br/>
+                </div>
 
+            </div>
         </h:form>
-        </div>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
     </h:body>
 </html>

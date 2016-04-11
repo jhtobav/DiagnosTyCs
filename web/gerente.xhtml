@@ -45,7 +45,7 @@
                                     <a onclick="initPage('link:analizarCostosLink')" target="frame_gerente">Análisis de Costos</a>
                                 </li>
                                 <li>
-                                    <a href="#" target="frame_gerente">Análisis de Ingresos</a>
+                                    <a onclick="initPage('link:analizarIngresosLink')" target="frame_gerente">Análisis de ingresos</a>
                                 </li>
                                 <li>
                                     <a onclick="initPage('link:analizarExamenesLink')" target="frame_gerente">Análisis de exámenes de laboratorio</a>
@@ -54,7 +54,7 @@
                                     <a onclick="initPage('link:analizarImagenesLink')" target="frame_gerente">Análisis de imágenes diagnósticas</a>
                                 </li>
                                 <li>
-                                    <a onclick="initPage('link:analizarAlertasLink')" target="frame_gerente">Análisis de Alertas</a>
+                                    <a onclick="initPage('link:analizarAlertasLink')" target="frame_gerente">Análisis de alertas</a>
                                 </li>
                             </ul> 
                         </li>
@@ -69,9 +69,18 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#">Aprobar Permisos</a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Gestionar doctores<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Aprobar Permisos</a>
+                                </li>
+                                <li>
+                                    <a onclick="initPage('link:pagarNominaLink')" target="frame_gerente">Pagar nomina</a>
+                                </li>
+                            </ul>
                         </li>
+
                         <li>
                             <a onclick="initPage('link:registrarAdministradorLink')" target="frame_gerente">Registrar Administrador</a>
                         </li>
@@ -81,8 +90,10 @@
                             <h:commandLink id="registrarAdministradorLink" value="Registrar Administrador" target="frame_gerente" action="#{registroAdministradorBean.init()}"/>
                             <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_gerente" action="#{listarAlertaBean.init()}"/>
                             <h:commandLink id="analizarCostosLink" value="Analizar costos" target="frame_gerente" action="#{reporteCostosBean.init()}"/>
+                            <h:commandLink id="analizarIngresosLink" value="Analizar ingresos" target="frame_gerente" action="#{reporteGananciasBean.init()}"/>
                             <h:commandLink id="analizarExamenesLink" value="Analizar exámenes de laboratorio" target="frame_gerente" action="#{reporteExamenesBean.init()}"/>
                             <h:commandLink id="analizarImagenesLink" value="Analizar imágenes diagnósticas" target="frame_gerente" action="#{reporteImagenesBean.init()}"/>
+                            <h:commandLink id="pagarNominaLink" value="Pagar nomina" target="frame_gerente" action="#{pagoNominaBean.init()}"/>
                             <h:commandLink id="modificarActivosLink" value="Modificar activos" target="frame_gerente" action="#{modificarActivoBean.init('Cantidad')}"/>
                             <h:commandLink id="modificarReactivosLink" value="Modificar reactivos" target="frame_gerente" action="#{modificarReactivoBean.init('Cantidad')}"/>
                         </h:form>
@@ -103,7 +114,7 @@
         <div class="container">
             <hr/>
             <footer>
-                <p>&#169; 2015 DiagnosTyCs, Inc.</p>
+                <p>&#169; 2016 DiagnosTyCs, Inc.</p>
             </footer>
         </div> <!-- /container -->
     </h:body>

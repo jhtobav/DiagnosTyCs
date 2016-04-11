@@ -25,7 +25,7 @@
 
 
     </h:head>
-    <h:body style="border-style: none; height: 400px" onload="load()">
+    <h:body onload="load()">
         <div class="container">
             <br/>
             <h:form id="form">
@@ -54,7 +54,7 @@
                             </h:selectOneMenu>
                         </div>
                         <div class="col-md-4">
-                            <h:commandButton  class="btn btn-success" type="submit" value="Listar costos" action="#{reporteCostosBean.listarCostos()}"/>
+                            <h:commandButton  class="btn btn-primary" type="submit" value="Listar costos" action="#{reporteCostosBean.listarCostos()}"/>
                         </div>
                     </div>
                     <div class="spacedMargin">

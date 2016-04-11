@@ -23,51 +23,53 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
     </h:head>
-    <h:body style="border-style: none; height: 400px" onload="load()">
-        <div class="container">
+    <h:body onload="load()">
         <h:form>
-        <hr/>
-        <div>
-            <div class="row">
-                <div class="col-md-1"></div>
-                Listado de Reactivos
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br/>
+                <div class="panel panel-default">
+                    <div class="row spacedRow">
+                        <div class="spacedMargin">
+                            Comprar reactivos
+                        </div>
+                        <br/>
+                        <div class="spacedMargin">
+                            <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
+                                         value="#{modificarReactivoBean.listaReactivos}" var="reactivo">
+                                <h:column>
+                                    <f:facet name="header">
+                                        Nombre del Reactivo
+                                    </f:facet>
+                                    <h:outputText value="#{reactivo.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Costo
+                                    </f:facet>
+                                    <h:outputText value="#{reactivo.valor}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Unidades existentes
+                                    </f:facet>
+                                    <h:outputText value="#{reactivo.unidadesExistentes}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Unidades nuevas
+                                    </f:facet>
+                                    <h:inputText class="form-control" value="#{reactivo.unidadesNuevas}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="gerenteBody.xhtml"/>
+                        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar reactivos" action="#{modificarReactivoBean.comprarReactivo()}"/>
+                    </div>
+                    <br/>
+                </div>
             </div>
-        </div>  
-        <hr/>
-        <h:dataTable columnClasses="col1" id="tabla" styleClass="table table-striped table-hover" 
-                     value="#{modificarReactivoBean.listaReactivos}" var="reactivo">
-                <h:column>
-                    <f:facet name="header">
-                        Nombre del Reactivo
-                    </f:facet>
-                    <h:outputText value="#{reactivo.nombre}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Costo
-                    </f:facet>
-                    <h:outputText value="#{reactivo.valor}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Unidades existentes
-                    </f:facet>
-                    <h:outputText value="#{reactivo.unidadesExistentes}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Unidades nuevas
-                    </f:facet>
-                    <h:inputText class="form-control" value="#{reactivo.unidadesNuevas}"/>
-                </h:column>
-        </h:dataTable>
-        
-        <h:commandButton  class="btn btn-primary spacedMargin" type="submit" value="Comprar reactivos" action="#{modificarReactivoBean.comprarReactivo()}"/>
-        <h:commandButton  class="btn btn-default spacedMargin" type="submit" value="Cancelar" action="gerenteBody.xhtml"/>
-        
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
-
         </h:form>
-        </div>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
     </h:body>
 </html>
