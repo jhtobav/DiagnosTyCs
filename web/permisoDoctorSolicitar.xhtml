@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="../../favicon.ico"/>
+        <title>DiagnosTyCs</title>
+        <script src="js/jquery-2.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="js/diagnosTyCs.js" type="text/javascript"></script>
+        <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+        <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+
+
+    </h:head>
+    <h:body onload="load()">
+        <div class="container">
+            <br/>
+            <h:form id="form">
+                <div class="panel panel-default">
+                    <div class="row spacedRow">
+                        <div class="spacedMargin">
+                            Solicitud de permiso
+                        </div>
+                    </div>
+                    <div class="row spacedRow">
+                        <div class="col-md-6">
+                            <div class="input-group" id="daterange">
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <span class="input-group-addon">Desde</span>
+                                    <input type="text" class="input-sm form-control" id="fechaInicio" name="start" onchange="setStartDate()"/>
+                                    <span class="input-group-addon">hasta</span>
+                                    <input type="text" class="input-sm form-control" id="fechaFin" name="end" onchange="setEndDate()"/>
+                                </div>
+                                <h:inputText class="form-control" id="fechaInicio" value="#{solicitarPermisoBean.fechaInicio}"/>
+                                <h:inputText class="form-control" id="fechaFin" value="#{solicitarPermisoBean.fechaFin}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h:commandButton  class="btn btn-primary" type="submit" value="Solicitar permiso" action="#{solicitarPermisoBean.solicitarPermiso()}"/>
+                        </div>
+                    </div>
+                    <div class="spacedMargin">
+                        <div class="form-group">
+                            <label for="comment">Justificacion:</label>
+                            <h:inputTextarea class="form-control" rows="5" id="comment"/>
+                        </div>
+                    </div>
+                    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>

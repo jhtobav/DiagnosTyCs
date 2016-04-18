@@ -8,8 +8,12 @@ function load() {
         language: "es",
         format: "dd/mm/yyyy"
     });
-    setTimeout(loadFormat(),1000);
-    
+    $('#daterange .input-daterange').datepicker({
+        format: "dd/mm/yyyy",
+        language: "es",
+        daysOfWeekDisabled: "0,6"
+    });
+    setTimeout(loadFormat(), 1000);
 }
 
 function dateToISO8601String(date) {
@@ -340,6 +344,19 @@ function setBirthDate() {
     document.getElementById("form:fechaNacimiento").value = dateToISO8601String($('.date').datepicker('getDate'));
 }
 
+function setStartDate(){
+    var fechaInicio = $('#datepicker [name="start"]').datepicker('getDate');
+    if(fechaInicio){
+        document.getElementById("form:fechaInicio").value = dateToISO8601String(fechaInicio);
+    }
+}
+
+function setEndDate(){
+    var fechaFin = $('#datepicker [name="end"]').datepicker('getDate');
+    if(fechaFin){
+        document.getElementById("form:fechaFin").value = dateToISO8601String(fechaFin);
+    }
+}
 
 function loadFormat() {
     $('.outputDateTime').each(function (index) {
@@ -356,6 +373,6 @@ function formatearFecha(fecha) {
     }
 }
 
-function initPage(idLink){
+function initPage(idLink) {
     document.getElementById(idLink).click();
 }

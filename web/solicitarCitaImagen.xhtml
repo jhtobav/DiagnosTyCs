@@ -32,150 +32,23 @@
                     <div  class="panel panel-default">
                         <br/>
                         <div class="row spacedMargin">
-                            <div class="col-md-6">			
-                                <h:selectOneMenu class="selectpicker" id="procedimiento" value="#{solicitarCitaBean.imagenDiagnostica}" title="Procedimiento">
-                                    <f:selectItem itemValue="Angiografía aórtica                                             " itemLabel="Angiografía aórtica                                              " />
-                                    <f:selectItem itemValue="Angiografía mesentérica                                         " itemLabel="Angiografía mesentérica                                          " />
-                                    <f:selectItem itemValue="Angiografía por catéter                                         " itemLabel="Angiografía por catéter                                          " />
-                                    <f:selectItem itemValue="Angiografía pulmonar                                            " itemLabel="Angiografía pulmonar                                             " />
-                                    <f:selectItem itemValue="Arteriografía renal                                             " itemLabel="Arteriografía renal                                              " />
-                                    <f:selectItem itemValue="Artrografía directa                                             " itemLabel="Artrografía directa                                              " />
-                                    <f:selectItem itemValue="Cistografía retrógrada                                          " itemLabel="Cistografía retrógrada                                           " />
-                                    <f:selectItem itemValue="Cistouretrograma miccional                                      " itemLabel="Cistouretrograma miccional                                       " />
-                                    <f:selectItem itemValue="Colangiografía transhepática percutánea                         " itemLabel="Colangiografía transhepática percutánea                          " />
-                                    <f:selectItem itemValue="Densitometría ósea                                              " itemLabel="Densitometría ósea                                               " />
-                                    <f:selectItem itemValue="Discograma                                                      " itemLabel="Discograma                                                       " />
-                                    <f:selectItem itemValue="Enema opaco                                                     " itemLabel="Enema opaco                                                      " />
-                                    <f:selectItem itemValue="Enteroclisis                                                    " itemLabel="Enteroclisis                                                     " />
-                                    <f:selectItem itemValue="Linfangiograma                                                  " itemLabel="Linfangiograma                                                   " />
-                                    <f:selectItem itemValue="Mielografía                                                     " itemLabel="Mielografía                                                      " />
-                                    <f:selectItem itemValue="Pielograma intravenoso (PIV)                                    " itemLabel="Pielograma intravenoso (PIV)                                     " />
-                                    <f:selectItem itemValue="Radiografía abdominal                                           " itemLabel="Radiografía abdominal                                            " />
-                                    <f:selectItem itemValue="Radiografía de cráneo                                           " itemLabel="Radiografía de cráneo                                            " />
-                                    <f:selectItem itemValue="Radiografía de cuello                                           " itemLabel="Radiografía de cuello                                            " />
-                                    <f:selectItem itemValue="Radiografía de hueso                                            " itemLabel="Radiografía de hueso                                             " />
-                                    <f:selectItem itemValue="Radiografía de la columna lumbosacra                            " itemLabel="Radiografía de la columna lumbosacra                             " />
-                                    <f:selectItem itemValue="Radiografía de la columna torácica                              " itemLabel="Radiografía de la columna torácica                               " />
-                                    <f:selectItem itemValue="Radiografía de la pelvis                                        " itemLabel="Radiografía de la pelvis                                         " />
-                                    <f:selectItem itemValue="Radiografía de las manos                                        " itemLabel="Radiografía de las manos                                         " />
-                                    <f:selectItem itemValue="Radiografía de los senos paranasales                            " itemLabel="Radiografía de los senos paranasales                             " />
-                                    <f:selectItem itemValue="Radiografía de una articulación                                 " itemLabel="Radiografía de una articulación                                  " />
-                                    <f:selectItem itemValue="Radiografía de una extremidad                                   " itemLabel="Radiografía de una extremidad                                    " />
-                                    <f:selectItem itemValue="Radiografía del esqueleto                                       " itemLabel="Radiografía del esqueleto                                        " />
-                                    <f:selectItem itemValue="Radiografía del tracto gastrointestinal (GI) inferior           " itemLabel="Radiografía del tracto gastrointestinal (GI) inferior            " />
-                                    <f:selectItem itemValue="Radiografía dental                                              " itemLabel="Radiografía dental                                               " />
-                                    <f:selectItem itemValue="Radiografía torácica                                            " itemLabel="Radiografía torácica                                             " />
-                                    <f:selectItem itemValue="Radiografías dentales                                           " itemLabel="Radiografías dentales                                            " />
-                                    <f:selectItem itemValue="Radiografías dentales (rayos X)                                 " itemLabel="Radiografías dentales (rayos X)                                  " />
-                                    <f:selectItem itemValue="Rayos X del tórax (radiografía de tórax)                        " itemLabel="Rayos X del tórax (radiografía de tórax)                         " />
-                                    <f:selectItem itemValue="Rayos X del tracto gastrointestinal (GI) superior (radiografía) " itemLabel="Rayos X del tracto gastrointestinal (GI) superior (radiografía)  " />
-                                    <f:selectItem itemValue="Rayos X óseo (radiografía)                                      " itemLabel="Rayos X óseo (radiografía)                                       " />
-                                    <f:selectItem itemValue="Rayos X panorámicos                                             " itemLabel="Rayos X panorámicos                                              " />
-                                    <f:selectItem itemValue="Sialograma                                                      " itemLabel="Sialograma                                                       " />
-                                    <f:selectItem itemValue="Tránsito esofagogastroduodenal                                  " itemLabel="Tránsito esofagogastroduodenal                                   " />
-                                    <f:selectItem itemValue="Tránsito gastrointestinal inferior                              " itemLabel="Tránsito gastrointestinal inferior                               " />
-                                    <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
-                                    <f:selectItem itemValue="Venografía                                                      " itemLabel="Venografía                                                       " />
-                                    <f:selectItem itemValue="Venografía renal                                                " itemLabel="Venografía renal                                                 " />
-                                    <f:selectItem itemValue="Angiografía coronaria por TC (ACTC)                             " itemLabel="Angiografía coronaria por TC (ACTC)                              " />
-                                    <f:selectItem itemValue="Angiotomografía computarizada                                   " itemLabel="Angiotomografía computarizada                                    " />
-                                    <f:selectItem itemValue="Colonografía por TAC                                            " itemLabel="Colonografía por TAC                                             " />
-                                    <f:selectItem itemValue="Enterografía por TAC                                            " itemLabel="Enterografía por TAC                                             " />
-                                    <f:selectItem itemValue="Exploración de la cabeza por TAC                                " itemLabel="Exploración de la cabeza por TAC                                 " />
-                                    <f:selectItem itemValue="Exploración de la columna vertebral por TAC                     " itemLabel="Exploración de la columna vertebral por TAC                      " />
-                                    <f:selectItem itemValue="Exploración de senos (paranasales) por TAC                      " itemLabel="Exploración de senos (paranasales) por TAC                       " />
-                                    <f:selectItem itemValue="Exploración del cuerpo por TAC                                  " itemLabel="Exploración del cuerpo por TAC                                   " />
-                                    <f:selectItem itemValue="Exploración TAC de tórax                                        " itemLabel="Exploración TAC de tórax                                         " />
-                                    <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
-                                    <f:selectItem itemValue="Perfusión por TAC de la cabeza                                  " itemLabel="Perfusión por TAC de la cabeza                                   " />
-                                    <f:selectItem itemValue="TAC: Abdomen y pelvis                                           " itemLabel="TAC: Abdomen y pelvis                                            " />
-                                    <f:selectItem itemValue="TAC cardíaca para la cuantificación del calcio coronario        " itemLabel="TAC cardíaca para la cuantificación del calcio coronario         " />
-                                    <f:selectItem itemValue="TC torácica                                                     " itemLabel="TC torácica                                                      " />
-                                    <f:selectItem itemValue="Tomografía computarizada cervical                               " itemLabel="Tomografía computarizada cervical                                " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la columna dorsal                   " itemLabel="Tomografía computarizada de la columna dorsal                    " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la columna lumbar                   " itemLabel="Tomografía computarizada de la columna lumbar                    " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la columna lumbosacra               " itemLabel="Tomografía computarizada de la columna lumbosacra                " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la órbita                           " itemLabel="Tomografía computarizada de la órbita                            " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la pelvis                           " itemLabel="Tomografía computarizada de la pelvis                            " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la pierna                           " itemLabel="Tomografía computarizada de la pierna                            " />
-                                    <f:selectItem itemValue="Tomografía computarizada de la rodilla                          " itemLabel="Tomografía computarizada de la rodilla                           " />
-                                    <f:selectItem itemValue="Tomografía computarizada de los senos paranasales               " itemLabel="Tomografía computarizada de los senos paranasales                " />
-                                    <f:selectItem itemValue="Tomografía computarizada del abdomen                            " itemLabel="Tomografía computarizada del abdomen                             " />
-                                    <f:selectItem itemValue="Tomografía computarizada del brazo                              " itemLabel="Tomografía computarizada del brazo                               " />
-                                    <f:selectItem itemValue="Tomografía computarizada del corazón                            " itemLabel="Tomografía computarizada del corazón                             " />
-                                    <f:selectItem itemValue="Tomografía computarizada del cráneo                             " itemLabel="Tomografía computarizada del cráneo                              " />
-                                    <f:selectItem itemValue="Tomografía computarizada del hombro                             " itemLabel="Tomografía computarizada del hombro                              " />
-                                    <f:selectItem itemValue="Tomografía computarizada (TC) y exploraciones para cáncer       " itemLabel="Tomografía computarizada (TC) y exploraciones para cáncer        " />
-                                    <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
-                                    <f:selectItem itemValue="Cisternografía con radionúclidos                                " itemLabel="Cisternografía con radionúclidos                                 " />
-                                    <f:selectItem itemValue="Cistografía con radionúclidos                                   " itemLabel="Cistografía con radionúclidos                                    " />
-                                    <f:selectItem itemValue="Estudios de medicina nuclear                                    " itemLabel="Estudios de medicina nuclear                                     " />
-                                    <f:selectItem itemValue="Exploración por tomografía por emisión de positrones            " itemLabel="Exploración por tomografía por emisión de positrones             " />
-                                    <f:selectItem itemValue="Gammagrafía con galio (Ga)                                      " itemLabel="Gammagrafía con galio (Ga)                                       " />
-                                    <f:selectItem itemValue="Gammagrafía con MIBG                                            " itemLabel="Gammagrafía con MIBG                                             " />
-                                    <f:selectItem itemValue="Gammagrafía de glóbulos blancos                                 " itemLabel="Gammagrafía de glóbulos blancos                                  " />
-                                    <f:selectItem itemValue="Gammagrafía de glóbulos rojos                                   " itemLabel="Gammagrafía de glóbulos rojos                                    " />
-                                    <f:selectItem itemValue="Gammagrafía de la tiroides                                      " itemLabel="Gammagrafía de la tiroides                                       " />
-                                    <f:selectItem itemValue="Gammagrafía de la vesícula biliar con radionúclidos             " itemLabel="Gammagrafía de la vesícula biliar con radionúclidos              " />
-                                    <f:selectItem itemValue="Gammagrafía de perfusión renal                                  " itemLabel="Gammagrafía de perfusión renal                                   " />
-                                    <f:selectItem itemValue="Gammagrafía del hígado                                          " itemLabel="Gammagrafía del hígado                                           " />
-                                    <f:selectItem itemValue="Gammagrafía pulmonar con galio                                  " itemLabel="Gammagrafía pulmonar con galio                                   " />
-                                    <f:selectItem itemValue="Gammagrafía renal                                               " itemLabel="Gammagrafía renal                                                " />
-                                    <f:selectItem itemValue="Gammagrafía y absorción tiroideas                               " itemLabel="Gammagrafía y absorción tiroideas                                " />
-                                    <f:selectItem itemValue="Linfogammagrafía                                                " itemLabel="Linfogammagrafía                                                 " />
-                                    <f:selectItem itemValue="Medicina nuclear cardíaca                                       " itemLabel="Medicina nuclear cardíaca                                        " />
-                                    <f:selectItem itemValue="Prueba de esfuerzo nuclear                                      " itemLabel="Prueba de esfuerzo nuclear                                       " />
-                                    <f:selectItem itemValue="Tomografía de las mamas por emisión de positrones (TEP)         " itemLabel="Tomografía de las mamas por emisión de positrones (TEP)          " />
-                                    <f:selectItem itemValue="Tomografía por emisión de positrones (TEP)                      " itemLabel="Tomografía por emisión de positrones (TEP)                       " />
-                                    <f:selectItem itemValue="Tomografía por emisión de positrones (TEP) del corazón          " itemLabel="Tomografía por emisión de positrones (TEP) del corazón           " />
-                                    <f:selectItem itemValue="Ventriculografía nuclear                                        " itemLabel="Ventriculografía nuclear                                         " />
-                                    <f:selectItem itemValue="Angiografía de resonancia magnética                             " itemLabel="Angiografía de resonancia magnética                              " />
-                                    <f:selectItem itemValue="Angiografía por resonancia magnética                            " itemLabel="Angiografía por resonancia magnética                             " />
-                                    <f:selectItem itemValue="Biopsia de mama guiada por RMN                                  " itemLabel="Biopsia de mama guiada por RMN                                   " />
-                                    <f:selectItem itemValue="Colangiopancreatografía por resonancia magnética (CPRM)         " itemLabel="Colangiopancreatografía por resonancia magnética (CPRM)          " />
-                                    <f:selectItem itemValue="Enterografía por RMN                                            " itemLabel="Enterografía por RMN                                             " />
-                                    <f:selectItem itemValue="Resonancia magnética cardíaca (RM cardíaca)                     " itemLabel="Resonancia magnética cardíaca (RM cardíaca)                      " />
-                                    <f:selectItem itemValue="Resonancia magnética: Cerebro                                   " itemLabel="Resonancia magnética: Cerebro                                    " />
-                                    <f:selectItem itemValue="Resonancia magnética cervical                                   " itemLabel="Resonancia magnética cervical                                    " />
-                                    <f:selectItem itemValue="Resonancia magnética de la cabeza                               " itemLabel="Resonancia magnética de la cabeza                                " />
-                                    <f:selectItem itemValue="Resonancia magnética del abdomen                                " itemLabel="Resonancia magnética del abdomen                                 " />
-                                    <f:selectItem itemValue="Resonancia magnética del corazón                                " itemLabel="Resonancia magnética del corazón                                 " />
-                                    <f:selectItem itemValue="Resonancia magnética nuclear (RMN) durante el embarazo          " itemLabel="Resonancia magnética nuclear (RMN) durante el embarazo           " />
-                                    <f:selectItem itemValue="Resonancia magnética y el lumbago                               " itemLabel="Resonancia magnética y el lumbago                                " />
-                                    <f:selectItem itemValue="RMN de cabeza                                                   " itemLabel="RMN de cabeza                                                    " />
-                                    <f:selectItem itemValue="RMN de columna                                                  " itemLabel="RMN de columna                                                   " />
-                                    <f:selectItem itemValue="RMN de cuerpo (tórax, abdomen, pelvis)                          " itemLabel="RMN de cuerpo (tórax, abdomen, pelvis)                           " />
-                                    <f:selectItem itemValue="RMN de la próstata                                              " itemLabel="RMN de la próstata                                               " />
-                                    <f:selectItem itemValue="RMN de la rodilla                                               " itemLabel="RMN de la rodilla                                                " />
-                                    <f:selectItem itemValue="RMN de mama                                                     " itemLabel="RMN de mama                                                      " />
-                                    <f:selectItem itemValue="RMN de tórax                                                    " itemLabel="RMN de tórax                                                     " />
-                                    <f:selectItem itemValue="RMN del hombro                                                  " itemLabel="RMN del hombro                                                   " />
-                                    <f:selectItem itemValue="RMN del sistema musculoesquelético                              " itemLabel="RMN del sistema musculoesquelético                               " />
-                                    <f:selectItem itemValue="RMN funcional (RMNf): Cerebro                                   " itemLabel="RMN funcional (RMNf): Cerebro                                    " />
-                                    <f:selectItem itemValue="Urografía                                                       " itemLabel="Urografía                                                        " />
-                                    <f:selectItem itemValue="Ultrasonografía endoscópica (EUS)                               " itemLabel="Ultrasonografía endoscópica (EUS)                                " />
-                                    <f:selectItem itemValue="Ecocardiografía                                                 " itemLabel="Ecocardiografía                                                  " />
-                                    <f:selectItem itemValue="Ecocardiografía de esfuerzo                                     " itemLabel="Ecocardiografía de esfuerzo                                      " />
-                                    <f:selectItem itemValue="Ecocardiografía transesofágica                                  " itemLabel="Ecocardiografía transesofágica                                   " />
-                                    <f:selectItem itemValue="Ecografía abdominal                                             " itemLabel="Ecografía abdominal                                              " />
-                                    <f:selectItem itemValue="Ecografía de la tiroides                                        " itemLabel="Ecografía de la tiroides                                         " />
-                                    <f:selectItem itemValue="Ecografía Doppler de un brazo o de una pierna                   " itemLabel="Ecografía Doppler de un brazo o de una pierna                    " />
-                                    <f:selectItem itemValue="Ecografía dúplex                                                " itemLabel="Ecografía dúplex                                                 " />
-                                    <f:selectItem itemValue="Ecografía ocular y orbitaria                                    " itemLabel="Ecografía ocular y orbitaria                                     " />
-                                    <f:selectItem itemValue="Electrocardiograma                                              " itemLabel="Electrocardiograma                                               " />
-                                    <f:selectItem itemValue="Imágenes por ultrasonido de la arteria carótida                 " itemLabel="Imágenes por ultrasonido de la arteria carótida                  " />
-                                    <f:selectItem itemValue="Ultrasonido abdominal                                           " itemLabel="Ultrasonido abdominal                                            " />
-                                    <f:selectItem itemValue="Ultrasonido craneal/ultrasonido de la cabeza                    " itemLabel="Ultrasonido craneal/ultrasonido de la cabeza                     " />
-                                    <f:selectItem itemValue="Ultrasonido de cadera                                           " itemLabel="Ultrasonido de cadera                                            " />
-                                    <f:selectItem itemValue="Ultrasonido de la tiroides                                      " itemLabel="Ultrasonido de la tiroides                                       " />
-                                    <f:selectItem itemValue="Ultrasonido intravascular                                       " itemLabel="Ultrasonido intravascular                                        " />
-                                    <f:selectItem itemValue="Ultrasonido musculoesquelético                                  " itemLabel="Ultrasonido musculoesquelético                                   " />
-                                    <f:selectItem itemValue="Ultrasonido pélvico                                             " itemLabel="Ultrasonido pélvico                                              " />
-                                    <f:selectItem itemValue="Ultrasonido vascular                                            " itemLabel="Ultrasonido vascular                                             " />
-                                    <f:selectItem itemValue="Ultrasonido venoso (extremidades)                               " itemLabel="Ultrasonido venoso (extremidades)                                " />
+                            <div class="col-md-4">			
+                                <h:selectOneMenu class="selectpicker" id="tipoImagen" value="#{solicitarCitaBean.tipoImagen}" title="Tipo de examen">
+                                    <p:ajax listener="#{solicitarCitaBean.seleccionarImagenes()}" update="procedimiento"/>
+                                    <f:selectItem itemValue="Rayos X" itemLabel="Rayos X"/>
+                                    <f:selectItem itemValue="Tomografia Computarizada" itemLabel="Tomografia Computarizada"/>
+                                    <f:selectItem itemValue="Escanografia nuclear" itemLabel="Escanografia nuclear"/>
+                                    <f:selectItem itemValue="Resonancia magnética" itemLabel="Resonancia magnética"/>
+                                    <f:selectItem itemValue="Ecografia" itemLabel="Ecografia"/>
                                 </h:selectOneMenu>
                             </div>
-                            <div class="col-md-6">
+                            
+                            <div class="col-md-4">			
+                                <h:selectOneMenu id="procedimiento"  value="#{solicitarCitaBean.imagenDiagnostica}" title="Procedimiento">
+                                    <f:selectItems value="#{solicitarCitaBean.imagenes}" var="imagen" itemLabel="#{imagen}" itemValue="#{imagen}" />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="col-md-4">
                                 <h:selectOneMenu class="selectpicker" id="medicos" value="#{solicitarCitaBean.medico}" title="Medico">
                                     <f:selectItems value="#{solicitarCitaBean.medicos}" var="medico" itemValue="#{medico.idMedico}" itemLabel="#{medico.nombreMedico}"/>
                                 </h:selectOneMenu>

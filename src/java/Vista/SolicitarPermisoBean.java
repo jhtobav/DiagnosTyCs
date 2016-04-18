@@ -90,7 +90,7 @@ public class SolicitarPermisoBean {
         this.listaSolicitudes = listaSolicitudes;
     }
     
-    public Date parsearFecha(String fecha){
+    Date parsearFecha(String fecha){
         try {
             return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'").parse(fecha);
         } catch (ParseException ex) {
