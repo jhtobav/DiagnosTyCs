@@ -26,7 +26,7 @@
 
 
     </h:head>
-    <h:body onload="load()">
+    <h:body onload="load()" style="height: 400px">
         <div class="container">
             <br/>
             <h:form id="form">
@@ -45,8 +45,8 @@
                                     <span class="input-group-addon">hasta</span>
                                     <input type="text" class="input-sm form-control" id="fechaFin" name="end" onchange="setEndDate()"/>
                                 </div>
-                                <h:inputText class="form-control" id="fechaInicio" value="#{solicitarPermisoBean.fechaInicio}"/>
-                                <h:inputText class="form-control" id="fechaFin" value="#{solicitarPermisoBean.fechaFin}"/>
+                                <h:inputHidden class="form-control" id="fechaInicio" value="#{solicitarPermisoBean.fechaInicio}"/>
+                                <h:inputHidden class="form-control" id="fechaFin" value="#{solicitarPermisoBean.fechaFin}"/>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -56,7 +56,7 @@
                     <div class="spacedMargin">
                         <div class="form-group">
                             <label for="comment">Justificacion:</label>
-                            <h:inputTextarea class="form-control" rows="5" id="comment" value="#{solicitarPermisoBean.justificacion}"/>
+                            <h:inputTextarea class="form-control" rows="10" id="comment" value="#{solicitarPermisoBean.justificacion}"/>
                         </div>
                     </div>
                     <link href="css/bootstrap.min.css" rel="stylesheet"/>
