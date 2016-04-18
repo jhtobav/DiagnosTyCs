@@ -117,7 +117,7 @@ public class SolicitarPermisoBean {
         
         new SolicitarPermisoBiz().aprobarPermiso(listaSolicitudes);
         
-        return "doctorBody.xhtml";
+        return "gerenteBody.xhtml";
         
     }
 }
