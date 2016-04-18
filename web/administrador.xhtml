@@ -58,6 +58,9 @@
                                 <li>
                                     <a onclick="initPage('link:asignarBloqueImagenesLink')" target="frame_administrador">Administrar Agenda de Doctores de Imágenes</a> 
                                 </li>
+                                <li>
+                                    <a onclick="initPage('link:reportePermisosLink')" target="frame_administrador">Ver solicitudes de permiso</a> 
+                                </li>
                             </ul>
                         </li>   
                         <li class="dropdown">
@@ -88,6 +91,7 @@
                 <h:commandLink id="registrarDoctorLink" value="Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" />
                 <h:commandLink id="asignarBloqueLaboratorioLink" value="Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init('Laboratorio')}"/>
                 <h:commandLink id="asignarBloqueImagenesLink" value="Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/>
+                <h:commandLink id="reportePermisosLink" value="Ver solicitudes de permiso" target="frame_administrador" action="#{solicitarPermisoBean.init('permisoDoctorListar')}"/>
                 <h:commandLink id="actualizarActivosLink" value="Actualizar Inventario de Activos" target="frame_administrador" action="#{modificarActivoBean.init('Costo')}"/>
                 <h:commandLink id="actualizarReactivosLink" value="Actualizar Inventario de Reactivos" target="frame_administrador" action="#{modificarReactivoBean.init('Costo')}"/>
                 <h:commandLink id="analizarAlertasLink" value="Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/>

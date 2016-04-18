@@ -73,7 +73,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Gestionar doctores<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Aprobar Permisos</a>
+                                    <a onclick="initPage('link:aprobarPermisosLink')" target="frame_gerente">Aprobar Permisos</a>
                                 </li>
                                 <li>
                                     <a onclick="initPage('link:pagarNominaLink')" target="frame_gerente">Pagar nomina</a>
@@ -93,6 +93,7 @@
                             <h:commandLink id="analizarIngresosLink" value="Analizar ingresos" target="frame_gerente" action="#{reporteGananciasBean.init()}"/>
                             <h:commandLink id="analizarExamenesLink" value="Analizar exámenes de laboratorio" target="frame_gerente" action="#{reporteExamenesBean.init()}"/>
                             <h:commandLink id="analizarImagenesLink" value="Analizar imágenes diagnósticas" target="frame_gerente" action="#{reporteImagenesBean.init()}"/>
+                            <h:commandLink id="pagarNominaLink" value="Aprobar permisos" target="frame_gerente" action="#{solicitarPermisoBean.init('permisoDoctorAprobar')}"/>
                             <h:commandLink id="pagarNominaLink" value="Pagar nomina" target="frame_gerente" action="#{pagoNominaBean.init()}"/>
                             <h:commandLink id="modificarActivosLink" value="Modificar activos" target="frame_gerente" action="#{modificarActivoBean.init('Cantidad')}"/>
                             <h:commandLink id="modificarReactivosLink" value="Modificar reactivos" target="frame_gerente" action="#{modificarReactivoBean.init('Cantidad')}"/>

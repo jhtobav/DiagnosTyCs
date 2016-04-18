@@ -37,6 +37,7 @@
                     <p style="font-size:15px; color: #777" ><h:commandLink id="analizarImagenesLink" value="» Analizar alertas" target="frame_administrador" action="#{listarAlertaBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="asignarBloqueImagenesLink" value="» Administrar Agenda de Doctores de Imagenes" target="frame_administrador" action="#{asignarAgenda.init('Imagen')}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="asignarBloqueLaboratorioLink" value="» Administrar Agenda de Doctores de Laboratorio" target="frame_administrador" action="#{asignarAgenda.init('Laboratorio')}"/></p>
+                    <p style="font-size:15px; color: #777" ><h:commandLink id="reportePermisosLink" value="» Ver solicitudes de permiso" target="frame_administrador" action="#{solicitarPermisoBean.init('permisoDoctorListar')}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="registrarMedicoLink" value="» Registrar medicos" target="frame_administrador" action="#{registroMedicoBean.init()}"/></p>
                     <p style="font-size:15px; color: #777" ><h:commandLink id="registrarDoctorLink" value="» Registrar doctores" target="frame_administrador" action="#{registroDoctorBean.init()}" /></p>
                 </h:form>
