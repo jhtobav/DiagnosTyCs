@@ -113,7 +113,6 @@ public class PacienteDAO {
             Query q = em.createNamedQuery("Paciente.findByNumDocumento");
             q.setParameter("numDocumento", numDocumento);
             paciente = (Paciente) q.getSingleResult();
-            em.close();
         } catch (Exception e){
         } finally {
             em.close();
