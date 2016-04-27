@@ -108,12 +108,16 @@ public class PacienteDAO {
     public Paciente searchByNumDocumento(Long numDocumento) {
         
         EntityManager em = emf.createEntityManager();
-        
-        Query q = em.createNamedQuery("Paciente.findByNumDocumento");
-        q.setParameter("numDocumento", numDocumento);
-        Paciente paciente = (Paciente) q.getSingleResult();
-        em.close();
-        return paciente;
+        Paciente paciente = null;
+        try {
+            Query q = em.createNamedQuery("Paciente.findByNumDocumento");
+            q.setParameter("numDocumento", numDocumento);
+            paciente = (Paciente) q.getSingleResult();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return paciente;
+        }
         
     }
     

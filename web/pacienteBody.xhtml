@@ -22,6 +22,8 @@
         <link href="css/bootstrap-select.min.css" rel="stylesheet"/>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/diagnosTyCs.css" rel="stylesheet"/>
+        <f:event type="preRenderView" listener="#{loginBean.addMessage()}" />
+        <p:growl id="message" showDetail="true" autoUpdate="true"/>
     </h:head>
     <h:body>
         <h:form id="link">
