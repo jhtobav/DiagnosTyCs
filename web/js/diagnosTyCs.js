@@ -4,20 +4,16 @@
  * and open the template in the editor.
  */
 function load() {
-    require(["dojo/currency"], function(){
-        setTimeout(loadFormat(), 1000);
+    $('.date').datepicker({
+        language: "es",
+        format: "dd/mm/yyyy"
     });
-    if($('.date')){
-        $('.date').datepicker({
-            language: "es",
-            format: "dd/mm/yyyy"
-        });
-    }
     $('#daterange .input-daterange').datepicker({
         format: "dd/mm/yyyy",
         language: "es",
         daysOfWeekDisabled: "0,6"
     });
+    setTimeout(loadFormat(), 1000);
 }
 
 function dateToISO8601String(date) {
@@ -345,10 +341,7 @@ function loadTable(value) {
 }
 
 function setBirthDate() {
-    var fechaNacimiento = $('.date').datepicker('getDate');
-    if(fechaNacimiento){
-        document.getElementById("form:fechaNacimiento").value = dateToISO8601String();
-    }
+    document.getElementById("form:fechaNacimiento").value = dateToISO8601String($('.date').datepicker('getDate'));
 }
 
 function setStartDate(){
@@ -369,9 +362,6 @@ function loadFormat() {
     $('.outputDateTime').each(function (index) {
         $(this).html(formatearFecha($(this).html()));
     });
-    $('.currency').each(function(index){
-        $(this.html(formatearPrecio($(this).html())));
-    });
 }
 
 function formatearFecha(fecha) {
@@ -381,10 +371,6 @@ function formatearFecha(fecha) {
         var date = new Date(slicedDate[5], meses.indexOf(slicedDate[1]), slicedDate[2]);
         return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + slicedDate[3];
     }
-}
-
-function formatearPrecio(precio){
-    return dojo.currency.format(precio, {currency: "COP", symbol:"$"});
 }
 
 function initPage(idLink) {
